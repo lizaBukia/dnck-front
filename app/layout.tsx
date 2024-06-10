@@ -3,7 +3,7 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
-const inter: NextFont = Inter({ subsets: ['latin'] });
+const inter: NextFont = Inter({ subsets: ['latin'], weight: ['600', '500', '400'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
