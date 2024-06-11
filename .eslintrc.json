@@ -24,7 +24,7 @@
     "prefer-const": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/typedef": [
-      "error",
+      "error", 
       {
         "variableDeclaration": true,
         "variableDeclarationIgnoreFunction": false
@@ -46,6 +46,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "@typescript-eslint/no-explicit-any": "error"
-  }
+    "@typescript-eslint/no-explicit-any": "error",
+    "semi": ["error", "always"]
+    }
 }
