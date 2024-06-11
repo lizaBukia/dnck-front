@@ -5,7 +5,7 @@ import './globals.css';
 
 const inter: NextFont = Inter({
   subsets: ['latin'],
-  weight: ['600', '500', '400'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-inter',
 });
 
