@@ -1,0 +1,53 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/light-colors.scss';
+@import '../../Colors/dark-colors.scss';
+
+.h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: $primary-black;
+}
+
+.h1-dark {
+  color: $primary-white;
+}
+
+.h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: $primary-black;
+}
+
+.h2-dark {
+  color: $primary-white;
+}
+
+.h3 {
+  font-size: 32px;
+  font-weight: 500;
+  color: $primary-black;
+}
+
+.h3-dark {
+  color: $primary-white;
+}
+
+.h4 {
+  font-size: 28px;
+  font-weight: 500;
+  color: $primary-black;
+}
+
+.h4-dark {
+  color: $primary-white;
+}
+
+.h5 {
+  font-size: 24px;
+  font-weight: 500;
+  color: $primary-black;
+}
+
+.h5-dark {
+  color: $primary-white;
+}
