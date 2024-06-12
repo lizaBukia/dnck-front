@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Icon from './Components/Icon/Icon';
+import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
 import styles from './page.module.css';
 
 export default function Home(): JSX.Element {
@@ -26,6 +28,7 @@ export default function Home(): JSX.Element {
             />
           </a>
         </div>
+        <Icon name={IconNameEnum.HomeButton} width={20} height={20} />
       </div>
 
       <div className={styles.center}>
