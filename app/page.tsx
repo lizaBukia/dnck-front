@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
             type={TextTypeEnum.PrimaryTextLarge}
             color={{ lightColor: 'red', darkColor: 'white' }}
           >
-            asdasdasdsadsadasddasd
+            givikoo
           </PrimaryText>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

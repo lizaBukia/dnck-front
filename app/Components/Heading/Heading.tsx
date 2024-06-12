@@ -4,7 +4,7 @@ import { HeadingPropsInterface } from './interfaces/heading-props.interface';
 import { HeadingType } from './types/heading.type';
 
 const Heading: HeadingType = (props: HeadingPropsInterface) => {
-  const Type: HeadingTypeEnum = props.type; // h2
+  const Type: HeadingTypeEnum = props.type;
   const className: string = `${props.type}${props.isDark ? '-dark' : ''}`;
   return <Type className={styles[className]}>{props.children}</Type>;
 };
