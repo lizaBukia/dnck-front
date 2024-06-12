@@ -1,14 +1,8 @@
 import Image from 'next/image';
-import { IconNameEnum } from './enums/icon-name.enum';
+import { IconPropsInterface } from './interfaces/icon-props.interface';
+import { IconType } from './types/icon.type';
 
-interface Props {
-  name: IconNameEnum;
-  isActive?: boolean;
-  width: number;
-  height: number;
-}
-
-const Icon: (props: Props) => JSX.Element = (props: Props) => {
+const Icon: IconType = (props: IconPropsInterface) => {
   const src: string = `/icons/${props.name}${props.isActive ? '-active' : ''}.svg`;
 
   return (

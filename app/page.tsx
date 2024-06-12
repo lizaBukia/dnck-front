@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
             />
           </a>
         </div>
-        <Icon name={IconNameEnum.HomeButton} width={20} height={20} />
+        <Icon name={IconNameEnum.ArrowLeft} width={20} height={20} />
       </div>
 
       <div className={styles.center}>
