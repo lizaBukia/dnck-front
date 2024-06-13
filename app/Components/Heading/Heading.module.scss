@@ -10,6 +10,8 @@
 
 .h1-dark {
   color: $primary-white;
+  font-size: 48px;
+  font-weight: 700;
 }
 
 .h2 {
@@ -20,6 +22,8 @@
 
 .h2-dark {
   color: $primary-white;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .h3 {
@@ -30,6 +34,8 @@
 
 .h3-dark {
   color: $primary-white;
+  font-size: 32px;
+  font-weight: 500;
 }
 
 .h4 {
@@ -40,6 +46,8 @@
 
 .h4-dark {
   color: $primary-white;
+  font-size: 28px;
+  font-weight: 500;
 }
 
 .h5 {
@@ -49,5 +57,7 @@
 }
 
 .h5-dark {
+  font-size: 24px;
+  font-weight: 500;
   color: $primary-white;
 }
