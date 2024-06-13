@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Heading from './Components/Heading/Heading';
 import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
+import Icon from './Components/Icon/Icon';
+import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
 import PrimaryText from './Components/Text/Text';
 import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
@@ -41,6 +43,7 @@ export default function Home(): JSX.Element {
             />
           </a>
         </div>
+        <Icon name={IconNameEnum.ArrowLeft} width={20} height={20} />
       </div>
 
       <div className={styles.center}>
