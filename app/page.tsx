@@ -1,4 +1,9 @@
 import Image from 'next/image';
+import Heading from './Components/Heading/Heading';
+import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
+import PrimaryText from './Components/Text/Text';
+import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
+import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
 import Icon from './Components/Icon/Icon';
 import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
 import styles from './page.module.css';
@@ -12,6 +17,16 @@ export default function Home(): JSX.Element {
           <code className={styles.code}>app/page.tsx</code>
         </p>
         <div>
+          <PrimaryText
+            htmlType={TextHtmlTypeEnum.Span}
+            type={TextTypeEnum.PrimaryTextLarge}
+            color={{ lightColor: 'red', darkColor: 'white' }}
+          >
+            givikoo
+          </PrimaryText>
+          <Heading type={HeadingTypeEnum.H1} isDark>
+            Saxeli
+          </Heading>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
