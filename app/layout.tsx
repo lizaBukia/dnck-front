@@ -3,7 +3,7 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
-import NavItem from './Components/NavItems/NavItem';
+import NavItem from './Components/NavItem/NavItem';
 
 const inter: NextFont = Inter({
   subsets: ['latin'],

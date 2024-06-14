@@ -7,7 +7,7 @@ import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './NavItem.module.scss';
 import { NavItemPropsInterface } from './interfaces/navItem-props.interface';
-import { NavItemsType } from './types/navItems.type';
+import { NavItemsType } from './types/navItem.type';
 
 const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
   const pathName: string = usePathname();
