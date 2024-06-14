@@ -8,4 +8,5 @@ export interface PrimaryTextPropsInterface {
   color: { lightColor: string; darkColor: string };
   children: ReactNode;
   isDark?: boolean;
+  className: string;
 }
