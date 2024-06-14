@@ -18,7 +18,12 @@
   z-index: 2;
   font-family: var(--font-mono);
 }
-
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 700px;
+  justify-content: space-between;
+}
 .description a {
   display: flex;
   justify-content: center;

@@ -1,0 +1,30 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  height: 40px;
+  padding: 8px 0;
+  color: $gray-400;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.activeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  height: 40px;
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 3px solid $primary-color;
+  color: $primary-color !important;
+}
