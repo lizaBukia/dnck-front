@@ -7,7 +7,7 @@ import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './NavItem.module.scss';
 import { NavItemPropsInterface } from './interfaces/navItem-props.interface';
-import { NavItemsType } from './types/navItem.type';
+import { NavItemsType } from './types/nav-item.type';
 
 const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
   const pathName: string = usePathname();
@@ -20,7 +20,6 @@ const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
         <Text
           htmlType={TextHtmlTypeEnum.Span}
           type={TextTypeEnum.PrimaryTextLarge}
-          color={{ lightColor: '', darkColor: 'white' }}
         >
           {props.title}
         </Text>
