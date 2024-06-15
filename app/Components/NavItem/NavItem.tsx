@@ -20,6 +20,7 @@ const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
         <Text
           htmlType={TextHtmlTypeEnum.Span}
           type={TextTypeEnum.PrimaryTextLarge}
+          className={styles.navTitle}
         >
           {props.title}
         </Text>

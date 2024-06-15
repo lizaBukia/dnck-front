@@ -8,8 +8,11 @@ const Text: TextType = (props: PrimaryTextPropsInterface) => {
   const color: string | undefined = props.isDark
     ? props?.color?.darkColor
     : props?.color?.lightColor;
+  const className: string[] = [styles[props.type]];
+  if (props.className) className.push(props.className);
+
   return (
-    <Type style={{ color }} className={styles[props.type]}>
+    <Type style={{ color }} className={className.join(' ')}>
       {props.children}
     </Type>
   );
