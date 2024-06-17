@@ -26,6 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <NavItem title={'Albums'} icon={IconNameEnum.PlayList} href="/user" />
         <NavItem title={'Home'} icon={IconNameEnum.Home} href="/" />
+        <NavItem title={'Home'} icon={IconNameEnum.Home} href={'/'} />
         {children}
       </body>
     </html>
