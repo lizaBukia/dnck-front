@@ -6,8 +6,9 @@ export default function Home(): JSX.Element {
   return (
     <Button
       type={ButtonTypeEnum.Primary}
-      onClick={() => console.log('darxeuli maq')}>
-        uihi8yughiy8
+      onClick={() => console.log('darxeuli maq')}
+    >
+      uihi8yughiy8
     </Button>
   );
 }

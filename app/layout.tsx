@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
+import NavItem from './Components/NavItem/NavItem';
 
 const inter: NextFont = Inter({
   subsets: ['latin'],
@@ -21,7 +23,16 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NavItem title={'Home'} icon={IconNameEnum.Home} href="/" />
+        <NavItem
+          title={'Playlist'}
+          icon={IconNameEnum.Pause}
+          href={'/Playlist'}
+        />
+        <NavItem title={'Albums'} icon={IconNameEnum.PlayList} href="/user" />
+        {children}
+      </body>
     </html>
   );
 }
