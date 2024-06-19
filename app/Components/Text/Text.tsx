@@ -12,7 +12,7 @@ const Text: TextType = (props: PrimaryTextPropsInterface) => {
   if (props.className) className.push(props.className);
 
   return (
-    <Type style={{ color }} className={className.join(' ')}>
+    <Type style={{ color }} className={className.join(' ').trim()}>
       {props.children}
     </Type>
   );
