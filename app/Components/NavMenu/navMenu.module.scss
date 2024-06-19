@@ -1,6 +1,13 @@
 .container {
   display: flex;
   flex-flow: row wrap;
-  width: 800px;
-  justify-content: space-between;
+  flex-basis: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.items {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    flex-basis: 800px;
 }
