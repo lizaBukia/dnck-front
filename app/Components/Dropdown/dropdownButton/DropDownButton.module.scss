@@ -1,0 +1,35 @@
+@import '../../../Colors/common-colors.scss';
+@import '../../../Colors/light-colors.scss';
+@import '../../../Colors/dark-colors.scss';
+
+
+
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: fit-content;
+    padding: 8px 16px 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    line-height: 19px;
+}
+
+.light:hover{
+    background-color: $hovered-white;
+}
+
+
+.light:active{
+    background-color: $gray-600;
+}
+
+.dark:hover{
+    background-color: $hovered-dark;
+}
+
+.dark:active{
+    background-color: $primary-black;
+}
