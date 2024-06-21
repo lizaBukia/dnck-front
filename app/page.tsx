@@ -4,7 +4,6 @@ import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
 import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
 import NavMenu from './Components/NavMenu/navMenu';
 import styles from './page.module.css';
-
 export default function Home(): JSX.Element {
   return (
     <>
