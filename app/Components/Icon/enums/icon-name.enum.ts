@@ -9,4 +9,6 @@ export enum IconNameEnum {
   Dot = 'dot',
   ArrowLeft = 'arrow-left',
   ArrowRight = 'arrow-right',
+  Search = 'search',
+  Album = 'album',
 }
