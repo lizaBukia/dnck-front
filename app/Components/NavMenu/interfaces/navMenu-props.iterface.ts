@@ -4,4 +4,5 @@ export interface NavItemsInerface {
   icon: IconNameEnum;
   title: string;
   href: string;
+  className?: string;
 }

@@ -3,6 +3,7 @@ import Button from './Components/Button/Button';
 import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
 import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
 import NavMenu from './Components/NavMenu/navMenu';
+import styles from './page.module.css';
 
 export default function Home(): JSX.Element {
   return (
@@ -19,6 +20,12 @@ export default function Home(): JSX.Element {
             icon: IconNameEnum.Home,
             href: '/',
             title: 'Home',
+          },
+          {
+            icon: IconNameEnum.Shuffle,
+            href: '/Shuffle',
+            title: 'Search',
+            className: styles.search,
           },
           {
             icon: IconNameEnum.Dot,
