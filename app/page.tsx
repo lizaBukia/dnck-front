@@ -21,18 +21,18 @@ export default function Home(): JSX.Element {
             title: 'Home',
           },
           {
-            icon: IconNameEnum.Shuffle,
+            icon: IconNameEnum.Search,
             href: '/Shuffle',
             title: 'Search',
             className: styles.search,
           },
           {
-            icon: IconNameEnum.Dot,
+            icon: IconNameEnum.Play,
             href: '/dot',
             title: 'Playlist',
           },
           {
-            icon: IconNameEnum.PlayList,
+            icon: IconNameEnum.Album,
             href: '/albums',
             title: 'Albums',
           },

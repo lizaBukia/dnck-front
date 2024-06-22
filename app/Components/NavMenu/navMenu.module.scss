@@ -1,3 +1,6 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
 .container {
   display: flex;
   flex-flow: row wrap;
@@ -6,8 +9,31 @@
   align-items: center;
 }
 .items {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    flex-basis: 800px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex-basis: 800px;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    justify-content: center;
+  }
+  .items {
+    background-color: $primary-black;
+    flex-basis: 100%;
+    border-radius: 12px 12px 0 0;
+    padding: 8px 80px;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .container {
+    justify-content: center;
+  }
+  .items {
+    background-color: $primary-black;
+    border-radius: 12px 12px 0 0;
+    padding: 8px 30px;
+  }
 }
