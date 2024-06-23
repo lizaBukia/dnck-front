@@ -18,7 +18,14 @@
   z-index: 2;
   font-family: var(--font-mono);
 }
-
+.search {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .search {
+    display: flex;
+  }
+}
 .description a {
   display: flex;
   justify-content: center;

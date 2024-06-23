@@ -1,3 +1,3 @@
-import { NavItemPropsInterface } from '../interfaces/navItem-props.interface';
+import { NavItemPropsInterface } from '../interfaces/nav-item-props.interface';
 
 export type NavItemsType = (props: NavItemPropsInterface) => JSX.Element;
