@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
       >
         uihi8yughiy8
       </Button>
-      <Header mode={false} />
+      <Header mode />
     </>
   );
 }

@@ -11,11 +11,7 @@ import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = (props: HeaderPropsInterface) => {
   return (
-    <div
-      className={
-        props.mode === true ? styles.lightContainer : styles.darkContainer
-      }
-    >
+    <div className={props.mode ? styles.lightContainer : styles.darkContainer}>
       <div className={styles.content}>
         <Link href={'/'}>
           <h1 className={styles.logo}>DNCK</h1>

@@ -1,3 +1,3 @@
 export interface HeaderPropsInterface {
-  mode: boolean;
+  mode?: boolean;
 }
