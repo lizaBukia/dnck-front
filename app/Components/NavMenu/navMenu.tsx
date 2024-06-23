@@ -1,9 +1,9 @@
 import NavItem from '../NavItem/NavItem';
-import { NavItemsInerface } from './interfaces/navMenu-props.iterface';
-import styles from './navMenu.module.scss';
+import styles from './NavMenu.module.scss';
+import { NavMenuPropsInterface } from './interfaces/nav-menu-props.interface';
 import { NavMenuType } from './types/nav-menu.type';
 
-const NavMenu: NavMenuType = (props: { items: NavItemsInerface[] }) => {
+const NavMenu: NavMenuType = (props: NavMenuPropsInterface) => {
   return (
     <div className={styles.container}>
       <div className={styles.items}>

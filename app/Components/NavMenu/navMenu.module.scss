@@ -15,7 +15,7 @@
   flex-basis: 800px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .container {
     justify-content: center;
     flex-basis: 768px;
@@ -23,18 +23,6 @@
   .items {
     background-color: $primary-black;
     flex-basis: 100%;
-    border-radius: 12px 12px 0 0;
-    padding: 8px 0;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    justify-content: center;
-    flex-basis: 360px;
-  }
-  .items {
-    background-color: $primary-black;
     border-radius: 12px 12px 0 0;
     padding: 8px 0;
   }

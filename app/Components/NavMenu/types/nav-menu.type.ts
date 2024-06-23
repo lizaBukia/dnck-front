@@ -1,3 +1,3 @@
-import { NavItemsInerface } from '../interfaces/navMenu-props.iterface';
+import { NavMenuPropsInterface } from '../interfaces/nav-menu-props.interface';
 
-export type NavMenuType = (props: { items: NavItemsInerface[] }) => JSX.Element;
+export type NavMenuType = (props: NavMenuPropsInterface) => JSX.Element;

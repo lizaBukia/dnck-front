@@ -6,7 +6,7 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './NavItem.module.scss';
-import { NavItemPropsInterface } from './interfaces/navItem-props.interface';
+import { NavItemPropsInterface } from './interfaces/nav-item-props.interface';
 import { NavItemsType } from './types/nav-item.type';
 
 const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
