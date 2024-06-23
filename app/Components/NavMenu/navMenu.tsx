@@ -7,16 +7,15 @@ const NavMenu: NavMenuType = (props: NavMenuPropsInterface) => {
   return (
     <div className={styles.container}>
       <div className={styles.items}>
-        {props.items.length > 0 &&
-          props.items.map((item) => (
-            <NavItem
-              key={item.href}
-              icon={item.icon}
-              href={item.href}
-              title={item.title}
-              className={item?.className}
-            />
-          ))}
+        {props.items.map((item) => (
+          <NavItem
+            key={item.href}
+            icon={item.icon}
+            href={item.href}
+            title={item.title}
+            className={item?.className}
+          />
+        ))}
       </div>
     </div>
   );
