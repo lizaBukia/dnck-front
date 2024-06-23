@@ -1,0 +1,58 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+.lightContainer {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #f7f7f7;
+  border-radius: 0 0 12px 12px;
+  height: fit-content;
+}
+.darkContainer {
+  padding: 24px 24px 0 24px;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: $background-color-dark-mode;
+  gap: 16px;
+  height: fit-content;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  color: $primary-color;
+  font-size: 40px;
+  font-weight: 400;
+}
+.modeAndLog {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.modes {
+  border: 1px solid $disable-stroke-dark;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.button {
+  padding: 12px;
+}
+.search {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .search {
+    display: flex;
+  }
+  .content {
+    display: none;
+  }
+}

@@ -11,4 +11,7 @@ export enum IconNameEnum {
   ArrowRight = 'arrow-right',
   Search = 'search',
   Album = 'album',
+  Sun = 'sun',
+  Moon = 'astronomy-moon',
+  Logout = 'logout',
 }
