@@ -4,4 +4,5 @@ export interface NavItemPropsInterface {
   title: string;
   icon: IconNameEnum;
   href: string;
+  className?: string;
 }

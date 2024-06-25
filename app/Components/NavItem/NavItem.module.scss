@@ -32,6 +32,23 @@
   .container {
     flex-direction: column;
     gap: 0;
+    flex-basis: 192px;
+  }
+  .container .navTitle {
+    font-size: 10px;
+  }
+  .activeContainer {
+    flex-direction: column;
+    gap: 0;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+    flex-basis: 90px;
   }
   .container .navTitle {
     font-size: 10px;
