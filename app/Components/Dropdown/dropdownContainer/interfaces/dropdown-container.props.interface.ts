@@ -1,12 +1,7 @@
-import { ReactNode } from 'react';
+import { DropDownItemsInterface } from '../../interfaces/dropdown-items-props.interface';
 
 export interface DropdownContainerPropsInterface {
   darkMode: boolean;
-  items: DropDownItemsIntertface[];
+  items: DropDownItemsInterface[];
 }
-
-export interface DropDownItemsIntertface {
-  title: string;
-  icon: ReactNode;
-  onClick?: () => void;
-}
+export type { DropDownItemsInterface };

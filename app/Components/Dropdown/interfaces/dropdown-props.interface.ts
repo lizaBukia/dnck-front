@@ -1,13 +1,10 @@
 import { ReactNode } from 'react';
-
-export enum DropDownPositionEnum {
-  Left = 'left',
-  Right = 'right',
-  Middle = 'middle',
-}
+import { DropDownItemsInterface } from '../dropdownContainer/interfaces/dropdown-container.props.interface';
+import { DropDownPositionEnum } from '../enums/dropdown-position.enum';
 
 export interface DropdownPropsInterface {
   icon: ReactNode;
   position: DropDownPositionEnum;
   darkMode: boolean;
+  items: DropDownItemsInterface[];
 }

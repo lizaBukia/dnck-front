@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './Dropdown.module.scss';
 import DropdownContainer from './dropdownContainer/dropdownContainer';
 import { DropdownPropsInterface } from './interfaces/dropdown-props.interface';
@@ -24,15 +23,7 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
       <div
         className={`${styles.dropdownContainer} ${show ? styles.visible : ''}`}
       >
-        <DropdownContainer
-          items={[
-            {
-              title: 'Add To Playlist',
-              icon: IconNameEnum.Plus,
-            },
-          ]}
-          darkMode={false}
-        />
+        <DropdownContainer items={props.items} darkMode={props.darkMode} />
       </div>
     </div>
   );

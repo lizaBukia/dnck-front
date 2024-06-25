@@ -12,6 +12,7 @@ export default function Home(): JSX.Element {
           icon={<Icon name={IconNameEnum.Dot} width={20} height={20} />}
           position={DropDownPositionEnum.Middle}
           darkMode={false}
+          items={[]}
         />
       </div>
     </main>

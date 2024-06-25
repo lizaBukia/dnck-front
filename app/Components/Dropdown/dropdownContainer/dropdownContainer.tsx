@@ -1,4 +1,4 @@
-import DropdownButton from '../dropdownButton/dropdownButton';
+import DropdownButton from '../DropdownButton/DropdownButton';
 import styles from './DropdownContainer.module.scss';
 import { DropdownContainerPropsInterface } from './interfaces/dropdown-container.props.interface';
 
