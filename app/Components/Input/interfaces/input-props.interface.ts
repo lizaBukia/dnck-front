@@ -7,5 +7,5 @@ export interface InputPropsInterface {
   iconPosition?: InputIconPositionEnum;
   type: InputTypeEnum;
   placeholder: string;
-  isDark: boolean
+  isDark: boolean;
 }
