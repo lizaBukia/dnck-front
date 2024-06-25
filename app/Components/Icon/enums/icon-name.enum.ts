@@ -11,4 +11,6 @@ export enum IconNameEnum {
   ArrowRight = 'arrow-right',
   Lock = 'lock',
   Plus = 'plus',
+  Search = 'search',
+  Album = 'album',
 }
