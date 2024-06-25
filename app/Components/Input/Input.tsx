@@ -4,8 +4,9 @@ import { InputPropsInterface } from './interfaces/input-props.interface';
 import { InputType } from './types/input.type';
 
 const Input: InputType = (props: InputPropsInterface) => {
-  const className = props.isDark ? styles.dark : styles.light;
-  const iconPosition = props.iconPosition || InputIconPositionEnum.Left;
+  const className: string = props.isDark ? styles.dark : styles.light;
+  const iconPosition: InputIconPositionEnum =
+    props.iconPosition || InputIconPositionEnum.Left;
 
   return (
     <div className={styles.inputWrapper}>
