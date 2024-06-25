@@ -13,6 +13,7 @@ const Input: InputType = (props: InputPropsInterface) => {
       <input
         className={`${styles.input} ${className}`}
         placeholder={props.placeholder}
+        type={props.type}
       />
       {iconPosition === InputIconPositionEnum.Right && props.icon}
     </div>
