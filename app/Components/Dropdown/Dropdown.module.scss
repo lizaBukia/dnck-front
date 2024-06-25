@@ -2,68 +2,67 @@
 @import '../../Colors/light-colors.scss';
 @import '../../Colors/dark-colors.scss';
 
-.dropdown{
-    position: relative;
-    display: flex;
+.dropdown {
+  position: relative;
+  display: flex;
 }
 
-
-.dropdownLight:hover{
-    background-color: $gray-800;
+.dropdownLight:hover {
+  background-color: $gray-800;
 }
 
 .dropdownLight {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    border-radius: 4px;
-    width: 32px;
-    max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  width: 32px;
+  max-width: 100%;
 }
-.dropdownLight:active{
-    background-color: $gray-600;
+.dropdownLight:active {
+  background-color: $gray-600;
 }
 
 .dropdownDark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    border-radius: 4px;
-    width: 32px;
-    max-width: 100%;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  width: 32px;
+  max-width: 100%;
+  cursor: pointer;
 }
-.dropdownDark:hover{
-    background-color: $hovered-dark;
+.dropdownDark:hover {
+  background-color: $hovered-dark;
 }
-.dropdownDark:active{
-    background-color: $clicked-dark;
+.dropdownDark:active {
+  background-color: $clicked-dark;
 }
 
 .dropdownContainer {
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
-  }
-  
-  .dropdownContainer.visible {
-    opacity: 1;
-  }
-  
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-  }
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-  .left {
-    align-items: flex-start;
-  }
+.dropdownContainer.visible {
+  opacity: 1;
+}
 
-  .middle {
-    align-items: center;
-  }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
-  .right {
-    align-items: flex-end;
-  }
+.left {
+  align-items: flex-start;
+}
+
+.middle {
+  align-items: center;
+}
+
+.right {
+  align-items: flex-end;
+}

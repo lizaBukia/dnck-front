@@ -8,3 +8,4 @@ export interface DropdownPropsInterface {
   darkMode: boolean;
   items: DropDownItemsInterface[];
 }
+export { DropDownPositionEnum };
