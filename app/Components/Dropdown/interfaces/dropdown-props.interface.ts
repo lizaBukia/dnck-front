@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { DropDownItemsInterface } from '../dropdownContainer/interfaces/dropdown-container.props.interface';
+import { DropDownItemsInterface } from '../DropdownContainer/interfaces/dropdown-container.props.interface';
 import { DropDownPositionEnum } from '../enums/dropdown-position.enum';
 
 export interface DropdownPropsInterface {
@@ -8,4 +8,3 @@ export interface DropdownPropsInterface {
   darkMode: boolean;
   items: DropDownItemsInterface[];
 }
-export { DropDownPositionEnum };
