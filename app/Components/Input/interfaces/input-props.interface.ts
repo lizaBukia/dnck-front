@@ -6,6 +6,6 @@ export interface InputPropsInterface {
   icon?: ReactNode;
   iconPosition?: InputIconPositionEnum;
   type: InputTypeEnum;
-  placeholder: string;
   isDark: boolean
+  placeholder: string;
 }
