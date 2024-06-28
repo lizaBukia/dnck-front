@@ -18,6 +18,7 @@
   gap: 16px;
   justify-content: center;
   padding: 24px 24px 0 24px;
+  border-radius: 0 0 12px 12px;
 }
 .content {
   display: flex;
@@ -29,6 +30,13 @@
   color: $primary-color;
   font-size: 40px;
   font-weight: 400;
+}
+.darkContainer .modes {
+  border: 1px solid $disable-stroke-dark;
+}
+
+.lightContainer .modes {
+  border: 1px solid $disable-stroke-white;
 }
 .modeAndLog {
   display: flex;
@@ -57,4 +65,18 @@
   .content {
     display: none;
   }
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.test {
+  width: 742px;
+  padding: 12px;
+  border-radius: 12px;
+  outline: none;
+  border: none;
 }
