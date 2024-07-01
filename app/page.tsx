@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
       >
         uihi8yughiy8
       </Button>
-      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={false} />
+      <Input type={InputTypeEnum.Text} placeholder={'Search'} />
     </div>
   );
 }

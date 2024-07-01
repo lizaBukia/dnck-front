@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import Header from './Components/Header/Header';
+import RecoilWrapper from './Components/RecoilWrapper/RecoilWrapper';
 
 const inter: NextFont = Inter({
   subsets: ['latin'],
@@ -20,8 +22,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <html lang="en">
-      <body className={inter.className}> {children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <RecoilWrapper>
+          <Header />
+          {children}
+        </RecoilWrapper>
+      </body>
     </html>
   );
 }
