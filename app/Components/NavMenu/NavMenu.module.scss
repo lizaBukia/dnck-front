@@ -10,7 +10,7 @@
 }
 .items {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   flex-basis: 800px;
 }
@@ -26,3 +26,4 @@
     padding: 8px 0;
   }
 }
+
