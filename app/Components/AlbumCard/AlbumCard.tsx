@@ -10,7 +10,6 @@ import styles from './AlbumCard.module.scss';
 import { AlbumCardPropsInterface } from './interfaces/album-card-props.interface';
 import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
-// import DropdownContainer from '../Dropdown/dropdownContainer/dropdownContainer';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   const dropdownItems: DropDownItemsInterface[] = [
     {
