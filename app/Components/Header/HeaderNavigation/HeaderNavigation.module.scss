@@ -1,0 +1,16 @@
+.search {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-height: 56px;
+  }
+  .search {
+    display: flex;
+  }
+  .content {
+    display: none;
+    height: 50px;
+  }
+}

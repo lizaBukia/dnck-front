@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './Dropdown.module.scss';
-import DropdownContainer from './DropdownContainer/DropdownContainer';
+import DropdownContainer from './DropdownContainer/dropdownContainer';
 import { DropdownPropsInterface } from './interfaces/dropdown-props.interface';
 import { DropdownType } from './types/dropdown.type';
 
