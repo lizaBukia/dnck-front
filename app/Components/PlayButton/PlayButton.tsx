@@ -6,7 +6,6 @@ import Icon from '../Icon/Icon';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const iconName = props.playing ? IconNameEnum.Pause : IconNameEnum.Play;
-
   return (
     <button
       onClick={props.onClick}

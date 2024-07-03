@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
       <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={false} />
       <PlayButton
         icon={PlayButtonTypeEnum.Pause}
-        onClick={function (): void {}}
+        onClick={() => {}}
         playing={true}
         type={PlayButtonDesignTypeEnum.Desktop}
       />
