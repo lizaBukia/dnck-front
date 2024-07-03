@@ -4,7 +4,6 @@ export enum IconNameEnum {
   PlayList = 'playlist',
   Shuffle = 'shuffle',
   Pause = 'pause',
-  PauseBack = 'pause-back',
   Volume = 'volume',
   Dot = 'dot',
   ArrowLeft = 'arrow-left',
@@ -13,4 +12,6 @@ export enum IconNameEnum {
   Plus = 'plus',
   Search = 'search',
   Album = 'album',
+  Backward = 'backward',
+  Forward = 'forward',
 }
