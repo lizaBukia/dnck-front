@@ -21,7 +21,6 @@ export default function Home(): JSX.Element {
       <PlayButton
         icon={PlayButtonTypeEnum.Pause}
         onClick={() => {}}
-        playing={true}
         type={PlayButtonDesignTypeEnum.Desktop}
       />
     </div>
