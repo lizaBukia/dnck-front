@@ -10,11 +10,9 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   return (
     <button
     onClick={props.onClick} 
-    className={`${styles.playButton} ${props.className}`}
-    
+    className={`${styles.playButton} ${styles[props.type]}`}
     >
-
-        <Icon name={iconName} isActive={false} width={32} height={32} />
+        <Icon name={iconName} isActive={false} width={16} height={16} />
     </button>
   );
 }

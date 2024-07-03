@@ -1,11 +1,12 @@
 'use client';
-import styles from './page.module.css'
+import styles from './page.module.css';
 import Button from './Components/Button/Button';
 import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
 import Input from './Components/Input/Input';
 import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
 import PlayButton from './Components/PlayButton/PlayButton';
 import { PlayButtonTypeEnum } from './Components/PlayButton/enums/playButton-type.enum';
+import { PlayButtonDesignTypeEnum } from './Components/PlayButton/types/playButtondesign-type.enum';
 
 export default function Home(): JSX.Element {
   return (
@@ -19,9 +20,10 @@ export default function Home(): JSX.Element {
       <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={false} />
       <PlayButton
         icon={PlayButtonTypeEnum.Pause}
-        onClick={function (): void { } }
+        onClick={function (): void {}}
         playing={true}
-        className={styles.width}    />
+        type={PlayButtonDesignTypeEnum.Desktop}
+      />
     </div>
   );
 }
