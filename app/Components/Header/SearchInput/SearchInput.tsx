@@ -6,7 +6,7 @@ import { InputIconPositionEnum } from '../../Input/enum/input-icon-position.enum
 import { InputTypeEnum } from '../../Input/enum/input-type.enum';
 import styles from './SearchInput.module.scss';
 
-const Search = (): JSX.Element => {
+const SearchInput = (): JSX.Element => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.arrow}>
@@ -30,4 +30,4 @@ const Search = (): JSX.Element => {
   );
 };
 
-export default Search;
+export default SearchInput;

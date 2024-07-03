@@ -15,13 +15,13 @@ const HeaderNav = (): JSX.Element => {
             },
             {
               icon: IconNameEnum.Search,
-              href: '/Shuffle',
+              href: '/Search',
               title: 'Search',
               className: styles.search,
             },
             {
               icon: IconNameEnum.Play,
-              href: '/dot',
+              href: '/playlist',
               title: 'Playlist',
             },
             {

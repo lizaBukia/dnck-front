@@ -3,10 +3,10 @@ import styles from './Input.module.scss';
 import { InputIconPositionEnum } from './enum/input-icon-position.enum';
 import { InputPropsInterface } from './interfaces/input-props.interface';
 import { InputType } from './types/input.type';
-import { isModeState } from '@/app/States/States';
+import { isDarkState } from '@/app/States/States';
 
 const Input: InputType = (props: InputPropsInterface) => {
-  const isDark: boolean = useRecoilValue(isModeState);
+  const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.light : styles.dark;
   const iconPosition: InputIconPositionEnum =
     props.iconPosition || InputIconPositionEnum.Left;

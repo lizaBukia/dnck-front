@@ -7,12 +7,12 @@ import HeaderNav from './HeaderNavigation/HeaderNavigation';
 import { HeaderPropsInterface } from './Interfaces/Header-props.interface';
 import Logo from './Logo/Logo';
 import Mode from './Mode/Mode';
-import Search from './SearchInput/SearchInput';
+import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
-import { isModeState } from '@/app/States/States';
+import { isDarkState } from '@/app/States/States';
 
 const Header: HeaderType = (props: HeaderPropsInterface) => {
-  const [dark, setDark] = useRecoilState(isModeState);
+  const [dark, setDark] = useRecoilState(isDarkState);
 
   if (props.mode) {
     setDark(dark);
@@ -21,7 +21,7 @@ const Header: HeaderType = (props: HeaderPropsInterface) => {
     <div className={dark ? styles.lightContainer : styles.darkContainer}>
       <div className={styles.content}>
         <Logo />
-        <Search />
+        <SearchInput />
         <div className={styles.modeAndLog}>
           <Mode />
           <HeaderButton />
