@@ -22,9 +22,13 @@ const Header: HeaderType = (props: HeaderPropsInterface) => {
       <div className={styles.content}>
         <Logo />
         <SearchInput />
-        <div className={styles.modeAndLog}>
-          <Mode />
-          <HeaderButton />
+        <div className={styles.container}>
+          <div className={styles.mode}>
+            <Mode />
+          </div>
+          <div className={styles.button}>
+            <HeaderButton />
+          </div>
         </div>
       </div>
       <HeaderNav />
