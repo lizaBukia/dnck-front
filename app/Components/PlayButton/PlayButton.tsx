@@ -5,15 +5,15 @@ import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import Icon from '../Icon/Icon';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
-    const iconName = props.playing ? IconNameEnum.Pause : IconNameEnum.Play
-    
+  const iconName = props.playing ? IconNameEnum.Pause : IconNameEnum.Play;
+
   return (
     <button
-    onClick={props.onClick} 
-    className={`${styles.playButton} ${styles[props.type]}`}
+      onClick={props.onClick}
+      className={`${styles.playButton} ${styles[props.type]}`}
     >
-        <Icon name={iconName} isActive={false} width={16} height={16} />
+      <Icon name={iconName} isActive={false} width={16} height={16} />
     </button>
   );
-}
-export default PlayButton
+};
+export default PlayButton;

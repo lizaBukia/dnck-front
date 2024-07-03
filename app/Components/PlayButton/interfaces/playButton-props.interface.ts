@@ -4,8 +4,6 @@ import { PlayButtonDesignTypeEnum } from '../types/playButtondesign-type.enum';
 export interface PlayButtonPropsInterface {
   icon: string;
   playing: boolean;
-  onClick: () => void; 
-  type: PlayButtonDesignTypeEnum
-  
+  onClick: () => void;
+  type: PlayButtonDesignTypeEnum;
 }
-
