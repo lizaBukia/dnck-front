@@ -17,7 +17,6 @@ const Header: HeaderType = (props: HeaderPropsInterface) => {
   if (props.mode) {
     setDark(dark);
   }
-
   return (
     <div className={dark ? styles.lightContainer : styles.darkContainer}>
       <div className={styles.content}>
@@ -34,7 +33,3 @@ const Header: HeaderType = (props: HeaderPropsInterface) => {
 };
 
 export default Header;
-
-// function useRecoilState(isModeState: any): [any, any] {
-//   throw new Error('Function not implemented.');
-// }
