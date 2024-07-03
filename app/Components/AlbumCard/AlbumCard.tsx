@@ -38,23 +38,22 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             <Dropdown
               icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
               darkMode={false}
-              items={props.dropdownItems}
+              items={props.dropDownItems}
               position={DropDownPositionEnum.Left}
             />
           </div>
         </div>
-        <div className={styles.albumName}>
-          <Text
-            htmlType={TextHtmlTypeEnum.Span}
-            type={TextTypeEnum.SecondaryTextMedium}
-            color={{
-              lightColor: '#B1B1B1',
-              darkColor: '#B1B1B1',
-            }}
-          >
-            {props.albumName}
-          </Text>
-        </div>
+        <Text
+          htmlType={TextHtmlTypeEnum.Span}
+          type={TextTypeEnum.SecondaryTextMedium}
+          className={styles.albumName}
+          color={{
+            lightColor: '#B1B1B1',
+            darkColor: '#B1B1B1',
+          }}
+        >
+          {props.albumName}
+        </Text>
       </div>
     </div>
   );

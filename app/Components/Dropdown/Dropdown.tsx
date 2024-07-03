@@ -26,15 +26,14 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
         setShow(false);
       }
     };
-
-    // Add event listener on mount
     document.addEventListener('mousedown', handleClickOutside);
 
-    // Clean up the event listener on unmount
     return (): void => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  console.log(props.items, 'e3gfio0jegrwoiperfgk');
 
   return (
     <div className={`${styles.wrapper}`} ref={dropdownRef}>
