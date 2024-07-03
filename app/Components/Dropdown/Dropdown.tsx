@@ -14,7 +14,6 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   };
 
   useEffect(() => {
-    // Function to close dropdown when clicking outside
     const handleClickOutside = (event: MouseEvent): void => {
       console.log(
         dropdownRef.current,

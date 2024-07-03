@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
-import { DropDownItemsInterface } from '../Dropdown/interfaces/dropdown-items-props.interface';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
@@ -11,12 +10,6 @@ import { AlbumCardPropsInterface } from './interfaces/album-card-props.interface
 import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
-  const dropdownItems: DropDownItemsInterface[] = [
-    {
-      title: 'add to playlist',
-      icon: <Icon name={IconNameEnum.Plus} width={10} height={15} />,
-    },
-  ];
   return (
     <div
       className={`${styles.AlbumCard} ${props.darkMode ? styles.dark : styles.AlbumCardLight}`}
@@ -45,7 +38,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             <Dropdown
               icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
               darkMode={false}
-              items={dropdownItems}
+              items={props.dropdownItems}
               position={DropDownPositionEnum.Left}
             />
           </div>
