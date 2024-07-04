@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import styles from './PlayButton.module.scss';
 import { PlayButtonPropsInterface } from './interfaces/playButton-props.interface';
 import { PlayButtonType } from './types/playButton.type';
@@ -7,22 +7,22 @@ import Icon from '../Icon/Icon';
 import { useState } from 'react';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
-  const [isPlaying, setIsPLaying] = useState(false)
-  const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.Plus;
+  const [isPlaying, setIsPLaying] = useState(false);
+  const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.Play;
 
   const onClick = () => {
-    setIsPLaying(!isPlaying)
-  }
+    setIsPLaying(!isPlaying);
+  };
   return (
-
     <button
-      onClick={() =>{
-        onClick()
-        props.onClick()
+      onClick={() => {
+        onClick();
+        props.onClick();
       }}
-      className={`${styles.playButton} ${styles[props.type]}`}
+      className={styles.playButton}
+      style={{ width: props.width, height: props.width }}
     >
-      <Icon name={iconName} isActive={false} width={24} height={24} />
+      <Icon name={iconName} isActive={false} width={32} height={32} />
     </button>
   );
 };

@@ -6,7 +6,6 @@ import Input from './Components/Input/Input';
 import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
 import PlayButton from './Components/PlayButton/PlayButton';
 import { PlayButtonTypeEnum } from './Components/PlayButton/enums/playButton-type.enum';
-import { PlayButtonDesignTypeEnum } from './Components/PlayButton/types/playButtondesign-type.enum';
 
 export default function Home(): JSX.Element {
   return (
@@ -21,7 +20,8 @@ export default function Home(): JSX.Element {
       <PlayButton
         icon={PlayButtonTypeEnum.Pause}
         onClick={() => {}}
-        type={PlayButtonDesignTypeEnum.Desktop}
+        width={20}
+        height={20}
       />
     </div>
   );
