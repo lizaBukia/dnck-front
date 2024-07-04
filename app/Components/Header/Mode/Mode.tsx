@@ -1,6 +1,5 @@
 'use client';
 
-// import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
