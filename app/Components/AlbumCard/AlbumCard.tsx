@@ -12,9 +12,9 @@ import Text from '@/app/Components/Text/Text';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   return (
     <div
-      className={`${styles.AlbumCard} ${props.darkMode ? styles.dark : styles.AlbumCardLight}`}
+      className={`${styles.albumCard} ${props.darkMode ? styles.dark : styles.albumCardLight}`}
     >
-      <div className={styles.AlbumCardImage}>
+      <div className={styles.albumCardImage}>
         <Image
           src={props.image}
           alt={props.albumName}
@@ -23,7 +23,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
         />
       </div>
       <div className={styles.namesContainer}>
-        <div className={styles.ArtistName}>
+        <div className={styles.artistName}>
           <Text
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.PrimaryTextLarge}

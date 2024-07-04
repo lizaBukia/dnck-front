@@ -5,9 +5,6 @@ export default function Home(): JSX.Element {
   return (
     <div>
       <AlbumCards
-        albumName={'dsjkhbjkdh'}
-        artistName={'jhsdgvjhsavgd'}
-        image={''}
         items={[
           {
             albumName: 'wepofkewf',

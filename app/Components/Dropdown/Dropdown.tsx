@@ -15,10 +15,6 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
-      console.log(
-        dropdownRef.current,
-        dropdownRef.current?.contains(event.target as Node),
-      );
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
@@ -32,8 +28,6 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  console.log(props.items, 'e3gfio0jegrwoiperfgk');
 
   return (
     <div className={`${styles.wrapper}`} ref={dropdownRef}>

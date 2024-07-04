@@ -1,7 +1,7 @@
 @import '../../Colors/common-colors.scss';
 @import '../../Colors/dark-colors.scss';
 @import '../../Colors/light-colors.scss';
-.AlbumCard{
+.albumCard{
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -12,22 +12,22 @@
     border-radius: 12px;
     height:290px;
 }
-.AlbumCard:hover .dropdown{
+.albumCard:hover .dropdown{
     display: flex;
 
 }
-.AlbumCardImage img{
+.albumCardImage img{
     border-radius: 12px;
    
 }
-.ArtistName{
+.artistName{
     display: flex;
     justify-content: space-between;
     height: 24px;
     width: 200px;
 
 }
-.AlbumCardLight{
+.albumCardLight{
   background-color: white;
 }
 .dropdown {
