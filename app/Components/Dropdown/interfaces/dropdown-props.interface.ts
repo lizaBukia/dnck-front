@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { DropDownItemsInterface } from '../DropdownContainer/interfaces/dropdown-container.props.interface';
 import { DropDownPositionEnum } from '../enums/dropdown-position.enum';
+import { DropDownItemsInterface } from './dropdown-items-props.interface';
 
 export interface DropdownPropsInterface {
   icon: ReactNode;

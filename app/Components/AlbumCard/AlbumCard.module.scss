@@ -1,0 +1,45 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+.albumCard{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    width: 232px;
+    border-radius: 12px;
+    height:290px;
+}
+.albumCard:hover .dropdown{
+    display: flex;
+
+}
+.albumCardImage img{
+    border-radius: 12px;
+   
+}
+.artistName{
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    width: 200px;
+
+}
+.albumCardLight{
+  background-color: white;
+}
+.dropdown {
+    display: none;
+}
+
+.namesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:4px;
+}
+.albumName{
+    display: flex;
+}

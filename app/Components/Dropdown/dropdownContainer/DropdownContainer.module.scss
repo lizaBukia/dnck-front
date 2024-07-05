@@ -2,19 +2,20 @@
 @import '../../../Colors/dark-colors.scss';
 @import '../../../Colors/light-colors.scss';
 
-.dropdownButtonContainer{
-    display: flex;
-    justify-content: center;
-    padding: 16px;
-    width: fit-content;
-    border-radius: 12px;
+.dropdownButtonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  width: fit-content;
+  border-radius: 12px;
+  position: absolute;  
+  min-width:208px;
+  max-width: 100%;
+}
+.dropdownButtonContainerLight {
+  background-color: $primary-white;
+}
 
-    }
-.dropdownButtonContainerLight{
-    background-color: $primary-white;
-   
-}    
-
-.dropdownButtonContainerDark{
-    background-color: $primary-black;
+.dropdownButtonContainerDark {
+  background-color: $primary-black;
 }
