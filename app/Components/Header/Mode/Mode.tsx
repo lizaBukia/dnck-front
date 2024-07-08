@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import styles from './Mode.module.scss';
-import { isDarkState } from '@/app/States/States';
+import { isDarkState } from '@/app/States/states';
 
 const Mode = (): JSX.Element => {
   const [dark, setDark] = useRecoilState(isDarkState);

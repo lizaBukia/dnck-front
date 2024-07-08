@@ -1,4 +1,4 @@
 export interface HeaderPropsInterface {
-  mode?: boolean;
+  isDark?: boolean;
   icon?: boolean;
 }

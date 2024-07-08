@@ -1,36 +1,20 @@
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import NavMenu from '../../NavMenu/NavMenu';
+import HeaderNavigation from '../Items/navigationItems';
 import styles from './HeaderNavigation.module.scss';
 
 const HeaderNav = (): JSX.Element => {
   return (
     <div className={styles.container}>
       <div className={styles.navigation}>
-        <NavMenu
-          items={[
-            {
-              icon: IconNameEnum.Home,
-              href: '/',
-              title: 'Home',
-            },
-            {
-              icon: IconNameEnum.Search,
-              href: '/Search',
-              title: 'Search',
-              className: styles.search,
-            },
-            {
-              icon: IconNameEnum.Play,
-              href: '/playlist',
-              title: 'Playlist',
-            },
-            {
-              icon: IconNameEnum.Album,
-              href: '/albums',
-              title: 'Albums',
-            },
-          ]}
-        />
+        {HeaderNavigation.map((item) => (
+          <NavMenu
+            key={item.title}
+            icon={item.icon}
+            title={item.title}
+            href={item.href}
+            className={item.className}
+          />
+        ))}
       </div>
     </div>
   );

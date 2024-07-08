@@ -9,14 +9,15 @@ import Logo from './Logo/Logo';
 import Mode from './Mode/Mode';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
-import { isDarkState } from '@/app/States/States';
+import { isDarkState } from '@/app/States/states';
 
 const Header: HeaderType = (props: HeaderPropsInterface) => {
   const [dark, setDark] = useRecoilState(isDarkState);
 
-  if (props.mode) {
+  if (props.isDark) {
     setDark(dark);
   }
+
   return (
     <div className={dark ? styles.lightContainer : styles.darkContainer}>
       <div className={styles.content}>

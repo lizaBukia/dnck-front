@@ -1,16 +1,10 @@
-.search {
-  display: none;
+.container {
+  display: flex;
+  justify-content: center;
+  // width: 100%;
 }
-
-@media screen and (max-width: 1024px) {
-  .container {
-    max-height: 56px;
-  }
-  .search {
-    display: flex;
-  }
-  .content {
-    display: none;
-    height: 50px;
-  }
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
