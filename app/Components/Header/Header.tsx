@@ -26,7 +26,7 @@ const Header: HeaderType = () => {
   }, [dark, setDark]);
 
   return (
-    <div className={dark ? styles.darkContainer : styles.lightContainer}>
+    <div className={dark ? styles.darkContainera : styles.lightContainer}>
       <div className={styles.content}>
         <Logo />
         <SearchInput />
