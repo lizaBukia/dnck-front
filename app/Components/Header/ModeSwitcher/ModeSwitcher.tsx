@@ -3,10 +3,10 @@
 import { useRecoilState } from 'recoil';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
-import styles from './Mode.module.scss';
+import styles from './ModeSwitcher.module.scss';
 import { isDarkState } from '@/app/States/states';
 
-const ModeWitcher = (): JSX.Element => {
+const ModeSwitcher = (): JSX.Element => {
   const [dark, setDark] = useRecoilState(isDarkState);
 
   const onClick: () => void = () => {
@@ -14,7 +14,7 @@ const ModeWitcher = (): JSX.Element => {
   };
 
   return (
-    <div className={dark ? styles.lightContainer : styles.darkContainer}>
+    <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div onClick={onClick} className={styles.modes}>
         <div>
           <Icon
@@ -28,4 +28,4 @@ const ModeWitcher = (): JSX.Element => {
   );
 };
 
-export default ModeWitcher;
+export default ModeSwitcher;

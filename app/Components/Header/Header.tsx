@@ -1,32 +1,38 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems';
-import { HeaderPropsInterface } from './Interfaces/Header-props.interface';
 import Logo from './Logo/Logo';
 import LogoutButton from './Logout-Button/LogoutButton';
-import ModeWitcher from './Mode/Mode';
+import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
 import { isDarkState } from '@/app/States/states';
 
-const Header: HeaderType = (props: HeaderPropsInterface) => {
+const Header: HeaderType = () => {
   const [dark, setDark] = useRecoilState(isDarkState);
 
-  if (props.isDark) {
-    setDark(dark);
-  }
+  useEffect(() => {
+    localStorage.setItem('isDark', String(dark));
+
+    const isDarkMode: boolean = localStorage.getItem('isDark') === 'true';
+
+    if (isDarkMode !== dark) {
+      setDark(isDarkMode);
+    }
+  }, [dark, setDark]);
 
   return (
-    <div className={dark ? styles.lightContainer : styles.darkContainer}>
+    <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div className={styles.content}>
         <Logo />
         <SearchInput />
         <div className={styles.container}>
           <div className={styles.mode}>
-            <ModeWitcher />
+            <ModeSwitcher />
           </div>
           <div className={styles.button}>
             <LogoutButton />

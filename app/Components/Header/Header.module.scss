@@ -1,6 +1,26 @@
 @import '../../Colors/common-colors.scss';
 @import '../../Colors/dark-colors.scss';
 @import '../../Colors/light-colors.scss';
+
+.lightContainer {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #f7f7f7;
+  border-radius: 0 0 12px 12px;
+  height: fit-content;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px 24px 0 24px;
+}
+.darkContainer {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: $background-color-dark-mode;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px 24px 0 24px;
+  border-radius: 0 0 12px 12px;
+}
 .lightContainer {
   display: flex;
   flex-flow: column wrap;
@@ -66,6 +86,12 @@
     display: flex;
   }
   .content {
+    display: none;
+  }
+  .lightContainer {
+    display: none;
+  }
+  .darkContainer {
     display: none;
   }
 }
