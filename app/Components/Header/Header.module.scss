@@ -53,8 +53,12 @@
   flex-basis: 865px;
   gap: 16px;
 }
-.searching {
-  flex-basis: 742px;
+
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 1024px) {

@@ -4,7 +4,7 @@ import { ButtonTypeEnum } from '../../Button/enums/button-type.enum';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 
-const HeaderButton = (): JSX.Element => {
+const LogoutButton = (): JSX.Element => {
   return (
     <div>
       <Button
@@ -18,4 +18,4 @@ const HeaderButton = (): JSX.Element => {
   );
 };
 
-export default HeaderButton;
+export default LogoutButton;

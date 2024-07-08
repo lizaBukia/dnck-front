@@ -1,12 +1,13 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
+import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
-import HeaderButton from './HeaderButton/HeaderButton';
-import HeaderNav from './HeaderNavigation/HeaderNavigation';
+import HeaderNavItems from './HeaderNavItems/HeaderNavItems';
 import { HeaderPropsInterface } from './Interfaces/Header-props.interface';
 import Logo from './Logo/Logo';
-import Mode from './Mode/Mode';
+import LogoutButton from './Logout-Button/LogoutButton';
+import ModeWitcher from './Mode/Mode';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
 import { isDarkState } from '@/app/States/states';
@@ -25,14 +26,24 @@ const Header: HeaderType = (props: HeaderPropsInterface) => {
         <SearchInput />
         <div className={styles.container}>
           <div className={styles.mode}>
-            <Mode />
+            <ModeWitcher />
           </div>
           <div className={styles.button}>
-            <HeaderButton />
+            <LogoutButton />
           </div>
         </div>
       </div>
-      <HeaderNav />
+      <div className={styles.navigation}>
+        {HeaderNavItems.map((item) => (
+          <NavMenu
+            key={item.title}
+            icon={item.icon}
+            title={item.title}
+            href={item.href}
+            className={item.className}
+          />
+        ))}
+      </div>
     </div>
   );
 };

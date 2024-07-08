@@ -6,8 +6,9 @@ import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import styles from './Mode.module.scss';
 import { isDarkState } from '@/app/States/states';
 
-const Mode = (): JSX.Element => {
+const ModeWitcher = (): JSX.Element => {
   const [dark, setDark] = useRecoilState(isDarkState);
+
   const onClick: () => void = () => {
     setDark(!dark);
   };
@@ -27,4 +28,4 @@ const Mode = (): JSX.Element => {
   );
 };
 
-export default Mode;
+export default ModeWitcher;

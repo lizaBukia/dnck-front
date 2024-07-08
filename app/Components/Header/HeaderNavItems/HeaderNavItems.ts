@@ -1,7 +1,7 @@
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import { NavItemPropsInterface } from '../../NavItem/interfaces/nav-item-props.interface';
 
-const HeaderNavigation: NavItemPropsInterface[] = [
+const HeaderNavItems: NavItemPropsInterface[] = [
   {
     icon: IconNameEnum.Home,
     href: '/',
@@ -19,4 +19,4 @@ const HeaderNavigation: NavItemPropsInterface[] = [
   },
 ];
 
-export default HeaderNavigation;
+export default HeaderNavItems;

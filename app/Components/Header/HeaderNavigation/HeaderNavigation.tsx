@@ -1,23 +1,13 @@
-import NavMenu from '../../NavMenu/NavMenu';
-import HeaderNavigation from '../Items/navigationItems';
-import styles from './HeaderNavigation.module.scss';
+// import NavMenu from '../../NavMenu/NavMenu';
+// import HeaderNavItems from '../HeaderNavItems/HeaderNavItems';
+// import styles from './HeaderNavigation.module.scss';
 
-const HeaderNav = (): JSX.Element => {
-  return (
-    <div className={styles.container}>
-      <div className={styles.navigation}>
-        {HeaderNavigation.map((item) => (
-          <NavMenu
-            key={item.title}
-            icon={item.icon}
-            title={item.title}
-            href={item.href}
-            className={item.className}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
+// const HeaderNav = (): JSX.Element => {
+//   return (
+//     <div className={styles.container}>
+//       <div className={styles.navigation}></div>
+//     </div>
+//   );
+// };
 
-export default HeaderNav;
+// export default HeaderNav;
