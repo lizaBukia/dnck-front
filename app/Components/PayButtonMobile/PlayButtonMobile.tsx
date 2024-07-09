@@ -12,7 +12,6 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const [isPlaying, setIsPlaying] = useState(false);
   const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.Play;
   const className: string = props.isDark ? styles.dark : styles.light;
-
   const onClink = () => {
     setIsPlaying(!isPlaying);
   };
