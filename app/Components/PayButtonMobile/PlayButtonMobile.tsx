@@ -10,8 +10,12 @@ const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.Play;
   const className: string = props.isDark ? styles.dark : styles.light;
+  const playIcon = props.isDark
+    ? IconNameEnum.PlayLight
+    : IconNameEnum.PlayDark;
+  const pauseIcon = props.isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
+  const icon = isPlaying ? pauseIcon : playIcon;
   const onClink = () => {
     setIsPlaying(!isPlaying);
   };
@@ -21,10 +25,10 @@ const PlayButtonMobile: PlayButtonMobileType = (
         onClink();
         props.onClick;
       }}
-      className={`${styles.playButton} ${className}`}
+      className={isPlaying ? `${styles.playButton} ${className} ${ styles.play}` : `${styles.playButton} ${className} ${ styles.notPlay}`}
       style={{ width: props.width, height: props.width }}
     >
-      <Icon name={iconName} isActive={false} width={32} height={32} />
+      <Icon name={icon} isActive={false} width={isPlaying ? 28 : 32} height={isPlaying ? 28 : 32} />
     </button>
   );
 };

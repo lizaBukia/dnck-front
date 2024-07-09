@@ -13,3 +13,17 @@
 .light {
   background-color: $primary-black;
 }
+
+.playButton:hover {
+  cursor: pointer;
+}
+
+.play {
+  width: 32px;
+  height: 32px;
+}
+
+.notPlay {
+  width: 10px;
+  height: 10px;
+}

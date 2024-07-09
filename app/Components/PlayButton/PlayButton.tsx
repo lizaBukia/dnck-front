@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const [isPlaying, setIsPLaying] = useState(false);
-  const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.Play;
+  const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.PlayDark;
 
   const onClick = () => {
     setIsPLaying(!isPlaying);
@@ -22,7 +22,7 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
       className={styles.playButton}
       style={{ width: props.width, height: props.width }}
     >
-      <Icon name={iconName} isActive={false} width={32} height={32} />
+      <Icon name={iconName} isActive={false} width={isPlaying ? 20 : 36} height={isPlaying ? 20 : 36} />
     </button>
   );
 };

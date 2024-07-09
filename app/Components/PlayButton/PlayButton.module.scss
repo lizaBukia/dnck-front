@@ -4,8 +4,11 @@
   justify-content: center;
   align-items: center;
   border: none;
-  cursor: pointer;
   border-radius: 50%;
   padding: 12px;
   background-color: $primary-color;
+}
+
+.playButton:hover {
+  cursor: pointer;
 }

@@ -18,12 +18,12 @@ export default function Home(): JSX.Element {
       >
         uihi8yughiy8
       </Button>
-      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={false} />
+      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={true} />
       <PlayButton
         icon={PlayButtonTypeEnum.Pause}
         onClick={() => {}}
-        width={20}
-        height={20}
+        width={48}
+        height={48}
       />
       <PlayButtonMobile
         icon={PlayButtonMobileTypeEnum.Pause}
