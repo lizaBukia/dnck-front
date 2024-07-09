@@ -1,8 +1,8 @@
 'use client';
 import styles from './PlayButtonMobile.module.scss';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import { PlayButtonMobilePropsInterface } from './interfaces/playButtonMobile-props.interface';
-import { PlayButtonMobileType } from './types/playButtonMobile.type';
+import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-props.interface';
+import { PlayButtonMobileType } from './types/play-button-mobile.type';
 import { useState } from 'react';
 import Icon from '../Icon/Icon';
 

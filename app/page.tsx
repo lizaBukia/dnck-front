@@ -5,9 +5,9 @@ import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
 import Input from './Components/Input/Input';
 import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
 import PlayButton from './Components/PlayButton/PlayButton';
-import { PlayButtonTypeEnum } from './Components/PlayButton/enums/playButton-type.enum';
+import { PlayButtonTypeEnum } from './Components/PlayButton/enums/play-button-type.enum';
 import PlayButtonMobile from './Components/PayButtonMobile/PlayButtonMobile';
-import { PlayButtonMobileTypeEnum } from './Components/PayButtonMobile/enums/playButtonMobile-type.enum';
+import { PlayButtonMobileTypeEnum } from './Components/PayButtonMobile/enums/play-button-mobile-type.enum';
 
 export default function Home(): JSX.Element {
   return (

@@ -1,7 +1,7 @@
 'use client';
 import styles from './PlayButton.module.scss';
-import { PlayButtonPropsInterface } from './interfaces/playButton-props.interface';
-import { PlayButtonType } from './types/playButton.type';
+import { PlayButtonPropsInterface } from './interfaces/play-button-props.interface';
+import { PlayButtonType } from './types/play-button.type';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import Icon from '../Icon/Icon';
 import { useState } from 'react';
