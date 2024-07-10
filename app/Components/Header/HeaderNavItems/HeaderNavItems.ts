@@ -8,7 +8,7 @@ export const headerNavItems: NavItemPropsInterface[] = [
     title: 'Home',
   },
   {
-    icon: IconNameEnum.Play,
+    icon: IconNameEnum.PlayList,
     href: '/playlist',
     title: 'Playlist',
   },
