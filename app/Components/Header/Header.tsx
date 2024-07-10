@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { isDarkState } from '../../States/States';
+import { isDarkState } from '../../States/states';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems';

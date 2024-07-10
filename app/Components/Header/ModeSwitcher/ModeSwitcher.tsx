@@ -1,10 +1,10 @@
 'use client';
 
 import { useRecoilState } from 'recoil';
-import { isDarkState } from '../../../States/States';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import styles from './ModeSwitcher.module.scss';
+import { isDarkState } from '@/app/States/states';
 
 const ModeSwitcher = (): JSX.Element => {
   const [dark, setDark] = useRecoilState(isDarkState);
