@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
+import { isDarkState } from '../../States/States';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import HeaderNavItems from './HeaderNavItems/HeaderNavItems';
@@ -10,7 +11,6 @@ import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
-import { isDarkState } from '@/app/States/states';
 
 const Header: HeaderType = () => {
   const [dark, setDark] = useRecoilState(isDarkState);
@@ -26,7 +26,7 @@ const Header: HeaderType = () => {
   }, [dark, setDark]);
 
   return (
-    <div className={dark ? styles.darkContainera : styles.lightContainer}>
+    <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div className={styles.content}>
         <Logo />
         <SearchInput />
