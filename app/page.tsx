@@ -1,24 +1,36 @@
-import AlbumCards from './Components/AlbumCards/AlbumCards';
-import { IconNameEnum } from './Components/Icon/enums/icon-name.enum';
+'use client';
+import styles from './page.module.css';
+import Button from './Components/Button/Button';
+import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
+import Input from './Components/Input/Input';
+import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
+import PlayButton from './Components/PlayButton/PlayButton';
+import { PlayButtonTypeEnum } from './Components/PlayButton/enums/play-button-type.enum';
+import PlayButtonMobile from './Components/PlayButtonMobile/PlayButtonMobile';
+import { PlayButtonMobileTypeEnum } from './Components/PlayButtonMobile/enums/play-button-mobile-type.enum';
 
 export default function Home(): JSX.Element {
   return (
     <div>
-      <AlbumCards
-        items={[
-          {
-            albumName: 'wepofkewf',
-            artistName: 'ewofweopfi',
-            image:
-              'https://www.billboard.com/wp-content/uploads/2023/07/aretha-franklin-young-gifted-black-1972-billboard-1240.jpg?w=1024',
-            dropDownItems: [
-              {
-                title: ',wepofpklewf',
-                icon: IconNameEnum.Album,
-              },
-            ],
-          },
-        ]}
+      <Button
+        type={ButtonTypeEnum.Primary}
+        onClick={() => console.log('darxeuli maq')}
+      >
+        uihi8yughiy8
+      </Button>
+      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={true} />
+      <PlayButton
+        icon={PlayButtonTypeEnum.Pause}
+        onClick={() => {}}
+        width={48}
+        height={48}
+      />
+      <PlayButtonMobile
+        icon={PlayButtonMobileTypeEnum.Pause}
+        onClick={() => {}}
+        width={48}
+        height={48}
+        isDark={false}
       />
     </div>
   );
