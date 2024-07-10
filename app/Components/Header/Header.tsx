@@ -19,10 +19,6 @@ const Header: HeaderType = () => {
     setDark(localStorage.getItem('isDark') === 'true');
   }, [setDark]);
 
-  console.log(dark);
-
-  console.log(dark ? styles.darkContainer : styles.lightContainer);
-
   return (
     <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div className={styles.content}>
