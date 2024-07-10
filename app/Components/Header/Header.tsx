@@ -5,25 +5,23 @@ import { useRecoilState } from 'recoil';
 import { isDarkState } from '../../States/states';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
-import HeaderNavItems from './HeaderNavItems/HeaderNavItems';
+import { headerNavItems } from './HeaderNavItems/headerNavItems';
 import Logo from './Logo/Logo';
 import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
-import { HeaderType } from './Type/Header.type';
+import { HeaderType } from './Type/header.type';
 
 const Header: HeaderType = () => {
   const [dark, setDark] = useRecoilState(isDarkState);
 
   useEffect(() => {
-    localStorage.setItem('isDark', String(dark));
+    setDark(localStorage.getItem('isDark') === 'true');
+  }, [setDark]);
 
-    const isDarkMode: boolean = localStorage.getItem('isDark') === 'true';
+  console.log(dark);
 
-    if (isDarkMode !== dark) {
-      setDark(isDarkMode);
-    }
-  }, [dark, setDark]);
+  console.log(dark ? styles.darkContainer : styles.lightContainer);
 
   return (
     <div className={dark ? styles.darkContainer : styles.lightContainer}>
@@ -40,15 +38,7 @@ const Header: HeaderType = () => {
         </div>
       </div>
       <div className={styles.navigation}>
-        {HeaderNavItems.map((item) => (
-          <NavMenu
-            key={item.title}
-            icon={item.icon}
-            title={item.title}
-            href={item.href}
-            className={item.className}
-          />
-        ))}
+        <NavMenu items={headerNavItems} />
       </div>
     </div>
   );

@@ -1,16 +1,18 @@
 @import '../../Colors/common-colors.scss';
 @import '../../Colors/dark-colors.scss';
 @import '../../Colors/light-colors.scss';
+
 .container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  flex-basis: 100%;
 }
 .items {
   display: flex;
   justify-content: space-between;
-  flex-basis: 93px;
+  flex-basis: 800px;
   gap: 8px;
 }
 
