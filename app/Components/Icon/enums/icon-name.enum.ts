@@ -1,6 +1,6 @@
 export enum IconNameEnum {
   Home = 'home',
-  PlayDark = 'play-dark',
+  Play = 'play-dark',
   PlayLight = 'play-light',
   PlayList = 'playlist',
   Shuffle = 'shuffle',

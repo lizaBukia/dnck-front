@@ -1,5 +1,4 @@
 'use client';
-import styles from './page.module.css';
 import Button from './Components/Button/Button';
 import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
 import Input from './Components/Input/Input';
@@ -12,10 +11,7 @@ import { PlayButtonMobileTypeEnum } from './Components/PlayButtonMobile/enums/pl
 export default function Home(): JSX.Element {
   return (
     <div>
-      <Button
-        type={ButtonTypeEnum.Primary}
-        onClick={() => {}}
-      >
+      <Button type={ButtonTypeEnum.Primary} onClick={() => {}}>
         uihi8yughiy8
       </Button>
       <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={true} />
