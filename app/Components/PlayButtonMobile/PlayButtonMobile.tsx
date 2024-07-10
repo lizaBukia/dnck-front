@@ -25,7 +25,7 @@ const PlayButtonMobile: PlayButtonMobileType = (
         onClink();
         props.onClick;
       }}
-      className={isPlaying ? `${styles.playButton} ${className} ${ styles.play}` : `${styles.playButton} ${className} ${ styles.notPlay}`}
+      className={`${className} ${styles.playButton} ${isPlaying ? styles.play : styles.notPlay}`}
       style={{ width: props.width, height: props.width }}
     >
       <Icon name={icon} isActive={false} width={isPlaying ? 28 : 32} height={isPlaying ? 28 : 32} />

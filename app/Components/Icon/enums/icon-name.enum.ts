@@ -22,6 +22,4 @@ export enum IconNameEnum {
   ForwardDesktop = 'forward-desktop',
   ForwardLight = 'forward-light',
   ForwardDark = 'forward-dark',
-  pauseIcon = "pauseIcon",
-  playIcon = "playIcon"
 }
