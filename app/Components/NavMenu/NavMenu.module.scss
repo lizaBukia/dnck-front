@@ -1,29 +1,26 @@
 @import '../../Colors/common-colors.scss';
 @import '../../Colors/dark-colors.scss';
 @import '../../Colors/light-colors.scss';
+
 .container {
   display: flex;
   flex-flow: row wrap;
-  flex-basis: 100%;
   justify-content: center;
   align-items: center;
+  flex-basis: 100%;
 }
 .items {
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
   flex-basis: 800px;
+  gap: 8px;
 }
 
+.search {
+  display: none;
+}
 @media screen and (max-width: 1024px) {
   .container {
-    justify-content: center;
-    flex-basis: 768px;
-  }
-  .items {
-    background-color: $primary-black;
-    flex-basis: 100%;
-    border-radius: 12px 12px 0 0;
-    padding: 8px 0;
+    display: none;
   }
 }
