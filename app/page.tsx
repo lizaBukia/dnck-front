@@ -1,6 +1,8 @@
 'use client';
 import Button from './Components/Button/Button';
 import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
+import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
+import HitsCards from './Components/HitsCards/HitsCards';
 import Input from './Components/Input/Input';
 import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
 import PlayButton from './Components/PlayButton/PlayButton';
@@ -28,6 +30,7 @@ export default function Home(): JSX.Element {
         height={48}
         isDark={false}
       />
+      <HitsCards items={HitsItems} />
     </div>
   );
 }

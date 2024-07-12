@@ -3,7 +3,7 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from './Components/Header/Header';
-import RecoilWrapper from './RecoilWrapper/RecoilWrapper';
+import RecoilWrapper from './Components/RecoilWrapper/RecoilWrapper';
 
 const inter: NextFont = Inter({
   subsets: ['latin'],
