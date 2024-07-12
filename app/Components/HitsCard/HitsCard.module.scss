@@ -10,6 +10,7 @@
   background-color: $primary-white;
   justify-content: space-between;
   align-items: center;
+  color: $primary-black;
 }
 
 .darkContainer {
@@ -20,11 +21,15 @@
   background-color: $primary-black;
   justify-content: space-between;
   align-items: center;
+  color: $primary-white;
 }
 .dropdown {
   display: none;
 }
 .container:hover .dropdown {
+  display: flex;
+}
+.darkContainer:hover .dropdown {
   display: flex;
 }
 .content {
@@ -49,14 +54,17 @@
 .container:hover .button {
   display: flex;
 }
+.darkContainer:hover .button {
+  display: flex;
+}
 .title {
   display: flex;
   flex-flow: column wrap;
   gap: 4px;
 }
-.artistName {
-  color: $primary-black;
-}
+// .artistName {
+//   color: $primary-black;
+// }
 .albumName {
   color: $gray-400;
 }

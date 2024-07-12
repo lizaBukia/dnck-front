@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { isDarkState } from '../../States/States';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
@@ -11,8 +14,14 @@ import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
+  const [dark, setDark] = useRecoilState(isDarkState);
+
+  useEffect(() => {
+    setDark(localStorage.getItem('isDark') === 'true');
+  }, [setDark]);
+
   return (
-    <div className={styles.container}>
+    <div className={dark ? styles.darkContainer : styles.container}>
       <div className={styles.content}>
         <div
           className={styles.hitsCardsImage}

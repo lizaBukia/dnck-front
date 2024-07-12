@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil';
+import { isDarkState } from '../../States/States';
 import styles from './Input.module.scss';
 import { InputIconPositionEnum } from './enum/input-icon-position.enum';
 import { InputPropsInterface } from './interfaces/input-props.interface';
 import { InputType } from './types/input.type';
-import { isDarkState } from '@/app/States/states';
 
 const Input: InputType = (props: InputPropsInterface) => {
   const isDark: boolean = useRecoilValue(isDarkState);
