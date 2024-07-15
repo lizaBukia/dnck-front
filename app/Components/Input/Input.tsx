@@ -7,7 +7,7 @@ import { InputType } from './types/input.type';
 
 const Input: InputType = (props: InputPropsInterface) => {
   const isDark: boolean = useRecoilValue(isDarkState);
-  const className: string = isDark ? styles.light : styles.dark;
+  const className: string = isDark ? styles.dark : styles.light;
   const iconPosition: InputIconPositionEnum =
     props.iconPosition || InputIconPositionEnum.Left;
 
