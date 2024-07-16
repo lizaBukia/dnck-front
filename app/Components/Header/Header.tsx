@@ -2,10 +2,10 @@
 
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { isDarkState } from '../../States/states';
+import { isDarkState } from '../../States/States';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
-import { headerNavItems } from './HeaderNavItems/headerNavItems';
+import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
 import Logo from './Logo/Logo';
 import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
