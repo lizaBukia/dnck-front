@@ -8,24 +8,21 @@ import { MusicPlayerPropsInterface } from './interfaces/music-player-props.inter
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
   const player = useRef<HTMLAudioElement>(null);
-  const [currentTime, setCurrentTime] = useState(Number);
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.code === 'Space') {
-      event.preventDefault();
-      playButton();
-    }
-  };
-  const handleProgressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (player.current) {
-      player.current.currentTime = Number(event.target.value);
-    }
-  };
+  const [currentTime, setCurrentTime] = useState(0);
+
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        togglePlay();
+      }
+    };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
   useEffect(() => {
     const audioElement = player.current;
     if (audioElement) {
@@ -38,23 +35,33 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
       };
     }
   }, []);
-  const playButton = () => {
+
+  const handleProgressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (player.current) {
+      player.current.currentTime = Number(event.target.value);
+    }
+  };
+
+  const togglePlay = () => {
     if (player.current?.paused) {
       player.current.play();
     } else {
       player.current?.pause();
     }
   };
+
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (player.current) {
       player.current.volume = Number(event.target.value);
     }
   };
+
   const toggleMute = () => {
     if (player.current) {
       player.current.muted = !player.current.muted;
     }
   };
+
   return (
     <div>
       <div
@@ -93,7 +100,7 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               />
               <PlayButton
                 icon={IconNameEnum.Pause}
-                onClick={playButton}
+                onClick={togglePlay}
                 width={48}
                 height={48}
               />
