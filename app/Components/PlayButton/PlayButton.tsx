@@ -4,15 +4,28 @@ import { PlayButtonPropsInterface } from './interfaces/play-button-props.interfa
 import { PlayButtonType } from './types/play-button.type';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import Icon from '../Icon/Icon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
-  const [isPlaying, setIsPLaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false)
   const iconName = isPlaying ? IconNameEnum.Pause : IconNameEnum.PlayDark;
 
   const onClick = () => {
-    setIsPLaying(!isPlaying);
+    setIsPlaying(prevState => !prevState);
   };
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.code === 'Space') {
+      event.preventDefault();
+      onClick();
+    } 
+  };
+  
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <button
       onClick={() => {
@@ -22,7 +35,12 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
       className={styles.playButton}
       style={{ width: props.width, height: props.width }}
     >
-      <Icon name={iconName} isActive={false} width={isPlaying ? 20 : 36} height={isPlaying ? 20 : 36} />
+      <Icon
+        name={iconName}
+        isActive={false}
+        width={isPlaying ? 20 : 36}
+        height={isPlaying ? 20 : 36}
+      />
     </button>
   );
 };

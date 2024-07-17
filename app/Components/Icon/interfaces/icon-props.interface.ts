@@ -5,4 +5,5 @@ export interface IconPropsInterface {
   isActive?: boolean;
   width: number;
   height: number;
+  onClick?: () => void;
 }
