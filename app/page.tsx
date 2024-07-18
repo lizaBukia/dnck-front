@@ -32,7 +32,6 @@ export default function Home(): JSX.Element {
       />
       <MusicPlayer MusicTitle={'Lose Control'} ArtistName={'Teddy Swing'} BackgroundImage={'image75.png'}/>
       
-      <HitsCards items={HitsItems} />
     </div>
     
   );
