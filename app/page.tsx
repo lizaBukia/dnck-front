@@ -1,7 +1,8 @@
 'use client';
-import styles from './page.module.css';
 import Button from './Components/Button/Button';
 import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
+import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
+import HitsCards from './Components/HitsCards/HitsCards';
 import Input from './Components/Input/Input';
 import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
 import PlayButton from './Components/PlayButton/PlayButton';
@@ -9,7 +10,6 @@ import { PlayButtonTypeEnum } from './Components/PlayButton/enums/play-button-ty
 import PlayButtonMobile from './Components/PlayButtonMobile/PlayButtonMobile';
 import { PlayButtonMobileTypeEnum } from './Components/PlayButtonMobile/enums/play-button-mobile-type.enum';
 import MusicPlayer from './Components/MusicPlayer/MusicPlayer';
-import { url } from 'inspector';
 
 export default function Home(): JSX.Element {
   return (
@@ -32,6 +32,7 @@ export default function Home(): JSX.Element {
       />
       <MusicPlayer MusicTitle={'Lose Control'} ArtistName={'Teddy Swing'} BackgroundImage={'image75.png'}/>
       
+      <HitsCards items={HitsItems} />
     </div>
     
   );

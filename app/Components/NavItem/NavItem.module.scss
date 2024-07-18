@@ -28,6 +28,9 @@
   color: $primary-color;
 }
 
+.search {
+  display: none;
+}
 @media screen and (max-width: 1024px) {
   .container {
     flex-direction: column;
