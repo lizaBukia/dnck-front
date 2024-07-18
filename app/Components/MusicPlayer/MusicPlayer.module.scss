@@ -1,0 +1,82 @@
+@import '../../Colors/common-colors.scss';
+.musicPlayer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 302px;
+  height: 154px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 10px;
+  position: relative;
+  top: -15px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: start;
+}
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  accent-color: $primary-color;
+}
+.heading h1 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+.heading span {
+  color: #838383;
+  font-size: 12px;
+  font-weight: 400;
+}
+.playerBoard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.music {
+  background-image: url('/image75.png');
+  width: 326px;
+  height: 393px;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 12px;
+}
+.volumeControl {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.volumeInput {
+  position: absolute;
+  left: 70%;
+  top: -12px;
+  width: 50px;
+  display: none;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  accent-color: $primary-color;
+}
+
+.volumeControl:hover .volumeInput {
+  display: block;
+}
