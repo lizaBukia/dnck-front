@@ -6,14 +6,14 @@ import { PlayButtonPropsInterface } from './interfaces/play-button-props.interfa
 import { PlayButtonType } from './types/play-button.type';
 import { useEffect, useState } from 'react';
 
-
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const [isPlaying, setIsPLaying] = useState(false);
   const iconName: IconNameEnum = isPlaying
     ? IconNameEnum.Pause
     : IconNameEnum.Play;
 
-  const onClick = (): void => {4
+  const onClick = (): void => {
+    4;
     setIsPLaying(!isPlaying);
   };
   const handleKeyDown = (event: KeyboardEvent) => {

@@ -14,6 +14,7 @@ import { PlayButtonMobileType } from './types/play-button-mobile.type';
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
+
   const [isPlaying, setIsPlaying] = useState(false);
   const className: string = props.isDark ? styles.dark : styles.light;
   const playIcon: IconNameEnum = props.isDark
@@ -21,16 +22,10 @@ const PlayButtonMobile: PlayButtonMobileType = (
     : IconNameEnum.PlayDark;
   const pauseIcon = props.isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
   const icon = isPlaying ? pauseIcon : playIcon;
+
   const onClick = () => {
     setIsPlaying(prevState => !prevState);
-    : IconNameEnum.Play;
-  const pauseIcon: IconNameEnum = props.isDark
-    ? IconNameEnum.PauseLight
-    : IconNameEnum.Pause;
-  const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
-  const onClink = (): void => {
-    setIsPlaying(!isPlaying);
-  };
+  }
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Space') {
@@ -62,5 +57,7 @@ const PlayButtonMobile: PlayButtonMobileType = (
       />
     </button>
   );
+
 };
-export default PlayButtonMobile;
+
+export default PlayButtonMobile
