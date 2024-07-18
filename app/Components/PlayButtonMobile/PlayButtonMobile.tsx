@@ -14,13 +14,13 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const className: string = props.isDark ? styles.dark : styles.light;
   const playIcon: IconNameEnum = props.isDark
     ? IconNameEnum.PlayLight
-    : IconNameEnum.PlayDark;
+    : IconNameEnum.Play;
   const pauseIcon = props.isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
   const icon = isPlaying ? pauseIcon : playIcon;
 
   const onClick = () => {
     setIsPlaying(prevState => !prevState);
-  }
+  } 
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Space') {
@@ -39,7 +39,7 @@ const PlayButtonMobile: PlayButtonMobileType = (
     <button
       onClick={() => {
         onClick();
-        props.onClick;
+        props.onClick();
       }}
       className={`${className} ${styles.playButton} ${isPlaying ? styles.play : styles.notPlay}`}
       style={{ width: props.width, height: props.width }}

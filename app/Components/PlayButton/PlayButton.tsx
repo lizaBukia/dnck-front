@@ -13,7 +13,7 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
     : IconNameEnum.Play;
 
   const onClick = (): void => {
-    setIsPLaying(!isPlaying);
+    setIsPLaying(prevState => !prevState);
   };
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Space') {
