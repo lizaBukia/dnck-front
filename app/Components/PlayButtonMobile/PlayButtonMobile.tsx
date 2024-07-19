@@ -5,17 +5,21 @@ import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-
 import { PlayButtonMobileType } from './types/play-button-mobile.type';
 import { useEffect, useState } from 'react';
 import Icon from '../Icon/Icon';
+import { isDarkState } from '@/app/States/States';
+import { useRecoilValue } from 'recoil';
+
 
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const className: string = props.isDark ? styles.dark : styles.light;
-  const playIcon: IconNameEnum = props.isDark
+  const isDark: boolean = useRecoilValue(isDarkState);
+  const className: string = isDark ? styles.dark : styles.light;
+  const playIcon: IconNameEnum = isDark
     ? IconNameEnum.PlayLight
     : IconNameEnum.Play;
-  const pauseIcon = props.isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
+  const pauseIcon = isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
   const icon = isPlaying ? pauseIcon : playIcon;
 
   const onClick = () => {
@@ -56,3 +60,6 @@ const PlayButtonMobile: PlayButtonMobileType = (
 };
 
 export default PlayButtonMobile
+
+
+

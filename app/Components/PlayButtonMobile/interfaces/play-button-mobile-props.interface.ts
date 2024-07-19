@@ -3,5 +3,4 @@ export interface PlayButtonMobilePropsInterface {
   onClick: () => void;
   width: number;
   height: number;
-  isDark: boolean;
 }

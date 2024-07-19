@@ -66,12 +66,12 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
     <div>
       <div
         className={styles.music}
-        style={{ backgroundImage: `url(${props.BackgroundImage})` }}
+        style={{ backgroundImage: `url(${props.backgroundImage})` }}
       >
         <div className={styles.musicPlayer}>
           <div className={styles.heading}>
-            <h1>{props.MusicTitle}</h1>
-            <span>{props.ArtistName}</span>
+            <h1>{props.musicTitle}</h1>
+            <span>{props.artistName}</span>
           </div>
           <div>
             <input
