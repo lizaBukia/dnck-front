@@ -20,7 +20,8 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   const backwardIcon = isDark
     ? IconNameEnum.BackwardLight
     : IconNameEnum.BackwardDark;
-  const icon = isDark ? forwardIcon : backwardIcon;
+  const iconforward = forwardIcon;
+  const iconBackward = backwardIcon;
   const player = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -67,14 +68,14 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
         </div>
       </div>
       <div className={styles.musicPlayer}>
-        <Icon name={icon} width={16} height={16} />
+        <Icon name={iconBackward} width={16} height={16} />
         <PlayButtonMobile
           icon={IconNameEnum.Pause}
           onClick={togglePlay}
           width={32}
           height={32}
         />
-        <Icon name={icon} width={16} height={16} />
+        <Icon name={iconforward} width={16} height={16} />
       </div>
     </div>
   );

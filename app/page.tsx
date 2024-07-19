@@ -7,8 +7,7 @@ import PlayButton from './Components/PlayButton/PlayButton';
 import { PlayButtonTypeEnum } from './Components/PlayButton/enums/play-button-type.enum';
 import PlayButtonMobile from './Components/PlayButtonMobile/PlayButtonMobile';
 import { PlayButtonMobileTypeEnum } from './Components/PlayButtonMobile/enums/play-button-mobile-type.enum';
-import MusicPlayer from './Components/MusicPlayer/MusicPlayer';
-import MusicPlayerResponsive from './Components/MusicPlayerResponsive/MusicPlayerResponsive';
+import Player from './Components/Player/Player';
 
 export default function Home(): JSX.Element {
   return (
@@ -29,17 +28,7 @@ export default function Home(): JSX.Element {
         width={48}
         height={48}
       />
-      <MusicPlayer
-        MusicTitle={'Lose Control'}
-        ArtistName={'Teddy Swing'}
-        BackgroundImage={'image75.png'}
-      />
-      <MusicPlayerResponsive
-        image={'/image75.png'}
-        songName={'Lose Control'}
-        artistName={'Teddy Swing'}
-        onClick={() => {}}
-      />
+      <Player onClick={() => {}} />
     </div>
   );
 }
