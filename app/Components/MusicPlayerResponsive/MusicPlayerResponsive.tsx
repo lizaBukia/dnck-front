@@ -20,7 +20,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   const backwardIcon = isDark
     ? IconNameEnum.BackwardLight
     : IconNameEnum.BackwardDark;
-  const iconforward = forwardIcon;
+  const iconForward = forwardIcon;
   const iconBackward = backwardIcon;
   const player = useRef<HTMLAudioElement>(null);
 
@@ -75,7 +75,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
           width={32}
           height={32}
         />
-        <Icon name={iconforward} width={16} height={16} />
+        <Icon name={iconForward} width={16} height={16} />
       </div>
     </div>
   );
