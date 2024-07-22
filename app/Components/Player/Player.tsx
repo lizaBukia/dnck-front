@@ -9,9 +9,9 @@ const Player: PlayerType = (props: PlayerPropsInterface) => {
     <div>
       <div className={styles.playerWrapper}>
         <MusicPlayer
-          MusicTitle={'Lose Control'}
-          ArtistName={'Teddy Swing'}
-          BackgroundImage={'image75.png'}
+          musicTitle={'Lose Control'}
+          artistName={'Teddy Swing'}
+          backgroundImage={'image75.png'}
         />
       </div>
       <div className={styles.responsivePlayerWrapper}>
