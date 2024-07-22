@@ -56,12 +56,6 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
     }
   };
 
-  const toggleMute = () => {
-    if (player.current) {
-      player.current.muted = !player.current.muted;
-    }
-  };
-
   return (
     <div>
       <div
@@ -92,6 +86,7 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               width={24}
               height={24}
             />
+
             <div className={styles.player}>
               <Icon
                 name={IconNameEnum.BackwardDesktop}
@@ -107,23 +102,25 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               <Icon name={IconNameEnum.ForwardDesktop} width={26} height={26} />
             </div>
             <div className={styles.volumeControl}>
-              <Icon
-                name={IconNameEnum.Volume}
-                isActive={true}
-                width={24}
-                height={24}
-                onClick={toggleMute}
-              />
-
-              <input
-                className={styles.volumeInput}
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                onChange={handleVolumeChange}
-                defaultValue="1"
-              />
+              <div className={styles.volume}>
+                <Icon
+                  name={IconNameEnum.Volume}
+                  isActive={true}
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div className={styles.volumeInput}>
+                <input
+                  className={styles.volumeStyle}
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  onChange={handleVolumeChange}
+                  defaultValue="1"
+                />
+              </div>
             </div>
           </div>
         </div>
