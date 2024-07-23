@@ -4,7 +4,7 @@ import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButton.module.scss';
 import { PlayButtonPropsInterface } from './interfaces/play-button-props.interface';
 import { PlayButtonType } from './types/play-button.type';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const [isPlaying, setIsPLaying] = useState(false);
@@ -13,21 +13,9 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
     : IconNameEnum.Play;
 
   const onClick = (): void => {
-    setIsPLaying(prevState => !prevState);
-  };
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.code === 'Space') {
-      event.preventDefault();
-      onClick();
-    }
+    setIsPLaying((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
   return (
     <button
       onClick={() => {

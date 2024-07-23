@@ -24,18 +24,6 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   const iconBackward = backwardIcon;
   const player = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === 'Space') {
-        event.preventDefault();
-        togglePlay();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   function togglePlay(): void {
     if (player.current?.paused) {

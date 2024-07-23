@@ -11,19 +11,6 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === 'Space') {
-        event.preventDefault();
-        togglePlay();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  useEffect(() => {
     const audioElement = player.current;
     if (audioElement) {
       const updateProgress = () => {

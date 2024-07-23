@@ -8,11 +8,9 @@ import Icon from '../Icon/Icon';
 import { isDarkState } from '@/app/States/States';
 import { useRecoilValue } from 'recoil';
 
-
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
-
   const [isPlaying, setIsPlaying] = useState(false);
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
@@ -23,22 +21,8 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const icon = isPlaying ? pauseIcon : playIcon;
 
   const onClick = () => {
-    setIsPlaying(prevState => !prevState);
-  } 
-
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.code === 'Space') {
-      event.preventDefault();
-      onClick();
-    }
+    setIsPlaying((prevState) => !prevState);
   };
-  
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
   return (
     <button
       onClick={() => {
@@ -56,10 +40,6 @@ const PlayButtonMobile: PlayButtonMobileType = (
       />
     </button>
   );
-
 };
 
-export default PlayButtonMobile
-
-
-
+export default PlayButtonMobile;
