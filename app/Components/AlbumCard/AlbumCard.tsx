@@ -47,7 +47,6 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
           <div className={styles.dropdown}>
             <Dropdown
               icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
-              darkMode={false}
               items={props.dropDownItems}
               position={DropDownPositionEnum.Left}
             />
