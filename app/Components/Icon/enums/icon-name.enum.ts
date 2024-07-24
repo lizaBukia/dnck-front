@@ -1,4 +1,6 @@
 export enum IconNameEnum {
+  ArrowMobile = 'ArrowMobile',
+  Save = 'Save',
   Home = 'home',
   Play = 'play-dark',
   PlayLight = 'play-light',
