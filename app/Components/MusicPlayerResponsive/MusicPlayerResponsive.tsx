@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { RefObject, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
@@ -24,7 +23,6 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   const iconForward: IconNameEnum = forwardIcon;
   const iconBackward: IconNameEnum = backwardIcon;
   const { playerRef, togglePlay } = usePlayer();
-
 
   return (
     <div

@@ -33,8 +33,6 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
     }
   };
 
-
-
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
@@ -42,8 +40,6 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
       playerRef.current.volume = Number(event.target.value);
     }
   };
-
-
 
   return (
     <div>
