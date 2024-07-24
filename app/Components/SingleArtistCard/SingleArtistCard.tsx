@@ -4,20 +4,12 @@ import { SingleArtistCardType } from './types/play-button-mobile.type';
 import PlayButton from '../PlayButton/PlayButton';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import Icon from '../Icon/Icon';
-import { useRef } from 'react';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const SingleArtistCard: SingleArtistCardType = (
   props: SingleArtistCardPropsInterface,
 ) => {
-    const player = useRef<HTMLAudioElement>(null);
-
-    const togglePlay = () => {
-        if (player.current?.paused) {
-          player.current.play();
-        } else {
-          player.current?.pause();
-        }
-      };
+  const { playerRef, togglePlay } = usePlayer();
 
   return (
     <div className={styles.cardWrapper}>
@@ -36,7 +28,7 @@ const SingleArtistCard: SingleArtistCardType = (
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.artistName}</h1>
           <span className={styles.albums}>{props.albums}</span>
-          <audio src="/music.mp4" ref={player}></audio>
+          <audio src="/music.mp4" ref={playerRef}></audio>
 
           <PlayButton
             icon={IconNameEnum.Play}

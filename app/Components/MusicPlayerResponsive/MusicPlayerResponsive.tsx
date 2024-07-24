@@ -8,6 +8,7 @@ import styles from './MusicPlayerResponsive.module.scss';
 import { MusicPlayerResponsivePropsInterface } from './interfaces/music-player-responsive-props.interface';
 import { MusicPlayerResponsiveType } from './types/music-player-responsive.type';
 import { isDarkState } from '@/app/States/States';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   props: MusicPlayerResponsivePropsInterface,
@@ -22,18 +23,8 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
     : IconNameEnum.BackwardDark;
   const iconForward: IconNameEnum = forwardIcon;
   const iconBackward: IconNameEnum = backwardIcon;
-  const player: RefObject<HTMLAudioElement> | null =
-    useRef<HTMLAudioElement>(null);
+  const { playerRef, togglePlay } = usePlayer();
 
-  function togglePlay(): void {
-    if (player) {
-      if (player.current?.paused) {
-        player.current.play();
-      } else {
-        player.current?.pause;
-      }
-    }
-  }
 
   return (
     <div
@@ -54,7 +45,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
         >
           <h1 className={styles.songName}>{props.songName}</h1>
           <span className={styles.artistName}>{props.artistName}</span>
-          <audio src="/music.mp4" ref={player}></audio>
+          <audio src="/music.mp4" ref={playerRef}></audio>
         </div>
       </div>
       <div className={styles.musicPlayer}>
