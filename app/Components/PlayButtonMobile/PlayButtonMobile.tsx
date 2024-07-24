@@ -23,14 +23,13 @@ const PlayButtonMobile: PlayButtonMobileType = (
     setIsPlaying((prevState) => !prevState);
   };
 
-  const handleKeyDown = (event: KeyboardEvent): void => {
-    if (event.code === 'Space') {
-      event.preventDefault();
-      onClick();
-    }
-  };
-
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        onClick();
+      }
+    };
     document.addEventListener('keydown', handleKeyDown);
     return (): void => {
       document.removeEventListener('keydown', handleKeyDown);
