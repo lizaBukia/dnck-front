@@ -1,17 +1,17 @@
-import styles from './Player.module.scss'
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import MusicPlayerResponsive from '../MusicPlayerResponsive/MusicPlayerResponsive';
+import styles from './Player.module.scss';
 import { PlayerPropsInterface } from './interfaces/player-props.interface';
 import { PlayerType } from './types/player.type';
 
 const Player: PlayerType = (props: PlayerPropsInterface) => {
   return (
-    <div>
+    <div className={props.className}>
       <div className={styles.playerWrapper}>
         <MusicPlayer
-          musicTitle={'Lose Control'}
-          artistName={'Teddy Swing'}
-          backgroundImage={'image75.png'}
+          MusicTitle={'Lose Control'}
+          ArtistName={'Teddy Swing'}
+          BackgroundImage={'image75.png'}
         />
       </div>
       <div className={styles.responsivePlayerWrapper}>
@@ -25,4 +25,4 @@ const Player: PlayerType = (props: PlayerPropsInterface) => {
     </div>
   );
 };
- export default Player
+export default Player;

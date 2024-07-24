@@ -1,10 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButtonMobile.module.scss';
 import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-props.interface';
 import { PlayButtonMobileType } from './types/play-button-mobile.type';
+import { isDarkState } from '@/app/States/States';
 
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
@@ -55,5 +57,4 @@ const PlayButtonMobile: PlayButtonMobileType = (
   );
 };
 
-export default PlayButtonMobile;
 export default PlayButtonMobile;
