@@ -7,7 +7,7 @@
   width: 302px;
   padding: 8px;
   border-radius: 12px;
-  background-color: $primary-white;
+  background-color: $background-color-light-mode;
   justify-content: space-between;
   align-items: center;
   color: $primary-black;
@@ -15,7 +15,8 @@
 
 .darkContainer {
   display: flex;
-  width: 302px;
+  width: 100%;
+  max-width: 290px;
   padding: 8px;
   border-radius: 12px;
   background-color: $primary-black;
@@ -37,15 +38,13 @@
   flex-flow: row wrap;
   gap: 4px;
   align-items: center;
+  width: 100%;
 }
 .hitsCardsImage {
-  background-color: $primary-white;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  width: 64px;
-  height: 64px;
 }
 
 .button {
@@ -62,9 +61,37 @@
   flex-flow: column wrap;
   gap: 4px;
 }
-// .artistName {
-//   color: $primary-black;
-// }
+
 .albumName {
   color: $gray-400;
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 213px;
+  }
+
+  .darkContainer {
+    width: 213px;
+  }
+  .artistName {
+    font-size: 14px;
+  }
+  .albumName {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 360px) and (max-width: 767px) {
+  .container {
+    width: 302px;
+  }
+
+  .darkContainer {
+    width: 302px;
+  }
+  .artistName {
+    font-size: 20px;
+  }
+  .albumName {
+    font-size: 16px;
+  }
 }

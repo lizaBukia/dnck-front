@@ -1,36 +1,92 @@
 'use client';
-import Button from './Components/Button/Button';
-import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import AlbumCards from './Components/AlbumCards/AlbumCards';
+import AlbumItems from './Components/AlbumItems/AlbumItems';
+import Heading from './Components/Heading/Heading';
+import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
 import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
 import HitsCards from './Components/HitsCards/HitsCards';
-import Input from './Components/Input/Input';
-import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
-import PlayButton from './Components/PlayButton/PlayButton';
-import { PlayButtonTypeEnum } from './Components/PlayButton/enums/play-button-type.enum';
-import PlayButtonMobile from './Components/PlayButtonMobile/PlayButtonMobile';
-import { PlayButtonMobileTypeEnum } from './Components/PlayButtonMobile/enums/play-button-mobile-type.enum';
+import Text from './Components/Text/Text';
+import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
+import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
+import { isDarkState } from './States/States';
+import styles from './page.module.scss';
 
 export default function Home(): JSX.Element {
+  const [dark, setDark] = useRecoilState(isDarkState);
+
+  useEffect(() => {
+    setDark(localStorage.getItem('isDark') === 'true');
+  }, [setDark]);
+
   return (
-    <div>
-      <Button type={ButtonTypeEnum.Primary} onClick={() => {}}>
-        uihi8yughiy8
-      </Button>
-      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={true} />
-      <PlayButton
-        icon={PlayButtonTypeEnum.Pause}
-        onClick={() => {}}
-        width={48}
-        height={48}
-      />
-      <PlayButtonMobile
-        icon={PlayButtonMobileTypeEnum.Pause}
-        onClick={() => {}}
-        width={48}
-        height={48}
-        isDark={false}
-      />
-      <HitsCards items={HitsItems} />
+    <div className={styles.container}>
+      <div className={styles.mainPage}>
+        <div className={dark ? styles.darkContent : styles.lightContent}>
+          <div className={styles.heading}>
+            <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
+            <Text
+              htmlType={TextHtmlTypeEnum.Span}
+              type={TextTypeEnum.SecondaryTextMedium}
+            >
+              See all
+            </Text>
+          </div>
+          <AlbumCards items={AlbumItems} />
+          <div className={styles.heading}>
+            <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
+            <Text
+              htmlType={TextHtmlTypeEnum.Span}
+              type={TextTypeEnum.SecondaryTextMedium}
+            >
+              See all
+            </Text>
+          </div>
+
+          <HitsCards items={HitsItems} />
+
+          <div className={styles.heading}>
+            <Heading type={HeadingTypeEnum.H5}>
+              This Week Popular Artists
+            </Heading>
+            <Text
+              htmlType={TextHtmlTypeEnum.Span}
+              type={TextTypeEnum.SecondaryTextMedium}
+            >
+              See all
+            </Text>
+          </div>
+          <AlbumCards items={AlbumItems} />
+          <div className={styles.heading}>
+            <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
+            <Text
+              htmlType={TextHtmlTypeEnum.Span}
+              type={TextTypeEnum.SecondaryTextMedium}
+            >
+              See all
+            </Text>
+          </div>
+
+          <AlbumCards items={AlbumItems} />
+
+          <div className={styles.heading}>
+            <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
+            <Text
+              htmlType={TextHtmlTypeEnum.Span}
+              type={TextTypeEnum.SecondaryTextMedium}
+            >
+              See all
+            </Text>
+          </div>
+          <div className={styles.album}>
+            <AlbumCards items={AlbumItems} />
+          </div>
+        </div>
+        <div className={dark ? styles.darkPlayer : styles.lightPlayer}>
+          <h2>player</h2>
+        </div>
+      </div>
     </div>
   );
 }

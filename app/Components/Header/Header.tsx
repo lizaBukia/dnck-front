@@ -21,20 +21,22 @@ const Header: HeaderType = () => {
 
   return (
     <div className={dark ? styles.darkContainer : styles.lightContainer}>
-      <div className={styles.content}>
-        <Logo />
-        <SearchInput />
-        <div className={styles.container}>
-          <div className={styles.mode}>
-            <ModeSwitcher />
-          </div>
-          <div className={styles.button}>
-            <LogoutButton />
+      <div className={styles.header}>
+        <div className={styles.content}>
+          <Logo />
+          <SearchInput />
+          <div className={styles.container}>
+            <div className={styles.mode}>
+              <ModeSwitcher />
+            </div>
+            <div className={styles.button}>
+              <LogoutButton />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.navigation}>
-        <NavMenu items={headerNavItems} />
+        <div className={styles.navigation}>
+          <NavMenu items={headerNavItems} />
+        </div>
       </div>
     </div>
   );
