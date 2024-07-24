@@ -6,7 +6,13 @@ const Icon: IconType = (props: IconPropsInterface) => {
   const src: string = `/icons/${props.name}${props.isActive ? '-active' : ''}.svg`;
 
   return (
-    <Image src={src} alt="icon" width={props.width} height={props.height} onClick={props.onClick} />
+    <Image
+      src={src}
+      alt="icon"
+      width={props.width}
+      height={props.height}
+      onClick={props.onClick}
+    />
   );
 };
 

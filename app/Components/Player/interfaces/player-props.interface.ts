@@ -1,4 +1,4 @@
 export interface PlayerPropsInterface {
-    className?: string;
-    onClick: () => void;
-  }
+  className?: string;
+  onClick: () => void;
+}
