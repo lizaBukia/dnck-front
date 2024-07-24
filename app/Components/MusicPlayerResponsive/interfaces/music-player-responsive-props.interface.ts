@@ -1,6 +1,6 @@
 export interface MusicPlayerResponsivePropsInterface {
   image: string;
-  songName: String;
+  songName: string;
   artistName: string;
   className?: string;
   onClick: () => void;

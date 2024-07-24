@@ -1,5 +1,3 @@
 import { PlayerPropsInterface } from '../interfaces/player-props.interface';
 
-export type PlayerType = (
-  props: PlayerPropsInterface,
-) => JSX.Element;
+export type PlayerType = (props: PlayerPropsInterface) => JSX.Element;

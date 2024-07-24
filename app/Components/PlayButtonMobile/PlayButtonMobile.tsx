@@ -1,12 +1,12 @@
 'use client';
-import styles from './PlayButtonMobile.module.scss';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
+import styles from './PlayButtonMobile.module.scss';
 import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-props.interface';
 import { PlayButtonMobileType } from './types/play-button-mobile.type';
-import { useState } from 'react';
-import Icon from '../Icon/Icon';
 import { isDarkState } from '@/app/States/States';
-import { useRecoilValue } from 'recoil';
 
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
@@ -17,12 +17,27 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const playIcon: IconNameEnum = isDark
     ? IconNameEnum.PlayLight
     : IconNameEnum.Play;
-  const pauseIcon = isDark ? IconNameEnum.PauseLight : IconNameEnum.Pause;
-  const icon = isPlaying ? pauseIcon : playIcon;
+  const pauseIcon: IconNameEnum = props.isDark
+    ? IconNameEnum.PauseLight
+    : IconNameEnum.Pause;
+  const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
 
-  const onClick = () => {
+  const onClick = (): void => {
     setIsPlaying((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        onClick();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return (): void => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <button
       onClick={() => {
