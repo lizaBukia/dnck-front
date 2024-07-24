@@ -7,7 +7,7 @@ const Button: ButtonType = (props: ButtonPropsInterface) => {
   return (
     <button
       onClick={props.onClick}
-      className={`${styles.button} ${styles[props.type]}`}
+      className={`${styles.button} ${styles[props.type]} ${props.className}`}
     >
       {props.position === ButtonIconPositionEnum.Left && props.icon}
       {props.children}
