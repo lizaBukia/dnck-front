@@ -39,8 +39,9 @@
   width: 100%;
 }
 .player {
-  width: 100%;
-  position: static;
+  position: sticky;
+  top: 0;
+  height: fit-content;
   padding: 16px 8px;
   border-radius: 12px;
 }
@@ -59,6 +60,7 @@
   .player {
     position: sticky;
     bottom: 0;
+    width: 100%;
   }
   .mainPage {
     flex-flow: column wrap;
