@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButton.module.scss';
@@ -13,8 +13,20 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
     : IconNameEnum.Play;
 
   const onClick = (): void => {
-    setIsPLaying(!isPlaying);
+    setIsPLaying((prevState) => !prevState);
   };
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        onClick();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return (): void => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <button
       onClick={() => {

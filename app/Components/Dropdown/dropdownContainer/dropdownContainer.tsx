@@ -1,13 +1,21 @@
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import DropdownButton from '../DropdownButton/dropdownButton';
 import styles from './DropdownContainer.module.scss';
 import { DropdownContainerPropsInterface } from './interfaces/dropdown-container.props.interface';
 import { DropdownContainerType } from './types/dropdown-container.type';
+import { isDarkState } from '@/app/States/States';
 const DropdownContainer: DropdownContainerType = (
   props: DropdownContainerPropsInterface,
 ) => {
+  const [dark, setDark] = useRecoilState(isDarkState);
+
+  useEffect(() => {
+    setDark(localStorage.getItem('isDark') === 'true');
+  }, [setDark]);
   const classNames: string[] = [styles.dropdownButtonContainer];
 
-  if (props.darkMode) {
+  if (dark) {
     classNames.push(styles.dropdownButtonContainerDark);
   } else {
     classNames.push(styles.dropdownButtonContainerLight);
@@ -20,7 +28,6 @@ const DropdownContainer: DropdownContainerType = (
           icon={item.icon}
           onClick={item.onClick}
           key={item.title}
-          darkMode={props.darkMode}
           width={0}
           height={0}
         >

@@ -4,6 +4,7 @@
 
 .container {
   display: flex;
+  flex-flow: row wrap;
   width: 100%;
   padding: 24px;
   justify-content: center;
@@ -11,54 +12,101 @@
 .mainPage {
   display: flex;
   width: 100%;
-  max-width: 1440px ;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  border: 1px solid green;
+  gap: 24px;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 24px;
+  gap: 16px;
+  width: 100%;
+  // max-width: 1034px;
+  border-radius: 12px;
 }
 .darkContent {
-  display: flex;
-  flex-flow: column wrap;
-  flex-basis: 1034px;
+  color: $gray-400;
   background-color: $background-color-dark-mode;
-  padding: 24px;
-  gap: 24px;
-  border-radius: 12px;
 }
 .lightContent {
-  display: flex;
-  flex-flow: column wrap;
-  flex-basis: 1034px;
+  color: $gray-400;
   background-color: $primary-white;
-  padding: 24px;
-  gap: 24px;
-  border-radius: 12px;
 }
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $gray-400;
+  width: 100%;
+}
+.player {
+  width: 100%;
+  max-width: 342px;
+  position: static;
+  padding: 16px 8px;
+  height: 594px;
+  border-radius: 12px;
 }
 .darkPlayer {
-  border: 1px solid red;
-  height: 592px;
-  flex-basis: 342px;
-  padding: 16px 8px;
-  display: flex;
+  background-color: $background-color-dark-mode;
 }
-.lightPlayer {
-  border: 1px solid rgb(123, 255, 0);
-  height: 592px;
-  flex-basis: 342px;
-  padding: 16px 8px;
+.album {
   display: flex;
+  width: 100%;
 }
-@media screen and (max-width: 1024px) {
+.downPlayer {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .player {
+    display: none;
+  }
+  .mainPage {
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    justify-content: center;
+  }
+  .downPlayer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    // max-width: 986px;
+    background-color: $primary-black;
+    position: sticky;
+    bottom: 0;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .player {
+    display: none;
+  }
+  .content {
+    display: flex;
+    max-width: 704px;
+    background-color: $background-color-dark-mode;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 12px;
+  }
+  .mainPage {
+    display: flex;
+    max-width: 704px;
+    border: 1px solid green;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .darkPlayer {
     display: none;
   }
-  .darkContent {
+  .content {
     display: flex;
     flex-flow: column wrap;
     max-width: 704px;

@@ -7,6 +7,8 @@ import Heading from './Components/Heading/Heading';
 import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
 import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
 import HitsCards from './Components/HitsCards/HitsCards';
+import MusicPlayer from './Components/MusicPlayer/MusicPlayer';
+import MusicPlayerResponsive from './Components/MusicPlayerResponsive/MusicPlayerResponsive';
 import Text from './Components/Text/Text';
 import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
@@ -23,7 +25,9 @@ export default function Home(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.mainPage}>
-        <div className={dark ? styles.darkContent : styles.lightContent}>
+        <div
+          className={`${styles.content} ${dark ? styles.darkContent : styles.lightContent}`}
+        >
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
             <Text
@@ -33,7 +37,9 @@ export default function Home(): JSX.Element {
               See all
             </Text>
           </div>
-          <AlbumCards items={AlbumItems} />
+          <div className={styles.album}>
+            <AlbumCards items={AlbumItems} />
+          </div>
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <Text
@@ -83,8 +89,24 @@ export default function Home(): JSX.Element {
             <AlbumCards items={AlbumItems} />
           </div>
         </div>
-        <div className={dark ? styles.darkPlayer : styles.lightPlayer}>
-          <h2>player</h2>
+        <div
+          className={`${styles.player} ${dark ? styles.darkPlayer : styles.lightPlayer}`}
+        >
+          <MusicPlayer
+            MusicTitle={'magnolia'}
+            ArtistName={'gela gnolidze'}
+            BackgroundImage={''}
+          />
+        </div>
+        <div className={styles.downPlayer}>
+          <MusicPlayerResponsive
+            image={''}
+            songName={'gela'}
+            artistName={'gnolidze'}
+            onClick={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
         </div>
       </div>
     </div>

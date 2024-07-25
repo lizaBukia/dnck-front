@@ -1,31 +1,48 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButtonMobile.module.scss';
 import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-props.interface';
 import { PlayButtonMobileType } from './types/play-button-mobile.type';
+import { isDarkState } from '@/app/States/States';
 
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const className: string = props.isDark ? styles.dark : styles.light;
-  const playIcon: IconNameEnum = props.isDark
+  const isDark: boolean = useRecoilValue(isDarkState);
+  const className: string = isDark ? styles.dark : styles.light;
+  const playIcon: IconNameEnum = isDark
     ? IconNameEnum.PlayLight
     : IconNameEnum.Play;
   const pauseIcon: IconNameEnum = props.isDark
     ? IconNameEnum.PauseLight
     : IconNameEnum.Pause;
   const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
-  const onClink = (): void => {
-    setIsPlaying(!isPlaying);
+
+  const onClick = (): void => {
+    setIsPlaying((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        onClick();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return (): void => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   return (
     <button
       onClick={() => {
-        onClink();
-        props.onClick;
+        onClick();
+        props.onClick();
       }}
       className={`${className} ${styles.playButton} ${isPlaying ? styles.play : styles.notPlay}`}
       style={{ width: props.width, height: props.width }}
@@ -39,4 +56,5 @@ const PlayButtonMobile: PlayButtonMobileType = (
     </button>
   );
 };
+
 export default PlayButtonMobile;

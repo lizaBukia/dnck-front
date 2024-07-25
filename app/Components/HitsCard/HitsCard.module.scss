@@ -4,7 +4,7 @@
 
 .container {
   display: flex;
-  width: 302px;
+  width: 290px;
   padding: 8px;
   border-radius: 12px;
   background-color: $background-color-light-mode;
@@ -80,7 +80,7 @@
     font-size: 12px;
   }
 }
-@media screen and (min-width: 360px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
   .container {
     width: 302px;
   }

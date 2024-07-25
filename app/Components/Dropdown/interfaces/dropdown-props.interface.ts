@@ -5,6 +5,5 @@ import { DropDownItemsInterface } from './dropdown-items-props.interface';
 export interface DropdownPropsInterface {
   icon: ReactNode;
   position: DropDownPositionEnum;
-  darkMode: boolean;
   items: DropDownItemsInterface[];
 }

@@ -6,4 +6,5 @@ export enum TextTypeEnum {
   SecondaryTextSmallBold = 'secondaryTextSmallBold',
   SecondaryTextExtraSmall = 'secondaryTextExtraSmall',
   TinyText = 'tinyText',
+  PrimaryTextMedium = 'PrimaryTextMedium',
 }
