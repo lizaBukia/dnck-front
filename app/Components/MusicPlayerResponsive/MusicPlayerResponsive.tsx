@@ -26,11 +26,11 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
     useRef<HTMLAudioElement>(null);
 
   function togglePlay(): void {
-    if (player) {
-      if (player.current?.paused) {
+    if (player?.current) {
+      if (player.current.paused) {
         player.current.play();
       } else {
-        player.current?.pause;
+        player.current.pause();
       }
     }
   }

@@ -7,8 +7,7 @@ import { MusicPlayerPropsInterface } from './interfaces/music-player-props.inter
 import { MusicPlayerType } from './types/music-player.type';
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
-  const player: RefObject<HTMLAudioElement | null> =
-    useRef<HTMLAudioElement>(null);
+  const player: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
@@ -75,7 +74,7 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               value={currentTime}
               onChange={handleProgressChange}
             />
-            <audio src="/music.mp4" ref={null}></audio>
+            <audio src="/music.mp4" ref={player}></audio>
           </div>
           <div className={styles.playerBoard}>
             <Icon
