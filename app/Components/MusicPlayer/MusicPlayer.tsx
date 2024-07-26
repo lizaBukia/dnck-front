@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
@@ -8,9 +8,8 @@ import { MusicPlayerType } from './types/music-player.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
-  const player: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
   const { playerRef, togglePlay } = usePlayer();
-
+  // const player: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
@@ -63,8 +62,6 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               value={currentTime}
               onChange={handleProgressChange}
             />
-
-            <audio src="/music.mp4" ref={player}></audio>
             <audio src="/music.mp4" ref={playerRef}></audio>
           </div>
           <div className={styles.playerBoard}>
