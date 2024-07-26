@@ -2,7 +2,7 @@
 import { useState, useRef, RefObject, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styles from './Dropdown.module.scss';
-import DropdownContainer from './DropdownContainer/dropdownContainer';
+import DropdownContainer from './DropdownContainer/DropdownContainer';
 import { DropdownPropsInterface } from './interfaces/dropdown-props.interface';
 import { DropdownType } from './types/dropdown.type';
 import { isDarkState } from '@/app/States/States';
