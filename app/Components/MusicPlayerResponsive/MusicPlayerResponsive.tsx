@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { RefObject, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
@@ -7,7 +8,6 @@ import styles from './MusicPlayerResponsive.module.scss';
 import { MusicPlayerResponsivePropsInterface } from './interfaces/music-player-responsive-props.interface';
 import { MusicPlayerResponsiveType } from './types/music-player-responsive.type';
 import { isDarkState } from '@/app/States/States';
-import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   props: MusicPlayerResponsivePropsInterface,
@@ -22,7 +22,18 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
     : IconNameEnum.BackwardDark;
   const iconForward: IconNameEnum = forwardIcon;
   const iconBackward: IconNameEnum = backwardIcon;
-  const { playerRef, togglePlay } = usePlayer();
+  const player: RefObject<HTMLAudioElement> | null =
+    useRef<HTMLAudioElement>(null);
+
+  function togglePlay(): void {
+    if (player?.current) {
+      if (player.current.paused) {
+        player.current.play();
+      } else {
+        player.current.pause();
+      }
+    }
+  }
 
   return (
     <div
@@ -43,7 +54,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
         >
           <h1 className={styles.songName}>{props.songName}</h1>
           <span className={styles.artistName}>{props.artistName}</span>
-          <audio src="/music.mp4" ref={playerRef}></audio>
+          <audio src="/music.mp4" ref={player}></audio>
         </div>
       </div>
       <div className={styles.musicPlayer}>

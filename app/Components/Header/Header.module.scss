@@ -7,9 +7,9 @@
   flex-flow: column wrap;
   background-color: #f7f7f7;
   border-radius: 0 0 12px 12px;
-  height: fit-content;
   gap: 16px;
   justify-content: center;
+  width: 100%;
   padding: 24px 24px 0 24px;
 }
 .darkContainer {
@@ -18,12 +18,20 @@
   background-color: $background-color-dark-mode;
   gap: 16px;
   justify-content: center;
+  width: 100%;
   padding: 24px 24px 0 24px;
   border-radius: 0 0 12px 12px;
+}
+.header {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  align-items: center;
 }
 .content {
   display: flex;
   width: 100%;
+  max-width: 1440px;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
@@ -62,7 +70,7 @@
   justify-content: space-around;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .search {
     display: flex;
   }

@@ -1,9 +1,10 @@
+import Image from 'next/image';
+import Icon from '../Icon/Icon';
+import { IconNameEnum } from '../Icon/enums/icon-name.enum';
+import PlayButton from '../PlayButton/PlayButton';
 import styles from './SingleArtistCard.module.scss';
 import { SingleArtistCardPropsInterface } from './interfaces/single-artist-card-props.interface';
 import { SingleArtistCardType } from './types/single-artist-card.type';
-import PlayButton from '../PlayButton/PlayButton';
-import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import Icon from '../Icon/Icon';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const SingleArtistCard: SingleArtistCardType = (
@@ -23,7 +24,11 @@ const SingleArtistCard: SingleArtistCardType = (
       </div>
       <div className={styles.cardImage}>
         <div>
-          <img className={styles.image} src="/images/image89.png" alt="image" />
+          <Image
+            className={styles.image}
+            src="/images/image89.png"
+            alt="image"
+          />
         </div>
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.artistName}</h1>

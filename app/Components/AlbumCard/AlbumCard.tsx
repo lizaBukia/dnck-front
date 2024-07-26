@@ -37,10 +37,6 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             className={styles.artistNameFont}
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.PrimaryTextLarge}
-            color={{
-              lightColor: '#171C26',
-              darkColor: '#F2F2F2',
-            }}
           >
             {props.artistName}
           </Text>

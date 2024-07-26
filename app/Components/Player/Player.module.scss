@@ -7,11 +7,11 @@
   }
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 1405px) {
   .playerWrapper {
     display: none;
   }
   .responsivePlayerWrapper {
-    display: block;
+    display: flex;
   }
 }
