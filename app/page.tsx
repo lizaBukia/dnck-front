@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import AlbumCards from './Components/AlbumCards/AlbumCards';
@@ -8,6 +7,7 @@ import Heading from './Components/Heading/Heading';
 import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
 import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
 import HitsCards from './Components/HitsCards/HitsCards';
+import MainPageHeading from './Components/MainPageHeading/MainPageHeading';
 import Player from './Components/Player/Player';
 import Text from './Components/Text/Text';
 import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
@@ -28,41 +28,13 @@ export default function Home(): JSX.Element {
         <div
           className={`${styles.content} ${dark ? styles.darkContent : styles.lightContent}`}
         >
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
+          <MainPageHeading />
           <div className={styles.album}>
             <AlbumCards items={AlbumItems} />
           </div>
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
-
+          <MainPageHeading />
           <HitsCards items={HitsItems} />
-
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>
-              This Week Popular Artists
-            </Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
+          <MainPageHeading />
           <AlbumCards items={AlbumItems} />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
@@ -73,20 +45,8 @@ export default function Home(): JSX.Element {
               See all
             </Text>
           </div>
-
           <AlbumCards items={AlbumItems} />
-
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
-            <Link href={'./home'}>
-              <Text
-                htmlType={TextHtmlTypeEnum.Span}
-                type={TextTypeEnum.SecondaryTextMedium}
-              >
-                See all
-              </Text>
-            </Link>
-          </div>
+          <MainPageHeading />
           <div className={styles.album}>
             <AlbumCards items={AlbumItems} />
           </div>

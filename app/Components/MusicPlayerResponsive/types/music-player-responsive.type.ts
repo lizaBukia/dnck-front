@@ -2,4 +2,4 @@ import { MusicPlayerResponsivePropsInterface } from '../interfaces/music-player-
 
 export type MusicPlayerResponsiveType = (
   props: MusicPlayerResponsivePropsInterface,
-) => void;
+) => JSX.Element;
