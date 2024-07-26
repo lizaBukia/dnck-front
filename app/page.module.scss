@@ -48,6 +48,9 @@
 .darkPlayer {
   background-color: $background-color-dark-mode;
 }
+.lightPlayer {
+  background-color: $background-color-light-mode;
+}
 .album {
   display: flex;
   width: 100%;
@@ -100,7 +103,6 @@
   .mainPage {
     display: flex;
     max-width: 704px;
-    border: 1px solid green;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -120,6 +122,5 @@
   .mainPage {
     display: flex;
     max-width: 704px;
-    border: 1px solid green;
   }
 }

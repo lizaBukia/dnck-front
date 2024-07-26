@@ -4,13 +4,16 @@ import { HeadingTypeEnum } from '../Heading/enums/heading-type.enum';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
-import styles from './MainPageHeading.module.scss';
-import { MainPageHeadingType } from './type/MainPageHeading.type';
+import styles from './ContentHeading.module.scss';
+import { ContentHeadingPropsInterface } from './interfaces/content-heading-props.interface';
+import { ContentHeadingType } from './type/ContentHeading.type';
 
-const MainPageHeading: MainPageHeadingType = () => {
+const ContentHeading: ContentHeadingType = (
+  props: ContentHeadingPropsInterface,
+) => {
   return (
     <div className={styles.heading}>
-      <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
+      <Heading type={HeadingTypeEnum.H5}>{props.children}</Heading>
       <Link href={'/'}>
         <Text
           htmlType={TextHtmlTypeEnum.Span}
@@ -22,4 +25,4 @@ const MainPageHeading: MainPageHeadingType = () => {
     </div>
   );
 };
-export default MainPageHeading;
+export default ContentHeading;
