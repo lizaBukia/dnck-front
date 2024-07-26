@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
@@ -26,18 +26,6 @@ const PlayButtonMobile: PlayButtonMobileType = (
     setIsPlaying((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.code === 'Space') {
-        event.preventDefault();
-        onClick();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return (): void => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
   return (
     <button
       onClick={() => {

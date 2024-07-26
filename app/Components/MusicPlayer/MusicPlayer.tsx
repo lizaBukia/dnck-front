@@ -5,13 +5,16 @@ import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
 import { MusicPlayerPropsInterface } from './interfaces/music-player-props.interface';
 import { MusicPlayerType } from './types/music-player.type';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
   const player: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
+  const { playerRef, togglePlay } = usePlayer();
+
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    const audioElement: HTMLAudioElement | null = player.current;
+    const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
       const updateProgress = (): void => {
         setCurrentTime(audioElement.currentTime);
@@ -21,37 +24,23 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
         audioElement.removeEventListener('timeupdate', updateProgress);
       };
     }
-  }, []);
+  });
 
   const handleProgressChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    if (player.current) {
-      player.current.currentTime = Number(event.target.value);
-    }
-  };
-
-  const togglePlay = (): void => {
-    if (player.current?.paused) {
-      player.current.play();
-    } else {
-      player.current?.pause();
+    if (playerRef.current) {
+      playerRef.current.currentTime = Number(event.target.value);
     }
   };
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    if (player.current) {
-      player.current.volume = Number(event.target.value);
+    if (playerRef.current) {
+      playerRef.current.volume = Number(event.target.value);
     }
   };
-
-  // const toggleMute = (): void => {
-  //   if (player.current) {
-  //     player.current.muted = !player.current.muted;
-  //   }
-  // };
 
   return (
     <div>
@@ -69,12 +58,14 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
               className={styles.input}
               type="range"
               min="0"
-              max={player.current?.duration || 0}
+              max={playerRef.current?.duration || 0}
               step="0.1"
               value={currentTime}
               onChange={handleProgressChange}
             />
+
             <audio src="/music.mp4" ref={player}></audio>
+            <audio src="/music.mp4" ref={playerRef}></audio>
           </div>
           <div className={styles.playerBoard}>
             <Icon
