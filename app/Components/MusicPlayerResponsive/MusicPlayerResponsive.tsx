@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { RefObject, useEffect, useRef } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { RefObject, useRef } from 'react';
+import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
@@ -12,12 +12,6 @@ import { isDarkState } from '@/app/States/States';
 const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   props: MusicPlayerResponsivePropsInterface,
 ) => {
-  const [dark, setDark] = useRecoilState(isDarkState);
-
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
   const player: RefObject<HTMLAudioElement> | null =
@@ -57,7 +51,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
       </div>
       <div className={styles.musicPlayer}>
         <Icon
-          name={dark ? IconNameEnum.BackwardDark : IconNameEnum.BackwardLight}
+          name={isDark ? IconNameEnum.BackwardDark : IconNameEnum.BackwardLight}
           width={16}
           height={16}
         />
@@ -69,7 +63,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
           isDark={false}
         />
         <Icon
-          name={dark ? IconNameEnum.ForwardDark : IconNameEnum.ForwardLight}
+          name={isDark ? IconNameEnum.ForwardDark : IconNameEnum.ForwardLight}
           width={16}
           height={16}
         />

@@ -46,10 +46,10 @@
   border-radius: 12px;
 }
 .darkPlayer {
-  background-color: $background-color-light-mode;
+  background-color: $background-color-dark-mode;
 }
 .lightPlayer {
-  background-color: $background-color-dark-mode;
+  background-color: $background-color-light-mode;
 }
 .album {
   display: flex;
@@ -86,6 +86,12 @@
     background-color: $primary-black;
     position: sticky;
     bottom: 0;
+  }
+  .darkPlayer {
+    background-color: $background-color-light-mode;
+  }
+  .lightPlayer {
+    background-color: $background-color-dark-mode;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {

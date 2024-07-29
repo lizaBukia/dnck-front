@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { isDarkState } from '../../States/States';
 import Dropdown from '../Dropdown/Dropdown';
@@ -12,26 +12,15 @@ import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   const [dark, setDark] = useRecoilState(isDarkState);
+  const { playerRef, togglePlay } = usePlayer();
 
   useEffect(() => {
     setDark(localStorage.getItem('isDark') === 'true');
   }, [setDark]);
-
-  const player: RefObject<HTMLAudioElement> | null =
-    useRef<HTMLAudioElement>(null);
-
-  function togglePlay(): void {
-    if (player?.current) {
-      if (player.current.paused) {
-        player.current.play();
-      } else {
-        player.current.pause();
-      }
-    }
-  }
 
   return (
     <div className={dark ? styles.darkContainer : styles.container}>
@@ -44,7 +33,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             backgroundSize: 'cover',
           }}
         >
-          <audio src="/music.mp4" ref={player}></audio>
+          <audio src="/music.mp4" ref={playerRef}></audio>
           <div className={styles.button}>
             <PlayButtonMobile
               icon={IconNameEnum.Pause}
