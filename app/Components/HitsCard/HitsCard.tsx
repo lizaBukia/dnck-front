@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import { isDarkState } from '../../States/States';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import PlayButton from '../PlayButton/PlayButton';
+import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
@@ -20,6 +20,19 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
     setDark(localStorage.getItem('isDark') === 'true');
   }, [setDark]);
 
+  const player: RefObject<HTMLAudioElement> | null =
+    useRef<HTMLAudioElement>(null);
+
+  function togglePlay(): void {
+    if (player?.current) {
+      if (player.current.paused) {
+        player.current.play();
+      } else {
+        player.current.pause();
+      }
+    }
+  }
+
   return (
     <div className={dark ? styles.darkContainer : styles.container}>
       <div className={styles.content}>
@@ -28,19 +41,15 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
           style={{
             backgroundImage: props.backgroundImage,
             backgroundRepeat: `no-repeat`,
-            height: `64px`,
-            width: '64px',
             backgroundSize: 'cover',
           }}
         >
+          <audio src="/music.mp4" ref={player}></audio>
           <div className={styles.button}>
-            <PlayButton
-              icon={IconNameEnum.Play}
-              width={24}
-              height={24}
-              onClick={function (): void {
-                throw new Error('Function not implemented.');
-              }}
+            <PlayButtonMobile
+              icon={IconNameEnum.Pause}
+              onClick={togglePlay}
+              isDark={false}
             />
           </div>
         </div>

@@ -65,6 +65,11 @@
 .albumName {
   color: $gray-400;
 }
+.hitsCardsImage {
+  background-repeat: no-repeat;
+  height: 64px;
+  width: 64px;
+}
 @media screen and (max-width: 1024px) {
   .container {
     width: 213px;
@@ -81,17 +86,25 @@
   }
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .container {
-    width: 302px;
+  .hitsCardsImage {
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
   }
-
+  .container {
+    width: 256px;
+  }
   .darkContainer {
-    width: 302px;
+    width: 256px;
+  }
+  .buttton {
+    width: 16px;
+    height: 16px;
   }
   .artistName {
-    font-size: 20px;
+    font-size: 12px;
   }
   .albumName {
-    font-size: 16px;
+    font-size: 10px;
   }
 }

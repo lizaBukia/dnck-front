@@ -14,11 +14,9 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const [isPlaying, setIsPlaying] = useState(false);
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
-  const playIcon: IconNameEnum = isDark
-    ? IconNameEnum.PlayLight
-    : IconNameEnum.Play;
+  const playIcon: IconNameEnum = isDark ? IconNameEnum.Play : IconNameEnum.Play;
   const pauseIcon: IconNameEnum = props.isDark
-    ? IconNameEnum.PauseLight
+    ? IconNameEnum.Pause
     : IconNameEnum.Pause;
   const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
 
@@ -38,8 +36,8 @@ const PlayButtonMobile: PlayButtonMobileType = (
       <Icon
         name={icon}
         isActive={false}
-        width={isPlaying ? 28 : 32}
-        height={isPlaying ? 28 : 32}
+        width={isPlaying ? 20 : 32}
+        height={isPlaying ? 20 : 32}
       />
     </button>
   );

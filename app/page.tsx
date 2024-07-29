@@ -30,22 +30,26 @@ export default function Home(): JSX.Element {
         >
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
+            <div className={styles.more}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.SecondaryTextMedium}
+              >
+                See all
+              </Text>
+            </div>
           </div>
           <AlbumCards items={AlbumItems} />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
+            <div className={styles.more}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.SecondaryTextMedium}
+              >
+                See all
+              </Text>
+            </div>
           </div>
 
           <HitsCards items={HitsItems} />
@@ -54,22 +58,27 @@ export default function Home(): JSX.Element {
             <Heading type={HeadingTypeEnum.H5}>
               This Week Popular Artists
             </Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
+            <div className={styles.test}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.SecondaryTextMedium}
+                className={styles.more}
+              >
+                See all
+              </Text>
+            </div>
           </div>
           <AlbumCards items={AlbumItems} />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
+            <div className={styles.more}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.SecondaryTextMedium}
+              >
+                See all
+              </Text>
+            </div>
           </div>
 
           <AlbumCards items={AlbumItems} />
@@ -77,12 +86,14 @@ export default function Home(): JSX.Element {
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
             <Link href={'./home'}>
-              <Text
-                htmlType={TextHtmlTypeEnum.Span}
-                type={TextTypeEnum.SecondaryTextMedium}
-              >
-                See all
-              </Text>
+              <div className={styles.more}>
+                <Text
+                  htmlType={TextHtmlTypeEnum.Span}
+                  type={TextTypeEnum.SecondaryTextMedium}
+                >
+                  See all
+                </Text>
+              </div>
             </Link>
           </div>
           <AlbumCards items={AlbumItems} />

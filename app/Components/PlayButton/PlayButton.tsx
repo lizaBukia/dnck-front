@@ -27,6 +27,7 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
+
   return (
     <button
       onClick={() => {
