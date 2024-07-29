@@ -5,8 +5,7 @@
   display: flex;
   align-items: center;
   border: 1px solid $disable-stroke-white;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 12px 24px;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.14px;
@@ -18,9 +17,6 @@
   border: none;
   outline: none;
   width: 100%;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-bottom: 24px;
   border-radius: 12px;
   background: none;
 }
