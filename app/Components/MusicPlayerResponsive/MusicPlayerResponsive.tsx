@@ -36,9 +36,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
   }
 
   return (
-    <div
-      className={`${className} ${styles.playerWrapper}  ${isDark ? styles.dark : styles.light}`}
-    >
+    <div className={`${className} ${styles.playerWrapper}`}>
       <div className={styles.textWrapper}>
         <div>
           <Image
@@ -49,9 +47,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
             alt="image"
           />
         </div>
-        <div
-          className={`${className} ${styles.playerName}  ${isDark ? styles.dark : styles.light}`}
-        >
+        <div className={`${className} ${styles.playerName}`}>
           <h1 className={styles.songName}>{props.songName}</h1>
           <span className={styles.artistName}>{props.artistName}</span>
           <audio src="/music.mp4" ref={player}></audio>

@@ -26,18 +26,16 @@ const Modal: ModalType = (props: ModalPropsInterface) => {
 
   if (!props.isOpen) return null;
 
-  const onClick =() => {
-    props.setIsOpen(false)
-
-  } 
+  const onClick = () => {
+    props.setIsOpen(false);
+  };
 
   return (
     <div className={styles.overlay}>
-      <div className={`${className} ${styles.modal} ${isDark ? styles.dark : styles.light}`}>
-        <div
-        >
+      <div className={`${className} ${styles.modal}`}>
+        <div>
           <button
-            className={`${className} ${styles.closeButton} ${isDark ? styles.dark : styles.light}`}
+            className={`${className} ${styles.closeButton}`}
             onClick={onClick}
           >
             x
