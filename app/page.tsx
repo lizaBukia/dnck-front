@@ -1,101 +1,37 @@
 'use client';
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import AlbumCards from './Components/AlbumCards/AlbumCards';
-import AlbumItems from './Components/AlbumItems/AlbumItems';
-import Heading from './Components/Heading/Heading';
-import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
-import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
-import HitsCards from './Components/HitsCards/HitsCards';
+import { useState } from 'react';
+import Button from './Components/Button/Button';
+import { ButtonTypeEnum } from './Components/Button/enums/button-type.enum';
+import Input from './Components/Input/Input';
+import { InputTypeEnum } from './Components/Input/enum/input-type.enum';
+import Modal from './Components/Modal/Modal';
 import Player from './Components/Player/Player';
-import Text from './Components/Text/Text';
-import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
-import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
-import { isDarkState } from './States/States';
-import styles from './page.module.scss';
+import SingleArtistCard from './Components/SingleArtistCard/SingleArtistCard';
+import PlaylistModal from './Components/PlaylistModal/PlaylistModal';
 
 export default function Home(): JSX.Element {
-  const [dark, setDark] = useRecoilState(isDarkState);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
+  const onClick = () => {
+    setIsOpen(true);
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.mainPage}>
-        <div
-          className={`${styles.content} ${dark ? styles.darkContent : styles.lightContent}`}
-        >
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
-          <AlbumCards items={AlbumItems} />
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
+    <div>
+      <Button type={ButtonTypeEnum.Primary} onClick={() => {}}>
+        uihi8yughiy8
+      </Button>
+      <Input type={InputTypeEnum.Text} placeholder={'Search'} isDark={true} />
 
-          <HitsCards items={HitsItems} />
-
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>
-              This Week Popular Artists
-            </Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
-          <AlbumCards items={AlbumItems} />
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
-            <Text
-              htmlType={TextHtmlTypeEnum.Span}
-              type={TextTypeEnum.SecondaryTextMedium}
-            >
-              See all
-            </Text>
-          </div>
-
-          <AlbumCards items={AlbumItems} />
-
-          <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
-            <Link href={'./home'}>
-              <Text
-                htmlType={TextHtmlTypeEnum.Span}
-                type={TextTypeEnum.SecondaryTextMedium}
-              >
-                See all
-              </Text>
-            </Link>
-          </div>
-          <AlbumCards items={AlbumItems} />
-        </div>
-        <div
-          className={`${styles.player} ${dark ? styles.darkPlayer : styles.lightPlayer}`}
-        >
-          <Player
-            onClick={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
-        </div>
+      <Player onClick={() => {}} />
+      <SingleArtistCard artistName={'Drake'} albums={'23 Albums'} />
+      <Button onClick={onClick} type={ButtonTypeEnum.Primary}>
+        Add To Playlist
+      </Button>
+      <div>
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+          <PlaylistModal heading={'Create New Playlist'} title={'Add Title'} />
+        </Modal>
       </div>
     </div>
   );

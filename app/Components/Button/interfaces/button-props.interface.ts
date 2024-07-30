@@ -4,8 +4,9 @@ import { ButtonTypeEnum } from '../enums/button-type.enum';
 
 export interface ButtonPropsInterface {
   icon?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   position?: ButtonIconPositionEnum;
   type: ButtonTypeEnum;
   onClick?: () => void;
+  className?: string;
 }

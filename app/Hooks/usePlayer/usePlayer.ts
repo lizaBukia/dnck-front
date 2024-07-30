@@ -4,11 +4,12 @@ import { usePlayerType } from './types/use-player.type';
 export const usePlayer = (): usePlayerType => {
   const playerRef: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
 
-  const togglePlay = (): void => {
-    if (playerRef.current?.paused) {
-      playerRef.current.play();
+  const togglePlay = () => {
+    if (playerRef?.current?.paused) {
+      playerRef?.current.play();
+
     } else {
-      playerRef.current?.pause();
+      playerRef?.current?.pause();
     }
   };
 
