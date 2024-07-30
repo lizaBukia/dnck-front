@@ -3,10 +3,11 @@ import { ButtonIconPositionEnum } from '../../Button/enums/button-icon-position.
 import { ButtonTypeEnum } from '../../Button/enums/button-type.enum';
 import Icon from '../../Icon/Icon';
 import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
+import styles from './LogoutButton.module.scss';
 
 const LogoutButton = (): JSX.Element => {
   return (
-    <div>
+    <div className={styles.container}>
       <Button
         position={ButtonIconPositionEnum.Right}
         icon={<Icon name={IconNameEnum.Logout} width={24} height={24} />}

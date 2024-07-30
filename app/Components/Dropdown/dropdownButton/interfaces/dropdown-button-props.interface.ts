@@ -5,5 +5,6 @@ export interface DropdownButtonPropsInterface {
   icon: ReactNode;
   width: number;
   height: number;
+  darkMode?: boolean;
   onClick?: () => void;
 }

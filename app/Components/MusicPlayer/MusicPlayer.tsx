@@ -9,7 +9,7 @@ import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
   const { playerRef, togglePlay } = usePlayer();
-
+  // const player: RefObject<HTMLAudioElement> = useRef<HTMLAudioElement>(null);
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
         audioElement.removeEventListener('timeupdate', updateProgress);
       };
     }
-  }, []);
+  });
 
   const handleProgressChange = (
     event: React.ChangeEvent<HTMLInputElement>,
