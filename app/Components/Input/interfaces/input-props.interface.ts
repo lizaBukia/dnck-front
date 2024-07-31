@@ -8,4 +8,5 @@ export interface InputPropsInterface {
   type: InputTypeEnum;
   placeholder: string;
   isDark: boolean;
+  className?: string;
 }
