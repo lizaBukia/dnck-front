@@ -64,6 +64,7 @@
     position: sticky;
     bottom: 0;
     width: 100%;
+    padding: 0;
   }
   .mainPage {
     flex-flow: column wrap;
@@ -86,16 +87,22 @@
     position: sticky;
     bottom: 0;
   }
+  .darkPlayer {
+    background-color: $background-color-light-mode;
+  }
+  .lightPlayer {
+    background-color: $background-color-dark-mode;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .player {
     position: sticky;
     width: 100%;
+    padding: 0;
   }
   .content {
     display: flex;
     max-width: 704px;
-    background-color: $background-color-dark-mode;
     padding: 24px;
     gap: 24px;
     border-radius: 12px;
@@ -106,7 +113,7 @@
   }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
-  .darkPlayer {
+  .player {
     width: 100%;
     position: sticky;
   }
@@ -114,7 +121,6 @@
     display: flex;
     flex-flow: column wrap;
     max-width: 704px;
-    background-color: $background-color-dark-mode;
     padding: 24px;
     gap: 24px;
     border-radius: 12px;
@@ -122,5 +128,8 @@
   .mainPage {
     display: flex;
     max-width: 704px;
+  }
+  .more {
+    display: none;
   }
 }

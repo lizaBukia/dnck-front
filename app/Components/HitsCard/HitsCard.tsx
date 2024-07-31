@@ -5,16 +5,18 @@ import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import PlayButton from '../PlayButton/PlayButton';
+import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   const [dark, setDark] = useRecoilState(isDarkState);
+  const { playerRef, togglePlay } = usePlayer();
 
   useEffect(() => {
     setDark(localStorage.getItem('isDark') === 'true');
@@ -28,19 +30,15 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
           style={{
             backgroundImage: props.backgroundImage,
             backgroundRepeat: `no-repeat`,
-            height: `64px`,
-            width: '64px',
             backgroundSize: 'cover',
           }}
         >
+          <audio src="/music.mp4" ref={playerRef}></audio>
           <div className={styles.button}>
-            <PlayButton
-              icon={IconNameEnum.Play}
-              width={24}
-              height={24}
-              onClick={function (): void {
-                throw new Error('Function not implemented.');
-              }}
+            <PlayButtonMobile
+              icon={IconNameEnum.Pause}
+              onClick={togglePlay}
+              isDark={false}
             />
           </div>
         </div>

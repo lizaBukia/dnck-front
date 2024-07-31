@@ -14,7 +14,9 @@ const PlaylistModal: PlaylistModalType = (
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
   return (
-    <div className={`${className} ${styles.modalWrapper} ${isDark ? styles.dark : styles.light}`}>
+    <div
+      className={`${className} ${styles.modalWrapper} ${isDark ? styles.dark : styles.light}`}
+    >
       <div className={styles.headingWrapper}>
         <span
           className={`${className} ${styles.heading} ${isDark ? styles.dark : styles.light}`}

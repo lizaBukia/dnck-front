@@ -1,4 +1,4 @@
 export interface PlaylistModalPropsInterface {
-    heading: string;
-    title: string;
+  heading: string;
+  title: string;
 }

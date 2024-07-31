@@ -61,3 +61,13 @@
   font-weight: 500;
   color: $primary-white;
 }
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .h5 {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .h5-dark {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
