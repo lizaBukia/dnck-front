@@ -4,14 +4,6 @@
 
 .dropdown {
   display: flex;
-}
-
-.dropdownLight:hover {
-  background-color: $gray-800;
-}
-
-.dropdownLight {
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 4px;
@@ -19,7 +11,12 @@
   width: 32px;
   max-width: 100%;
 }
-.dropdownLight:active {
+
+.dropdown:hover {
+  background-color: $primary-black;
+}
+
+.dropdown:active {
   background-color: $gray-600;
 }
 
@@ -33,10 +30,10 @@
   max-width: 100%;
   cursor: pointer;
 }
-.dropdownDark:hover {
-  background-color: $hovered-dark;
+:global(body.dark) .dropdownDark:hover {
+  background-color: $primary-black;
 }
-.dropdownDark:active {
+:global(body.dark) .dropdownDark:active {
   background-color: $clicked-dark;
 }
 
@@ -53,13 +50,13 @@
 }
 
 .visible.dropdownContainer {
-  z-index: 0;
+  z-index: 1;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap:8px;
+  gap: 8px;
 }
 
 .left {
@@ -74,15 +71,11 @@
   justify-content: flex-start;
 }
 
-@media screen and (max-width: 1024px ){
+@media screen and (max-width: 1024px) {
   .wrapper {
     width: 24px;
   }
   .left {
     justify-content: flex-start;
   }
-  
 }
-
-
-

@@ -12,16 +12,11 @@
   width: 100%;
   padding: 24px 24px 0 24px;
 }
-.darkContainer {
-  display: flex;
-  flex-flow: column wrap;
+
+:global(body.dark) .lightContainer {
   background-color: $background-color-dark-mode;
-  gap: 16px;
-  justify-content: center;
-  width: 100%;
-  padding: 24px 24px 0 24px;
-  border-radius: 0 0 12px 12px;
 }
+
 .header {
   display: flex;
   flex-flow: column wrap;

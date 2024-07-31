@@ -13,15 +13,8 @@
   color: $primary-black;
 }
 
-.darkContainer {
-  display: flex;
-  width: 100%;
-  max-width: 290px;
-  padding: 8px;
-  border-radius: 12px;
-  background-color: $primary-black;
-  justify-content: space-between;
-  align-items: center;
+:global(body.dark) .darkContainer {
+  background-color: $background-color-dark-mode;
   color: $primary-white;
 }
 .dropdown {

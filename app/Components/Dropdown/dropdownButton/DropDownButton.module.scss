@@ -14,18 +14,18 @@
   line-height: 19px;
 }
 
-.light:hover {
+.button:hover {
   background-color: $hovered-white;
 }
 
-.light:active {
-  background-color: $gray-600;
+.button:active {
+  background-color: $clicked-white;
 }
 
-.dark:hover {
+:global(body.dark) .dark:hover {
   background-color: $hovered-dark;
 }
 
-.dark:active {
-  background-color: $primary-black;
+:global(body.dark) .dark:active {
+  background-color: $clicked-dark;
 }

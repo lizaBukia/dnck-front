@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
@@ -11,18 +9,9 @@ import styles from './AlbumCard.module.scss';
 import { AlbumCardPropsInterface } from './interfaces/album-card-props.interface';
 import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
-import { isDarkState } from '@/app/States/States';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
-  const [dark, setDark] = useRecoilState(isDarkState);
-
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   return (
-    <div
-      className={`${styles.albumCard} ${dark ? styles.dark : styles.albumCardLight}`}
-    >
+    <div className={`${styles.albumCard} ${styles.dark}`}>
       <div className={styles.albumCardImage}>
         <Image
           src={props.image}

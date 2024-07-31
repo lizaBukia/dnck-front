@@ -8,6 +8,11 @@
   width: 100%;
   padding: 24px;
   justify-content: center;
+  background-color: $primary-white;
+}
+:global(body.dark) .lightContainer {
+  color: $gray-400;
+  background-color: $primary-black;
 }
 .mainPage {
   display: flex;
@@ -23,20 +28,18 @@
   width: 100%;
   max-width: 986px;
   border-radius: 12px;
-}
-.darkContent {
-  color: $gray-400;
-  background-color: $background-color-dark-mode;
-}
-.lightContent {
-  color: $gray-400;
   background-color: $primary-white;
+}
+:global(body.dark) .lightContent {
+  color: $gray-400;
+  background-color: $primary-black;
 }
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  color: $gray-400;
 }
 .player {
   position: sticky;
@@ -44,12 +47,10 @@
   height: fit-content;
   padding: 16px 8px;
   border-radius: 12px;
-}
-.darkPlayer {
-  background-color: $background-color-dark-mode;
-}
-.lightPlayer {
   background-color: $background-color-light-mode;
+}
+:global(body.dark) .darkPlayer {
+  background-color: $background-color-dark-mode;
 }
 .album {
   display: flex;

@@ -10,6 +10,12 @@
   width: 230px;
   border-radius: 12px;
   height: 290px;
+  background-color: $background-color-light-mode;
+  color: $primary-black;
+}
+:global(body.dark) .dark {
+  color: $primary-white;
+  background-color: $background-color-dark-mode;
 }
 .albumCard:hover .dropdown {
   display: flex;
@@ -21,19 +27,9 @@
   display: flex;
   justify-content: space-between;
   height: 24px;
-  // width: 200px;
-}
-.albumCardLight {
-  background-color: white;
-  color: $primary-black;
 }
 .dropdown {
   display: none;
-}
-
-.dark {
-  color: $primary-white;
-  background-color: $primary-black;
 }
 
 .namesContainer {
