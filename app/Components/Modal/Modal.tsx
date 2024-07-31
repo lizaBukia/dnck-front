@@ -1,17 +1,17 @@
 'use client';
+import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import styles from './Modal.module.scss';
 import { ModalPropsInterface } from './interfaces/modal-props.interface';
 import { ModalType } from './types/modal.type';
 import { isDarkState } from '@/app/States/States';
-import { useRecoilValue } from 'recoil';
-import { useEffect, useState } from 'react';
 
 const Modal: ModalType = (props: ModalPropsInterface) => {
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
 
   useEffect(() => {
-    const handleEscape = (event: { key: string }) => {
+    const handleEscape = (event: { key: string }): void => {
       if (event.key === 'Escape') {
         props.setIsOpen(false);
       }
@@ -19,14 +19,14 @@ const Modal: ModalType = (props: ModalPropsInterface) => {
     if (props.isOpen) {
       document.addEventListener('keydown', handleEscape);
     }
-    return () => {
+    return (): void => {
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [props.isOpen, props.setIsOpen]);
+  }, [props, props.isOpen, props.setIsOpen]);
 
   if (!props.isOpen) return null;
 
-  const onClick = () => {
+  const onClick = (): void => {
     props.setIsOpen(false);
   };
 
