@@ -11,13 +11,13 @@
   height: 87px;
 }
 .dark {
-  background-color: $primary-black;
-  color: #fff;
+  background-color: $primary-white;
+  color: $primary-black;
 }
 
 .light {
-  background-color: #fff;
-  color: $primary-black;
+  background-color: $primary-black;
+  color: $primary-white;
 }
 .playerImage {
   border-radius: 8px;
@@ -43,4 +43,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .songName {
+    font-size: 14px;
+  }
+  .artistName {
+    font-size: 10px;
+  }
 }

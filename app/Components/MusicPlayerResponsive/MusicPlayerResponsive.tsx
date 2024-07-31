@@ -14,14 +14,6 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
 ) => {
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
-  const forwardIcon: IconNameEnum = isDark
-    ? IconNameEnum.ForwardLight
-    : IconNameEnum.ForwardDark;
-  const backwardIcon: IconNameEnum = isDark
-    ? IconNameEnum.BackwardLight
-    : IconNameEnum.BackwardDark;
-  const iconForward: IconNameEnum = forwardIcon;
-  const iconBackward: IconNameEnum = backwardIcon;
   const player: RefObject<HTMLAudioElement> | null =
     useRef<HTMLAudioElement>(null);
 
@@ -54,7 +46,11 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
         </div>
       </div>
       <div className={styles.musicPlayer}>
-        <Icon name={iconBackward} width={16} height={16} />
+        <Icon
+          name={isDark ? IconNameEnum.BackwardDark : IconNameEnum.BackwardLight}
+          width={16}
+          height={16}
+        />
         <PlayButtonMobile
           icon={IconNameEnum.Pause}
           onClick={togglePlay}
@@ -62,7 +58,11 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
           height={32}
           isDark={false}
         />
-        <Icon name={iconForward} width={16} height={16} />
+        <Icon
+          name={isDark ? IconNameEnum.ForwardDark : IconNameEnum.ForwardLight}
+          width={16}
+          height={16}
+        />
       </div>
     </div>
   );
