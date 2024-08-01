@@ -1,8 +1,4 @@
 'use client';
-
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { isDarkState } from '../../States/States';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
@@ -13,14 +9,8 @@ import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './Type/Header.type';
 
 const Header: HeaderType = () => {
-  const [dark, setDark] = useRecoilState(isDarkState);
-
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   return (
-    <div className={dark ? styles.darkContainer : styles.lightContainer}>
+    <div className={styles.lightContainer}>
       <div className={styles.header}>
         <div className={styles.content}>
           <Logo />

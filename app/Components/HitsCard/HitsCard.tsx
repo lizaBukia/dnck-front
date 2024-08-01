@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { isDarkState } from '../../States/States';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
@@ -15,15 +12,10 @@ import { HitsCardType } from './type/hits-card.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const [dark, setDark] = useRecoilState(isDarkState);
   const { playerRef, togglePlay } = usePlayer();
 
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   return (
-    <div className={dark ? styles.darkContainer : styles.container}>
+    <div className={`${styles.darkContainer} ${styles.container}`}>
       <div className={styles.content}>
         <div
           className={styles.hitsCardsImage}

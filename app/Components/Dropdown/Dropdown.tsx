@@ -1,19 +1,11 @@
 'use client';
 import { useState, useRef, RefObject, useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import styles from './Dropdown.module.scss';
 import DropdownContainer from './DropdownContainer/DropdownContainer';
 import { DropdownPropsInterface } from './interfaces/dropdown-props.interface';
 import { DropdownType } from './types/dropdown.type';
-import { isDarkState } from '@/app/States/States';
 
 const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
-  const [dark, setDark] = useRecoilState(isDarkState);
-
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   const [show, setShow] = useState<boolean>(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
@@ -40,7 +32,7 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   return (
     <div className={`${styles.wrapper}`} ref={dropdownRef}>
       <div
-        className={`${styles.dropdown} ${dark ? styles.dropdownDark : styles.dropdownLight}`}
+        className={`${styles.dropdown} ${styles.dropDownDark}`}
         onClick={onClick}
       >
         {props.icon}

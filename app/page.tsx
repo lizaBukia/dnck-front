@@ -1,7 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import AlbumCards from './Components/AlbumCards/AlbumCards';
 import AlbumItems from './Components/AlbumItems/AlbumItems';
 import Heading from './Components/Heading/Heading';
@@ -12,22 +10,13 @@ import Player from './Components/Player/Player';
 import Text from './Components/Text/Text';
 import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
-import { isDarkState } from './States/States';
 import styles from './page.module.scss';
 
 export default function Home(): JSX.Element {
-  const [dark, setDark] = useRecoilState(isDarkState);
-
-  useEffect(() => {
-    setDark(localStorage.getItem('isDark') === 'true');
-  }, [setDark]);
-
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
-        <div
-          className={`${styles.content} ${dark ? styles.darkContent : styles.lightContent}`}
-        >
+        <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
             <div className={styles.more}>
@@ -51,7 +40,6 @@ export default function Home(): JSX.Element {
               </Text>
             </div>
           </div>
-
           <HitsCards items={HitsItems} />
 
           <div className={styles.heading}>
@@ -98,9 +86,7 @@ export default function Home(): JSX.Element {
           </div>
           <AlbumCards items={AlbumItems} />
         </div>
-        <div
-          className={`${styles.player} ${dark ? styles.darkPlayer : styles.lightPlayer}`}
-        >
+        <div className={`${styles.player} ${styles.darkPlayer}`}>
           <Player
             onClick={function (): void {
               throw new Error('Function not implemented.');

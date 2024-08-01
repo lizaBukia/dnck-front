@@ -19,10 +19,9 @@
   width: 100%;
   border-radius: 12px;
   background: none;
-}
-.light {
   color: $primary-black;
 }
-.dark {
+
+:global(body.dark) .dark {
   color: $primary-white;
 }

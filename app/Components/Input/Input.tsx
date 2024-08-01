@@ -1,13 +1,9 @@
-import { useRecoilValue } from 'recoil';
-import { isDarkState } from '../../States/States';
 import styles from './Input.module.scss';
 import { InputIconPositionEnum } from './enum/input-icon-position.enum';
 import { InputPropsInterface } from './interfaces/input-props.interface';
 import { InputType } from './types/input.type';
 
 const Input: InputType = (props: InputPropsInterface) => {
-  const isDark: boolean = useRecoilValue(isDarkState);
-  const className: string = isDark ? styles.dark : styles.light;
   const iconPosition: InputIconPositionEnum =
     props.iconPosition || InputIconPositionEnum.Left;
 
@@ -15,7 +11,7 @@ const Input: InputType = (props: InputPropsInterface) => {
     <div className={styles.inputWrapper}>
       {iconPosition === InputIconPositionEnum.Left && props.icon}
       <input
-        className={`${styles.input} ${className} `}
+        className={`${styles.input} ${styles.dark} `}
         placeholder={props.placeholder}
         type={props.type}
       />

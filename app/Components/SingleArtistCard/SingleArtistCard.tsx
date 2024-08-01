@@ -30,7 +30,6 @@ const SingleArtistCard: SingleArtistCardType = (
             alt="image"
             width={227}
             height={227}
-
           />
         </div>
         <div className={styles.headingWrapper}>

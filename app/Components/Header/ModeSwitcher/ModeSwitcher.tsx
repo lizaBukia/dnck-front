@@ -20,6 +20,15 @@ const ModeSwitcher = (): JSX.Element => {
     setDark(item);
   }, [setDark]);
 
+  useEffect(() => {
+    const body: HTMLElement = document.getElementsByTagName('body')[0];
+    if (dark) {
+      body.classList.add('dark');
+    } else {
+      body.classList.remove('dark');
+    }
+  }, [dark]);
+
   return (
     <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div onClick={onClick} className={styles.modes}>
