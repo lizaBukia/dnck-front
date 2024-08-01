@@ -30,7 +30,7 @@ const PlayButtonMobile: PlayButtonMobileType = (
         onClick();
         props.onClick();
       }}
-      className={`${className} ${styles.playButton} ${isPlaying ? styles.play : styles.notPlay}`}
+      className={`${className} ${styles.playButton}`}
       style={{ width: props.width, height: props.width }}
     >
       <Icon

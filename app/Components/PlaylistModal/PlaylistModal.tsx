@@ -14,22 +14,14 @@ const PlaylistModal: PlaylistModalType = (
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
   return (
-    <div
-      className={`${className} ${styles.modalWrapper} ${isDark ? styles.dark : styles.light}`}
-    >
+    <div className={`${className} ${styles.modalWrapper}`}>
       <div className={styles.headingWrapper}>
-        <span
-          className={`${className} ${styles.heading} ${isDark ? styles.dark : styles.light}`}
-        >
+        <span className={`${className} ${styles.heading}`}>
           {props.heading}
         </span>
       </div>
       <div className={styles.contentWrapper}>
-        <span
-          className={`${className} ${styles.title} ${isDark ? styles.dark : styles.light}`}
-        >
-          {props.title}
-        </span>
+        <span className={`${className} ${styles.title}`}>{props.title}</span>
         <Input
           type={InputTypeEnum.Text}
           placeholder={'Add Title'}

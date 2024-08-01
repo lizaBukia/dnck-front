@@ -22,22 +22,20 @@ const Modal: ModalType = (props: ModalPropsInterface) => {
     return (): void => {
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [props.isOpen, props, props.setIsOpen]);
+  }, [props, props.isOpen, props.setIsOpen]);
 
   if (!props.isOpen) return null;
 
-  const onClick: () => void = () => {
+  const onClick = (): void => {
     props.setIsOpen(false);
   };
 
   return (
     <div className={styles.overlay}>
-      <div
-        className={`${className} ${styles.modal} ${isDark ? styles.dark : styles.light}`}
-      >
+      <div className={`${className} ${styles.modal}`}>
         <div>
           <button
-            className={`${className} ${styles.closeButton} ${isDark ? styles.dark : styles.light}`}
+            className={`${className} ${styles.closeButton}`}
             onClick={onClick}
           >
             x
