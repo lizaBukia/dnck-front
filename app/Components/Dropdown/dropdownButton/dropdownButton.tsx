@@ -4,7 +4,7 @@ import { TextHtmlTypeEnum } from '../../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../../Text/enums/text-type.enum';
 import styles from './DropDownButton.module.scss';
 import { DropdownButtonPropsInterface } from './interfaces/dropdown-button-props.interface';
-import { DropdownButtonType } from './types/dropdown-button.type';
+import { DropdownButtonType } from '@/app/Components/Dropdown/DropdownButton/types/dropdown-button.type';
 import Text from '@/app/Components/Text/Text';
 
 const DropdownButton: DropdownButtonType = (
