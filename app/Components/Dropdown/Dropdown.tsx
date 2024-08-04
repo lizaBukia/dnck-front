@@ -1,9 +1,9 @@
 'use client';
 import { useState, useRef, RefObject, useEffect } from 'react';
 import styles from './Dropdown.module.scss';
-import DropdownContainer from './DropdownContainer/DropdownContainer';
 import { DropdownPropsInterface } from './interfaces/dropdown-props.interface';
 import { DropdownType } from './types/dropdown.type';
+import DropdownContainer from './DropdownContainer/DropdownContainer';
 
 const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   const [show, setShow] = useState<boolean>(false);
