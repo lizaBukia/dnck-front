@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import Icon from '../../Icon/Icon';
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import Input from '../../Input/Input';
 import { InputIconPositionEnum } from '../../Input/enum/input-icon-position.enum';
 import { InputTypeEnum } from '../../Input/enum/input-type.enum';
 import styles from './SearchInput.module.scss';
+import Icon from '@/app/Components/Icon/Icon';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
 const SearchInput = (): JSX.Element => {
   return (

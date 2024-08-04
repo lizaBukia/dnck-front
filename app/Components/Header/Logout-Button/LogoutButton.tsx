@@ -2,8 +2,8 @@ import Button from '../../Button/Button';
 import { ButtonIconPositionEnum } from '../../Button/enums/button-icon-position.enum';
 import { ButtonTypeEnum } from '../../Button/enums/button-type.enum';
 import Icon from '../../Icon/Icon';
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import styles from './LogoutButton.module.scss';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
 const LogoutButton = (): JSX.Element => {
   return (

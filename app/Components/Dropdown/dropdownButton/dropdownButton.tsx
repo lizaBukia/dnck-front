@@ -1,8 +1,8 @@
 import Icon from '../../Icon/Icon';
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import styles from './DropDownButton.module.scss';
 import { DropdownButtonPropsInterface } from '@/app/Components/Dropdown/DropdownButton/interfaces/dropdown-button-props.interface';
 import { DropdownButtonType } from '@/app/Components/Dropdown/DropdownButton/types/dropdown-button.type';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 import Text from '@/app/Components/Text/Text';
 import { TextHtmlTypeEnum } from '@/app/Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '@/app/Components/Text/enums/text-type.enum';

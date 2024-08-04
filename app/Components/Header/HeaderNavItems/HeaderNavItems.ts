@@ -1,5 +1,5 @@
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import { NavItemPropsInterface } from '../../NavItem/interfaces/nav-item-props.interface';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
 export const headerNavItems: NavItemPropsInterface[] = [
   {

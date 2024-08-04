@@ -1,4 +1,4 @@
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
 export interface NavItemPropsInterface {
   title: string;
