@@ -13,6 +13,7 @@ const DropdownContainer: DropdownContainerType = (
   useEffect(() => {
     setDark(localStorage.getItem('isDark') === 'true');
   }, [setDark]);
+
   const classNames: string[] = [styles.dropdownButtonContainer];
 
   if (dark) {

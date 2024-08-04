@@ -6,7 +6,7 @@ import Logo from './Logo/Logo';
 import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
-import { HeaderType } from './Type/Header.type';
+import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = () => {
   return (
