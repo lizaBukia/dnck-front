@@ -1,5 +1,5 @@
 import Icon from '../../Icon/Icon';
-import styles from './DropDownButton.module.scss';
+import styles from './DropdownButton.module.scss';
 import { DropdownButtonPropsInterface } from '@/app/Components/Dropdown/DropdownButton/interfaces/dropdown-button-props.interface';
 import { DropdownButtonType } from '@/app/Components/Dropdown/DropdownButton/types/dropdown-button.type';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
