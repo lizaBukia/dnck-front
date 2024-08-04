@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import DropdownButton from '../DropdownButton/dropdownButton';
+import DropdownButton from '../DropdownButton/DropdownButton';
 import styles from './DropdownContainer.module.scss';
 import { DropdownContainerPropsInterface } from './interfaces/dropdown-container.props.interface';
 import { DropdownContainerType } from './types/dropdown-container.type';
