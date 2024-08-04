@@ -1,4 +1,4 @@
-import { DropDownItemsInterface } from '../../Dropdown/DropdownContainer/interfaces/dropdown-container.props.interface';
+import { DropDownItemsInterface } from '../../Dropdown/interfaces/dropdown-items-props.interface';
 
 export interface AlbumCardItemsInterface {
   dropDownItems: DropDownItemsInterface[];
