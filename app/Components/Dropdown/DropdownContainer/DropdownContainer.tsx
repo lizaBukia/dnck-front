@@ -5,6 +5,7 @@ import styles from './DropdownContainer.module.scss';
 import { DropdownContainerPropsInterface } from './interfaces/dropdown-container.props.interface';
 import { DropdownContainerType } from './types/dropdown-container.type';
 import { isDarkState } from '@/app/States/States';
+
 const DropdownContainer: DropdownContainerType = (
   props: DropdownContainerPropsInterface,
 ) => {
