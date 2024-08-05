@@ -70,8 +70,15 @@
 .right {
   justify-content: flex-start;
 }
+.up {
+  align-items: flex-end;
+  justify-content: left;
+}
 
 @media screen and (max-width: 1024px) {
+  .text {
+    padding: 8px;
+  }
   .wrapper {
     width: 24px;
   }

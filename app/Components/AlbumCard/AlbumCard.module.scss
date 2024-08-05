@@ -67,11 +67,12 @@
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .albumCard {
-    width: 132px;
+    width: 122px;
     height: 164px;
+    padding: 8px;
   }
   .albumCardImage img {
-    width: 103px;
+    width: 106px;
     height: 100px;
   }
   .dropdown {
