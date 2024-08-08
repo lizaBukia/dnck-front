@@ -11,8 +11,6 @@
 .dark {
   background-color: $primary-color;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
 }
 .light {
   background-color: $primary-color;
@@ -37,6 +35,10 @@
     border-radius: 8px;
     background-color: $primary-black;
   }
+  .light {
+    border-radius: 8px;
+    background-color: $primary-white;
+  }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .dark {
@@ -47,5 +49,7 @@
   .light {
     border-radius: 8px;
     background-color: $primary-white;
+    width: 32px;
+    height: 32px;
   }
 }
