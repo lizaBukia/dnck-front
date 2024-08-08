@@ -14,10 +14,12 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const [isPlaying, setIsPlaying] = useState(false);
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
-  const playIcon: IconNameEnum = isDark ? IconNameEnum.Play : IconNameEnum.Play;
-  const pauseIcon: IconNameEnum = props.isDark
+  const playIcon: IconNameEnum = isDark
+    ? IconNameEnum.Play
+    : IconNameEnum.PlayLight;
+  const pauseIcon: IconNameEnum = isDark
     ? IconNameEnum.Pause
-    : IconNameEnum.Pause;
+    : IconNameEnum.PauseLight;
   const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
 
   const onClick = (): void => {

@@ -90,9 +90,11 @@
   .darkContainer {
     width: 256px;
   }
-  .buttton {
-    width: 16px;
-    height: 16px;
+  .container:hover .button {
+    display: none;
+  }
+  .darkContainer:hover .button {
+    display: none;
   }
   .artistName {
     font-size: 12px;

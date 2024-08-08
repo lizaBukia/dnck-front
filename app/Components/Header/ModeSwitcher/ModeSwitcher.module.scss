@@ -4,10 +4,44 @@
 
 .modes {
   border: 1px solid $disable-stroke-dark;
-  padding: 12px;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   cursor: pointer;
+  width: 48px;
+  height: 48px;
+}
+.modesIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  width: 24px;
+  height: 24px;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modes {
+    padding: 8px;
+  }
+  .iconSize {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .modes {
+    padding: 8px;
+  }
+  .iconSize {
+    width: 16px;
+    height: 16px;
+  }
+  .modesIcon {
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+  }
 }
