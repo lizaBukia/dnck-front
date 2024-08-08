@@ -18,6 +18,18 @@ export default function Home(): JSX.Element {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
+          <div className={styles.mobileHeading}>
+            <div className={styles.mobileText}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.PrimaryTextLarge}
+              >
+                Let’s start new adventure
+                <span className={styles.colored}> with you</span>
+              </Text>
+            </div>
+            <ModeSwitcher />
+          </div>
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
             <div className={styles.more}>
@@ -93,9 +105,6 @@ export default function Home(): JSX.Element {
               throw new Error('Function not implemented.');
             }}
           />
-        </div>
-        <div className={styles.modes}>
-          <ModeSwitcher />
         </div>
       </div>
     </div>
