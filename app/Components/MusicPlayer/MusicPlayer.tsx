@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
@@ -6,10 +7,11 @@ import styles from './MusicPlayer.module.scss';
 import { MusicPlayerPropsInterface } from './interfaces/music-player-props.interface';
 import { MusicPlayerType } from './types/music-player.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { currentTimeState } from '@/app/States/States';
 
 const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
   const { playerRef, togglePlay } = usePlayer();
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
 
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;

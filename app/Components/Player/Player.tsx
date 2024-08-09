@@ -12,6 +12,7 @@ const Player: PlayerType = (props: PlayerPropsInterface) => {
           MusicTitle={'Lose Control'}
           ArtistName={'Teddy Swing'}
           BackgroundImage={'image75.png'}
+          onClick={() => {}}
         />
       </div>
       <div className={styles.responsivePlayerWrapper}>

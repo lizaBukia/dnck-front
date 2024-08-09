@@ -4,4 +4,5 @@ export interface MusicPlayerPropsInterface {
   MusicTitle: string;
   ArtistName: string;
   BackgroundImage: Url;
+  onClick: () => void;
 }
