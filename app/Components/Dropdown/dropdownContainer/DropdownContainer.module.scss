@@ -11,11 +11,9 @@
   position: absolute;
   min-width: 208px;
   max-width: 100%;
-}
-.dropdownButtonContainerLight {
   background-color: $primary-white;
 }
 
-.dropdownButtonContainerDark {
+:global(body.dark) .dropdownButtonContainerDark { 
   background-color: $primary-black;
 }

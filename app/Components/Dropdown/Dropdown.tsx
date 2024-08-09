@@ -32,7 +32,7 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   return (
     <div className={`${styles.wrapper}`} ref={dropdownRef}>
       <div
-        className={`${styles.dropdown} ${styles.dropDownDark}`}
+        className={`${styles.dropdown} ${styles.dropdownDark}`}
         onClick={onClick}
       >
         {props.icon}

@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import AlbumCards from './Components/AlbumCards/AlbumCards';
 import AlbumItems from './Components/AlbumItems/AlbumItems';
+import ArtistCards from './Components/ArtistCards/ArtistCards';
+import ArtistItems from './Components/ArtistItems/ArtistItems';
 import Heading from './Components/Heading/Heading';
 import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
 import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
@@ -56,7 +58,7 @@ export default function Home(): JSX.Element {
               </Text>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          <ArtistCards items={ArtistItems} />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
             <div className={styles.more}>

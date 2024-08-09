@@ -10,26 +10,17 @@
   border-radius: 4px;
   width: 32px;
   max-width: 100%;
+  cursor: pointer;
 }
 
 .dropdown:hover {
-  background-color: $primary-black;
+  background-color: $primary-white;
 }
 
 .dropdown:active {
   background-color: $gray-600;
 }
 
-.dropdownDark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  border-radius: 4px;
-  width: 32px;
-  max-width: 100%;
-  cursor: pointer;
-}
 :global(body.dark) .dropdownDark:hover {
   background-color: $primary-black;
 }

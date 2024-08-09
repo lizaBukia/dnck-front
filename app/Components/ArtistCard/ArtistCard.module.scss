@@ -1,0 +1,75 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+.artistCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  padding: 16px;
+  width: 230px;
+  border-radius: 12px;
+  height: 290px;
+  background-color: $background-color-light-mode;
+  color: $primary-black;
+}
+:global(body.dark) .dark {
+  color: $primary-white;
+  background-color: $background-color-dark-mode;
+}
+.artistCardImage img {
+  border-radius: 12px;
+}
+.artistName {
+  display: flex;
+  justify-content: space-between;
+  height: 24px;
+}
+.namesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.naming {
+  display: flex;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .artistCard {
+    width: 156px;
+    height: 186px;
+  }
+  .artistCardImage img {
+    width: 124px;
+    height: 104px;
+  }
+  .artistNameFont {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .namingFont {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .artistCard {
+    width: 132px;
+    height: 164px;
+  }
+  .artistCardImage img {
+    width: 103px;
+    height: 100px;
+  }
+  
+  .artistNameFont {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .namesContainer {
+    gap: 0px;
+  }
+}

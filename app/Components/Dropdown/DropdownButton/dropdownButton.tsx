@@ -11,9 +11,7 @@ const DropdownButton: DropdownButtonType = (
   props: DropdownButtonPropsInterface,
 ) => {
   return (
-    <div
-      className={`${styles.button} ${props.darkMode ? styles.dark : styles.light}`}
-    >
+    <div className={`${styles.button} ${styles.dark}`}>
       <Icon name={IconNameEnum.Plus} width={28} height={28} />
       <Text
         htmlType={TextHtmlTypeEnum.Span}
