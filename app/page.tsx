@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import AlbumCards from './Components/AlbumCards/AlbumCards';
 import AlbumItems from './Components/AlbumItems/AlbumItems';
+import ModeSwitcher from './Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from './Components/Heading/Heading';
 import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
 import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
@@ -17,6 +18,18 @@ export default function Home(): JSX.Element {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
+          <div className={styles.mobileHeading}>
+            <div className={styles.mobileText}>
+              <Text
+                htmlType={TextHtmlTypeEnum.Span}
+                type={TextTypeEnum.PrimaryTextLarge}
+              >
+                Let’s start new adventure
+                <span className={styles.colored}> with you</span>
+              </Text>
+            </div>
+            <ModeSwitcher />
+          </div>
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Albums</Heading>
             <div className={styles.more}>

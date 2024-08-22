@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import styles from './Icon.module.scss';
 import { IconPropsInterface } from './interfaces/icon-props.interface';
 import { IconType } from './types/icon.type';
 
@@ -12,6 +13,7 @@ const Icon: IconType = (props: IconPropsInterface) => {
       width={props.width}
       height={props.height}
       onClick={props.onClick}
+      className={styles.IconSize}
     />
   );
 };

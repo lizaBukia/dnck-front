@@ -71,6 +71,10 @@
   justify-content: flex-start;
 }
 
+.up {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
 @media screen and (max-width: 1024px) {
   .wrapper {
     width: 24px;

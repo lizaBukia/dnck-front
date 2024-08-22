@@ -59,8 +59,17 @@
 .downPlayer {
   display: none;
 }
+.modes {
+  display: none;
+}
+.mobileHeading {
+  display: none;
+}
 
 @media screen and (max-width: 1400px) {
+  .mobileHeading {
+    display: none;
+  }
   .player {
     position: sticky;
     bottom: 0;
@@ -96,6 +105,20 @@
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .mobileHeading {
+    display: flex;
+    justify-content: space-between;
+  }
+  :global(body.dark) .mobileText {
+    color: $primary-white;
+  }
+  .colored {
+    color: $primary-color;
+  }
+  .mobileText {
+    width: 240px;
+    color: $primary-black;
+  }
   .player {
     position: sticky;
     width: 100%;
@@ -112,8 +135,29 @@
     display: flex;
     max-width: 704px;
   }
+  .modes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    width: 100%;
+  }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
+  .mobileHeading {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  :global(body.dark) .mobileText {
+    color: $primary-white;
+  }
+  .colored {
+    color: $primary-color;
+  }
+  .mobileText {
+    width: 240px;
+    color: $primary-black;
+  }
   .player {
     width: 100%;
     position: sticky;
@@ -132,5 +176,11 @@
   }
   .more {
     display: none;
+  }
+  .modes {
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    width: 100%;
   }
 }

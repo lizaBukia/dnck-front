@@ -31,13 +31,11 @@ const ModeSwitcher = (): JSX.Element => {
   return (
     <div className={dark ? styles.darkContainer : styles.lightContainer}>
       <div onClick={onClick} className={styles.modes}>
-        <div>
-          <Icon
-            name={dark ? IconNameEnum.Sun : IconNameEnum.Moon}
-            width={24}
-            height={24}
-          />
-        </div>
+        <Icon
+          name={dark ? IconNameEnum.Sun : IconNameEnum.Moon}
+          width={0}
+          height={0}
+        />
       </div>
     </div>
   );
