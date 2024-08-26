@@ -144,6 +144,7 @@
   .mobileHeading {
     display: flex;
     width: 100%;
+    justify-content: space-between;
   }
   :global(body.dark) .mobileText {
     color: $primary-white;
