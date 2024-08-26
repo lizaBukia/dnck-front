@@ -9,7 +9,6 @@ const ArtistCards: ArtistCardsType = (props: ArtistCardsPropsInterface) => {
       {props.items.map((item) => (
         <ArtistCard
           key={item.href}
-          darkMode={false}
           image={item.image}
           artistName={item.artistName}
           naming={item.naming}
