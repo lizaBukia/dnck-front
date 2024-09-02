@@ -1,0 +1,17 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+
+.content {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #000;
+  padding: 24px;
+  background-color: $background-color-light-mode;
+}
+:global(body.dark) .darkContent {
+  background-color: $background-color-dark-mode;
+  color: $primary-white;
+}

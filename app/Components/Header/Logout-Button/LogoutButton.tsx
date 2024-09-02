@@ -12,6 +12,8 @@ const LogoutButton = (): JSX.Element => {
         position={ButtonIconPositionEnum.Right}
         icon={<Icon name={IconNameEnum.Logout} width={24} height={24} />}
         type={ButtonTypeEnum.Primary}
+        htmlType={''}
+        href={'/'}
       >
         Log Out
       </Button>
