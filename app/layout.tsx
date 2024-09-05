@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <RecoilWrapper>
-          <div className={`${'content'} ${'darkContent'}`}>
+          <div className={'content'}>
             <AuthHeader />
           </div>
           {children}

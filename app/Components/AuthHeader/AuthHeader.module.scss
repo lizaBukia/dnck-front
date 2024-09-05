@@ -11,6 +11,7 @@
   padding: 24px;
   background-color: $background-color-light-mode;
 }
+
 :global(body.dark) .darkContent {
   background-color: $background-color-dark-mode;
   color: $primary-white;

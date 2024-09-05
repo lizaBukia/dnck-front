@@ -13,9 +13,11 @@
   width: 48px;
   height: 48px;
 }
+
 :global(body.dark) .darkModes {
   border: 1px solid $disable-stroke-dark;
 }
+
 .modesIcon {
   display: flex;
   align-items: center;
@@ -24,10 +26,12 @@
   width: 24px;
   height: 24px;
 }
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .modes {
     padding: 8px;
   }
+
   .iconSize {
     width: 20px;
     height: 20px;
@@ -38,10 +42,12 @@
   .modes {
     padding: 8px;
   }
+
   .iconSize {
     width: 16px;
     height: 16px;
   }
+
   .modesIcon {
     width: 20px;
     height: 20px;

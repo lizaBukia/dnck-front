@@ -1,55 +1,52 @@
 'use client';
-import axios, { AxiosResponse } from 'axios';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import Button from '../../Components/Button/Button';
-import { ButtonTypeEnum } from '../../Components/Button/enums/button-type.enum';
-import Heading from '../../Components/Heading/Heading';
-import { HeadingTypeEnum } from '../../Components/Heading/enums/heading-type.enum';
-import Text from '../../Components/Text/Text';
-import { TextHtmlTypeEnum } from '../../Components/Text/enums/text-html-type.enum';
-import { TextTypeEnum } from '../../Components/Text/enums/text-type.enum';
-import styles from './Authorization.module.scss';
-import { AuthorizationType } from './types/authorization.type';
+import Button from '../Button/Button';
+import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
+import Heading from '../Heading/Heading';
+import { HeadingTypeEnum } from '../Heading/enums/heading-type.enum';
+import Text from '../Text/Text';
+import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
+import { TextTypeEnum } from '../Text/enums/text-type.enum';
+import styles from './Signup.module.scss';
 
-const Authorization: AuthorizationType = () => {
+const SignUpForm: FC = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    watch,
     formState: { errors },
   } = useForm();
-  const router: AppRouterInstance = useRouter();
+
+  const password: string = watch('password');
+  const confirmPassword: string = watch('confirmPassword');
 
   const onSubmit = async (values: object): Promise<void> => {
+    if (password !== confirmPassword) {
+      setError('password', {});
+      return;
+    }
+
     try {
-      const response: AxiosResponse = await axios.post(
-        'http://10.10.51.20:3000/auth/login',
-        values,
-      );
-      const { accessToken } = response.data;
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
-        console.log('User logged in successfully');
-        router.push('/mainPage');
-      } else {
-        alert('sworad wera tu ar ici nu dadzvrebi ');
-      }
+      await axios.post('http://10.10.51.20:3000/auth/register', values);
+      console.log('User registered successfully');
     } catch (err) {
-      console.error('Login failed', err);
+      console.error('Can not load this page', err);
     }
   };
 
   return (
     <div className={`${styles.container} ${styles.darkContainer}`}>
-      <div className={`${styles.content} ${styles.darkContent}`}>
+      <div className={styles.content}>
         <div className={styles.test}>
           <div className={styles.image}>
             <Image
               src={'/icons/test1.svg'}
-              alt={'brand'}
+              alt={'pink floyd'}
               width={644}
               height={575}
             />
@@ -60,9 +57,9 @@ const Authorization: AuthorizationType = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className={styles.signInHeading}>
-                <Heading type={HeadingTypeEnum.H2}>
-                  Log in
-                  <span className={styles.projectName}> DNCK </span>
+                <Heading type={HeadingTypeEnum.H1}>
+                  Sign Up
+                  <span className={styles.projectName}> DNCK.</span>
                 </Heading>
               </div>
               <div className={styles.inputs}>
@@ -75,8 +72,8 @@ const Authorization: AuthorizationType = () => {
                   className={`${styles.authorizationInput} ${styles.darkAuthorizationInput}`}
                   placeholder="Enter Your Email"
                 />
-                {errors.email && (
-                  <span className={styles.error}>{`errors.email.message`}</span>
+                {errors.name && (
+                  <span className={styles.error}>{`incorrect email`}</span>
                 )}
               </div>
               <div className={styles.inputs}>
@@ -85,14 +82,29 @@ const Authorization: AuthorizationType = () => {
                   type="password"
                   {...register('password', {
                     required: 'Password is required',
+                    minLength: 8,
                   })}
                   className={`${styles.authorizationInput} ${styles.darkAuthorizationInput}`}
                   placeholder="Enter Your Password"
                 />
                 {errors.password && (
-                  <span className={styles.error}>
-                    {`errors.password.message`}
-                  </span>
+                  <span className={styles.error}>{`incorrect password `}</span>
+                )}
+              </div>
+              <div className={styles.inputs}>
+                <label>Re-enter Password</label>
+                <input
+                  type="password"
+                  {...register('rePassword', {
+                    required: 'Please re-enter your password',
+                  })}
+                  className={`${styles.authorizationInput} ${styles.darkAuthorizationInput}`}
+                  placeholder="Re-enter Your Password"
+                />
+                {errors.rePassword && (
+                  <span
+                    className={styles.error}
+                  >{`Password don't match ${window.alert(`Password don't match`)}`}</span>
                 )}
               </div>
               <div className={styles.check}>
@@ -104,18 +116,18 @@ const Authorization: AuthorizationType = () => {
                   className={styles.button}
                   type={ButtonTypeEnum.Primary}
                   htmlType={'submit'}
-                  href="/"
+                  href={'/uploaded'}
                 >
-                  Log In
+                  Sign Up
                 </Button>
                 <Text
                   className={styles.signUpContainer}
                   htmlType={TextHtmlTypeEnum.Span}
                   type={TextTypeEnum.PrimaryTextLarge}
                 >
-                  New to DCNK?
-                  <Link className={styles.signUp} href={'/signUp'}>
-                    Sign up
+                  Already a member ?
+                  <Link className={styles.signUp} href={'/'}>
+                    Log In
                   </Link>
                 </Text>
               </div>
@@ -127,4 +139,4 @@ const Authorization: AuthorizationType = () => {
   );
 };
 
-export default Authorization;
+export default SignUpForm;

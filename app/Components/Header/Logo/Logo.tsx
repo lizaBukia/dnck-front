@@ -8,7 +8,7 @@ import { isDarkState } from '@/app/States/States';
 
 const Logo = (): JSX.Element => {
   const [dark, setDark] = useRecoilState(isDarkState);
-  const [logo, setLogo] = useState('icons/logoferadi.svg');
+  const [logo, setLogo] = useState('icons/lastTry.svg');
 
   useEffect(() => {
     setDark(localStorage.getItem('isDark') === 'true');
@@ -22,8 +22,8 @@ const Logo = (): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      <Link href={'/'}>
-        <Image src={logo} alt={'logogvegirsaa'} width={124} height={50} />
+      <Link href={'/play'}>
+        <Image src={logo} alt={'DNCK LOGO'} width={124} height={50} />
       </Link>
     </div>
   );
