@@ -5,25 +5,25 @@ const ArtistCardItems: ArtistCardItemsInterface[] = [
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
     naming: 'Artist',
-    href: './SingleArtistPage',
+    href: '/singleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
     naming: 'Artist',
-    href: './SingleArtistPage',
+    href: '/singleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
     naming: 'Artist',
-    href: './SingleArtistPage',
+    href: '/singleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
     naming: 'Artist',
-    href: './SingleArtistPage',
+    href: '/singleArtistPage',
   },
 ];
 export default ArtistCardItems;
