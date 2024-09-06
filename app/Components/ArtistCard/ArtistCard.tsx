@@ -3,7 +3,7 @@ import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './ArtistCard.module.scss';
 import { ArtistCardPropsInterface } from './interfaces/artist-card-props.interface';
-import { ArtistCardType } from './types/artistcard.type';
+import { ArtistCardType } from './types/artist-card.type';
 import Text from '@/app/Components/Text/Text';
 const ArtistCard: ArtistCardType = (props: ArtistCardPropsInterface) => {
   return (
@@ -35,7 +35,7 @@ const ArtistCard: ArtistCardType = (props: ArtistCardPropsInterface) => {
             darkColor: '#B1B1B1',
           }}
         >
-          {props.naming}
+          {props.name}
         </Text>
       </div>
     </div>
