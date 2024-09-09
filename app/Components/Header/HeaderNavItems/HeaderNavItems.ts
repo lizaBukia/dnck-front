@@ -4,7 +4,7 @@ import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 export const headerNavItems: NavItemPropsInterface[] = [
   {
     icon: IconNameEnum.Home,
-    href: '/mainPage',
+    href: '/',
     title: 'Home',
   },
   {

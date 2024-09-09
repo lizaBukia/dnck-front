@@ -9,13 +9,12 @@ import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 const LogoutButton = (): JSX.Element => {
   return (
     <div className={styles.container}>
-      <Link href={'/'}>
+      <Link href={'/login'}>
         <Button
           position={ButtonIconPositionEnum.Right}
           icon={<Icon name={IconNameEnum.Logout} width={24} height={24} />}
           type={ButtonTypeEnum.Primary}
           htmlType={''}
-          href={'/'}
         >
           Log Out
         </Button>

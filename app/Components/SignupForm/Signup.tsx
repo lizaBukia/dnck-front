@@ -12,6 +12,7 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './Signup.module.scss';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm: FC = () => {
   const {
@@ -24,18 +25,22 @@ const SignUpForm: FC = () => {
 
   const password: string = watch('password');
   const confirmPassword: string = watch('confirmPassword');
+  const router = useRouter();
 
   const onSubmit = async (values: object): Promise<void> => {
-    if (password !== confirmPassword) {
-      setError('password', {});
-      return;
-    }
 
     try {
       await axios.post('http://10.10.51.20:3000/auth/register', values);
-      console.log('User registered successfully');
+      alert('User registered successfully');
+      router.push("/login")
+
     } catch (err) {
-      console.error('Can not load this page', err);
+      console.error(err);
+      alert('Registration failed');
+    }
+    if (password !== confirmPassword) {
+      setError('password', {});
+      return console.log("password don't match");
     }
   };
 
@@ -116,7 +121,7 @@ const SignUpForm: FC = () => {
                   className={styles.button}
                   type={ButtonTypeEnum.Primary}
                   htmlType={'submit'}
-                  href={'/uploaded'}
+                  // href={'/uploaded'}
                 >
                   Sign Up
                 </Button>

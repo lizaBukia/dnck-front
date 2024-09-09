@@ -34,12 +34,12 @@ const LoginForm: FC = () => {
       if (accessToken) {
         localStorage.setItem('accessToken', accessToken);
         console.log('User logged in successfully');
-        router.push('/(authorized)');
+        router.push('/');
       } else {
         alert('sworad were!!!');
       }
     } catch (err) {
-      console.error('Login failed', err);
+      alert('Login failed');
     }
   };
 
