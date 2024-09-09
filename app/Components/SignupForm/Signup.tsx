@@ -28,7 +28,7 @@ const SignUpForm: FC = () => {
   const router = useRouter();
 
   const onSubmit = async (values: object): Promise<void> => {
-
+    // im waiting hostname for backend.
     try {
       await axios.post('http://10.10.51.20:3000/auth/register', values);
       alert('User registered successfully');
@@ -39,8 +39,8 @@ const SignUpForm: FC = () => {
       alert('Registration failed');
     }
     if (password !== confirmPassword) {
-      setError('password', {});
-      return console.log("password don't match");
+      setError('password', {})
+      return console.log(`password don't match`);
     }
   };
 
@@ -92,9 +92,6 @@ const SignUpForm: FC = () => {
                   className={`${styles.authorizationInput} ${styles.darkAuthorizationInput}`}
                   placeholder="Enter Your Password"
                 />
-                {errors.password && (
-                  <span className={styles.error}>{`incorrect password `}</span>
-                )}
               </div>
               <div className={styles.inputs}>
                 <label>Re-enter Password</label>
@@ -121,7 +118,7 @@ const SignUpForm: FC = () => {
                   className={styles.button}
                   type={ButtonTypeEnum.Primary}
                   htmlType={'submit'}
-                  // href={'/uploaded'}
+                  // href={'/login'}
                 >
                   Sign Up
                 </Button>
@@ -131,7 +128,7 @@ const SignUpForm: FC = () => {
                   type={TextTypeEnum.PrimaryTextLarge}
                 >
                   Already a member ?
-                  <Link className={styles.signUp} href={'/'}>
+                  <Link className={styles.signUp} href={'/login'}>
                     Log In
                   </Link>
                 </Text>
