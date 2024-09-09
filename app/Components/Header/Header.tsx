@@ -10,22 +10,24 @@ import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = () => {
   return (
-    <div className={styles.lightContainer}>
-      <div className={styles.header}>
-        <div className={styles.content}>
-          <Logo />
-          <SearchInput />
-          <div className={styles.container}>
-            <div className={styles.mode}>
-              <ModeSwitcher />
-            </div>
-            <div className={styles.button}>
-              <LogoutButton />
+    <div className={`${styles.testing} ${styles.darkTesting}`}>
+      <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
+        <div className={styles.header}>
+          <div className={styles.content}>
+            <Logo />
+            <SearchInput />
+            <div className={styles.container}>
+              <div className={styles.mode}>
+                <ModeSwitcher />
+              </div>
+              <div className={styles.button}>
+                <LogoutButton />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.navigation}>
-          <NavMenu items={headerNavItems} />
+          <div className={styles.navigation}>
+            <NavMenu items={headerNavItems} />
+          </div>
         </div>
       </div>
     </div>
