@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';

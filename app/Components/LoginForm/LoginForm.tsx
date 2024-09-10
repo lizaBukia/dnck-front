@@ -14,6 +14,7 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './LoginForm.module.scss';
+import { setCookie } from '@/helpers/cookies';
 
 const LoginForm: FC = () => {
   const {
@@ -27,16 +28,18 @@ const LoginForm: FC = () => {
   const onSubmit = async (values: FieldValues): Promise<void> => {
     try {
       const response: AxiosResponse = await axios.post(
-        'http://10.10.51.20:3000/auth/login',
+        'https://back.dnck.ge/auth/login',
         values,
       );
       const { accessToken } = response.data;
+
       if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
+        setCookie('accessToken', accessToken, 24);
         console.log('User logged in successfully');
         router.push('/');
+        console.log(accessToken);
       } else {
-        alert('sworad were!!!');
+        alert('password is not correct');
       }
     } catch (err) {
       alert('Login failed');

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import AuthHeader from './Components/AuthHeader/AuthHeader';
 import RecoilWrapper from './Components/RecoilWrapper/RecoilWrapper';
 
 const inter: NextFont = Inter({
@@ -26,7 +25,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <RecoilWrapper>
           <div className={'content'}>
-            <AuthHeader />
           </div>
           {children}
         </RecoilWrapper>
