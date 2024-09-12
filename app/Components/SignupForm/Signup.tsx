@@ -31,7 +31,7 @@ const SignUpForm: FC = () => {
     try {
       await axios.post('https://back.dnck.ge/auth/register', values);
       alert('User registered successfully');
-      router.push('/login');
+      router.push('/login');  
     } catch (err) {
       console.error(err);
       alert('Registration failed');

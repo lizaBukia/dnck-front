@@ -1,5 +1,6 @@
 @import '../../Colors/light-colors.scss';
 @import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
 
 .inputWrapper {
   display: flex;
@@ -12,6 +13,7 @@
   border-radius: 12px;
   gap: 4px;
 }
+
 .input {
   display: flex;
   border: none;
@@ -20,6 +22,10 @@
   border-radius: 12px;
   background: none;
   color: $primary-black;
+}
+
+:global(body.dark) .darkWrapper {
+  border: 1px solid $disable-stroke-dark;
 }
 
 :global(body.dark) .dark {

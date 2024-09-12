@@ -2,6 +2,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
+import PlayButton from '../PlayButton/PlayButton';
 import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
@@ -27,10 +28,11 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
         >
           <audio src="/music.mp4" ref={playerRef}></audio>
           <div className={styles.button}>
-            <PlayButtonMobile
+            <PlayButton
               icon={IconNameEnum.Pause}
               onClick={togglePlay}
-              isDark={false}
+              width={32}
+              height={32}
             />
           </div>
         </div>
