@@ -1,4 +1,4 @@
-export interface ArtistCardItemsInterface {
+export interface ArtistCardsItemsInterface {
   image: string;
   artistName: string;
   name: string;
