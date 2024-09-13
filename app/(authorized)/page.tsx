@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
-import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
+import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
