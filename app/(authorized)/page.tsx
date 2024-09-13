@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
-import ArtistCardItems from '../Components/ArtistCardsItems/ArtistCardItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
+import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -20,7 +20,8 @@ const MainPage = (): JSX.Element => {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
-          <div className={styles.mobileHeading}>/app/
+          <div className={styles.mobileHeading}>
+            /app/
             <div className={styles.mobileText}>
               <Text
                 htmlType={TextHtmlTypeEnum.Span}
@@ -73,7 +74,7 @@ const MainPage = (): JSX.Element => {
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <ArtistCards items={ArtistCardItems} />
+          <ArtistCards items={ArtistCardsItems} />
         </div>
         <div className={`${styles.player} ${styles.darkPlayer}`}>
           <Player
