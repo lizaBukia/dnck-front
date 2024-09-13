@@ -20,8 +20,7 @@ const MainPage = (): JSX.Element => {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
-          <div className={styles.mobileHeading}>
-            /app/
+          <div className={styles.mobileHeading}>/app/
             <div className={styles.mobileText}>
               <Text
                 htmlType={TextHtmlTypeEnum.Span}
