@@ -20,8 +20,6 @@ const MusicPlayer: FC<MusicPlayerPropsInterface> = (props) => {
     }
   };
 
-  // console.log(currentMusic.currentTime)
-
   return (
     <div>
       <div
