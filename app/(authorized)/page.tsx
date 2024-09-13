@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
-import ArtistCardItems from '../Components/ArtistCardsItems/ArtistCardItems';
+import ArtistCardItems from '../Components/ArtistCardItems/ArtistCardItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
