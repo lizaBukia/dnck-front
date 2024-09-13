@@ -1,5 +1,6 @@
 'use client';
 import axios from 'axios';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -25,7 +26,7 @@ const SignUpForm: FC = () => {
 
   const password: string = watch('password');
   const confirmPassword: string = watch('confirmPassword');
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
   const onSubmit = async (values: object): Promise<void> => {
     try {
