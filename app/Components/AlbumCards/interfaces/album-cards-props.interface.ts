@@ -2,4 +2,5 @@ import { AlbumCardItemsInterface } from '../../AlbumCard/interfaces/album-card-i
 
 export interface AlbumCardsPropsInterface {
   items: AlbumCardItemsInterface[];
+  
 }
