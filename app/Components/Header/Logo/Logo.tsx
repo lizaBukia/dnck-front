@@ -18,7 +18,7 @@ const Logo = (): JSX.Element => {
     } else {
       setLogo('icons/lastTry.svg');
     }
-  }, [setDark]);
+  }, [dark, setDark]);
 
   return (
     <div className={styles.container}>
