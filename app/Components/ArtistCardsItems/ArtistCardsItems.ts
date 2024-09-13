@@ -1,6 +1,6 @@
 import { ArtistCardItemsInterface } from '../ArtistCard/interfaces/artist-card-items.interfaces';
 
-const ArtistCardItems: ArtistCardItemsInterface[] = [
+const ArtistCardsItems: ArtistCardItemsInterface[] = [
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
@@ -26,4 +26,4 @@ const ArtistCardItems: ArtistCardItemsInterface[] = [
     href: './SingleArtistPage',
   },
 ];
-export default ArtistCardItems;
+export default ArtistCardsItems;
