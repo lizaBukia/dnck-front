@@ -14,6 +14,7 @@ const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
   const isActive: boolean = pathName === props.href;
 
   return (
+    <div>
     <Link
       className={`${styles.container} ${props.className}`}
       href={props.href}
@@ -29,6 +30,7 @@ const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
         </Text>
       </div>
     </Link>
+    </div>
   );
 };
 

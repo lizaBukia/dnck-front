@@ -15,6 +15,7 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const onClick = (): void => {
     setIsPLaying((prevState) => !prevState);
   };
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.code === 'Space') {

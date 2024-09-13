@@ -28,18 +28,16 @@ const SignUpForm: FC = () => {
   const router = useRouter();
 
   const onSubmit = async (values: object): Promise<void> => {
-    // im waiting hostname for backend.
     try {
-      await axios.post('http://10.10.51.20:3000/auth/register', values);
+      await axios.post('https://back.dnck.ge/auth/register', values);
       alert('User registered successfully');
-      router.push("/login")
-
+      router.push('/login');  
     } catch (err) {
       console.error(err);
       alert('Registration failed');
     }
     if (password !== confirmPassword) {
-      setError('password', {})
+      setError('password', {});
       return console.log(`password don't match`);
     }
   };
@@ -51,7 +49,7 @@ const SignUpForm: FC = () => {
           <div className={styles.image}>
             <Image
               src={'/icons/test1.svg'}
-              alt={'pink floyd'}
+              alt={'brand'}
               width={644}
               height={575}
             />

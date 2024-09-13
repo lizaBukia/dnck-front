@@ -22,7 +22,7 @@ const Logo = (): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      <Link href={'/play'}>
+      <Link href={'/'}>
         <Image src={logo} alt={'DNCK LOGO'} width={124} height={50} />
       </Link>
     </div>

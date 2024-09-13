@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
@@ -9,6 +10,10 @@ import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = () => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push('/');
+  };
   return (
     <div className={`${styles.testing} ${styles.darkTesting}`}>
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
