@@ -12,6 +12,8 @@ import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
 import styles from './page.module.scss';
+import ArtistCards from '../Components/ArtistCards/ArtistCards';
+import ArtistCardItems from '../Components/ArtisCardsItems/ArtistCardItems';
 
 const MainPage = (): JSX.Element => {
   return (
@@ -71,7 +73,7 @@ const MainPage = (): JSX.Element => {
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          <ArtistCards items={ArtistCardItems} />
         </div>
         <div className={`${styles.player} ${styles.darkPlayer}`}>
           <Player
