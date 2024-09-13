@@ -1,28 +1,28 @@
-import { ArtistCardItemsInterface } from '../ArtistCard/interfaces/artist-card-items.interfaces';
+import { ArtistCardsItemsInterface } from '../Components/ArtistCard/interfaces/artist-card-items.interfaces';
 
-const ArtistCardItems: ArtistCardItemsInterface[] = [
+const ArtistCardItems: ArtistCardsItemsInterface[] = [
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
 ];
