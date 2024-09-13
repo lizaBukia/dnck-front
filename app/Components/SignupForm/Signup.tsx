@@ -2,6 +2,7 @@
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '../Button/Button';
@@ -12,7 +13,6 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './Signup.module.scss';
-import { useRouter } from 'next/navigation';
 
 const SignUpForm: FC = () => {
   const {
@@ -31,7 +31,7 @@ const SignUpForm: FC = () => {
     try {
       await axios.post('https://back.dnck.ge/auth/register', values);
       alert('User registered successfully');
-      router.push('/login');  
+      router.push('/login');
     } catch (err) {
       console.error(err);
       alert('Registration failed');

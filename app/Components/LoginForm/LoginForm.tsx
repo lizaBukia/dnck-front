@@ -25,7 +25,6 @@ const LoginForm: FC = () => {
 
   const router: AppRouterInstance = useRouter();
 
-  
   const onSubmit = async (values: FieldValues): Promise<void> => {
     // TODO: Refactor This Call To Axios Config
     try {
