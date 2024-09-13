@@ -15,7 +15,6 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const onClick = (): void => {
     setIsPLaying((prevState) => !prevState);
   };
-  console.log(isPlaying);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent): void => {

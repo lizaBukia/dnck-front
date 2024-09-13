@@ -25,6 +25,8 @@ const LoginForm: FC = () => {
 
   const router: AppRouterInstance = useRouter();
 
+  // TODO: Refactor This Call To Axios Config
+
   const onSubmit = async (values: FieldValues): Promise<void> => {
     try {
       const response: AxiosResponse = await axios.post(
@@ -37,7 +39,6 @@ const LoginForm: FC = () => {
         setCookie('accessToken', accessToken, 24);
         console.log('User logged in successfully');
         router.push('/');
-        console.log(accessToken);
       } else {
         alert('password is not correct');
       }

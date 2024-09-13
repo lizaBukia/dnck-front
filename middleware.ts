@@ -8,8 +8,6 @@ export default async function middleware(req: NextRequest) {
   const token = cookies().get('accessToken');
   const pathIsPublic = publicRoutes.includes(path);
 
-  console.log(token);
-
   if (pathIsPublic && token) {
     return NextResponse.redirect(new URL('/', req.url));
   }
