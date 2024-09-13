@@ -1,31 +1,21 @@
 import Image from 'next/image';
-import { RefObject, useRef } from 'react';
-import { useRecoilValue } from 'recoil';
+import { FC } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import styles from './MusicPlayerResponsive.module.scss';
 import { MusicPlayerResponsivePropsInterface } from './interfaces/music-player-responsive-props.interface';
-import { MusicPlayerResponsiveType } from './types/music-player-responsive.type';
-import { isDarkState } from '@/app/States/States';
+import { currentMusicState, isDarkState } from '@/app/States/States';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
-const MusicPlayerResponsive: MusicPlayerResponsiveType = (
-  props: MusicPlayerResponsivePropsInterface,
-) => {
+// eslint-disable-next-line react/display-name
+const MusicPlayerResponsive: FC<MusicPlayerResponsivePropsInterface>  = ((props) => {
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
-  const player: RefObject<HTMLAudioElement> | null =
-    useRef<HTMLAudioElement>(null);
+  const [currentMusic] = useRecoilState(currentMusicState);
+  const { playerRef: audioRef } = usePlayer();
 
-  function togglePlay(): void {
-    if (player?.current) {
-      if (player.current.paused) {
-        player.current.play();
-      } else {
-        player.current.pause();
-      }
-    }
-  }
 
   return (
     <div className={`${className} ${styles.playerWrapper}`}>
@@ -40,9 +30,9 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
           />
         </div>
         <div className={`${className} ${styles.playerName}`}>
-          <h1 className={styles.songName}>{props.songName}</h1>
-          <span className={styles.artistName}>{props.artistName}</span>
-          <audio src="/music.mp4" ref={player}></audio>
+          <h1 className={styles.songName}>{currentMusic.name}</h1>
+          <span className={styles.artistName}>{currentMusic.artistName}</span>
+          <audio ref={audioRef}></audio>
         </div>
       </div>
       <div className={styles.musicPlayer}>
@@ -53,7 +43,7 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
         />
         <PlayButtonMobile
           icon={IconNameEnum.Pause}
-          onClick={togglePlay}
+          onClick={() => props.onClick()}
           width={32}
           height={32}
           isDark={false}
@@ -66,5 +56,5 @@ const MusicPlayerResponsive: MusicPlayerResponsiveType = (
       </div>
     </div>
   );
-};
+});
 export default MusicPlayerResponsive;

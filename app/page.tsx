@@ -76,11 +76,7 @@ export default function Home(): JSX.Element {
           <ArtistCards items={ArtistCardItems} />
         </div>
         <div className={`${styles.player} ${styles.darkPlayer}`}>
-          <Player
-            onClick={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
+          <Player />
         </div>
       </div>
     </div>

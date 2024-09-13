@@ -1,8 +1,12 @@
-import { Url } from 'next/dist/shared/lib/router/router';
+import { Ref } from 'react';
 
 export interface MusicPlayerPropsInterface {
   MusicTitle: string;
   ArtistName: string;
-  BackgroundImage: Url;
+  BackgroundImage: '';
+  src: string;
   onClick: () => void;
+  ref: Ref<HTMLAudioElement>;
+  togglePlay: () => void;
+  handleProgressChange:  React.ChangeEventHandler<HTMLInputElement> ;
 }

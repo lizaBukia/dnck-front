@@ -25,8 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <RecoilWrapper>
-          <Header />
-          {children}
+            <Header />
+            {children}
         </RecoilWrapper>
       </body>
     </html>

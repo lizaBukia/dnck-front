@@ -12,6 +12,7 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
             backgroundImage={item.backgroundImage}
             artistName={item.artistName}
             albumName={item.albumName}
+            src={'/music.mp4'}
           />
         ))}
       </div>

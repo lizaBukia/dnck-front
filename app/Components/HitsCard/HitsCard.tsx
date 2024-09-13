@@ -1,18 +1,33 @@
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
+import PlayButton from '../PlayButton/PlayButton';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
+import { currentMusicState } from '@/app/States/States';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const { playerRef, togglePlay } = usePlayer();
+  const { togglePlay } = usePlayer();
+  const setMusicState = useSetRecoilState(currentMusicState);
+
+  const onClick = (): void => {
+    togglePlay();
+    setMusicState({
+      name: props.albumName,
+      imgLink: props.backgroundImage,
+      src: '/music.mp3',
+      artistName: props.artistName,
+      currentTime: 0,
+      isPlaying: true,
+    });
+  };
 
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
@@ -25,12 +40,12 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             backgroundSize: 'cover',
           }}
         >
-          <audio src="/music.mp4" ref={playerRef}></audio>
           <div className={styles.button}>
-            <PlayButtonMobile
+            <PlayButton
               icon={IconNameEnum.Pause}
-              onClick={togglePlay}
-              isDark={false}
+              onClick={onClick}
+              width={32}
+              height={32}
             />
           </div>
         </div>
