@@ -1,4 +1,5 @@
 'use client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
@@ -10,7 +11,7 @@ import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = () => {
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
   const onClick = (): void => {
     router.push('/');
   };
