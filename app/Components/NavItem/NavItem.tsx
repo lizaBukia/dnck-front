@@ -15,21 +15,21 @@ const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
 
   return (
     <div>
-    <Link
-      className={`${styles.container} ${props.className}`}
-      href={props.href}
-    >
-      <div className={isActive ? styles.activeContainer : styles.container}>
-        <Icon name={props.icon} width={24} height={24} isActive={isActive} />
-        <Text
-          htmlType={TextHtmlTypeEnum.Span}
-          type={TextTypeEnum.PrimaryTextLarge}
-          className={styles.navTitle}
-        >
-          {props.title}
-        </Text>
-      </div>
-    </Link>
+      <Link
+        className={`${styles.container} ${props.className}`}
+        href={props.href}
+      >
+        <div className={isActive ? styles.activeContainer : styles.container}>
+          <Icon name={props.icon} width={24} height={24} isActive={isActive} />
+          <Text
+            htmlType={TextHtmlTypeEnum.Span}
+            type={TextTypeEnum.PrimaryTextLarge}
+            className={styles.navTitle}
+          >
+            {props.title}
+          </Text>
+        </div>
+      </Link>
     </div>
   );
 };

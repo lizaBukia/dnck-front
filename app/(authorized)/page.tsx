@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
+import ArtistCardItems from '../Components/ArtisCardsItems/ArtistCardItems';
+import ArtistCards from '../Components/ArtistCards/ArtistCards';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -12,8 +14,6 @@ import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
 import styles from './page.module.scss';
-import ArtistCards from '../Components/ArtistCards/ArtistCards';
-import ArtistCardItems from '../Components/ArtisCardsItems/ArtistCardItems';
 
 const MainPage = (): JSX.Element => {
   return (

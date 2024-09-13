@@ -11,7 +11,7 @@ import { HeaderType } from './types/header.type';
 
 const Header: HeaderType = () => {
   const router = useRouter();
-  const onClick = () => {
+  const onClick = (): void => {
     router.push('/');
   };
   return (
@@ -19,7 +19,9 @@ const Header: HeaderType = () => {
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
         <div className={styles.header}>
           <div className={styles.content}>
-            <Logo />
+            <div onClick={onClick}>
+              <Logo />
+            </div>
             <SearchInput />
             <div className={styles.container}>
               <div className={styles.mode}>
