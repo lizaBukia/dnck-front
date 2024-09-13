@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
-import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
+import ArtistCardItems from '../Components/ArtistCardsItems/ArtistCardItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -74,7 +74,7 @@ const MainPage = (): JSX.Element => {
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <ArtistCards items={ArtistCardsItems} />
+          <ArtistCards items={ArtistCardItems} />
         </div>
         <div className={`${styles.player} ${styles.darkPlayer}`}>
           <Player
