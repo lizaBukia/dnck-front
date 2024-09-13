@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import AlbumItems from '../Components/AlbumItems/AlbumItems';
-import ArtistCardItems from '../Components/ArtisCardsItems/ArtistCardItems';
+import ArtistCardItems from '../Components/ArtistCardsItems/ArtistCardItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
@@ -21,6 +21,7 @@ const MainPage = (): JSX.Element => {
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.mobileHeading}>
+            /app/
             <div className={styles.mobileText}>
               <Text
                 htmlType={TextHtmlTypeEnum.Span}
