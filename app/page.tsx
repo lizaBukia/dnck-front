@@ -1,5 +1,7 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { ApiClient } from './Api/api';
 import AlbumCards from './Components/AlbumCards/AlbumCards';
 import AlbumItems from './Components/AlbumItems/AlbumItems';
 import ArtistCardItems from './Components/ArtisCardsItems/ArtistCardItems';
@@ -13,9 +15,25 @@ import Player from './Components/Player/Player';
 import Text from './Components/Text/Text';
 import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
+import { AlbumInterface } from './interfaces/album.interface';
+import { HitsInterface } from './interfaces/hits.interface';
 import styles from './page.module.scss';
 
 export default function Home(): JSX.Element {
+  const [albums, setAlbums] = useState<AlbumInterface[]>([]);
+  const [hits, setHits] = useState<HitsInterface[]>([]);
+
+  useEffect(() => {
+    ApiClient.get('/albums')
+      .then((res) => setAlbums(res.data))
+      .catch((error) => console.error('Error fetching albums:', error));
+  }, []);
+
+  useEffect(() => {
+    ApiClient.get('/musics')
+      .then((res) => setHits(res.data))
+      .catch((error) => console.error('Error fetching hits:', error));
+  }, []);
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
@@ -38,14 +56,29 @@ export default function Home(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          <AlbumCards
+            items={albums.map((album) => ({
+              title: 'niko',
+              imgUrl: album.imgUrl,
+              artistName: 'niko',
+              dropDownItems: [],
+            }))}
+          />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
               <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
-          <HitsCards items={HitsItems} />
+          <HitsCards
+            items={hits.map((hit) => ({
+              backgroundImage: hit.imgUrl,
+              albumName: 'niko',
+              artistName: 'niko',
+              src: '/music.mp3',
+              dropDownItems: hit.dropDownItems,
+            }))}
+          />
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
@@ -57,7 +90,14 @@ export default function Home(): JSX.Element {
               </Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          <AlbumCards
+            items={albums.map((album) => ({
+              title: 'niko',
+              imgUrl: album.imgUrl,
+              artistName: 'niko',
+              dropDownItems: [],
+            }))}
+          />
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
             <div className={styles.more}>
@@ -65,7 +105,14 @@ export default function Home(): JSX.Element {
             </div>
           </div>
 
-          <AlbumCards items={AlbumItems} />
+          <AlbumCards
+            items={albums.map((album) => ({
+              title: 'niko',
+              imgUrl: album.imgUrl,
+              artistName: 'niko',
+              dropDownItems: [],
+            }))}
+          />
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>

@@ -1,4 +1,4 @@
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
@@ -10,8 +10,8 @@ import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
-import { currentMusicState } from '@/app/States/States';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { currentMusicState } from '@/app/States/States';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   const { togglePlay } = usePlayer();
