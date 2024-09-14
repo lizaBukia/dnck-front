@@ -1,12 +1,15 @@
+import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
-const publicRoutes = ['/login', '/signup'];
+const publicRoutes: string[] = ['/login', '/signup'];
 
-export default async function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-  const token = cookies().get('accessToken');
-  const pathIsPublic = publicRoutes.includes(path);
+export default async function middleware(
+  req: NextRequest,
+): Promise<NextResponse<unknown>> {
+  const path: string = req.nextUrl.pathname;
+  const token: RequestCookie | undefined = cookies().get('accessToken');
+  const pathIsPublic: boolean = publicRoutes.includes(path);
 
   if (pathIsPublic && token) {
     return NextResponse.redirect(new URL('/', req.url));

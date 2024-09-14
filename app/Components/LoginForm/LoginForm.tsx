@@ -56,6 +56,7 @@ const LoginForm: FC = () => {
               alt={'brand'}
               width={644}
               height={575}
+              className={styles.image}
             />
           </div>
           <div className={styles.form}>
