@@ -1,25 +1,24 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ApiClient } from './Api/api';
-import AlbumCards from './Components/AlbumCards/AlbumCards';
-import AlbumItems from './Components/AlbumItems/AlbumItems';
-import ArtistCardItems from './Components/ArtisCardsItems/ArtistCardItems';
-import ArtistCards from './Components/ArtistCards/ArtistCards';
-import ModeSwitcher from './Components/Header/ModeSwitcher/ModeSwitcher';
-import Heading from './Components/Heading/Heading';
-import { HeadingTypeEnum } from './Components/Heading/enums/heading-type.enum';
-import { HitsItems } from './Components/HitsCard/HitsItems/HitsItems';
-import HitsCards from './Components/HitsCards/HitsCards';
-import Player from './Components/Player/Player';
-import Text from './Components/Text/Text';
-import { TextHtmlTypeEnum } from './Components/Text/enums/text-html-type.enum';
-import { TextTypeEnum } from './Components/Text/enums/text-type.enum';
-import { AlbumInterface } from './interfaces/album.interface';
-import { HitsInterface } from './interfaces/hits.interface';
+import { ApiClient } from '../Api/api';
+import AlbumCards from '../Components/AlbumCards/AlbumCards';
+import ArtistCards from '../Components/ArtistCards/ArtistCards';
+import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
+import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
+import Heading from '../Components/Heading/Heading';
+import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
+import HitsCards from '../Components/HitsCards/HitsCards';
+import Player from '../Components/Player/Player';
+import Text from '../Components/Text/Text';
+import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
+import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
+import { AlbumInterface } from '../interfaces/album.interface';
+import { HitsInterface } from '../interfaces/hits.interface';
 import styles from './page.module.scss';
 
-export default function Home(): JSX.Element {
+// eslint-disable-next-line import/export
+export function Home(): JSX.Element {
   const [albums, setAlbums] = useState<AlbumInterface[]>([]);
   const [hits, setHits] = useState<HitsInterface[]>([]);
 
@@ -120,7 +119,7 @@ export default function Home(): JSX.Element {
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <ArtistCards items={ArtistCardItems} />
+          <ArtistCards items={ArtistCardsItems} />
         </div>
         <div className={`${styles.player} ${styles.darkPlayer}`}>
           <Player />
@@ -129,3 +128,6 @@ export default function Home(): JSX.Element {
     </div>
   );
 }
+
+// eslint-disable-next-line import/export
+export default Home;

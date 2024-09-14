@@ -9,4 +9,6 @@ export interface ButtonPropsInterface {
   type: ButtonTypeEnum;
   onClick?: () => void;
   className?: string;
+  htmlType?: string;
+  href?: string;
 }

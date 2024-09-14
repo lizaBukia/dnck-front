@@ -5,7 +5,7 @@
 .lightContainer {
   display: flex;
   flex-flow: column wrap;
-  background-color: #f7f7f7;
+  background-color: $background-color-light-mode;
   border-radius: 0 0 12px 12px;
   gap: 16px;
   justify-content: center;
@@ -13,7 +13,7 @@
   padding: 24px 24px 0 24px;
 }
 
-:global(body.dark) .lightContainer {
+:global(body.dark) .darkContainer {
   background-color: $background-color-dark-mode;
 }
 
@@ -56,6 +56,12 @@
   align-items: center;
   flex-basis: 865px;
   gap: 16px;
+}
+.testing {
+  background-color: $primary-white;
+}
+:global(body.dark) .darkTesting {
+  background-color: $primary-black;
 }
 
 .navigation {

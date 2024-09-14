@@ -1,6 +1,6 @@
-export interface ArtistCardItemsInterface {
+export interface ArtistCardsItemsInterface {
   image: string;
   artistName: string;
-  naming: string;
+  name: string;
   href: string;
 }

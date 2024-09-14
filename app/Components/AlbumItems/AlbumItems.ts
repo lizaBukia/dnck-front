@@ -3,25 +3,25 @@ import { AlbumCardItemsInterface } from '../AlbumCard/interfaces/album-card-item
 const AlbumItems: AlbumCardItemsInterface[] = [
   {
     albumName: 'Praise for lord',
-    image: '/images/asap.png',
+    image: '/images/drip.png',
     artistName: 'Asap Rocky',
     dropDownItems: [],
   },
   {
     albumName: 'Praise for lord',
-    image: '/images/asap.png',
+    image: '/images/blackboy.png',
     artistName: 'Asap Rocky',
     dropDownItems: [],
   },
   {
     albumName: 'Praise for lord',
-    image: '/images/asap.png',
+    image: '/images/image81.png',
     artistName: 'Asap Rocky',
     dropDownItems: [],
   },
   {
     albumName: 'Praise for lord',
-    image: '/images/asap.png',
+    image: '/images/starboy.png',
     artistName: 'Asap Rocky',
     dropDownItems: [],
   },
