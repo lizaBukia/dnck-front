@@ -1,38 +1,23 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButton.module.scss';
 import { PlayButtonPropsInterface } from './interfaces/play-button-props.interface';
 import { PlayButtonType } from './types/play-button.type';
+import { currentMusicState } from '@/app/States/States';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
-  const [isPlaying, setIsPLaying] = useState(false);
-  const iconName: IconNameEnum = isPlaying
+  const currentMusic: CurrentMusicStateInterface =
+    useRecoilValue(currentMusicState);
+  const iconName: IconNameEnum = currentMusic.isPlaying
     ? IconNameEnum.Pause
     : IconNameEnum.Play;
-
-  const onClick = (): void => {
-    setIsPLaying((prevState) => !prevState);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.code === 'Space') {
-        event.preventDefault();
-        onClick();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return (): void => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   return (
     <button
       onClick={() => {
-        onClick();
         props.onClick();
       }}
       className={styles.playButton}
@@ -41,8 +26,8 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
       <Icon
         name={iconName}
         isActive={false}
-        width={isPlaying ? 20 : 36}
-        height={isPlaying ? 20 : 36}
+        width={currentMusic.isPlaying ? 20 : 36}
+        height={currentMusic.isPlaying ? 20 : 36}
       />
     </button>
   );

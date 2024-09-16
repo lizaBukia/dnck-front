@@ -10,8 +10,8 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
           <HitsCard
             key={index}
             backgroundImage={item.backgroundImage}
-            artistName={item.artistName}
-            albumName={item.albumName}
+            album={item.album}
+            src={item.src}
           />
         ))}
       </div>

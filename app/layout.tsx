@@ -23,10 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RecoilWrapper>
-          <div className={'content'}></div>
-          {children}
-        </RecoilWrapper>
+        <RecoilWrapper>{children}</RecoilWrapper>
       </body>
     </html>
   );

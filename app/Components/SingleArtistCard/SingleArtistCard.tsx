@@ -5,13 +5,10 @@ import PlayButton from '../PlayButton/PlayButton';
 import styles from './SingleArtistCard.module.scss';
 import { SingleArtistCardPropsInterface } from './interfaces/single-artist-card-props.interface';
 import { SingleArtistCardType } from './types/single-artist-card.type';
-import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 
 const SingleArtistCard: SingleArtistCardType = (
   props: SingleArtistCardPropsInterface,
 ) => {
-  const { playerRef, togglePlay } = usePlayer();
-
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.iconsMobile}>
@@ -35,11 +32,9 @@ const SingleArtistCard: SingleArtistCardType = (
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.artistName}</h1>
           <span className={styles.albums}>{props.albums}</span>
-          <audio src="/music.mp4" ref={playerRef}></audio>
-
           <PlayButton
             icon={IconNameEnum.Play}
-            onClick={togglePlay}
+            onClick={() => {}}
             width={48}
             height={48}
           />

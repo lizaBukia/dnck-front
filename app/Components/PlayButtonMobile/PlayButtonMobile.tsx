@@ -1,18 +1,31 @@
 'use client';
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import styles from './PlayButtonMobile.module.scss';
 import { PlayButtonMobilePropsInterface } from './interfaces/play-button-mobile-props.interface';
 import { PlayButtonMobileType } from './types/play-button-mobile.type';
-import { isDarkState } from '@/app/States/States';
+import { currentMusicState, isDarkState } from '@/app/States/States';
 
 const PlayButtonMobile: PlayButtonMobileType = (
   props: PlayButtonMobilePropsInterface,
 ) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const isDark: boolean = useRecoilValue(isDarkState);
+  const [currentMusic, setCurrentMusic] = useRecoilState(currentMusicState);
+
+  // useEffect(() => {
+  //   const handleKeyDown = (event: KeyboardEvent): void => {
+  //     if (event.code === 'Space') {
+  //       event.preventDefault();
+  //       props.onClick();
+  //     }
+  //   };
+  //   document.addEventListener('keydown', handleKeyDown);
+  //   return (): void => {
+  //     document.removeEventListener('keydown', handleKeyDown);
+  //   };
+  // }, [props]);
+
   const className: string = isDark ? styles.dark : styles.light;
   const playIcon: IconNameEnum = isDark
     ? IconNameEnum.Play
@@ -20,16 +33,11 @@ const PlayButtonMobile: PlayButtonMobileType = (
   const pauseIcon: IconNameEnum = isDark
     ? IconNameEnum.Pause
     : IconNameEnum.PauseLight;
-  const icon: IconNameEnum = isPlaying ? pauseIcon : playIcon;
-
-  const onClick = (): void => {
-    setIsPlaying((prevState) => !prevState);
-  };
+  const icon: IconNameEnum = currentMusic.isPlaying ? pauseIcon : playIcon;
 
   return (
     <button
       onClick={() => {
-        onClick();
         props.onClick();
       }}
       className={`${className} ${styles.playButton}`}
@@ -38,8 +46,8 @@ const PlayButtonMobile: PlayButtonMobileType = (
       <Icon
         name={icon}
         isActive={false}
-        width={isPlaying ? 20 : 32}
-        height={isPlaying ? 20 : 32}
+        width={currentMusic.isPlaying ? 20 : 32}
+        height={currentMusic.isPlaying ? 20 : 32}
       />
     </button>
   );
