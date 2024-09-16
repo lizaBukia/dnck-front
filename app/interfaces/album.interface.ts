@@ -1,4 +1,4 @@
-import { ArtistInterface } from '../(authorized)/page';
+import { ArtistInterface } from './artist.interface';
 
 export interface AlbumInterface {
   id: number;

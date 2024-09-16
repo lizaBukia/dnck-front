@@ -118,7 +118,7 @@ const MusicPlayer: FC = () => {
             </div>
           </div>
         </div>
-        <div >
+        <div>
           {musics && (
             <HitsCards
               items={musics.map((hit) => ({
