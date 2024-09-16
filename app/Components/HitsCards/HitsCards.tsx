@@ -12,6 +12,7 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
             backgroundImage={item.backgroundImage}
             album={item.album}
             src={item.src}
+            dropDownItems={item.dropDownItems}
           />
         ))}
       </div>
