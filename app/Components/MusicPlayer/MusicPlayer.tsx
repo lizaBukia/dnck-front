@@ -5,8 +5,8 @@ import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
 import { MusicPlayerPropsInterface } from './interfaces/music-player-props.interface';
-import { currentMusicState } from '@/app/States/States';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { currentMusicState } from '@/app/States/States';
 
 // eslint-disable-next-line react/display-name
 const MusicPlayer: FC<MusicPlayerPropsInterface> = (props) => {
@@ -19,6 +19,25 @@ const MusicPlayer: FC<MusicPlayerPropsInterface> = (props) => {
       audioRef.current.volume = Number(event.target.value);
     }
   };
+  // const playNext = () => {
+  //   setCurrentTrackIndex((prevIndex) =>
+  //     prevIndex + 1 >= tracks.length ? 0 : prevIndex + 1
+  //   );
+  // };
+
+  // const playPrevious = () => {
+  //   setCurrentTrackIndex((prevIndex) =>
+  //     prevIndex - 1 < 0 ? tracks.length - 1 : prevIndex - 1
+  //   );
+  // };
+  // const shuffleArray = useCallback((array: number[]) => {
+  //   const shuffled = [...array];
+  //   for (let i = shuffled.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  //   }
+  //   return shuffled;
+  // }, []);
 
   return (
     <div>

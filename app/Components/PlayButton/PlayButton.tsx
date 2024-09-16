@@ -6,9 +6,11 @@ import styles from './PlayButton.module.scss';
 import { PlayButtonPropsInterface } from './interfaces/play-button-props.interface';
 import { PlayButtonType } from './types/play-button.type';
 import { currentMusicState } from '@/app/States/States';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
-  const currentMusic = useRecoilValue(currentMusicState);
+  const currentMusic: CurrentMusicStateInterface =
+    useRecoilValue(currentMusicState);
   const iconName: IconNameEnum = currentMusic.isPlaying
     ? IconNameEnum.Pause
     : IconNameEnum.Play;

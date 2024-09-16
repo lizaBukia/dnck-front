@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { ApiClient } from '../Api/api';
+import useSWR from 'swr';
+import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
 import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
@@ -13,26 +13,14 @@ import Player from '../Components/Player/Player';
 import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
-import { AlbumInterface } from '../interfaces/album.interface';
-import { HitsInterface } from '../interfaces/hits.interface';
+import { AlbumInterface } from '../Interfaces/album.interface';
+import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 
-// eslint-disable-next-line import/export
 export function Home(): JSX.Element {
-  const [albums, setAlbums] = useState<AlbumInterface[]>([]);
-  const [hits, setHits] = useState<HitsInterface[]>([]);
+  const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
+  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
-  useEffect(() => {
-    ApiClient.get('/albums')
-      .then((res) => setAlbums(res.data))
-      .catch((error) => console.error('Error fetching albums:', error));
-  }, []);
-
-  useEffect(() => {
-    ApiClient.get('/musics')
-      .then((res) => setHits(res.data))
-      .catch((error) => console.error('Error fetching hits:', error));
-  }, []);
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
@@ -55,29 +43,35 @@ export function Home(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          <AlbumCards
-            items={albums.map((album) => ({
-              title: 'niko',
-              imgUrl: album.imgUrl,
-              artistName: 'niko',
-              dropDownItems: [],
-            }))}
-          />
+          {albums && (
+            <AlbumCards
+              items={albums?.map?.((album) => {
+                console.log(album);
+                return {
+                  title: album.name,
+                  imgUrl: album.imgUrl,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
+            />
+          )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
               <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
-          <HitsCards
-            items={hits.map((hit) => ({
-              backgroundImage: hit.imgUrl,
-              albumName: 'niko',
-              artistName: 'niko',
-              src: '/music.mp3',
-              dropDownItems: hit.dropDownItems,
-            }))}
-          />
+          {musics && (
+            <HitsCards
+              items={musics.map((hit) => ({
+                backgroundImage: '/image75.png',
+                album: hit.album,
+                src: hit.src,
+                dropDownItems: [],
+              }))}
+            />
+          )}
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
@@ -89,14 +83,16 @@ export function Home(): JSX.Element {
               </Link>
             </div>
           </div>
-          <AlbumCards
-            items={albums.map((album) => ({
-              title: 'niko',
-              imgUrl: album.imgUrl,
-              artistName: 'niko',
-              dropDownItems: [],
-            }))}
-          />
+          {albums && (
+            <AlbumCards
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
+            />
+          )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
             <div className={styles.more}>
@@ -104,14 +100,16 @@ export function Home(): JSX.Element {
             </div>
           </div>
 
-          <AlbumCards
-            items={albums.map((album) => ({
-              title: 'niko',
-              imgUrl: album.imgUrl,
-              artistName: 'niko',
-              dropDownItems: [],
-            }))}
-          />
+          {albums && (
+            <AlbumCards
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
+            />
+          )}
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
@@ -129,5 +127,4 @@ export function Home(): JSX.Element {
   );
 }
 
-// eslint-disable-next-line import/export
 export default Home;
