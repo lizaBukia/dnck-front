@@ -17,7 +17,7 @@ import { AlbumInterface } from '../Interfaces/album.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 
-export function MainPage(): JSX.Element {
+export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
@@ -126,4 +126,3 @@ export function MainPage(): JSX.Element {
   );
 }
 
-export default MainPage;
