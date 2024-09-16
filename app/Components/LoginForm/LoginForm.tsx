@@ -36,7 +36,6 @@ const LoginForm: FC = () => {
 
       if (accessToken) {
         setCookie('accessToken', accessToken, 24);
-        console.log('User logged in successfully');
         router.push('/');
       } else {
         alert('password is not correct');

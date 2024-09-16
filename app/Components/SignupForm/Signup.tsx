@@ -39,7 +39,6 @@ const SignUpForm: FC = () => {
     }
     if (password !== confirmPassword) {
       setError('password', {});
-      return console.log(`password don't match`);
     }
   };
 

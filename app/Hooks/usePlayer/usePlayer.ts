@@ -1,38 +1,40 @@
-import { RefObject, useCallback, useEffect, useRef } from 'react';
-import { useRecoilState, atom } from 'recoil';
+import { RefObject, useCallback, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import { usePlayerType } from './types/use-player.type';
-import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 import { currentMusicState } from '@/app/States/States';
-import { log } from 'console';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 
 const globalPlayerRef: RefObject<HTMLAudioElement> = { current: null };
 
-export const usePlayer = (): usePlayerType => {
-  const playerRef = globalPlayerRef;
-  const [currentMusic, setCurrentMusic] = useRecoilState<CurrentMusicStateInterface>(currentMusicState);
+export const usePlayer: () => void = (): usePlayerType => {
+  const playerRef: RefObject<HTMLAudioElement> = globalPlayerRef;
+  const [currentMusic, setCurrentMusic] =
+    useRecoilState<CurrentMusicStateInterface>(currentMusicState);
 
-  const handleProgressChange = useCallback((event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (playerRef?.current) {
-      const newTime = Number(event.target.value);
-      playerRef.current.currentTime = newTime;
-      setCurrentMusic((prevState) => ({
-        ...prevState,
-        currentTime: newTime,
-      }));
-      console.log(currentMusic, 'currs')
-    }
-  }, [playerRef, setCurrentMusic]);
+  const handleProgressChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => void = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>): void => {
+      if (playerRef?.current) {
+        const newTime: number = Number(event.target.value);
+        playerRef.current.currentTime = newTime;
+        setCurrentMusic((prevState) => ({
+          ...prevState,
+          currentTime: newTime,
+        }));
+      }
+    },
+    [playerRef, setCurrentMusic],
+  );
 
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
       const updateProgress = (): void => {
-        console.log(audioElement.currentTime)
         setCurrentMusic((prevState) => ({
           ...prevState,
           currentTime: audioElement.currentTime,
         }));
-        console.log(currentMusic, 'currs')
       };
       audioElement.addEventListener('timeupdate', updateProgress);
 
@@ -42,7 +44,7 @@ export const usePlayer = (): usePlayerType => {
     }
   }, [playerRef, setCurrentMusic, currentMusic]);
 
-  const togglePlay = useCallback(() => {
+  const togglePlay: () => void = useCallback(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
       if (audioElement.paused) {
@@ -69,7 +71,7 @@ export const usePlayer = (): usePlayerType => {
         togglePlay();
       }
     }
-  }, [currentMusic.src, togglePlay]);
+  }, [currentMusic.src, playerRef, togglePlay]);
 
   return {
     playerRef,

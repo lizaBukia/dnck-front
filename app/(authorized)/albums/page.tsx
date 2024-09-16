@@ -27,7 +27,6 @@ export default function Home(): JSX.Element {
               {albums && (
                 <AlbumCards
                   items={albums?.map?.((album) => {
-                    console.log(album);
                     return {
                       title: album.name,
                       imgUrl: album.imgUrl,
