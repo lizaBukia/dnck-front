@@ -9,7 +9,7 @@ import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enu
 import Player from '@/app/Components/Player/Player';
 import { AlbumInterface } from '@/app/Interfaces/album.interface';
 
-export default function Home(): JSX.Element {
+export default function AlbumPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
 
   return (

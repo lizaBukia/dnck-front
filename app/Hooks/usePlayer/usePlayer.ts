@@ -6,7 +6,7 @@ import { CurrentMusicStateInterface } from '@/app/States/current-music-state-pro
 
 const globalPlayerRef: RefObject<HTMLAudioElement> = { current: null };
 
-export const usePlayer: () => void = (): usePlayerType => {
+export const usePlayer = (): usePlayerType => {
   const playerRef: RefObject<HTMLAudioElement> = globalPlayerRef;
   const [currentMusic, setCurrentMusic] =
     useRecoilState<CurrentMusicStateInterface>(currentMusicState);

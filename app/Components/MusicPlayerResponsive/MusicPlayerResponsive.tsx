@@ -5,17 +5,15 @@ import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import styles from './MusicPlayerResponsive.module.scss';
-import { MusicPlayerResponsivePropsInterface } from './interfaces/music-player-responsive-props.interface';
-import { currentMusicState, isDarkState } from '@/app/States/States';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { currentMusicState, isDarkState } from '@/app/States/States';
 
 // eslint-disable-next-line react/display-name
-const MusicPlayerResponsive: FC<MusicPlayerResponsivePropsInterface>  = ((props) => {
+const MusicPlayerResponsive: FC = () => {
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
   const [currentMusic] = useRecoilState(currentMusicState);
-  const { playerRef: audioRef } = usePlayer();
-
+  const { playerRef: audioRef, togglePlay } = usePlayer();
 
   return (
     <div className={`${className} ${styles.playerWrapper}`}>
@@ -23,7 +21,7 @@ const MusicPlayerResponsive: FC<MusicPlayerResponsivePropsInterface>  = ((props)
         <div>
           <Image
             className={styles.playerImage}
-            src={props.image}
+            src={currentMusic.imgLink}
             width={56}
             height={63}
             alt="image"
@@ -43,7 +41,7 @@ const MusicPlayerResponsive: FC<MusicPlayerResponsivePropsInterface>  = ((props)
         />
         <PlayButtonMobile
           icon={IconNameEnum.Pause}
-          onClick={() => props.onClick()}
+          onClick={togglePlay}
           width={32}
           height={32}
           isDark={false}
@@ -56,5 +54,5 @@ const MusicPlayerResponsive: FC<MusicPlayerResponsivePropsInterface>  = ((props)
       </div>
     </div>
   );
-});
+};
 export default MusicPlayerResponsive;

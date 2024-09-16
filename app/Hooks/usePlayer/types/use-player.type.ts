@@ -5,5 +5,5 @@ export type usePlayerType = {
   playerRef: RefObject<HTMLAudioElement>;
   currentTime: number | undefined;
   isPlaying: boolean;
-  handleProgressChange:  React.ChangeEventHandler<HTMLInputElement> ;
+  handleProgressChange: React.ChangeEventHandler<HTMLInputElement>;
 };
