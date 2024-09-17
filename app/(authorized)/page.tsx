@@ -1,16 +1,15 @@
-'use client';
-import Link from 'next/link';
+'use client'
+
+import { Heading, Link } from 'lucide-react';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
 import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
-import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
 import HitsCards from '../Components/HitsCards/HitsCards';
 import Player from '../Components/Player/Player';
-import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
 import { AlbumInterface } from '../Interfaces/album.interface';
@@ -19,7 +18,7 @@ import styles from './page.module.scss';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);  
 
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
@@ -27,13 +26,9 @@ export default function MainPage(): JSX.Element {
         <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.mobileHeading}>
             <div className={styles.mobileText}>
-              <Text
-                htmlType={TextHtmlTypeEnum.Span}
-                type={TextTypeEnum.PrimaryTextLarge}
-              >
+              
                 Let’s start new adventure
                 <span className={styles.colored}> with you</span>
-              </Text>
             </div>
             <ModeSwitcher />
           </div>
@@ -43,16 +38,14 @@ export default function MainPage(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          {albums && (
+          {Array.isArray(albums) && (
             <AlbumCards
-              items={albums?.map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.imgUrl,
-                  artists: album.artists,
-                  dropDownItems: [],
-                };
-              })}
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
             />
           )}
           <div className={styles.heading}>
@@ -61,7 +54,7 @@ export default function MainPage(): JSX.Element {
               <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
-          {musics && (
+          {Array.isArray(musics) && (
             <HitsCards
               items={musics.map((hit) => ({
                 backgroundImage: '/image75.png',
@@ -82,7 +75,7 @@ export default function MainPage(): JSX.Element {
               </Link>
             </div>
           </div>
-          {albums && (
+          {Array.isArray(albums) && (
             <AlbumCards
               items={albums.map((album) => ({
                 title: album.name,
@@ -99,7 +92,7 @@ export default function MainPage(): JSX.Element {
             </div>
           </div>
 
-          {albums && (
+          {Array.isArray(albums) && (
             <AlbumCards
               items={albums.map((album) => ({
                 title: album.name,
@@ -125,4 +118,3 @@ export default function MainPage(): JSX.Element {
     </div>
   );
 }
-

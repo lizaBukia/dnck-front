@@ -6,7 +6,7 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {props.items.map((item, index) => (
+        {props?.items?.map((item, index) => (
           <HitsCard
             key={index}
             backgroundImage={item.backgroundImage}
