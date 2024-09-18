@@ -15,6 +15,7 @@ import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './LoginForm.module.scss';
 import { setCookie } from '@/helpers/cookies';
+import { ApiClient } from '@/app/Api/api';
 
 const LoginForm: FC = () => {
   const {
@@ -28,8 +29,8 @@ const LoginForm: FC = () => {
   const onSubmit = async (values: FieldValues): Promise<void> => {
     // TODO: Refactor This Call To Axios Config
     try {
-      const response: AxiosResponse = await axios.post(
-        'http://10.10.50.128:3000/auth/login',
+      const response: AxiosResponse = await ApiClient.post(
+        '/auth/login',
         values,
       );
       const { accessToken } = response.data;
@@ -42,7 +43,13 @@ const LoginForm: FC = () => {
         alert('password is not correct');
       }
     } catch (err) {
-      alert('Login failed');
+      if (axios.isAxiosError(err) && err.response) {
+        console.error(err.response.data);
+        alert('Login failed: ' + err.response.data.message);
+      } else {
+        console.error(err);
+        alert('Login failed: ' + 'err.response');
+      }
     }
   };
 

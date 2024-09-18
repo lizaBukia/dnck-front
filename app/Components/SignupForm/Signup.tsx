@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
 import Heading from '../Heading/Heading';
@@ -28,7 +28,7 @@ const SignUpForm: FC = () => {
   const confirmPassword: string = watch('confirmPassword');
   const router: AppRouterInstance = useRouter();
 
-  const onSubmit = async (values: object): Promise<void> => {
+  const onSubmit = async (values: FieldValues): Promise<void> => {
     try {
       await ApiClient.post('/auth/register', values);
       alert('User registered successfully');
