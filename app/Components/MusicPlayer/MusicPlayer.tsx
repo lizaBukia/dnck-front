@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
-import useSWR from 'swr';
-import HitsCards from '../HitsCards/HitsCards';
+// import useSWR from 'swr';
+// import HitsCards from '../HitsCards/HitsCards';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
-import { fetcher } from '@/app/Api/fetcher';
+// import { fetcher } from '@/app/Api/fetcher';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
-import { MusicInterface } from '@/app/Interfaces/music.interface';
+// import { MusicInterface } from '@/app/Interfaces/music.interface';
 import { currentMusicState } from '@/app/States/States';
 
 // eslint-disable-next-line react/display-name
 const MusicPlayer: FC = () => {
   const { playerRef: audioRef, handleProgressChange, togglePlay } = usePlayer();
   const [currentMusic] = useRecoilState(currentMusicState);
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+  // const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -119,16 +119,16 @@ const MusicPlayer: FC = () => {
           </div>
         </div>
         <div>
-          {musics && (
+          {/* {musics && (
             <HitsCards
               items={musics.map((hit) => ({
-                backgroundImage: '/image75.png',
+                backgroundImage: '/nirvana.jfif',
                 album: hit.album,
                 src: hit.src,
                 dropDownItems: [],
               }))}
             />
-          )}{' '}
+          )} */}
         </div>
       </div>
     </div>

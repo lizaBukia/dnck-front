@@ -64,7 +64,7 @@ export default function MainPage(): JSX.Element {
           {musics && (
             <HitsCards
               items={musics.map((hit) => ({
-                backgroundImage: '/image75.png',
+                backgroundImage: '/nirvana.jfif',
                 album: hit.album,
                 src: hit.src,
                 dropDownItems: [],
