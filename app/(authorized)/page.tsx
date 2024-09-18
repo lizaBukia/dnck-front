@@ -9,16 +9,15 @@ import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
 import HitsCards from '../Components/HitsCards/HitsCards';
-import Player from '../Components/Player/Player';
 import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
-import { AlbumInterface } from '../Interfaces/album.interface';
+import { AlbumInterfaces } from '../Interfaces/album.interfaces';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 
 export default function MainPage(): JSX.Element {
-  const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
+  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
   return (
@@ -64,9 +63,11 @@ export default function MainPage(): JSX.Element {
           {musics && (
             <HitsCards
               items={musics.map((hit) => ({
-                backgroundImage: '/image75.png',
+                backgroundImage: hit.album.imgUrl,
                 album: hit.album,
+                name: hit.name,
                 src: hit.src,
+                id: hit.id,
                 dropDownItems: [],
               }))}
             />
@@ -117,9 +118,6 @@ export default function MainPage(): JSX.Element {
             </div>
           </div>
           <ArtistCards items={ArtistCardsItems} />
-        </div>
-        <div className={`${styles.player} ${styles.darkPlayer}`}>
-          <Player />
         </div>
       </div>
     </div>

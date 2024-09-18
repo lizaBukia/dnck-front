@@ -1,13 +1,18 @@
-@import '../Colors/common-colors.scss';
-@import '../Colors/light-colors.scss';
-@import '../Colors/dark-colors.scss';
+@import '/app/Colors/common-colors.scss';
+@import '/app/Colors/dark-colors.scss';
+@import '/app/Colors/light-colors.scss';
 
+.content {
+  border-radius: 12px;
+  box-shadow: 0px 30px 30px 0px rgba(0, 0, 0, 0.03);
+  display: flex;
+  gap: 16px;
+}
 .container {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
   padding: 24px;
-  justify-content: center;
   background-color: $primary-white;
 }
 
@@ -20,16 +25,15 @@
   display: flex;
   width: 100%;
   gap: 24px;
-  justify-content: center;
 }
 
-.content {
+.contentWrapper {
   display: flex;
   flex-flow: column wrap;
   padding: 24px;
   gap: 16px;
   width: 100%;
-  border-radius: 12px;
+  max-width: 986px;
   background-color: $primary-white;
 }
 
@@ -63,6 +67,10 @@
   display: flex;
   width: 100%;
 }
+.hitsWrapper {
+    display: flex;
+    flex-direction: column;
+}
 
 .downPlayer {
   display: none;
@@ -76,7 +84,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1405px) {
+@media screen and (max-width: 1400px) {
   .mobileHeading {
     display: none;
   }

@@ -1,21 +1,16 @@
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
-import useSWR from 'swr';
-import HitsCards from '../HitsCards/HitsCards';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
-import { fetcher } from '@/app/Api/fetcher';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
-import { MusicInterface } from '@/app/Interfaces/music.interface';
 import { currentMusicState } from '@/app/States/States';
 
 // eslint-disable-next-line react/display-name
 const MusicPlayer: FC = () => {
   const { playerRef: audioRef, handleProgressChange, togglePlay } = usePlayer();
   const [currentMusic] = useRecoilState(currentMusicState);
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -53,7 +48,7 @@ const MusicPlayer: FC = () => {
         >
           <div className={styles.musicPlayer}>
             <div className={styles.heading}>
-              <h1>{currentMusic.name}</h1>
+              <h2>{currentMusic.name}</h2>
               <span>{currentMusic.artistName}</span>
             </div>
             <div>
@@ -66,7 +61,7 @@ const MusicPlayer: FC = () => {
                 value={currentMusic.currentTime}
                 onChange={handleProgressChange}
               />
-              <audio src="/music.mp4" ref={audioRef}></audio>
+              <audio ref={audioRef}></audio>
             </div>
             <div className={styles.playerBoard}>
               <Icon
@@ -117,18 +112,6 @@ const MusicPlayer: FC = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div>
-          {musics && (
-            <HitsCards
-              items={musics.map((hit) => ({
-                backgroundImage: '/image75.png',
-                album: hit.album,
-                src: hit.src,
-                dropDownItems: [],
-              }))}
-            />
-          )}{' '}
         </div>
       </div>
     </div>
