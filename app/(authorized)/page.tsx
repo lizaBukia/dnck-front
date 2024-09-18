@@ -1,27 +1,30 @@
 'use client';
 import Link from 'next/link';
+import useSWR from 'swr';
+import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
-import AlbumItems from '../Components/AlbumItems/AlbumItems';
 import ArtistCards from '../Components/ArtistCards/ArtistCards';
 import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
-import { HitsItems } from '../Components/HitsCard/HitsItems/HitsItems';
 import HitsCards from '../Components/HitsCards/HitsCards';
-import Player from '../Components/Player/Player';
 import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
+import { AlbumInterfaces } from '../Interfaces/album.interfaces';
+import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 
-const MainPage = (): JSX.Element => {
+export default function MainPage(): JSX.Element {
+  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
+  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.mobileHeading}>
-            /app/
             <div className={styles.mobileText}>
               <Text
                 htmlType={TextHtmlTypeEnum.Span}
@@ -39,14 +42,36 @@ const MainPage = (): JSX.Element => {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          {albums && (
+            <AlbumCards
+              items={albums?.map?.((album) => {
+                return {
+                  title: album.name,
+                  imgUrl: album.imgUrl,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
+            />
+          )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
               <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
-          <HitsCards items={HitsItems} />
+          {musics && (
+            <HitsCards
+              items={musics.map((hit) => ({
+                backgroundImage: hit.album.imgUrl,
+                album: hit.album,
+                name: hit.name,
+                src: hit.src,
+                id: hit.id,
+                dropDownItems: [],
+              }))}
+            />
+          )}
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
@@ -58,7 +83,16 @@ const MainPage = (): JSX.Element => {
               </Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          {albums && (
+            <AlbumCards
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
+            />
+          )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
             <div className={styles.more}>
@@ -66,7 +100,16 @@ const MainPage = (): JSX.Element => {
             </div>
           </div>
 
-          <AlbumCards items={AlbumItems} />
+          {albums && (
+            <AlbumCards
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
+            />
+          )}
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
@@ -76,16 +119,7 @@ const MainPage = (): JSX.Element => {
           </div>
           <ArtistCards items={ArtistCardsItems} />
         </div>
-        <div className={`${styles.player} ${styles.darkPlayer}`}>
-          <Player
-            onClick={function (): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
-        </div>
       </div>
     </div>
   );
-};
-
-export default MainPage;
+}

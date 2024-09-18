@@ -29,7 +29,7 @@ const LoginForm: FC = () => {
     // TODO: Refactor This Call To Axios Config
     try {
       const response: AxiosResponse = await axios.post(
-        'https://back.dnck.ge/auth/login',
+        'http://10.10.50.128:3000/auth/login',
         values,
       );
       const { accessToken } = response.data;
@@ -56,6 +56,7 @@ const LoginForm: FC = () => {
               alt={'brand'}
               width={644}
               height={575}
+              className={styles.image}
             />
           </div>
           <div className={styles.form}>

@@ -4,25 +4,25 @@ const ArtistCardsItems: ArtistCardsItemsInterface[] = [
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
   {
     image: '/images/asap.png',
     artistName: 'Asap Rocky',
-    naming: 'Artist',
+    name: 'Artist',
     href: './SingleArtistPage',
   },
 ];

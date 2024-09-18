@@ -19,6 +19,15 @@
   justify-content: flex-start;
   text-align: start;
 }
+.heading h2 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;     
+  overflow: hidden;        
+  text-overflow: ellipsis; 
+  max-width: 100%;         
+}
 .input {
   display: flex;
   align-items: center;
@@ -51,7 +60,6 @@
   cursor: pointer;
 }
 .music {
-  background-image: url('/image75.png');
   width: 326px;
   height: 393px;
   background-repeat: no-repeat;
@@ -59,6 +67,7 @@
   justify-content: center;
   align-items: flex-end;
   border-radius: 12px;
+  background-size: cover;
 }
 .volumeControl {
   position: relative;

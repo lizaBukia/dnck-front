@@ -10,15 +10,16 @@ import { AlbumCardPropsInterface } from './interfaces/album-card-props.interface
 import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
+  const artistName: string[] = [];
+
+  for (const artist of props.artists) {
+    artistName.push(`${artist.firstName} ${artist.lastName}`);
+  }
+
   return (
     <div className={`${styles.albumCard} ${styles.dark}`}>
       <div className={styles.albumCardImage}>
-        <Image
-          src={props.image}
-          alt={props.albumName}
-          width={200}
-          height={203}
-        />
+        <Image src={props.imgUrl} alt={'wegwegw'} width={200} height={203} />
       </div>
       <div className={styles.namesContainer}>
         <div className={styles.artistName}>
@@ -27,7 +28,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.PrimaryTextLarge}
           >
-            {props.artistName}
+            {artistName.join(',')}
           </Text>
           <div className={styles.dropdown}>
             <Dropdown
@@ -53,7 +54,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             darkColor: '#B1B1B1',
           }}
         >
-          {props.albumName}
+          {props.title}
         </Text>
       </div>
     </div>
