@@ -6,10 +6,10 @@ import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
 import ModeSwitcher from '@/app/Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
-import { AlbumInterface } from '@/app/Interfaces/album.interface';
+import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
 
 export default function AlbumPage(): JSX.Element {
-  const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
+  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
 
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
