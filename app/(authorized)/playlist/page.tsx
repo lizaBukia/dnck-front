@@ -31,9 +31,11 @@ export default function AlbumPage(): JSX.Element {
             {musics && (
               <HitsCards
                 items={musics.map((hit) => ({
-                  backgroundImage: '/nirvana.jfif',
+                  backgroundImage: hit.album.imgUrl,
                   album: hit.album,
+                  name: hit.name,
                   src: hit.src,
+                  id: hit.id,
                   dropDownItems: [],
                 }))}
               />
