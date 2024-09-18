@@ -16,6 +16,7 @@ import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './LoginForm.module.scss';
 import { ApiClient } from '@/app/Api/api';
 import { setCookie } from '@/helpers/cookies';
+import { AxiosResponse } from 'axios';
 
 const LoginForm: FC = () => {
   const {
@@ -29,7 +30,10 @@ const LoginForm: FC = () => {
   const onSubmit = async (values: FieldValues): Promise<void> => {
     // TODO: Refactor This Call To Axios Config
     try {
-      const response = await ApiClient.post('/auth/login', values);
+      const response: AxiosResponse = await ApiClient.post(
+        '/auth/login',
+        values,
+      );
       const { accessToken } = response.data;
 
       if (accessToken) {
