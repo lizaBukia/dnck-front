@@ -8,4 +8,6 @@ export interface HitsCardItemsInterface {
   album: AlbumInterface;
   button?: PlayButtonPropsInterface[];
   src: string;
+  name: string;
+  id: number;
 }

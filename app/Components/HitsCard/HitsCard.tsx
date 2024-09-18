@@ -25,15 +25,15 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    togglePlay();
     setMusicState({
-      name: props.album.name,
+      name: props.name,
       imgLink: props.backgroundImage,
       src: props.src,
       artistName: artistName.join(', '),
       currentTime: 0,
       isPlaying: true,
     });
+    togglePlay();
   };
 
   return (

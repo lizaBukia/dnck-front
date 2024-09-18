@@ -1,6 +1,6 @@
 import { ArtistInterface } from './artist.interface';
 
-export interface AlbumInterface {
+export interface AlbumInterfaces {
   id: number;
   name: string;
   artists: ArtistInterface[];

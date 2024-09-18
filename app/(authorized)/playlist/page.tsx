@@ -1,11 +1,16 @@
 'use client';
+import useSWR from 'swr';
 import styles from './page.module.scss';
+import { fetcher } from '@/app/Api/fetcher';
 import ModeSwitcher from '@/app/Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
-import Player from '@/app/Components/Player/Player';
+import HitsCards from '@/app/Components/HitsCards/HitsCards';
+import { MusicInterface } from '@/app/Interfaces/music.interface';
 
 export default function AlbumPage(): JSX.Element {
+  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
@@ -20,11 +25,19 @@ export default function AlbumPage(): JSX.Element {
             <ModeSwitcher />
           </div>
           <div className={styles.heading}>
-            <Heading type={HeadingTypeEnum.H5}>Albums</Heading>
+            <Heading type={HeadingTypeEnum.H5}>Playlist</Heading>
           </div>
-
-          <div className={`${styles.player} ${styles.darkPlayer}`}>
-            <Player />
+          <div>
+            {musics && (
+              <HitsCards
+                items={musics.map((hit) => ({
+                  backgroundImage: '/nirvana.jfif',
+                  album: hit.album,
+                  src: hit.src,
+                  dropDownItems: [],
+                }))}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@ import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
 import ModeSwitcher from '@/app/Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
-import Player from '@/app/Components/Player/Player';
 import { AlbumInterface } from '@/app/Interfaces/album.interface';
 
 export default function AlbumPage(): JSX.Element {
@@ -42,9 +41,6 @@ export default function AlbumPage(): JSX.Element {
               )}
             </div>
           </div>
-        </div>
-        <div className={`${styles.player} ${styles.darkPlayer}`}>
-          <Player />
         </div>
       </div>
     </div>
