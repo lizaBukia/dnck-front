@@ -96,7 +96,7 @@ const SignUpForm: FC = () => {
                 <label>Re-enter Password</label>
                 <input
                   type="password"
-                  {...register('rePassword', {
+                  {...register('confirmPassword', {
                     required: 'Please re-enter your password',
                   })}
                   className={`${styles.authorizationInput} ${styles.darkAuthorizationInput}`}
