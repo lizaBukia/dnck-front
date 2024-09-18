@@ -11,7 +11,7 @@ export const currentTimeState: RecoilState<number> = atom({
   default: 0,
 });
 
-export const  currentMusicState: RecoilState<CurrentMusicStateInterface> =
+export const currentMusicState: RecoilState<CurrentMusicStateInterface> =
   atom<CurrentMusicStateInterface>({
     key: 'currentMusicState',
     default: {
