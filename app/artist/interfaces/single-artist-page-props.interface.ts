@@ -1,3 +1,5 @@
 export interface SingleArtistPagePropsInterface {
-  artistName: string;
+  params: {
+    id: number;
+  };
 }

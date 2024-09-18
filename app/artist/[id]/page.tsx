@@ -1,16 +1,16 @@
 'use client';
 import Link from 'next/link';
-import AlbumCards from '../Components/AlbumCards/AlbumCards';
-import AlbumItems from '../Components/AlbumItems/AlbumItems';
-import Heading from '../Components/Heading/Heading';
-import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
-import { HitsItems } from '../Components/HitsCard/HitsItems/HitsItems';
-import HitsCards from '../Components/HitsCards/HitsCards';
-import Player from '../Components/Player/Player';
-import SingleArtistCard from '../Components/SingleArtistCard/SingleArtistCard';
-import { SingleArtistPagePropsInterface } from './interfaces/single-artist-page-props.interface';
-import styles from './page.module.scss';
-import { SingleArtistPageType } from './type/single-artist-page.type';
+import AlbumCards from '../../Components/AlbumCards/AlbumCards';
+import AlbumItems from '../../Components/AlbumItems/AlbumItems';
+import Heading from '../../Components/Heading/Heading';
+import { HeadingTypeEnum } from '../../Components/Heading/enums/heading-type.enum';
+import { HitsItems } from '../../Components/HitsCard/HitsItems/HitsItems';
+import HitsCards from '../../Components/HitsCards/HitsCards';
+import Player from '../../Components/Player/Player';
+import SingleArtistCard from '../../Components/SingleArtistCard/SingleArtistCard';
+import { SingleArtistPagePropsInterface } from '../interfaces/single-artist-page-props.interface';
+import styles from '../page.module.scss';
+import { SingleArtistPageType } from '../type/single-artist-page.type';
 
 const SingleArtistPage: SingleArtistPageType = (
   props: SingleArtistPagePropsInterface,
@@ -24,7 +24,7 @@ const SingleArtistPage: SingleArtistPageType = (
             <div className={styles.heading}>
               <Heading
                 type={HeadingTypeEnum.H5}
-              >{`${props.artistName}'s Most Popular Musics`}</Heading>
+              >{`${props.params}'s Most Popular Musics`}</Heading>
               <div className={styles.seeAll}>
                 <Link href={'/topHits'}>See all</Link>
               </div>
@@ -34,7 +34,7 @@ const SingleArtistPage: SingleArtistPageType = (
           <div className={styles.heading}>
             <Heading
               type={HeadingTypeEnum.H5}
-            >{`${props.artistName}'s Most Popular Albums`}</Heading>
+            >{`${props.params}'s Most Popular Albums`}</Heading>
             <div className={styles.seeAll}>
               <Link href={'/topHits'}>See all</Link>
             </div>
