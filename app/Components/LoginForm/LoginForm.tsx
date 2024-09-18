@@ -1,5 +1,6 @@
 'use client';
 
+import { AxiosResponse } from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,7 +17,6 @@ import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './LoginForm.module.scss';
 import { ApiClient } from '@/app/Api/api';
 import { setCookie } from '@/helpers/cookies';
-import { AxiosResponse } from 'axios';
 
 const LoginForm: FC = () => {
   const {
