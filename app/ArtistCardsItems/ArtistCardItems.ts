@@ -1,4 +1,4 @@
-import { ArtistCardsItemsInterface } from '../Components/ArtistCard/interfaces/artist-card-items.interfaces';
+import { ArtistCardsItemsInterface } from '../Components/ArtistCard/interfaces/artist-cards-items.interfaces';
 
 const ArtistCardItems: ArtistCardsItemsInterface[] = [
   {
