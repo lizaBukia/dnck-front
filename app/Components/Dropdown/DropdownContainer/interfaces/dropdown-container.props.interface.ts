@@ -4,4 +4,5 @@ export interface DropdownContainerPropsInterface {
   darkMode?: boolean;
   items: DropDownItemsInterface[];
 }
+
 export type { DropDownItemsInterface };

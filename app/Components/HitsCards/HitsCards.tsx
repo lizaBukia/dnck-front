@@ -6,12 +6,15 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {props.items.map((item, index) => (
+        {props.items.map((item) => (
           <HitsCard
-            key={index}
+            key={item.id}
             backgroundImage={item.backgroundImage}
-            artistName={item.artistName}
-            albumName={item.albumName}
+            album={item.album}
+            src={item.src}
+            name={item.name}
+            id={item.id}
+            dropDownItems={item.dropDownItems}
           />
         ))}
       </div>

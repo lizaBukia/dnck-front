@@ -1,5 +1,6 @@
 'use client';
-import axios, { AxiosResponse } from 'axios';
+
+import { AxiosResponse } from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +15,7 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './LoginForm.module.scss';
+import { ApiClient } from '@/app/Api/api';
 import { setCookie } from '@/helpers/cookies';
 
 const LoginForm: FC = () => {
@@ -28,8 +30,8 @@ const LoginForm: FC = () => {
   const onSubmit = async (values: FieldValues): Promise<void> => {
     // TODO: Refactor This Call To Axios Config
     try {
-      const response: AxiosResponse = await axios.post(
-        'https://back.dnck.ge/auth/login',
+      const response: AxiosResponse = await ApiClient.post(
+        '/auth/login',
         values,
       );
       const { accessToken } = response.data;
@@ -42,7 +44,7 @@ const LoginForm: FC = () => {
         alert('password is not correct');
       }
     } catch (err) {
-      alert('Login failed');
+      alert('Login Failed');
     }
   };
 

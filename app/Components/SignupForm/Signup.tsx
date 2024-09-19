@@ -1,11 +1,10 @@
 'use client';
-import axios from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import Button from '../Button/Button';
 import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
 import Heading from '../Heading/Heading';
@@ -14,6 +13,7 @@ import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './Signup.module.scss';
+import { ApiClient } from '@/app/Api/api';
 
 const SignUpForm: FC = () => {
   const {
@@ -28,9 +28,9 @@ const SignUpForm: FC = () => {
   const confirmPassword: string = watch('confirmPassword');
   const router: AppRouterInstance = useRouter();
 
-  const onSubmit = async (values: object): Promise<void> => {
+  const onSubmit = async (values: FieldValues): Promise<void> => {
     try {
-      await axios.post('https://back.dnck.ge/auth/register', values);
+      await ApiClient.post('/auth/register', values);
       alert('User registered successfully');
       router.push('/login');
     } catch (err) {
@@ -39,7 +39,6 @@ const SignUpForm: FC = () => {
     }
     if (password !== confirmPassword) {
       setError('password', {});
-      return console.log(`password don't match`);
     }
   };
 

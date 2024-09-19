@@ -14,14 +14,15 @@ export default async function middleware(
   if (pathIsPublic && token) {
     return NextResponse.redirect(new URL('/', req.url));
   }
-  console.log(pathIsPublic);
   if (!token && !pathIsPublic) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
   return NextResponse.next();
 }
 
-export const config = {
+export const config: {
+  matcher: string[];
+} = {
   matcher: [
     `/((?!api|_next/static|favicon.ico|images|_next/image|icons|.*\\.png$).*)`,
   ],

@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 16px;
+  max-width: 1200px;
+  flex-flow: row wrap;
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .container {
