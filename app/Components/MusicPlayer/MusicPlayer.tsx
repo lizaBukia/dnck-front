@@ -1,111 +1,114 @@
-import { useEffect } from 'react';
+import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
-import { MusicPlayerPropsInterface } from './interfaces/music-player-props.interface';
-import { MusicPlayerType } from './types/music-player.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
-import { currentTimeState } from '@/app/States/States';
+import { currentMusicState } from '@/app/States/States';
 
-const MusicPlayer: MusicPlayerType = (props: MusicPlayerPropsInterface) => {
-  const { playerRef, togglePlay } = usePlayer();
-  const [currentTime, setCurrentTime] = useRecoilState(currentTimeState);
-
-  useEffect(() => {
-    const audioElement: HTMLAudioElement | null = playerRef.current;
-    if (audioElement) {
-      const updateProgress = (): void => {
-        setCurrentTime(audioElement.currentTime);
-      };
-      audioElement.addEventListener('timeupdate', updateProgress);
-      return (): void => {
-        audioElement.removeEventListener('timeupdate', updateProgress);
-      };
-    }
-  });
-
-  const handleProgressChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
-    if (playerRef.current) {
-      playerRef.current.currentTime = Number(event.target.value);
-    }
-  };
+// eslint-disable-next-line react/display-name
+const MusicPlayer: FC = () => {
+  const { playerRef: audioRef, handleProgressChange, togglePlay } = usePlayer();
+  const [currentMusic] = useRecoilState(currentMusicState);
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    if (playerRef.current) {
-      playerRef.current.volume = Number(event.target.value);
+    if (audioRef?.current) {
+      audioRef.current.volume = Number(event.target.value);
     }
   };
+  // const playNext = () => {
+  //   setCurrentTrackIndex((prevIndex) =>
+  //     prevIndex + 1 >= tracks.length ? 0 : prevIndex + 1
+  //   );
+  // };
+
+  // const playPrevious = () => {
+  //   setCurrentTrackIndex((prevIndex) =>
+  //     prevIndex - 1 < 0 ? tracks.length - 1 : prevIndex - 1
+  //   );
+  // };
+  // const shuffleArray = useCallback((array: number[]) => {
+  //   const shuffled = [...array];
+  //   for (let i = shuffled.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  //   }
+  //   return shuffled;
+  // }, []);
 
   return (
     <div>
-      <div
-        className={styles.music}
-        style={{ backgroundImage: `url(${props.BackgroundImage})` }}
-      >
-        <div className={styles.musicPlayer}>
-          <div className={styles.heading}>
-            <h1>{props.MusicTitle}</h1>
-            <span>{props.ArtistName}</span>
-          </div>
-          <div>
-            <input
-              className={styles.input}
-              type="range"
-              min="0"
-              max={playerRef.current?.duration || 0}
-              step="0.1"
-              value={currentTime}
-              onChange={handleProgressChange}
-            />
-            <audio src="/music.mp4" ref={playerRef}></audio>
-          </div>
-          <div className={styles.playerBoard}>
-            <Icon
-              name={IconNameEnum.Shuffle}
-              isActive={true}
-              width={24}
-              height={24}
-            />
-
-            <div className={styles.player}>
-              <Icon
-                name={IconNameEnum.BackwardDesktop}
-                width={26}
-                height={26}
-              />
-              <PlayButton
-                icon={IconNameEnum.Pause}
-                onClick={togglePlay}
-                width={48}
-                height={48}
-              />
-              <Icon name={IconNameEnum.ForwardDesktop} width={26} height={26} />
+      <div className={styles.playlist}>
+        <div
+          className={styles.music}
+          style={{ backgroundImage: `url(${currentMusic.imgLink})` }}
+        >
+          <div className={styles.musicPlayer}>
+            <div className={styles.heading}>
+              <h2>{currentMusic.name}</h2>
+              <span>{currentMusic.artistName}</span>
             </div>
-            <div className={styles.volumeControl}>
-              <div className={styles.volume}>
+            <div>
+              <input
+                className={styles.input}
+                type="range"
+                min="0"
+                max={audioRef.current?.duration || 0}
+                step="0.1"
+                value={currentMusic.currentTime}
+                onChange={handleProgressChange}
+              />
+              <audio ref={audioRef}></audio>
+            </div>
+            <div className={styles.playerBoard}>
+              <Icon
+                name={IconNameEnum.Shuffle}
+                isActive={true}
+                width={24}
+                height={24}
+              />
+
+              <div className={styles.player}>
                 <Icon
-                  name={IconNameEnum.Volume}
-                  isActive={true}
-                  width={24}
-                  height={24}
+                  name={IconNameEnum.BackwardDesktop}
+                  width={26}
+                  height={26}
+                />
+                <PlayButton
+                  onClick={togglePlay}
+                  width={48}
+                  height={48}
+                  icon={''}
+                />
+                <Icon
+                  name={IconNameEnum.ForwardDesktop}
+                  width={26}
+                  height={26}
                 />
               </div>
-              <div className={styles.volumeInput}>
-                <input
-                  className={styles.volumeStyle}
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.01"
-                  onChange={handleVolumeChange}
-                  defaultValue="1"
-                />
+              <div className={styles.volumeControl}>
+                <div className={styles.volume}>
+                  <Icon
+                    name={IconNameEnum.Volume}
+                    isActive={true}
+                    width={24}
+                    height={24}
+                  />
+                </div>
+                <div className={styles.volumeInput}>
+                  <input
+                    className={styles.volumeStyle}
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    onChange={handleVolumeChange}
+                    defaultValue="1"
+                  />
+                </div>
               </div>
             </div>
           </div>

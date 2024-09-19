@@ -10,9 +10,9 @@ const AlbumCards: AlbumCardsType = (props: AlbumCardsPropsInterface) => {
         <AlbumCard
           key={idx}
           darkMode={false}
-          image={item.image}
-          artistName={item.artistName}
-          albumName={item.albumName}
+          imgUrl={item.imgUrl}
+          artists={item.artists}
+          title={item.title}
           dropDownItems={item.dropDownItems}
         />
       ))}

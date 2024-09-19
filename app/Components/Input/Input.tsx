@@ -8,10 +8,10 @@ const Input: InputType = (props: InputPropsInterface) => {
     props.iconPosition || InputIconPositionEnum.Left;
 
   return (
-    <div className={styles.inputWrapper}>
+    <div className={`${styles.inputWrapper} ${styles.darkWrapper}`}>
       {iconPosition === InputIconPositionEnum.Left && props.icon}
       <input
-        className={`${styles.input} ${styles.dark} `}
+        className={`${styles.input} ${styles.dark}`}
         placeholder={props.placeholder}
         type={props.type}
       />

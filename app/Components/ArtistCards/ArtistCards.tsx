@@ -11,7 +11,7 @@ const ArtistCards: ArtistCardsType = (props: ArtistCardsPropsInterface) => {
           key={item.href}
           image={item.image}
           artistName={item.artistName}
-          naming={item.naming}
+          name={item.name}
           href={item.href}
           albumName={''}
         />

@@ -1,3 +1,4 @@
+'use client';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import MusicPlayerResponsive from '../MusicPlayerResponsive/MusicPlayerResponsive';
 import styles from './Player.module.scss';
@@ -8,20 +9,10 @@ const Player: PlayerType = (props: PlayerPropsInterface) => {
   return (
     <div className={props.className}>
       <div className={styles.playerWrapper}>
-        <MusicPlayer
-          MusicTitle={'Lose Control'}
-          ArtistName={'Teddy Swing'}
-          BackgroundImage={'image75.png'}
-          onClick={() => {}}
-        />
+        <MusicPlayer />
       </div>
       <div className={styles.responsivePlayerWrapper}>
-        <MusicPlayerResponsive
-          image={'/image75.png'}
-          songName={'Lose Control'}
-          artistName={'Teddy Swing'}
-          onClick={() => {}}
-        />
+        <MusicPlayerResponsive />
       </div>
     </div>
   );

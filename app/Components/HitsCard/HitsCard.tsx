@@ -1,8 +1,9 @@
+import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
+import PlayButton from '../PlayButton/PlayButton';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
@@ -10,9 +11,30 @@ import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { currentMusicState } from '@/app/States/States';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const { playerRef, togglePlay } = usePlayer();
+  const { togglePlay } = usePlayer();
+  const setMusicState: SetterOrUpdater<CurrentMusicStateInterface> =
+    useSetRecoilState(currentMusicState);
+  const artistName: string[] = [];
+
+  for (const artist of props.album.artists) {
+    artistName.push(`${artist.firstName} ${artist.lastName}`);
+  }
+
+  const onClick = (): void => {
+    setMusicState({
+      name: props.name,
+      imgLink: props.backgroundImage,
+      src: props.src,
+      artistName: artistName.join(', '),
+      currentTime: 0,
+      isPlaying: true,
+    });
+    togglePlay();
+  };
 
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
@@ -20,17 +42,17 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
         <div
           className={styles.hitsCardsImage}
           style={{
-            backgroundImage: props.backgroundImage,
+            backgroundImage: `url(${props.album.imgUrl})`,
             backgroundRepeat: `no-repeat`,
             backgroundSize: 'cover',
           }}
         >
-          <audio src="/music.mp4" ref={playerRef}></audio>
           <div className={styles.button}>
-            <PlayButtonMobile
+            <PlayButton
               icon={IconNameEnum.Pause}
-              onClick={togglePlay}
-              isDark={false}
+              onClick={onClick}
+              width={32}
+              height={32}
             />
           </div>
         </div>
@@ -40,14 +62,14 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.SecondaryTextMedium}
           >
-            {props.artistName}
+            {artistName.join(', ')}
           </Text>
           <Text
             className={styles.albumName}
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.SecondaryTextMedium}
           >
-            {props.albumName}
+            {artistName.join(', ')}
           </Text>
         </div>
       </div>
