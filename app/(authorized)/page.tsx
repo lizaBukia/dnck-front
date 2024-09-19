@@ -3,8 +3,6 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
-import ArtistCards from '../Components/ArtistCards/ArtistCards';
-import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -117,7 +115,6 @@ export default function MainPage(): JSX.Element {
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <ArtistCards items={ArtistCardsItems} />
         </div>
       </div>
     </div>
