@@ -22,7 +22,6 @@ const SingleArtistPage: SingleArtistPageType = (
     `/artists/${props.params.id}`,
     fetcher,
   );
-  console.log(artists, 'kjdhdajkhdjkh');
   const { data: musics } = useSWR<MusicInterface[]>('/musics/', fetcher);
   return (
     <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
