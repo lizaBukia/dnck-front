@@ -70,10 +70,16 @@ export default function AlbumPage(): JSX.Element {
               {data && data.length > 0 && (
                 <AlbumCards
                   items={data.map((playlist) => ({
-                    title: playlist.title,
-                    imgUrl: playlist.history?.location,
+                    artists: [
+                      {
+                        firstName: playlist.title,
+                        lastName: '',
+                        biography: '',
+                      },
+                    ],
+                    imgUrl: playlist.history?.location ?? '/default.png',
                     dropDownItems: [],
-                    artists: [],
+                    title: '',
                   }))}
                 />
               )}

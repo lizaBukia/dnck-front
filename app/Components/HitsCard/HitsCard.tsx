@@ -23,6 +23,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
+    console.log('hereee');
     playMusic({
       name: props.name,
       imgLink: props.album.history.location,
@@ -46,7 +47,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             backgroundSize: 'cover',
           }}
         >
-          <div className={styles.button}>
+          <div>
             <PlayButton
               icon={
                 music.currentMusicId === props.id && music.isPlaying
@@ -65,7 +66,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.SecondaryTextMedium}
           >
-            {artistName.join(', ')}
+            {props.name}
           </Text>
           <Text
             className={styles.albumName}
