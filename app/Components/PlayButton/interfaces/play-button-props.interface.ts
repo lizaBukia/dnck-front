@@ -1,5 +1,7 @@
+import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
+
 export interface PlayButtonPropsInterface {
-  icon: string;
+  icon?: IconNameEnum;
   onClick: () => void;
   width: number;
   height: number;

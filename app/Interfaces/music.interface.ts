@@ -5,4 +5,5 @@ export interface MusicInterface {
   name: string;
   album: AlbumInterfaces;
   src: string;
+  history: { location: string };
 }

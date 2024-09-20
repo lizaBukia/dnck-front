@@ -7,4 +7,5 @@ export interface AlbumInterfaces {
   imgUrl: string;
   releaseDate: string;
   createdAt: string;
+  history: { location: string };
 }

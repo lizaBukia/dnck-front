@@ -2,7 +2,10 @@ import { RefObject, useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { usePlayerType } from './types/use-player.type';
 import { currentMusicState } from '@/app/States/States';
-import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
+import {
+  CurrentMusicStateInterface,
+  PlayerMusicInterface,
+} from '@/app/States/current-music-state-props.interface';
 
 const globalPlayerRef: RefObject<HTMLAudioElement> = { current: null };
 
@@ -44,6 +47,32 @@ export const usePlayer = (): usePlayerType => {
     }
   }, [playerRef, setCurrentMusic, currentMusic]);
 
+  const playNext = (): void => {
+    if (currentMusic.currentIndex < currentMusic.musics.length - 1) {
+      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+        ...prevState,
+        currentIndex: prevState.currentIndex + 1,
+        currentMusicId: prevState.musics[prevState.currentIndex + 1].id,
+      }));
+    }
+  };
+
+  const playPrevious = (): void => {
+    console.log(
+      currentMusic.currentIndex > 0,
+      'sest',
+      currentMusic.currentIndex,
+      currentMusic.musics,
+    );
+    if (currentMusic.currentIndex > 0) {
+      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+        ...prevState,
+        currentIndex: prevState.currentIndex - 1,
+        currentMusicId: prevState.musics[prevState.currentIndex - 1].id,
+      }));
+    }
+  };
+
   const togglePlay: () => void = useCallback(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
@@ -61,17 +90,43 @@ export const usePlayer = (): usePlayerType => {
     }
   }, [playerRef, setCurrentMusic]);
 
+  const playMusic = (data: PlayerMusicInterface) => {
+    const currentIndex: number = currentMusic.musics.findIndex(
+      (music) => music.id === data.id,
+    );
+
+    console.log(data);
+
+    if (currentIndex !== -1) {
+      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+        ...prevState,
+        currentIndex,
+      }));
+    } else {
+      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+        ...prevState,
+        currentIndex: prevState.musics.length,
+        currentMusicId: data.id,
+        musics: [...prevState.musics, data],
+      }));
+    }
+  };
+
+  console.log(currentMusic);
+
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
 
-    if (audioElement && currentMusic.src) {
-      if (audioElement.src !== currentMusic.src) {
-        audioElement.src = currentMusic.src;
+    if (audioElement && currentMusic.musics[currentMusic.currentIndex]?.src) {
+      if (
+        audioElement.src !== currentMusic.musics[currentMusic.currentIndex].src
+      ) {
+        audioElement.src = currentMusic.musics[currentMusic.currentIndex].src;
         audioElement.load();
         togglePlay();
       }
     }
-  }, [currentMusic.src, playerRef, togglePlay]);
+  }, [currentMusic.currentIndex, currentMusic.musics, playerRef, togglePlay]);
 
   return {
     playerRef,
@@ -79,5 +134,8 @@ export const usePlayer = (): usePlayerType => {
     handleProgressChange,
     currentTime: currentMusic.currentTime,
     isPlaying: currentMusic.isPlaying,
+    playPrevious,
+    playNext,
+    playMusic,
   };
 };

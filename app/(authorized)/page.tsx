@@ -3,8 +3,6 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
-import ArtistCards from '../Components/ArtistCards/ArtistCards';
-import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -44,10 +42,10 @@ export default function MainPage(): JSX.Element {
           </div>
           {albums && (
             <AlbumCards
-              items={albums?.map?.((album) => {
+              items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.imgUrl,
+                  imgUrl: album.history.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
@@ -57,19 +55,22 @@ export default function MainPage(): JSX.Element {
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
-              <Link href={'/topHits'}>See all</Link>
+              <Link href={'/playlist'}>See all</Link>
             </div>
           </div>
           {musics && (
             <HitsCards
-              items={musics.map((hit) => ({
-                backgroundImage: hit.album.imgUrl,
-                album: hit.album,
-                name: hit.name,
-                src: hit.src,
-                id: hit.id,
-                dropDownItems: [],
-              }))}
+              items={musics.slice(0, 9).map((hit) => {
+                console.log(hit.history.location);
+                return {
+                  backgroundImage: hit.album.history.location,
+                  album: hit.album,
+                  name: hit.name,
+                  src: hit.history.location,
+                  id: hit.id,
+                  dropDownItems: [],
+                };
+              })}
             />
           )}
 
@@ -85,12 +86,14 @@ export default function MainPage(): JSX.Element {
           </div>
           {albums && (
             <AlbumCards
-              items={albums.map((album) => ({
-                title: album.name,
-                imgUrl: album.imgUrl,
-                artists: album.artists,
-                dropDownItems: [],
-              }))}
+              items={albums.slice(0, 4).map?.((album) => {
+                return {
+                  title: album.name,
+                  imgUrl: album.history.location,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
             />
           )}
           <div className={styles.heading}>
@@ -102,22 +105,34 @@ export default function MainPage(): JSX.Element {
 
           {albums && (
             <AlbumCards
-              items={albums.map((album) => ({
-                title: album.name,
-                imgUrl: album.imgUrl,
-                artists: album.artists,
-                dropDownItems: [],
-              }))}
+              items={albums.slice(0, 4).map?.((album) => {
+                return {
+                  title: album.name,
+                  imgUrl: album.history.location,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
             />
           )}
-
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
             <div className={styles.more}>
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          <ArtistCards items={ArtistCardsItems} />
+          {albums && (
+            <AlbumCards
+              items={albums.slice(0, 4).map?.((album) => {
+                return {
+                  title: album.name,
+                  imgUrl: album.history.location,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -31,12 +31,14 @@ export default function AlbumPage(): JSX.Element {
             <div className={styles.wrapper}>
               {albums && (
                 <AlbumCards
-                  items={albums?.map?.((album) => ({
-                    title: album.name,
-                    imgUrl: album.imgUrl,
-                    artists: album.artists,
-                    dropDownItems: [],
-                  }))}
+                  items={albums.map?.((album) => {
+                    return {
+                      title: album.name,
+                      imgUrl: album.history.location,
+                      artists: album.artists,
+                      dropDownItems: [],
+                    };
+                  })}
                 />
               )}
             </div>
