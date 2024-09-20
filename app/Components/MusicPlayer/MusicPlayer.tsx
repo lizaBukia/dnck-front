@@ -51,7 +51,7 @@ const MusicPlayer: FC = () => {
       <div className={styles.playlist}>
         <div
           className={styles.music}
-          style={{ backgroundImage: `url(${currentMusic.imgLink})` }}
+          style={{ backgroundImage: `url(${currentMusic?.imgLink})` }}
         >
           <div className={styles.musicPlayer}>
             <div className={styles.heading}>
