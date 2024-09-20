@@ -21,15 +21,19 @@ const MusicPlayerResponsive: FC = () => {
         <div>
           <Image
             className={styles.playerImage}
-            src={currentMusic.imgLink}
+            src={currentMusic.musics[currentMusic.currentIndex].src}
             width={56}
             height={63}
             alt="image"
           />
         </div>
         <div className={`${className} ${styles.playerName}`}>
-          <h1 className={styles.songName}>{currentMusic.name}</h1>
-          <span className={styles.artistName}>{currentMusic.artistName}</span>
+          <h1 className={styles.songName}>
+            {currentMusic.musics[currentMusic.currentIndex].name}
+          </h1>
+          <span className={styles.artistName}>
+            {currentMusic.musics[currentMusic.currentIndex].artistName}
+          </span>
           <audio ref={audioRef}></audio>
         </div>
       </div>

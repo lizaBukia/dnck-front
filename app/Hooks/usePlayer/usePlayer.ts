@@ -90,7 +90,7 @@ export const usePlayer = (): usePlayerType => {
     }
   }, [playerRef, setCurrentMusic]);
 
-  const playMusic = (data: PlayerMusicInterface) => {
+  const playMusic = (data: PlayerMusicInterface): void => {
     const currentIndex: number = currentMusic.musics.findIndex(
       (music) => music.id === data.id,
     );
