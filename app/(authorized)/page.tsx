@@ -61,7 +61,6 @@ export default function MainPage(): JSX.Element {
           {musics && (
             <HitsCards
               items={musics.slice(0, 9).map((hit) => {
-                console.log(hit.history.location);
                 return {
                   backgroundImage: hit.album.history.location,
                   album: hit.album,

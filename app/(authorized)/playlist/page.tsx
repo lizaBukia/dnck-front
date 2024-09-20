@@ -66,7 +66,6 @@ export default function AlbumPage(): JSX.Element {
               </Button>
             </div>
 
-            {/* Display playlists */}
             <div>
               {data && data.length > 0 && (
                 <AlbumCards
