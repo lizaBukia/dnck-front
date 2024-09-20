@@ -1,4 +1,5 @@
 import Link from 'next/link';
+// eslint-disable-next-line import/no-named-as-default
 import Input from '../../Input/Input';
 import { InputIconPositionEnum } from '../../Input/enum/input-icon-position.enum';
 import { InputTypeEnum } from '../../Input/enum/input-type.enum';
@@ -19,11 +20,13 @@ const SearchInput = (): JSX.Element => {
       </div>
       <div className={styles.searching}>
         <Input
+          name={'search'}
           type={InputTypeEnum.Text}
           placeholder={'Search'}
           icon={<Icon name={IconNameEnum.Search} width={24} height={24} />}
           iconPosition={InputIconPositionEnum.Left}
           isDark={false}
+          onBlur={() => {}}
         />
       </div>
     </div>
