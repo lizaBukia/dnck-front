@@ -11,9 +11,9 @@ import { CurrentMusicStateInterface } from '@/app/States/current-music-state-pro
 const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
   const currentMusic: CurrentMusicStateInterface =
     useRecoilValue(currentMusicState);
-  const iconName: IconNameEnum = currentMusic.isPlaying
-    ? IconNameEnum.Pause
-    : IconNameEnum.Play;
+  const iconName: IconNameEnum =
+    props.icon ||
+    (currentMusic.isPlaying ? IconNameEnum.Pause : IconNameEnum.Play);
 
   return (
     <button

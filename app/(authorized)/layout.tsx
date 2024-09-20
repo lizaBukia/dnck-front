@@ -12,7 +12,7 @@ export default function RootLayout({
       <Header />
       <div className={`${styles.container} ${styles.lightContainer}`}>
         <div className={styles.mainPage}>
-          <div>{children}</div>
+          <div className={styles.wrapper}>{children}</div>
 
           <div className={`${styles.player} ${styles.darkPlayer}`}>
             <Player />
