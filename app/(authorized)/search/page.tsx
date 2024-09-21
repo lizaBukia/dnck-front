@@ -8,13 +8,7 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import SearchArtistCard from '@/app/Components/SearchArtistCard/SearchArtistCard';
-import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
-import { ArtistInterface } from '@/app/Interfaces/artist.interface';
-import { MusicInterface } from '@/app/Interfaces/music.interface';
 import { SearchInterface } from './interfaces/search.interface';
-import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { searchHeaderState } from '@/app/States/States';
 import { useSearchParams } from 'next/navigation';
 
 export default function SearchPage(): JSX.Element {
