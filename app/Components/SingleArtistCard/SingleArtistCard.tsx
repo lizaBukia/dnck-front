@@ -23,7 +23,7 @@ const SingleArtistCard: SingleArtistCardType = (
         <div>
           <Image
             className={styles.image}
-            src="/images/image89.png"
+            src={props.imageSrc}
             alt="image"
             width={227}
             height={227}
@@ -31,7 +31,11 @@ const SingleArtistCard: SingleArtistCardType = (
         </div>
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.artistName}</h1>
-          <span className={styles.albums}>{props.albums}</span>
+          <span className={styles.albums}>
+            {props.albums?.map((album, index) => (
+              <span key={index}>{album.name}</span>
+            ))}
+          </span>
           <PlayButton
             icon={IconNameEnum.Play}
             onClick={() => {}}
