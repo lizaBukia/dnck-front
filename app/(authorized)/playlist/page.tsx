@@ -61,11 +61,14 @@ export default function AlbumPage(): JSX.Element {
                   items={data?.map((playlist) => ({
                     artists: [
                       {
-                        firstName: playlist.title,
+                        id: 0,
+                        firstName: '',
                         lastName: '',
                         biography: '',
+                        createdAt: new Date()
                       },
                     ],
+                    title: playlist.title,
                     imgUrl: playlist.history?.location ?? '/default.png',
                     dropDownItems: [
                       {
@@ -89,7 +92,6 @@ export default function AlbumPage(): JSX.Element {
                   }))}
                 />
               )}
-              <AddToPlaylistButton />
             </div>
           </div>
         </div>
