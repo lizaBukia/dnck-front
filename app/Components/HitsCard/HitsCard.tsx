@@ -23,10 +23,9 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    console.log('hereee');
     playMusic({
       name: props.name,
-      imgLink: props.album.history.location,
+      imgLink: props.album.history?.location,
       src: props.src,
       artistName: artistName.join(', '),
       id: props.id,

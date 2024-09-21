@@ -17,7 +17,7 @@ import styles from './page.module.scss';
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
-
+  console.log(musics, 'here');
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
@@ -45,7 +45,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
@@ -61,11 +61,12 @@ export default function MainPage(): JSX.Element {
           {musics && (
             <HitsCards
               items={musics.slice(0, 9).map((hit) => {
+                console.log(hit, 'hit here');
                 return {
-                  backgroundImage: hit.album.history.location,
+                  backgroundImage: hit.album.history?.location,
                   album: hit.album,
                   name: hit.name,
-                  src: hit.history.location,
+                  src: hit.history?.location,
                   id: hit.id,
                   dropDownItems: [],
                 };
@@ -88,7 +89,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
@@ -125,7 +126,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
