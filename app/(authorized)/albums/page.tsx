@@ -34,7 +34,7 @@ export default function AlbumPage(): JSX.Element {
                   items={albums.map?.((album) => {
                     return {
                       title: album.name,
-                      imgUrl: album.history.location,
+                      imgUrl: album.history?.location,
                       artists: album.artists,
                       dropDownItems: [],
                     };
