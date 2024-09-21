@@ -1,6 +1,6 @@
 'use client';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
@@ -11,18 +11,30 @@ import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './types/header.type';
 import { searchHeaderState } from '@/app/States/States';
 import { useRecoilState } from 'recoil';
+import Button from '../Button/Button';
+import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
+import { useForm } from 'react-hook-form';
+import { FC, useEffect, useState } from 'react';
 
-const Header: HeaderType = () => {
+const Header: FC = () => {
   const router: AppRouterInstance = useRouter();
   const onClick = (): void => {
     router.push('/');
   };
-  const [searchValue, setSearchValue] = useRecoilState(searchHeaderState);
+  const [search, setSearch] = useState('');
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
+  const onSearch = (): void => {
+    router.push(`/search?search=${search}`);
   };
-  console.log(searchValue, 'ksguefkzedb');
+
+  const paramSearch = useSearchParams().get('search');
+
+  useEffect(() => {
+    if (paramSearch) {
+      setSearch(paramSearch);
+    }
+  }, [paramSearch]);
+
   return (
     <div className={`${styles.testing} ${styles.darkTesting}`}>
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
@@ -31,12 +43,17 @@ const Header: HeaderType = () => {
             <div onClick={onClick}>
               <Logo />
             </div>
-            <SearchInput
-              type="text"
-              value={searchValue}
-              placeholder="Search..."
-              onChange={handleSearchChange}
-            />
+            <div className={styles.searchButton}>
+              <SearchInput
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search..."
+              />
+              <Button type={ButtonTypeEnum.Primary} onClick={onSearch}>
+                ძიება
+              </Button>
+            </div>
             <div className={styles.container}>
               <div className={styles.mode}>
                 <ModeSwitcher />

@@ -8,8 +8,17 @@ import Heading from '@/app/Components/Heading/Heading';
 import useSWR from 'swr';
 
 const TopHits = (): JSX.Element => {
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
-
+  const date = new Date();
+  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+  const year = lastMonth.getFullYear();
+  const month = (lastMonth.getMonth() + 1).toString().padStart(2, '0');
+  const day = lastMonth.getDate();
+  const formattedDate = `${year}-${month}-${day}`;
+  const { data: musics } = useSWR<MusicInterface[]>(
+    `/musics?topDate=${formattedDate}`,
+    fetcher,
+  );
+  console.log(musics, 'topMusics');
   return (
     <div className={styles.container}>
       <div>
