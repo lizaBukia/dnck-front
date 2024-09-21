@@ -1,4 +1,4 @@
-import { SetterOrUpdater, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
 import Icon from '../Icon/Icon';
@@ -12,12 +12,10 @@ import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
-import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const { togglePlay } = usePlayer();
-  const setMusicState: SetterOrUpdater<CurrentMusicStateInterface> =
-    useSetRecoilState(currentMusicState);
+  const { togglePlay, playMusic } = usePlayer();
+  const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
   for (const artist of props.album.artists) {
@@ -25,16 +23,18 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    setMusicState({
+    console.log('hereee');
+    playMusic({
       name: props.name,
-      imgLink: props.backgroundImage,
+      imgLink: props.album.history.location,
       src: props.src,
       artistName: artistName.join(', '),
-      currentTime: 0,
-      isPlaying: true,
+      id: props.id,
     });
     togglePlay();
   };
+
+  console.log(music.currentMusicId === props.id);
 
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
@@ -42,14 +42,18 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
         <div
           className={styles.hitsCardsImage}
           style={{
-            backgroundImage: `url(${props.album.imgUrl})`,
+            backgroundImage: `url(${props.backgroundImage})`,
             backgroundRepeat: `no-repeat`,
             backgroundSize: 'cover',
           }}
         >
-          <div className={styles.button}>
+          <div>
             <PlayButton
-              icon={IconNameEnum.Pause}
+              icon={
+                music.currentMusicId === props.id && music.isPlaying
+                  ? IconNameEnum.Pause
+                  : IconNameEnum.Play
+              }
               onClick={onClick}
               width={32}
               height={32}
@@ -62,7 +66,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.SecondaryTextMedium}
           >
-            {artistName.join(', ')}
+            {props.name}
           </Text>
           <Text
             className={styles.albumName}

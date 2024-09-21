@@ -26,6 +26,13 @@
   width: 100%;
   gap: 24px;
 }
+.modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+}
 
 .contentWrapper {
   display: flex;
@@ -84,6 +91,11 @@
   display: none;
 }
 
+.playlistModal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 @media screen and (max-width: 1400px) {
   .mobileHeading {
     display: none;
@@ -191,6 +203,7 @@
     width: 240px;
     color: $primary-black;
   }
+
 
   .player {
     width: 100%;

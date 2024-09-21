@@ -6,11 +6,28 @@ import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
+import { PlayerMusicInterface } from '@/app/States/current-music-state-props.interface';
 
 // eslint-disable-next-line react/display-name
 const MusicPlayer: FC = () => {
-  const { playerRef: audioRef, handleProgressChange, togglePlay } = usePlayer();
-  const [currentMusic] = useRecoilState(currentMusicState);
+  const {
+    playerRef: audioRef,
+    handleProgressChange,
+    togglePlay,
+    playNext,
+    playPrevious,
+  } = usePlayer();
+  const [music] = useRecoilState(currentMusicState);
+
+  const currentMusic: PlayerMusicInterface = music.musics[
+    music.currentIndex
+  ] ?? {
+    name: 'No Audio',
+    imgLink: '/default.png',
+    src: '',
+    artistName: 'No Artist',
+    id: 0,
+  };
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -19,17 +36,7 @@ const MusicPlayer: FC = () => {
       audioRef.current.volume = Number(event.target.value);
     }
   };
-  // const playNext = () => {
-  //   setCurrentTrackIndex((prevIndex) =>
-  //     prevIndex + 1 >= tracks.length ? 0 : prevIndex + 1
-  //   );
-  // };
 
-  // const playPrevious = () => {
-  //   setCurrentTrackIndex((prevIndex) =>
-  //     prevIndex - 1 < 0 ? tracks.length - 1 : prevIndex - 1
-  //   );
-  // };
   // const shuffleArray = useCallback((array: number[]) => {
   //   const shuffled = [...array];
   //   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -44,7 +51,7 @@ const MusicPlayer: FC = () => {
       <div className={styles.playlist}>
         <div
           className={styles.music}
-          style={{ backgroundImage: `url(${currentMusic.imgLink})` }}
+          style={{ backgroundImage: `url(${currentMusic?.imgLink})` }}
         >
           <div className={styles.musicPlayer}>
             <div className={styles.heading}>
@@ -58,7 +65,7 @@ const MusicPlayer: FC = () => {
                 min="0"
                 max={audioRef.current?.duration || 0}
                 step="0.1"
-                value={currentMusic.currentTime}
+                value={music.currentTime}
                 onChange={handleProgressChange}
               />
               <audio ref={audioRef}></audio>
@@ -75,17 +82,14 @@ const MusicPlayer: FC = () => {
                 <Icon
                   name={IconNameEnum.BackwardDesktop}
                   width={26}
+                  onClick={playPrevious}
                   height={26}
                 />
-                <PlayButton
-                  onClick={togglePlay}
-                  width={48}
-                  height={48}
-                  icon={''}
-                />
+                <PlayButton onClick={togglePlay} width={48} height={48} />
                 <Icon
                   name={IconNameEnum.ForwardDesktop}
                   width={26}
+                  onClick={playNext}
                   height={26}
                 />
               </div>
