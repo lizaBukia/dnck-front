@@ -4,22 +4,22 @@ import { Heading, Link } from 'lucide-react';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
+import ArtistCards from '../Components/ArtistCards/ArtistCards';
+import ArtistCardsItems from '../Components/ArtistCardsItems/ArtistCardsItems';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
 import HitsCards from '../Components/HitsCards/HitsCards';
 import Player from '../Components/Player/Player';
-import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
-import { AlbumInterfaces } from '../Interfaces/album.interfaces';
+import { AlbumInterface } from '../Interfaces/album.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
-import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
 
 export default function MainPage(): JSX.Element {
-  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
-  console.log(musics, 'here');
+  const { data: albums } = useSWR<AlbumInterface[]>('/albums', fetcher);
+  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);  
+
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
@@ -40,26 +40,12 @@ export default function MainPage(): JSX.Element {
           </div>
           {Array.isArray(albums) && (
             <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                console.log(
-                  album.musics.map((music) => music.id),
-                  'eher',
-                );
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
             />
           )}
           <div className={styles.heading}>
@@ -70,21 +56,12 @@ export default function MainPage(): JSX.Element {
           </div>
           {Array.isArray(musics) && (
             <HitsCards
-              items={musics.slice(0, 9).map((hit) => {
-                console.log(hit, 'hit here');
-                return {
-                  backgroundImage: hit.album.history?.location,
-                  album: hit.album,
-                  name: hit.name,
-                  src: hit.history?.location,
-                  id: hit.id,
-                  dropDownItems: [
-                    {
-                      title: <AddToPlaylistButton musicId={[hit.id]} />,
-                    },
-                  ],
-                };
-              })}
+              items={musics.map((hit) => ({
+                backgroundImage: '/image75.png',
+                album: hit.album,
+                src: hit.src,
+                dropDownItems: [],
+              }))}
             />
           )}
 
@@ -100,22 +77,12 @@ export default function MainPage(): JSX.Element {
           </div>
           {Array.isArray(albums) && (
             <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
             />
           )}
           <div className={styles.heading}>
@@ -127,50 +94,25 @@ export default function MainPage(): JSX.Element {
 
           {Array.isArray(albums) && (
             <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.imgUrl,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
             />
           )}
+
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
             <div className={styles.more}>
               <Link href={'/topAlbums'}>See all</Link>
             </div>
           </div>
-          {albums && (
-            <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
-            />
-          )}
+          <ArtistCards items={ArtistCardsItems} />
+        </div>
+        <div className={`${styles.player} ${styles.darkPlayer}`}>
+          <Player />
         </div>
       </div>
     </div>

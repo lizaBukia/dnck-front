@@ -12,7 +12,7 @@ export const tracks: TrackDataType[] = [
   },
   {
     id: 2,
-    title: 'Stairway to Heaven',
+    title: 'Stairway to Heaven', 
     artistName: 'Led Zeppelin',
     albumName: 'Led Zeppelin IV',
     duration: 801,

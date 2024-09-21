@@ -30,11 +30,10 @@ const DropdownContainer: DropdownContainerType = (
           icon={item.icon}
           onClick={item.onClick}
           key={item.title}
-          width={24}
-          height={24}
-          href={''}
+          width={0}
+          height={0}
         >
-          {item.title} 
+          {item.title}
         </DropdownButton>
       ))}
     </div>

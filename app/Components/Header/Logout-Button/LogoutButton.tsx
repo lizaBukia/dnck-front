@@ -12,7 +12,7 @@ const LogoutButton = (): JSX.Element => {
   const router: AppRouterInstance = useRouter();
 
   const onClick = (): void => {
-    eraseCookie('accessToken');
+    eraseCookie('accessToken', 0);
     router.push('/login');
   };
 

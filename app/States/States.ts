@@ -15,15 +15,11 @@ export const currentMusicState: RecoilState<CurrentMusicStateInterface> =
   atom<CurrentMusicStateInterface>({
     key: 'currentMusicState',
     default: {
-      currentIndex: 0,
-      currentMusicId: null,
-      currentTime: 0,
+      name: 'No Audio',
+      imgLink: '',
+      src: '',
+      artistName: 'No Artist',
       isPlaying: false,
-      musics: [],
+      currentTime: 0,
     },
   });
-
-export const searchHeaderState: RecoilState<string> = atom({
-  key: 'searchState',
-  default: '',
-});

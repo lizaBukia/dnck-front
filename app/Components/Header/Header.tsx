@@ -1,6 +1,6 @@
 'use client';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
@@ -9,32 +9,12 @@ import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './types/header.type';
-import { searchHeaderState } from '@/app/States/States';
-import { useRecoilState } from 'recoil';
-import Button from '../Button/Button';
-import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
-import { useForm } from 'react-hook-form';
-import { FC, useEffect, useState } from 'react';
 
-const Header: FC = () => {
+const Header: HeaderType = () => {
   const router: AppRouterInstance = useRouter();
   const onClick = (): void => {
     router.push('/');
   };
-  const [search, setSearch] = useState('');
-
-  const onSearch = (): void => {
-    router.push(`/search?search=${search}`);
-  };
-
-  const paramSearch = useSearchParams().get('search');
-
-  useEffect(() => {
-    if (paramSearch) {
-      setSearch(paramSearch);
-    }
-  }, [paramSearch]);
-
   return (
     <div className={`${styles.testing} ${styles.darkTesting}`}>
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
@@ -43,17 +23,7 @@ const Header: FC = () => {
             <div onClick={onClick}>
               <Logo />
             </div>
-            <div className={styles.searchButton}>
-              <SearchInput
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search..."
-              />
-              <Button type={ButtonTypeEnum.Primary} onClick={onSearch}>
-                ძიება
-              </Button>
-            </div>
+            <SearchInput />
             <div className={styles.container}>
               <div className={styles.mode}>
                 <ModeSwitcher />

@@ -1,4 +1,4 @@
-import { DropdownContainerPropsInterface } from '../interfaces/dropdown-container.props.interface';
+import { DropdownContainerPropsInterface } from '@/app/Components/Dropdown/DropdownContainer/interfaces/dropdown-container.props.interface';
 
 export type DropdownContainerType = (
   props: DropdownContainerPropsInterface,

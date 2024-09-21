@@ -1,11 +1,8 @@
-import { AlbumInterfaces } from './album.interfaces';
+import { AlbumInterface } from './album.interface';
 
 export interface MusicInterface {
   id: number;
   name: string;
-  album: AlbumInterfaces;
+  album: AlbumInterface;
   src: string;
-  history: {
-    location: string;
-  };
 }

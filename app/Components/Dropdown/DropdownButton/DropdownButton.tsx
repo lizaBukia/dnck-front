@@ -11,11 +11,8 @@ const DropdownButton: DropdownButtonType = (
   props: DropdownButtonPropsInterface,
 ) => {
   return (
-    <div className={`${styles.button} ${styles.dark} `} onClick={props.onClick}>
-      {
-        props.icon
-      
-      }
+    <div className={`${styles.button} ${styles.dark}`}>
+      <Icon name={IconNameEnum.Plus} width={28} height={28} />
       <Text
         htmlType={TextHtmlTypeEnum.Span}
         type={TextTypeEnum.SecondaryTextExtraSmall}

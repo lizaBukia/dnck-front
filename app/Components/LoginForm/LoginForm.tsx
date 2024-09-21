@@ -1,5 +1,4 @@
 'use client';
-
 import { AxiosResponse } from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
@@ -28,7 +27,6 @@ const LoginForm: FC = () => {
   const router: AppRouterInstance = useRouter();
 
   const onSubmit = async (values: FieldValues): Promise<void> => {
-    // TODO: Refactor This Call To Axios Config
     try {
       const response: AxiosResponse = await ApiClient.post(
         '/auth/login',
@@ -38,13 +36,12 @@ const LoginForm: FC = () => {
 
       if (accessToken) {
         setCookie('accessToken', accessToken, 24);
-        console.log('User logged in successfully');
         router.push('/');
       } else {
         alert('password is not correct');
       }
     } catch (err) {
-      alert('Login Failed');
+      alert('Login failed');
     }
   };
 

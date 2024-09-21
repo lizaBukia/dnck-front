@@ -1,4 +1,3 @@
-'use client';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import MusicPlayerResponsive from '../MusicPlayerResponsive/MusicPlayerResponsive';
 import styles from './Player.module.scss';
