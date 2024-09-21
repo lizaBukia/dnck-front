@@ -6,8 +6,11 @@
     display: flex;
     gap: 5px;
     align-items: center;
-    background-color: $clicked-dark;
     border: none;
     padding: 8px;
     border-radius: 8px;
 }
+:global(body.dark) .lightContainer {
+    color: $gray-400;
+    background-color: $primary-black;
+  }

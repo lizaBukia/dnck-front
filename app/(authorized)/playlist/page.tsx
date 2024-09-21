@@ -8,7 +8,6 @@ import { fetcher } from '@/app/Api/fetcher';
 import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
 import Button from '@/app/Components/Button/Button';
 import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
-import ModeSwitcher from '@/app/Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import Icon from '@/app/Components/Icon/Icon';
@@ -18,7 +17,6 @@ import Input from '@/app/Components/Input/Input';
 import { InputTypeEnum } from '@/app/Components/Input/enum/input-type.enum';
 import Modal from '@/app/Components/Modal/Modal';
 import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
-import AddToPlaylistButton from './components/AddToPlaylistButton/AddToPlaylistButton';
 
 export default function AlbumPage(): JSX.Element {
   const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
@@ -63,11 +61,14 @@ export default function AlbumPage(): JSX.Element {
                   items={data?.map((playlist) => ({
                     artists: [
                       {
-                        firstName: playlist.title,
+                        id: 0,
+                        firstName: '',
                         lastName: '',
                         biography: '',
+                        createdAt: new Date()
                       },
                     ],
+                    title: playlist.title,
                     imgUrl: playlist.history?.location ?? '/default.png',
                     dropDownItems: [
                       {
@@ -91,7 +92,6 @@ export default function AlbumPage(): JSX.Element {
                   }))}
                 />
               )}
-              <AddToPlaylistButton />
             </div>
           </div>
         </div>

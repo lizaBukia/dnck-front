@@ -23,10 +23,9 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    console.log('hereee');
     playMusic({
       name: props.name,
-      imgLink: props.album.history.location,
+      imgLink: props.album.history?.location,
       src: props.src,
       artistName: artistName.join(', '),
       id: props.id,
@@ -81,12 +80,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
         <Dropdown
           icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
           position={DropDownPositionEnum.Up}
-          items={[
-            {
-              icon: <Icon name={IconNameEnum.Plus} width={28} height={28} />,
-              title: 'Add To Playlist',
-            },
-          ]}
+          items={props.dropDownItems ?? []}
         />
       </div>
     </div>

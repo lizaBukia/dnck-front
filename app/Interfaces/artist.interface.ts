@@ -3,5 +3,5 @@ export interface ArtistInterface {
   firstName: string;
   lastName: string;
   biography: string;
-  createdAt: string;
+  createdAt: string | Date;
 }

@@ -1,9 +1,11 @@
+'use client'
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import styles from './page.module.scss';
 import { MusicInterface } from '@/app/Interfaces/music.interface';
 import { fetcher } from '@/app/Api/fetcher';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import Heading from '@/app/Components/Heading/Heading';
+import useSWR from 'swr';
 
 const TopHits = (): JSX.Element => {
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
@@ -36,6 +38,3 @@ const TopHits = (): JSX.Element => {
 };
 
 export default TopHits;
-function useSWR<T>(arg0: string, fetcher: any): { data: any } {
-  throw new Error('Function not implemented.');
-}
