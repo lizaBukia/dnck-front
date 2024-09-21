@@ -19,7 +19,7 @@ export default function MainPage(): JSX.Element {
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
 
   return (
-    <div className={`${styles.container} ${styles.lightContainer}`}>
+    <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.mobileHeading}>
