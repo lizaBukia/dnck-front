@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR, { mutate } from 'swr';
+import AddToPlaylistButton from './components/AddToPlaylistButton/AddToPlaylistButton';
 import styles from './page.module.scss';
 import { ApiClient } from '@/app/Api/api';
 import { fetcher } from '@/app/Api/fetcher';
@@ -12,7 +13,6 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
-// eslint-disable-next-line import/no-named-as-default
 import Input from '@/app/Components/Input/Input';
 import { InputTypeEnum } from '@/app/Components/Input/enum/input-type.enum';
 import Modal from '@/app/Components/Modal/Modal';
