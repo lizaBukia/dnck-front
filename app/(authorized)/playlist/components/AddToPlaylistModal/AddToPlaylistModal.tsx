@@ -1,4 +1,3 @@
-import Modal from '@/app/Components/Modal/Modal';
 import { FC, useState, FormEvent } from 'react';
 import { AddToPlaylistModalPropsInterface } from './interfaces/add-to-playlist-modal.interface';
 import useSWR from 'swr';
@@ -8,6 +7,7 @@ import Button from '@/app/Components/Button/Button';
 import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
 import styles from './AddToPlaylistModal.module.scss';
 import { ApiClient } from '@/app/Api/api';
+import Modal from '@/app/Components/Modal/Modal';
 
 const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
   props: AddToPlaylistModalPropsInterface,

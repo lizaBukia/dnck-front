@@ -1,5 +1,3 @@
-import Icon from '../../Icon/Icon';
-import { IconNameEnum } from '../../Icon/enums/icon-name.enum';
 import { TextHtmlTypeEnum } from '../../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../../Text/enums/text-type.enum';
 import styles from './DropdownButton.module.scss';
@@ -12,10 +10,7 @@ const DropdownButton: DropdownButtonType = (
 ) => {
   return (
     <div className={`${styles.button} ${styles.dark} `} onClick={props.onClick}>
-      {
-        props.icon
-      
-      }
+      {props.icon}
       <Text
         htmlType={TextHtmlTypeEnum.Span}
         type={TextTypeEnum.SecondaryTextExtraSmall}

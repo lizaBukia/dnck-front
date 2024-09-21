@@ -1,5 +1,4 @@
 import Link from 'next/link';
-// eslint-disable-next-line import/no-named-as-default
 import Input from '../../Input/Input';
 import { InputIconPositionEnum } from '../../Input/enum/input-icon-position.enum';
 import { InputTypeEnum } from '../../Input/enum/input-type.enum';

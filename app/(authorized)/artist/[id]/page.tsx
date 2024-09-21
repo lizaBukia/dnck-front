@@ -33,7 +33,7 @@ const SingleArtistPage: SingleArtistPageType = (
                 artistName={`${artists.firstName} ${artists.lastName}`}
                 albums={artists.albums}
                 biography={artists.biography}
-                imageSrc={artists.history?.location}
+                imageSrc={artists.history.location}
               />
             )}
             <div className={styles.heading}>

@@ -9,5 +9,5 @@ export interface ArtistInterface {
   history: {
     location: string;
   };
-  createdAt: string;
+  createdAt: string | Date;
 }
