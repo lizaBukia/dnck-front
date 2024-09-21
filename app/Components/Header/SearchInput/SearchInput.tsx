@@ -6,8 +6,9 @@ import { InputTypeEnum } from '../../Input/enum/input-type.enum';
 import styles from './SearchInput.module.scss';
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
+import { SearchInputPropsInterface } from './interfaces/search-input.interface';
 
-const SearchInput = (): JSX.Element => {
+const SearchInput = (props: SearchInputPropsInterface): JSX.Element => {
   return (
     <div className={styles.inputContainer}>
       <div className={styles.arrow}>
@@ -27,6 +28,8 @@ const SearchInput = (): JSX.Element => {
           iconPosition={InputIconPositionEnum.Left}
           isDark={false}
           onBlur={() => {}}
+          onChange={props.onChange}
+          value={props.value}
         />
       </div>
     </div>

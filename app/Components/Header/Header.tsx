@@ -9,12 +9,20 @@ import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
 import { HeaderType } from './types/header.type';
+import { searchHeaderState } from '@/app/States/States';
+import { useRecoilState } from 'recoil';
 
 const Header: HeaderType = () => {
   const router: AppRouterInstance = useRouter();
   const onClick = (): void => {
     router.push('/');
   };
+  const [searchValue, setSearchValue] = useRecoilState(searchHeaderState);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+  console.log(searchValue, 'ksguefkzedb')
   return (
     <div className={`${styles.testing} ${styles.darkTesting}`}>
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
@@ -23,7 +31,12 @@ const Header: HeaderType = () => {
             <div onClick={onClick}>
               <Logo />
             </div>
-            <SearchInput />
+            <SearchInput
+              type="text"
+              value={searchValue}
+              placeholder="Search..."
+              onChange={handleSearchChange}
+            />
             <div className={styles.container}>
               <div className={styles.mode}>
                 <ModeSwitcher />

@@ -22,3 +22,8 @@ export const currentMusicState: RecoilState<CurrentMusicStateInterface> =
       musics: [],
     },
   });
+
+export const searchHeaderState: RecoilState<string> = atom({
+  key: 'searchState',
+  default: '',
+});

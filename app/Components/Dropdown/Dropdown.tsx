@@ -28,6 +28,7 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  console.log(props, 'shemovida')
 
   return (
     <div className={`${styles.wrapper}`} ref={dropdownRef}>
