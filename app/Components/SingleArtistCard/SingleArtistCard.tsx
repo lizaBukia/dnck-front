@@ -32,7 +32,7 @@ const SingleArtistCard: SingleArtistCardType = (
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.artistName}</h1>
           <span className={styles.albums}>
-            {props.albums.map((album, index) => (
+            {props.albums?.map((album, index) => (
               <span key={index}>{album.name}</span>
             ))}
           </span>

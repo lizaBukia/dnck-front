@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import useSWR from 'swr';
 import AlbumCards from '../../../Components/AlbumCards/AlbumCards';
-import AlbumItems from '../../../Components/AlbumItems/AlbumItems';
 import Heading from '../../../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../../../Components/Heading/enums/heading-type.enum';
 import SingleArtistCard from '../../../Components/SingleArtistCard/SingleArtistCard';
@@ -11,6 +10,7 @@ import styles from '../page.module.scss';
 import { SingleArtistPageType } from '../type/single-artist-page.type';
 import { fetcher } from '@/app/Api/fetcher';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
+import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
 import { ArtistInterface } from '@/app/Interfaces/artist.interface';
 import { MusicInterface } from '@/app/Interfaces/music.interface';
 
@@ -22,6 +22,7 @@ const SingleArtistPage: SingleArtistPageType = (
     fetcher,
   );
   const { data: musics } = useSWR<MusicInterface[]>('/musics/', fetcher);
+  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   return (
     <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
       <div className={styles.container}>
@@ -32,7 +33,7 @@ const SingleArtistPage: SingleArtistPageType = (
                 artistName={`${artists.firstName} ${artists.lastName}`}
                 albums={artists.album}
                 biography={artists.biography}
-                imageSrc={artists.history.location}
+                imageSrc={artists.history?.location}
               />
             )}
             <div className={styles.heading}>
@@ -64,7 +65,16 @@ const SingleArtistPage: SingleArtistPageType = (
               <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
-          <AlbumCards items={AlbumItems} />
+          {albums && (
+            <AlbumCards
+              items={albums.map((album) => ({
+                title: album.name,
+                imgUrl: album.history.location,
+                artists: album.artists,
+                dropDownItems: [],
+              }))}
+            />
+          )}
         </div>
       </div>
     </div>
