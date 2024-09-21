@@ -31,7 +31,7 @@ const SingleArtistPage: SingleArtistPageType = (
             {artists && (
               <SingleArtistCard
                 artistName={`${artists.firstName} ${artists.lastName}`}
-                albums={artists.album}
+                albums={artists.albums}
                 biography={artists.biography}
                 imageSrc={artists.history?.location}
               />

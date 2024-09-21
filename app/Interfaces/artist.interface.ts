@@ -4,7 +4,7 @@ export interface ArtistInterface {
   firstName: string;
   lastName: string;
   biography: string;
-  album: AlbumInterfaces[];
+  albums: AlbumInterfaces[];
   history: {
     location: string;
   };
