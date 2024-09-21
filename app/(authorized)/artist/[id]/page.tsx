@@ -31,7 +31,7 @@ const SingleArtistPage: SingleArtistPageType = (
             {artists && (
               <SingleArtistCard
                 artistName={`${artists.firstName} ${artists.lastName}`}
-                albums={artists.album}
+                albums={artists.albums}
                 biography={artists.biography}
                 imageSrc={artists.history?.location}
               />
@@ -46,7 +46,7 @@ const SingleArtistPage: SingleArtistPageType = (
             </div>
             {musics && (
               <HitsCards
-                items={musics?.map?.((hit) => ({
+                items={musics?.slice(0, 9).map?.((hit) => ({
                   backgroundImage: hit.album.history.location,
                   album: hit.album,
                   name: hit.name,
@@ -67,7 +67,7 @@ const SingleArtistPage: SingleArtistPageType = (
           </div>
           {albums && (
             <AlbumCards
-              items={albums.map((album) => ({
+              items={albums.slice(0, 4).map((album) => ({
                 title: album.name,
                 imgUrl: album.history.location,
                 artists: album.artists,

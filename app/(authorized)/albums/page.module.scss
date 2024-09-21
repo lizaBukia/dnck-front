@@ -2,19 +2,23 @@
 @import '/app/Colors/dark-colors.scss';
 @import '/app/Colors/light-colors.scss';
 
-.content {
-  border-radius: 12px;
-  box-shadow: 0px 30px 30px 0px rgba(0, 0, 0, 0.03);
+.mainPage {
   display: flex;
-  gap: 16px;
+  width: 100%;
+  gap: 24px;
+  justify-content: center;
+  flex-direction: column;
 }
+
 .container {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  justify-content: center;
-  padding: 24px;
+  max-width: 986px;
+  gap: 16px;
+  justify-content: space-between;
   background-color: $primary-white;
+  // padding: 24px;
 }
 
 :global(body.dark) .lightContainer {
@@ -22,19 +26,18 @@
   background-color: $primary-black;
 }
 
-.mainPage {
+.content {
+  border-radius: 12px;
+  box-shadow: 0px 30px 30px 0px rgba(0, 0, 0, 0.03);
   display: flex;
-  width: 100%;
-  gap: 24px;
-  justify-content: center;
 }
 
 .contentWrapper {
   display: flex;
   flex-flow: column wrap;
-  padding: 24px;
   gap: 16px;
   width: 100%;
+  max-width: 1034px;
   background-color: $primary-white;
 }
 
@@ -52,16 +55,21 @@
 }
 .wrapper {
   width: 100%;
-  max-width: 986px;
+  max-width: 1034px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
 }
 
 .player {
   position: sticky;
-  top: 0;
+  top: 15px;
+  right: 0;
   height: fit-content;
   padding: 16px 8px;
   border-radius: 12px;
   background-color: $background-color-light-mode;
+  z-index: 10;
 }
 
 :global(body.dark) .darkPlayer {
@@ -93,6 +101,7 @@
   .player {
     position: sticky;
     bottom: 0;
+    right: 0;
     width: 100%;
     padding: 0;
   }
@@ -147,12 +156,6 @@
   .mobileText {
     width: 240px;
     color: $primary-black;
-  }
-
-  .player {
-    position: sticky;
-    width: 100%;
-    padding: 0;
   }
 
   .content {

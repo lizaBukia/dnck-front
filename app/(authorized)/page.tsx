@@ -13,6 +13,7 @@ import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
 import { AlbumInterfaces } from '../Interfaces/album.interfaces';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
+import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
@@ -43,11 +44,23 @@ export default function MainPage(): JSX.Element {
           {albums && (
             <AlbumCards
               items={albums.slice(0, 4).map?.((album) => {
+                console.log(
+                  album.musics.map((music) => music.id),
+                  'eher',
+                );
                 return {
                   title: album.name,
                   imgUrl: album.history?.location,
                   artists: album.artists,
-                  dropDownItems: [],
+                  dropDownItems: [
+                    {
+                      title: (
+                        <AddToPlaylistButton
+                          musicId={album.musics.map((music) => music.id)}
+                        />
+                      ),
+                    },
+                  ],
                 };
               })}
             />
@@ -68,7 +81,11 @@ export default function MainPage(): JSX.Element {
                   name: hit.name,
                   src: hit.history?.location,
                   id: hit.id,
-                  dropDownItems: [],
+                  dropDownItems: [
+                    {
+                      title: <AddToPlaylistButton musicId={[hit.id]} />,
+                    },
+                  ],
                 };
               })}
             />
@@ -91,7 +108,15 @@ export default function MainPage(): JSX.Element {
                   title: album.name,
                   imgUrl: album.history?.location,
                   artists: album.artists,
-                  dropDownItems: [],
+                  dropDownItems: [
+                    {
+                      title: (
+                        <AddToPlaylistButton
+                          musicId={album.musics.map((music) => music.id)}
+                        />
+                      ),
+                    },
+                  ],
                 };
               })}
             />
@@ -108,9 +133,17 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album.history?.location,
                   artists: album.artists,
-                  dropDownItems: [],
+                  dropDownItems: [
+                    {
+                      title: (
+                        <AddToPlaylistButton
+                          musicId={album.musics.map((music) => music.id)}
+                        />
+                      ),
+                    },
+                  ],
                 };
               })}
             />
@@ -128,7 +161,15 @@ export default function MainPage(): JSX.Element {
                   title: album.name,
                   imgUrl: album.history?.location,
                   artists: album.artists,
-                  dropDownItems: [],
+                  dropDownItems: [
+                    {
+                      title: (
+                        <AddToPlaylistButton
+                          musicId={album.musics.map((music) => music.id)}
+                        />
+                      ),
+                    },
+                  ],
                 };
               })}
             />
