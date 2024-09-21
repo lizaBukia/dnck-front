@@ -65,7 +65,7 @@ const MusicPlayerResponsive = () => {
         <div className={styles.fullPlayerContent}>
           <div className={styles.fullPlayerHeader}>
             <button onClick={toggleExpand} className={styles.collapseButton}>
-              <Icon name={IconNameEnum.ArrowDown} width={24} height={24} />
+              <Icon name={isExpanded ? IconNameEnum.Expand : IconNameEnum.Collapse} width={24} height={24} />
             </button>
             <h2 className="text-lg font-semibold">Swipe Down</h2>
             <div className={styles.playbackControlSpacing}></div>
