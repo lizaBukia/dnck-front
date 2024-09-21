@@ -1,0 +1,141 @@
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+
+.mainContainer {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 24px;
+  justify-content: center;
+  background-color: #eeeef1;
+}
+:global(body.dark) .mainLightContainer {
+  color: $gray-400;
+  background-color: $primary-black;
+}
+.container {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 24px;
+  gap: 16px;
+  width: 100%;
+  max-width: 986px;
+  border-radius: 12px;
+  background-color: #f2f2f2;
+}
+
+:global(body.dark) .lightContent {
+  color: $gray-400;
+  background-color: $background-color-dark-mode;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: $gray-400;
+}
+
+.player {
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  padding: 16px 8px;
+  border-radius: 12px;
+  background-color: $background-color-light-mode;
+}
+
+:global(body.dark) .darkPlayer {
+  background-color: $background-color-dark-mode;
+}
+
+.album {
+  display: flex;
+  width: 100%;
+}
+
+.singleArtistCard {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1400px) {
+  .player {
+    position: sticky;
+    width: 100%;
+    padding: 0;
+  }
+  .content {
+    display: flex;
+    max-width: 704px;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 12px;
+  }
+  .container {
+    display: flex;
+    max-width: 100%;
+    flex-flow: column wrap;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .player {
+    position: sticky;
+    width: 100%;
+    padding: 0;
+  }
+  .content {
+    display: flex;
+    max-width: 704px;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 12px;
+  }
+  .container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .player {
+    width: 100%;
+    position: sticky;
+    top: 10px;
+    bottom: 50px;
+    padding: 0;
+  }
+  .content {
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 704px;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 12px;
+  }
+  .container {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+  }
+
+  .downPlayer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $primary-black;
+    position: sticky;
+    bottom: 0;
+  }
+}
