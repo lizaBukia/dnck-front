@@ -44,9 +44,9 @@ export default function MainPage(): JSX.Element {
             <AlbumCards
               items={albums.slice(0, 4).map?.((album) => {
                 return {
-                  title: album.name,
-                  imgUrl: album.history.location,
-                  artists: album.artists,
+                  title: album?.name,
+                  imgUrl: album?.history?.location,
+                  artists: album?.artists,
                   dropDownItems: [],
                 };
               })}
@@ -62,7 +62,7 @@ export default function MainPage(): JSX.Element {
             <HitsCards
               items={musics.slice(0, 9).map((hit) => {
                 return {
-                  backgroundImage: hit.album.history.location,
+                  backgroundImage: hit?.album?.history?.location,
                   album: hit.album,
                   name: hit.name,
                   src: hit.history.location,
@@ -88,7 +88,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album?.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
@@ -107,7 +107,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album?.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };
@@ -125,7 +125,7 @@ export default function MainPage(): JSX.Element {
               items={albums.slice(0, 4).map?.((album) => {
                 return {
                   title: album.name,
-                  imgUrl: album.history.location,
+                  imgUrl: album?.history?.location,
                   artists: album.artists,
                   dropDownItems: [],
                 };

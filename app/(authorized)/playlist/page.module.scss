@@ -10,6 +10,7 @@
 }
 .container {
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
   width: 100%;
   padding: 24px;
@@ -25,6 +26,7 @@
   display: flex;
   width: 100%;
   gap: 24px;
+  justify-content: space-between;
 }
 .modal {
   width: 100%;
@@ -75,8 +77,8 @@
   width: 100%;
 }
 .hitsWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .downPlayer {
@@ -203,7 +205,6 @@
     width: 240px;
     color: $primary-black;
   }
-
 
   .player {
     width: 100%;

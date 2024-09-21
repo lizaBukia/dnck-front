@@ -4,6 +4,7 @@
 
 .container {
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
   width: 100%;
   padding: 24px;
@@ -20,11 +21,11 @@
   display: flex;
   width: 100%;
   gap: 24px;
-  justify-content: center;
+  justify-content: space-between;
 }
 .wrapper {
   width: 100%;
-  max-width: 986px;
+  max-width: 1034px;
 }
 
 .content {
@@ -58,7 +59,7 @@
   position: sticky;
   top: 15px;
   right: 0;
-  height: fit-content;
+  // height: fit-content;
   padding: 16px 8px;
   border-radius: 12px;
   background-color: $background-color-light-mode;
@@ -93,7 +94,7 @@
 
   .player {
     position: sticky;
-    bottom: 0;
+    bottom: 10px;
     right: 0;
     width: 100%;
     padding: 0;
@@ -101,7 +102,7 @@
 
   .mainPage {
     flex-flow: column wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
   }
@@ -157,6 +158,23 @@
     padding: 24px;
     gap: 24px;
     border-radius: 12px;
+  }
+
+  .downPlayer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $primary-black;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .player {
+    position: sticky;
+    bottom: 10px;
+    right: 0;
+    width: 100%;
+    padding: 0;
   }
 
   .mainPage {
