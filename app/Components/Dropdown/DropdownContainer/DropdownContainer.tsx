@@ -2,12 +2,11 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import DropdownButton from '../DropdownButton/DropdownButton';
 import styles from './DropdownContainer.module.scss';
-import { DropdownContainerPropsInterface } from './interfaces/dropdown-container.props.interface';
 import { DropdownContainerType } from './types/dropdown-container.type';
 import { isDarkState } from '@/app/States/States';
 
 const DropdownContainer: DropdownContainerType = (
-  props: DropdownContainerPropsInterface,
+  props: any,
 ) => {
   const [dark, setDark] = useRecoilState(isDarkState);
 
@@ -25,13 +24,14 @@ const DropdownContainer: DropdownContainerType = (
 
   return (
     <div className={classNames.join(' ').trim()}>
-      {props.items.map((item) => (
+      {props.items.map((item: any) => (
         <DropdownButton
           icon={item.icon}
           onClick={item.onClick}
-          key={item.title}
-          width={0}
-          height={0}
+          title={item.title}
+          width={24}
+          height={24}
+          href={''}
         >
           {item.title}
         </DropdownButton>

@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styles from './Heading.module.scss';
