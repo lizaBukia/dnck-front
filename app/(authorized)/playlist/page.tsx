@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR, { mutate } from 'swr';
-import AddToPlaylistButton from './components/AddToPlaylistButton/AddToPlaylistButton';
 import styles from './page.module.scss';
 import { ApiClient } from '@/app/Api/api';
 import { fetcher } from '@/app/Api/fetcher';
@@ -13,14 +12,13 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
-import Input from '@/app/Components/Input/Input';
+import { Input } from '@/app/Components/Input/Input';
 import { InputTypeEnum } from '@/app/Components/Input/enum/input-type.enum';
 import Modal from '@/app/Components/Modal/Modal';
 import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 
 export default function AlbumPage(): JSX.Element {
   const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<{ name: string }>();
 
@@ -65,7 +63,11 @@ export default function AlbumPage(): JSX.Element {
                         firstName: '',
                         lastName: '',
                         biography: '',
-                        createdAt: new Date()
+                        createdAt: new Date(),
+                        albums: [],
+                        history: {
+                          location: '',
+                        },
                       },
                     ],
                     title: playlist.title,
@@ -80,7 +82,7 @@ export default function AlbumPage(): JSX.Element {
                           />
                         ),
                         title: 'Delete',
-                        onClick: () => {
+                        onClick: (): void => {
                           ApiClient.delete(`/playlists/${playlist.id}`).then(
                             () => {
                               mutate('/playlists/personal');

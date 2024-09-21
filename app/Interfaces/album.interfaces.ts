@@ -9,7 +9,7 @@ export interface AlbumInterfaces {
   musics: MusicInterface[];
   imgUrl: string;
   releaseDate: string;
-  createdAt: string;
+  createdAt: string | Date;
   history: {
     location: string;
   };

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import styles from './page.module.scss';
 import { MusicInterface } from '@/app/Interfaces/music.interface';

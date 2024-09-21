@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 import Icon from '@/app/Components/Icon/Icon';
 import styles from './AddToPlaylistButton.module.scss';
@@ -9,24 +9,27 @@ import { AddToPlaylistButtonProsInterface } from './interfaces/add-to-playlist-b
 const AddToPlaylistButton = (props: AddToPlaylistButtonProsInterface) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen)
+  console.log(isOpen);
 
   const onClick = (): void => {
     setIsOpen(true);
   };
-
-
-
   return (
     <>
-      <button className={`${styles.button} ${styles.lightContainer}`} onClick={onClick}>
+      <button
+        className={`${styles.button} ${styles.lightContainer}`}
+        onClick={onClick}
+      >
         <Icon name={IconNameEnum.Plus} width={14} height={14} />
         <span>Add To Playlist</span>
       </button>
 
       {isOpen && (
-        <AddToPlaylistModal musicId={props.musicId} isOpen={isOpen} setIsOpen={setIsOpen} />
-          
+        <AddToPlaylistModal
+          musicId={props.musicId}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
       )}
     </>
   );

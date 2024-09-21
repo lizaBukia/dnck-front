@@ -22,7 +22,7 @@ const Header: HeaderType = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
-  console.log(searchValue, 'ksguefkzedb')
+  console.log(searchValue, 'ksguefkzedb');
   return (
     <div className={`${styles.testing} ${styles.darkTesting}`}>
       <div className={`${styles.lightContainer} ${styles.darkContainer}`}>
