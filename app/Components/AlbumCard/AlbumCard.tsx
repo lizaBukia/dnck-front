@@ -15,7 +15,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   for (const artist of props.artists) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
-
+console.log(props, 'skfbsv')
   return (
     <div className={`${styles.albumCard} ${styles.dark}`}>
       <div className={styles.albumCardImage}>
@@ -34,14 +34,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             <Dropdown
               icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
               position={DropDownPositionEnum.Up}
-              items={[
-                {
-                  icon: (
-                    <Icon name={IconNameEnum.Plus} width={28} height={28} />
-                  ),
-                  title: 'Add To Playlist',
-                },
-              ]}
+              items={props.dropDownItems}
             />
           </div>
         </div>
