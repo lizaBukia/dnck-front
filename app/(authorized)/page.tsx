@@ -55,7 +55,7 @@ export default function MainPage(): JSX.Element {
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
-              <Link href={'/playlist'}>See all</Link>
+              <Link href={'/topHits'}>See all</Link>
             </div>
           </div>
           {musics && (

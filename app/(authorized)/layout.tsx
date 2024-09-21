@@ -1,12 +1,12 @@
 import Header from '../Components/Header/Header';
 import Player from '../Components/Player/Player';
-import styles from './page.module.scss';
-
+import styles from './page.module.scss'
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>): JSX.Element {
+
   return (
     <>
       <Header />

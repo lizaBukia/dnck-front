@@ -18,9 +18,10 @@ import Input from '@/app/Components/Input/Input';
 import { InputTypeEnum } from '@/app/Components/Input/enum/input-type.enum';
 import Modal from '@/app/Components/Modal/Modal';
 import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
+import AddToPlaylistButton from './components/AddToPlaylistButton/AddToPlaylistButton';
 
 export default function AlbumPage(): JSX.Element {
-  const { data } = useSWR<PlaylistInterface[]>('/playlists', fetcher);
+  const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<{ name: string }>();
@@ -31,7 +32,7 @@ export default function AlbumPage(): JSX.Element {
     try {
       await ApiClient.post('/playlists', { title: values.name });
 
-      await mutate('/playlists');
+      await mutate('/playlists/personal');
 
       setIsModalOpen(false);
       reset();
@@ -48,15 +49,6 @@ export default function AlbumPage(): JSX.Element {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.contentWrapper} ${styles.lightContent}`}>
-          <div className={styles.mobileHeading}>
-            <div className={styles.mobileText}>
-              <span className={styles.primaryTextLarge}>
-                Let’s start new adventure
-                <span className={styles.colored}> with you</span>
-              </span>
-            </div>
-            <ModeSwitcher />
-          </div>
           <div>
             <div className={styles.heading}>
               <Heading type={HeadingTypeEnum.H5}>My Playlist</Heading>
@@ -65,11 +57,10 @@ export default function AlbumPage(): JSX.Element {
                 Create Playlist
               </Button>
             </div>
-
             <div>
               {data && data.length > 0 && (
                 <AlbumCards
-                  items={data.map((playlist) => ({
+                  items={data?.map((playlist) => ({
                     artists: [
                       {
                         firstName: playlist.title,
@@ -78,11 +69,29 @@ export default function AlbumPage(): JSX.Element {
                       },
                     ],
                     imgUrl: playlist.history?.location ?? '/default.png',
-                    dropDownItems: [],
-                    title: '',
+                    dropDownItems: [
+                      {
+                        icon: (
+                          <Icon
+                            name={IconNameEnum.Delete}
+                            width={14}
+                            height={14}
+                          />
+                        ),
+                        title: 'Delete',
+                        onClick: () => {
+                          ApiClient.delete(`/playlists/${playlist.id}`).then(
+                            () => {
+                              mutate('/playlists/personal');
+                            },
+                          );
+                        },
+                      },
+                    ],
                   }))}
                 />
               )}
+              <AddToPlaylistButton />
             </div>
           </div>
         </div>

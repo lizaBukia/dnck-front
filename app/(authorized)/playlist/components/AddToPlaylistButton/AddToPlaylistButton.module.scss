@@ -1,0 +1,13 @@
+@import '/app/Colors/common-colors.scss';
+@import '/app/Colors/dark-colors.scss';
+@import '/app/Colors/light-colors.scss';
+
+.button {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background-color: $clicked-dark;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+}

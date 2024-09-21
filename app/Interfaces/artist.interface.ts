@@ -1,11 +1,7 @@
-import { AlbumInterfaces } from './album.interfaces';
-
 export interface ArtistInterface {
+  id: number;
   firstName: string;
   lastName: string;
   biography: string;
-  album: AlbumInterfaces[];
-  history: {
-    location: string;
-  };
+  createdAt: string;
 }
