@@ -7,16 +7,16 @@ const publicRoutes: string[] = ['/login', '/signup'];
 export default async function middleware(
   req: NextRequest,
 ): Promise<NextResponse<unknown>> {
-  // const path: string = req.nextUrl.pathname;
-  // const token: RequestCookie | undefined = cookies().get('accessToken');
-  // const pathIsPublic: boolean = publicRoutes.includes(path);
+  const path: string = req.nextUrl.pathname;
+  const token: RequestCookie | undefined = cookies().get('accessToken');
+  const pathIsPublic: boolean = publicRoutes.includes(path);
 
-  // if (pathIsPublic && token) {
-  //   return NextResponse.redirect(new URL('/', req.url));
-  // }
-  // if (!token && !pathIsPublic) {
-  //   return NextResponse.redirect(new URL('/login', req.url));
-  // }
+  if (pathIsPublic && token) {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+  if (!token && !pathIsPublic) {
+    return NextResponse.redirect(new URL('/login', req.url));
+  }
   return NextResponse.next();
 }
 
