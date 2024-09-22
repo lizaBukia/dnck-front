@@ -62,7 +62,7 @@ const MusicPlayerResponsive = () => {
           isExpanded ? styles.translateUp : styles.translateDown
         }`}
       >
-        <div className={isDark ? styles.fullPlayerContentLight  : styles.fullPlayerContent}>
+        <div className={isDark ?  styles.fullPlayerContent : styles.fullPlayerContentLight}>
           <div className={styles.fullPlayerHeader}>
             <div onClick={toggleExpand} className={styles.collapseButton}>
               <Icon name={isExpanded ? IconNameEnum.Collapse : IconNameEnum.Expand} width={24} height={24} />
