@@ -118,17 +118,8 @@ const MusicPlayer: FC = () => {
             </div>
           </div>
         </div>
-        <div >
-          {musics && (
-            <HitsCards
-              items={musics.map((hit) => ({
-                backgroundImage: '/image75.png',
-                album: hit.album,
-                src: hit.src,
-                dropDownItems: [],
-              }))}
-            />
-          )}{' '}
+        <div>
+          
         </div>
       </div>
     </div>

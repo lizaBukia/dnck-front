@@ -72,21 +72,7 @@ const MusicPlayerResponsive = () => {
           </div>
           <MusicPlayer />
           <div className={styles.playlistSection}>
-            <h3 className={styles.playlistTitle}>Your Playlist</h3>
-            <ul>
-              {[1, 2, 3].map((index) => (
-                <li key={index} className={styles.playlistItem}>
-                  <HitsCards
-                    items={musics?.map((hit) => ({
-                      backgroundImage: '/image75.png',
-                      album: hit.album,
-                      src: hit.src,
-                      dropDownItems: [],
-                    }))}
-                  />
-                </li>
-              ))}
-            </ul>
+            <h3 className={styles.playlistTitle}>Your Playlist</h3> 
           </div>
         </div>
       </div>
