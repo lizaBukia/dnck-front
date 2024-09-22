@@ -41,8 +41,8 @@ const MusicPlayerResponsive = () => {
             />
           </div>
           <div className={`${className} ${styles.playerName}`}>
-            <h1 className={styles.songName}>{currentMusic.name}</h1>
-            <span className={styles.artistName}>{currentMusic.artistName}</span>
+            <h1 className={isDark ? styles.songNameDark : styles.songName}>{currentMusic.name}</h1>
+            <span className={isDark ? styles.artistName : styles.artistNameLight}>{currentMusic.artistName}</span>
             <audio ref={audioRef}></audio>
           </div>
         </div>
@@ -62,15 +62,17 @@ const MusicPlayerResponsive = () => {
           isExpanded ? styles.translateUp : styles.translateDown
         }`}
       >
-        <div className={styles.fullPlayerContent}>
+        <div className={isDark ? styles.fullPlayerContentLight  : styles.fullPlayerContent}>
           <div className={styles.fullPlayerHeader}>
-            <button onClick={toggleExpand} className={styles.collapseButton}>
-              <Icon name={isExpanded ? IconNameEnum.Expand : IconNameEnum.Collapse} width={24} height={24} />
-            </button>
-            <h2 className="text-lg font-semibold">Swipe Down</h2>
+            <div onClick={toggleExpand} className={styles.collapseButton}>
+              <Icon name={isExpanded ? IconNameEnum.Collapse : IconNameEnum.Expand} width={24} height={24} />
+            </div>
+            <h2 className={styles.fullPlayerTitle}>Swipe Down</h2>
             <div className={styles.playbackControlSpacing}></div>
           </div>
+          <div className={styles.fullPlayerBody} style={{backgroundImage: `url(${currentMusic.imgLink})`}}>
           <MusicPlayer />
+          </div>
           <div className={styles.playlistSection}>
             <h3 className={styles.playlistTitle}>Your Playlist</h3> 
           </div>

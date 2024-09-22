@@ -26,11 +26,24 @@
 .playerName {
   display: flex;
   flex-direction: column;
+  background-color: transparent;
   gap: 4px;
 }
 .songName {
   font-size: 20px;
+  background-color: transparent;
 }
+.songNameDark {
+  color: white;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.artistNameLight {
+  background-color: transparent;
+  color: white;
+}
+
 .artistName {
   font-size: 14px;
   color: #838383;
@@ -62,6 +75,7 @@
   width: 100%;
   background-color: $primary-black;
   height: 87px;
+  align-items: center;
 }
 
 .fullPlayer {
@@ -86,9 +100,26 @@
 .fullPlayerContent {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 95%;
   padding: 1rem;
-  background-color: grey;
+  background-color: $primary-black;
+  color: $primary-white;
+  position: relative;
+  top: 5%;
+}
+
+.fullPlayerContentLight {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  padding: 1rem;
+  background-color: $primary-white;
+  color: $primary-black;
+  float: bottom;
+}
+
+.fullPlayerTitle {
+  font-size: 12px;
 }
 
 .fullPlayerHeader {
@@ -98,9 +129,15 @@
   margin-bottom: 1rem;
 }
 
-.fullPlayer{
+.fullPlayer {
   display: none;
 }
+
+.collapseButton {
+  background-color: transparent;
+  border: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .songName {
     font-size: 14px;
@@ -108,8 +145,29 @@
   .artistName {
     font-size: 10px;
   }
-  .fullPlayer{
+  .fullPlayer {
     display: unset;
+  }
+  .fullPlayerBody {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(degree-of-blur);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+  .fullPlayerBody::before {
+    position: absolute;
+    filter: blur(10px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
   }
 }
 
@@ -121,7 +179,7 @@
   .fixedBottomBar {
     display: none;
   }
-  .fullPlayer{
+  .fullPlayer {
     display: unset;
   }
 }
