@@ -6,7 +6,7 @@ import { SearchArtistCardType } from './types/search-artist-card.type';
 const SearchArtistCard: SearchArtistCardType = (
   props: SearchArtistCardPropsInterface,
 ) => {
-  console.log(props, 'props here')
+  console.log(props, 'props here');
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.cardImage}>
@@ -21,7 +21,7 @@ const SearchArtistCard: SearchArtistCardType = (
         </div>
         <div className={styles.headingWrapper}>
           <h1 className={styles.artistName}>{props.name}</h1>
-          </div>
+        </div>
       </div>
     </div>
   );

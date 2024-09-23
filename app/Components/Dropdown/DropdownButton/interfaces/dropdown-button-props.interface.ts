@@ -9,4 +9,5 @@ export interface DropdownButtonPropsInterface {
   darkMode?: boolean;
   href: string;
   onClick?: () => void;
+  title: string | ReactNode;
 }
