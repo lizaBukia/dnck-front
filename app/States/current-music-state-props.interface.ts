@@ -4,6 +4,7 @@ export interface CurrentMusicStateInterface {
   musics: PlayerMusicInterface[];
   currentTime: number;
   isPlaying: boolean;
+  imgLink?: string;
 }
 
 export interface PlayerMusicInterface {

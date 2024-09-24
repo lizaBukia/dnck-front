@@ -1,4 +1,4 @@
 export interface DownPlaylistPropsInterface {
-    imgUrl: string,
-    name: string,
+  imgUrl: string;
+  name: string;
 }

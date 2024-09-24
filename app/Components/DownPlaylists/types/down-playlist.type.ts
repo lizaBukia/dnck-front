@@ -1,3 +1,5 @@
-import { DownPlaylistPropsInterface } from "../interfaces/down-playlist-props.interface";
+import { DownPlaylistPropsInterface } from '../interfaces/down-playlist-props.interface';
 
-export type DownPlaylistType = (props: DownPlaylistPropsInterface) => JSX.Element;
+export type DownPlaylistType = (
+  props: DownPlaylistPropsInterface,
+) => JSX.Element;
