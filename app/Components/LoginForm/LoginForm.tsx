@@ -44,7 +44,7 @@ const LoginForm: FC = () => {
         alert('password is not correct');
       }
     } catch (err) {
-      alert('Login Failed');
+      alert(err?.response?.data?.message);
     }
   };
 

@@ -1,3 +1,4 @@
 export interface AddToPlaylistButtonProsInterface {
-    musicId: number[];
+  musicId: number[];
+  album?: boolean;
 }

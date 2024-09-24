@@ -1,10 +1,17 @@
+import Link from 'next/link';
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
+import useSWR from 'swr';
+import DownPlaylist from '../DownPlaylists/DownPlaylist';
+import Heading from '../Heading/Heading';
+import { HeadingTypeEnum } from '../Heading/enums/heading-type.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
+import { fetcher } from '@/app/Api/fetcher';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 import { currentMusicState } from '@/app/States/States';
 import { PlayerMusicInterface } from '@/app/States/current-music-state-props.interface';
 
@@ -16,6 +23,7 @@ const MusicPlayer: FC = () => {
     togglePlay,
     playNext,
     playPrevious,
+    shuffle,
   } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
 
@@ -37,14 +45,7 @@ const MusicPlayer: FC = () => {
     }
   };
 
-  // const shuffleArray = useCallback((array: number[]) => {
-  //   const shuffled = [...array];
-  //   for (let i = shuffled.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  //   }
-  //   return shuffled;
-  // }, []);
+  const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
 
   return (
     <div>
@@ -76,6 +77,7 @@ const MusicPlayer: FC = () => {
                 isActive={true}
                 width={24}
                 height={24}
+                onClick={shuffle}
               />
 
               <div className={styles.player}>
@@ -117,8 +119,28 @@ const MusicPlayer: FC = () => {
             </div>
           </div>
         </div>
+        <div className={styles.header}>
+          <Heading type={HeadingTypeEnum.H5}>playlist</Heading>
+          <div className={styles.more}>
+            <Link href={'/playlist'}>See all</Link>
+          </div>
+        </div>
+        <div>
+          {data &&
+            data.length > 0 &&
+            data.map((playlist) => {
+              return (
+                <DownPlaylist
+                  imgUrl={playlist.history?.location ?? '/default.png'}
+                  name={playlist.title}
+                  key={playlist.id}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );
 };
+
 export default MusicPlayer;

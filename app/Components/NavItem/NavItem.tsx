@@ -12,7 +12,7 @@ import { NavItemsType } from './types/nav-item.type';
 const NavItems: NavItemsType = (props: NavItemPropsInterface) => {
   const pathName: string = usePathname();
   const isActive: boolean = pathName === props.href;
-
+  
   return (
     <div>
       <Link

@@ -10,4 +10,5 @@ export type usePlayerType = {
   playNext: () => void;
   playPrevious: () => void;
   playMusic: (data: PlayerMusicInterface) => void;
+  shuffle: () => void;
 };

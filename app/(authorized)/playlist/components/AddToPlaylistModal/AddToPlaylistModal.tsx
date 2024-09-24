@@ -1,13 +1,13 @@
-import Modal from '@/app/Components/Modal/Modal';
 import { FC, useState, FormEvent } from 'react';
-import { AddToPlaylistModalPropsInterface } from './interfaces/add-to-playlist-modal.interface';
 import useSWR from 'swr';
-import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
+import styles from './AddToPlaylistModal.module.scss';
+import { AddToPlaylistModalPropsInterface } from './interfaces/add-to-playlist-modal.interface';
+import { ApiClient } from '@/app/Api/api';
 import { fetcher } from '@/app/Api/fetcher';
 import Button from '@/app/Components/Button/Button';
 import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
-import styles from './AddToPlaylistModal.module.scss';
-import { ApiClient } from '@/app/Api/api';
+import Modal from '@/app/Components/Modal/Modal';
+import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 
 const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
   props: AddToPlaylistModalPropsInterface,
@@ -16,9 +16,9 @@ const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
     '/playlists/personal',
     fetcher,
   );
-  const [selectedPlaylists, setSelectedPlaylists] = useState<string[]>([]);
+  const [selectedPlaylists, setSelectedPlaylists] = useState<number[]>([]);
 
-  const handleCheckboxChange = (id: string) => {
+  const handleCheckboxChange = (id: number): void => {
     setSelectedPlaylists((prevSelected) =>
       prevSelected.includes(id)
         ? prevSelected.filter((playlistId) => playlistId !== id)
@@ -26,20 +26,35 @@ const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
     );
   };
 
-  const onSubmit = async (e: FormEvent) => {
+  const filteredPlaylists: PlaylistInterface[] = [];
+
+  if (playlists?.length && props.album) {
+    for (const item of playlists) {
+      const doesNotIncludesMusic: boolean = true;
+      for (const music of item.musics) {
+        if (props.musicId.includes(music.id)) break;
+      }
+      if (doesNotIncludesMusic) {
+        filteredPlaylists.push(item);
+      }
+    }
+  }
+
+  const onSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
 
     if (selectedPlaylists.length === 0) {
       alert('Please select at least one playlist');
       return;
     }
-    for (let i = 0; i < selectedPlaylists.length; i++) {
-      ApiClient.patch(`/playlists/${selectedPlaylists[i]}`, {
+    console.log(selectedPlaylists);
+
+    for (let i: number = 0; i < selectedPlaylists.length; i++) {
+      ApiClient.patch(`/playlists/${Number(selectedPlaylists[i])}`, {
         musicIds: props.musicId,
       });
     }
   };
-
   return (
     <Modal
       isOpen={props.isOpen}
@@ -60,7 +75,7 @@ const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
                 type="checkbox"
                 value={item.id}
                 id={String(item.id)}
-                onChange={() => handleCheckboxChange(String(item.id))}
+                onChange={() => handleCheckboxChange(Number(item.id))}
               />
               <label className={styles.naming} htmlFor={String(item.id)}>
                 {item.title}
