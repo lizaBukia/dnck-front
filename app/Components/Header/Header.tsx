@@ -1,6 +1,9 @@
 'use client';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { FC, useEffect, useState } from 'react';
+import Button from '../Button/Button';
+import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
 import NavMenu from '../NavMenu/NavMenu';
 import styles from './Header.module.scss';
 import { headerNavItems } from './HeaderNavItems/HeaderNavItems';
@@ -8,13 +11,6 @@ import Logo from './Logo/Logo';
 import LogoutButton from './Logout-Button/LogoutButton';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 import SearchInput from './SearchInput/SearchInput';
-import { HeaderType } from './types/header.type';
-import { searchHeaderState } from '@/app/States/States';
-import { useRecoilState } from 'recoil';
-import Button from '../Button/Button';
-import { ButtonTypeEnum } from '../Button/enums/button-type.enum';
-import { useForm } from 'react-hook-form';
-import { FC, useEffect, useState } from 'react';
 
 const Header: FC = () => {
   const router: AppRouterInstance = useRouter();
@@ -27,7 +23,7 @@ const Header: FC = () => {
     router.push(`/search?search=${search}`);
   };
 
-  const paramSearch = useSearchParams().get('search');
+  const paramSearch: string | null = useSearchParams().get('search');
 
   useEffect(() => {
     if (paramSearch) {

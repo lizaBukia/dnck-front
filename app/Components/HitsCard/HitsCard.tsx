@@ -14,10 +14,9 @@ import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const { togglePlay, playMusic } = usePlayer();
+  const { togglePlay } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
-
 
   for (const artist of props.album.artists) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);

@@ -3,5 +3,4 @@ export interface DownPlaylistsMusicsPropsInterface {
   imgUrl: string;
   src: string;
   history: { location: string };
-  
 }

@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
 import Image from 'next/image';
+import React, { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
+import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
 import styles from './MusicPlayerResponsive.module.scss';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState, isDarkState } from '@/app/States/States';
-import MusicPlayer from '../MusicPlayer/MusicPlayer';
-import HitsCard from '../HitsCard/HitsCard';
-import HitsCards from '../HitsCards/HitsCards';
-import { fetcher } from '@/app/Api/fetcher';
-import { MusicInterface } from '@/app/Interfaces/music.interface';
-import useSWR from 'swr';
 
-const MusicPlayerResponsive = () => {
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+const MusicPlayerResponsive = (): React.JSX.Element => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentMusic] = useRecoilState(currentMusicState);
   const { playerRef: audioRef, togglePlay } = usePlayer();
   const isDark: boolean = useRecoilValue(isDarkState);
   const className: string = isDark ? styles.dark : styles.light;
 
-  const toggleExpand = () => setIsExpanded(!isExpanded);
+  const toggleExpand = (): void => setIsExpanded(!isExpanded);
   console.log(currentMusic, 'awdawd');
   return (
     <div className={styles.wrapper}>
@@ -41,8 +35,14 @@ const MusicPlayerResponsive = () => {
             />
           </div>
           <div className={`${className} ${styles.playerName}`}>
-            <h1 className={isDark ? styles.songNameDark : styles.songName}>{currentMusic?.musics[0]?.name}</h1>
-            <span className={isDark ? styles.artistName : styles.artistNameLight}>{currentMusic.musics[0]?.artistName}</span>
+            <h1 className={isDark ? styles.songNameDark : styles.songName}>
+              {currentMusic?.musics[0]?.name}
+            </h1>
+            <span
+              className={isDark ? styles.artistName : styles.artistNameLight}
+            >
+              {currentMusic.musics[0]?.artistName}
+            </span>
             <audio ref={audioRef}></audio>
           </div>
         </div>
@@ -62,19 +62,30 @@ const MusicPlayerResponsive = () => {
           isExpanded ? styles.translateUp : styles.translateDown
         }`}
       >
-        <div className={isDark ?  styles.fullPlayerContent : styles.fullPlayerContentLight}>
+        <div
+          className={
+            isDark ? styles.fullPlayerContent : styles.fullPlayerContentLight
+          }
+        >
           <div className={styles.fullPlayerHeader}>
             <div onClick={toggleExpand} className={styles.collapseButton}>
-              <Icon name={isExpanded ? IconNameEnum.Collapse : IconNameEnum.Expand} width={24} height={24} />
+              <Icon
+                name={isExpanded ? IconNameEnum.Collapse : IconNameEnum.Expand}
+                width={24}
+                height={24}
+              />
             </div>
             <h2 className={styles.fullPlayerTitle}>Swipe Down</h2>
             <div className={styles.playbackControlSpacing}></div>
           </div>
-          <div className={styles.fullPlayerBody} style={{backgroundImage: `url(${currentMusic.imgLink})`}}>
-          <MusicPlayer />
+          <div
+            className={styles.fullPlayerBody}
+            style={{ backgroundImage: `url(${currentMusic.imgLink})` }}
+          >
+            <MusicPlayer />
           </div>
           <div className={styles.playlistSection}>
-            <h3 className={styles.playlistTitle}>Your Playlist</h3> 
+            <h3 className={styles.playlistTitle}>Your Playlist</h3>
           </div>
         </div>
       </div>
