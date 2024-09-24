@@ -20,7 +20,6 @@ import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 
 export default function AlbumPage(): JSX.Element {
   const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<{ name: string }>();
 

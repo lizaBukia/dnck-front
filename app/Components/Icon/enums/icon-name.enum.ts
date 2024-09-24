@@ -27,5 +27,7 @@ export enum IconNameEnum {
   ForwardLight = 'forward-light',
   ForwardDark = 'forward-dark',
   PlusActive = 'plus-active',
-  Delete = 'delete'
+  Delete = 'delete',
+  Collapse = 'collapse',
+  Expand = 'expand',
 }

@@ -1,3 +1,4 @@
+'use client';
 import { RefObject, useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { usePlayerType } from './types/use-player.type';

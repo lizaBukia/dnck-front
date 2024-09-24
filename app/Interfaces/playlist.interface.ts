@@ -5,6 +5,6 @@ export interface PlaylistInterface {
   title: string;
   musics: MusicInterface[];
   history: { location: string };
-  createdAt: string;
+  createdAt: string | Date;
   deletedAt: string;
 }
