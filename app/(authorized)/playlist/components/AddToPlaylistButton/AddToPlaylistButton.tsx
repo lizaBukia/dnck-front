@@ -1,15 +1,16 @@
 'use client';
-import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
-import Icon from '@/app/Components/Icon/Icon';
-import styles from './AddToPlaylistButton.module.scss';
 import { useState } from 'react';
 import AddToPlaylistModal from '../AddToPlaylistModal/AddToPlaylistModal';
+import styles from './AddToPlaylistButton.module.scss';
 import { AddToPlaylistButtonProsInterface } from './interfaces/add-to-playlist-button-props.interface';
+import { AddToPlaylistButtonType } from './types/add-to-playlist-button.type';
+import Icon from '@/app/Components/Icon/Icon';
+import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
-const AddToPlaylistButton = (props: AddToPlaylistButtonProsInterface) => {
+const AddToPlaylistButton: AddToPlaylistButtonType = (
+  props: AddToPlaylistButtonProsInterface,
+) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(isOpen);
 
   const onClick = (): void => {
     setIsOpen(true);

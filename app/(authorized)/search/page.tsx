@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
+import { SearchInterface } from './interfaces/search.interface';
 import styles from './page.module.scss';
 import { fetcher } from '@/app/Api/fetcher';
 import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
@@ -8,17 +10,19 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import SearchArtistCard from '@/app/Components/SearchArtistCard/SearchArtistCard';
-import { SearchInterface } from './interfaces/search.interface';
-import { useSearchParams } from 'next/navigation';
 
 export default function SearchPage(): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/typedef
   const searchValue = useSearchParams().get('search');
   const { data: searchResult } = useSWR<SearchInterface>(
     `/search?search=${searchValue}`,
     fetcher,
   );
+  // eslint-disable-next-line @typescript-eslint/typedef
   const artists = searchResult?.artists;
+  // eslint-disable-next-line @typescript-eslint/typedef
   const albums = searchResult?.albums;
+  // eslint-disable-next-line @typescript-eslint/typedef
   const musics = searchResult?.musics;
   return (
     <div className={styles.contentWrapper}>
