@@ -65,6 +65,11 @@ export default function AlbumPage(): JSX.Element {
                         lastName: '',
                         biography: '',
                         createdAt: new Date(),
+                        albums:[],
+                        history: {
+                          location: '',
+                          event: '',
+                        }
                       },
                     ],
                     title: playlist.title,
