@@ -4,4 +4,5 @@ export interface DropDownItemsInterface {
   title: string | ReactNode;
   icon?: ReactNode;
   onClick?: () => void;
+  id?: number;
 }

@@ -12,7 +12,8 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
-import { Input } from '@/app/Components/Input/Input';
+// eslint-disable-next-line import/no-named-as-default
+import Input from '@/app/Components/Input/Input';
 import { InputTypeEnum } from '@/app/Components/Input/enum/input-type.enum';
 import Modal from '@/app/Components/Modal/Modal';
 import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
@@ -67,6 +68,7 @@ export default function AlbumPage(): JSX.Element {
                         albums: [],
                         history: {
                           location: '',
+                          event: '',
                         },
                       },
                     ],

@@ -2,7 +2,7 @@ import { DropDownItemsInterface } from '../../Dropdown/interfaces/dropdown-items
 import { PlayButtonPropsInterface } from '../../PlayButton/interfaces/play-button-props.interface';
 import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
 
-export interface HitsCardItemsInterface {
+export interface DownHitsCardItemsInterface {
   dropDownItems?: DropDownItemsInterface[];
   backgroundImage: string;
   album: AlbumInterfaces;
@@ -10,5 +10,4 @@ export interface HitsCardItemsInterface {
   src: string;
   name: string;
   id: number;
-  onClick?: () => void;
 }

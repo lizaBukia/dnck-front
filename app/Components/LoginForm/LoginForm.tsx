@@ -25,10 +25,20 @@ const LoginForm: FC = () => {
     formState: { errors },
   } = useForm();
 
+  interface CustomErrorResponse {
+    data: {
+      message: string;
+    };
+    status: number;
+  }
+
+  interface CustomError extends Error {
+    response?: CustomErrorResponse;
+  }
+
   const router: AppRouterInstance = useRouter();
 
   const onSubmit = async (values: FieldValues): Promise<void> => {
-    // TODO: Refactor This Call To Axios Config
     try {
       const response: AxiosResponse = await ApiClient.post(
         '/auth/login',
@@ -43,8 +53,19 @@ const LoginForm: FC = () => {
       } else {
         alert('password is not correct');
       }
-    } catch (err) {
-      alert('Login Failed');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        const errorWithResponse: CustomError = err as CustomError;
+
+        if (errorWithResponse.response) {
+          const errorResponse: CustomErrorResponse = errorWithResponse.response;
+          alert(errorResponse.data.message || 'Something went wrong');
+        } else {
+          alert(err.message || 'Something went wrong');
+        }
+      } else {
+        alert('An unexpected error occurred.');
+      }
     }
   };
 

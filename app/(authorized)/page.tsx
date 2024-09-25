@@ -21,7 +21,7 @@ import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddTo
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
-
+  
   const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
     useSetRecoilState(currentMusicState);
 

@@ -6,6 +6,7 @@ import { PlayerPropsInterface } from './interfaces/player-props.interface';
 import { PlayerType } from './types/player.type';
 
 const Player: PlayerType = (props: PlayerPropsInterface) => {
+  console.log('player.tsx');
   return (
     <div className={props.className}>
       <div className={styles.playerWrapper}>

@@ -49,7 +49,10 @@ export const usePlayer = (): usePlayerType => {
   }, [playerRef, setCurrentMusic, currentMusic]);
 
   const playNext = (): void => {
-    if (currentMusic.currentIndex < currentMusic.musics.length - 1) {
+    if (
+      currentMusic.musics.length > 0 &&
+      currentMusic.currentIndex < currentMusic.musics.length - 1
+    ) {
       setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
         ...prevState,
         currentIndex: prevState.currentIndex + 1,
@@ -59,12 +62,6 @@ export const usePlayer = (): usePlayerType => {
   };
 
   const playPrevious = (): void => {
-    console.log(
-      currentMusic.currentIndex > 0,
-      'sest',
-      currentMusic.currentIndex,
-      currentMusic.musics,
-    );
     if (currentMusic.currentIndex > 0) {
       setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
         ...prevState,
@@ -72,6 +69,14 @@ export const usePlayer = (): usePlayerType => {
         currentMusicId: prevState.musics[prevState.currentIndex - 1].id,
       }));
     }
+  };
+  const shuffle = (): void => {
+    const shuffled: PlayerMusicInterface[] = [...currentMusic.musics];
+    for (let i: number = shuffled.length - 1; i > 0; i--) {
+      const j: number = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setCurrentMusic((prevState) => ({ ...prevState, musics: shuffled }));
   };
 
   const togglePlay: () => void = useCallback(() => {
@@ -96,12 +101,11 @@ export const usePlayer = (): usePlayerType => {
       (music) => music.id === data.id,
     );
 
-    console.log(data);
-
     if (currentIndex !== -1) {
       setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
         ...prevState,
         currentIndex,
+        currentMusicId: prevState.musics[currentIndex].id,
       }));
     } else {
       setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
@@ -112,8 +116,6 @@ export const usePlayer = (): usePlayerType => {
       }));
     }
   };
-
-  console.log(currentMusic);
 
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
@@ -138,5 +140,6 @@ export const usePlayer = (): usePlayerType => {
     playPrevious,
     playNext,
     playMusic,
+    shuffle,
   };
 };

@@ -7,14 +7,14 @@ import PlayButton from '../PlayButton/PlayButton';
 import Text from '../Text/Text';
 import { TextHtmlTypeEnum } from '../Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Text/enums/text-type.enum';
-import styles from './HitsCard.module.scss';
-import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
-import { HitsCardType } from './type/hits-card.type';
+import styles from './DownHitsCard.module.scss';
+import { DownHitsCardItemsInterface } from './interfaces/down-hits-card-items-props.interface';
+import { DownHitsCardType } from './types/down-hits-card.type';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
 
-const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
-  const { togglePlay } = usePlayer();
+const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
+  const { togglePlay, playMusic } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
@@ -23,9 +23,18 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    props.onClick?.();
+    playMusic({
+      name: props.name,
+      imgLink: props.album.history?.location,
+      src: props.src,
+      artistName: artistName.join(', '),
+      id: props.id,
+    });
     togglePlay();
   };
+
+  console.log(music.currentMusicId === props.id);
+
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
       <div className={styles.content}>
@@ -80,4 +89,4 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   );
 };
 
-export default HitsCard;
+export default DownHitsCard;
