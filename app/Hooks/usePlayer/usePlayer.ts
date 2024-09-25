@@ -30,6 +30,19 @@ export const usePlayer = (): usePlayerType => {
     },
     [playerRef, setCurrentMusic],
   );
+  useEffect(() => {
+    const audioElement: HTMLAudioElement | null = playerRef.current;
+  
+    if (audioElement && currentMusic.musics[currentMusic.currentIndex]?.src) {
+      if (
+        audioElement.src !== currentMusic.musics[currentMusic.currentIndex].src
+      ) {
+        audioElement.src = currentMusic.musics[currentMusic.currentIndex].src;
+        audioElement.load();
+        togglePlay();  
+      }
+    }
+  }, [currentMusic.currentIndex, currentMusic.musics, playerRef, ]);
 
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;

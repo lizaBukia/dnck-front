@@ -84,9 +84,6 @@ const MusicPlayerResponsive = (): React.JSX.Element => {
           >
             <MusicPlayer />
           </div>
-          <div className={styles.playlistSection}>
-            <h3 className={styles.playlistTitle}>Your Playlist</h3>
-          </div>
         </div>
       </div>
     </div>

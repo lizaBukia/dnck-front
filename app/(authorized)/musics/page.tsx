@@ -7,6 +7,9 @@ import DownHitsCards from '@/app/Components/DownHitsCards/DownHitsCards';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import { MusicInterface } from '@/app/Interfaces/music.interface';
+import { currentMusicState } from '@/app/States/States';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
+import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 
 const TopHits = (): JSX.Element => {
   const date: Date = new Date();
@@ -19,6 +22,9 @@ const TopHits = (): JSX.Element => {
     `/musics?topDate=${formattedDate}`,
     fetcher,
   );
+  const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
+  useSetRecoilState(currentMusicState);
+
 
   return (
     <div className={styles.container}>
@@ -30,24 +36,38 @@ const TopHits = (): JSX.Element => {
       <div>
         {musics && (
           <DownHitsCards
-            items={musics.slice(0, 9).map((hit) => {
-              const albumHistoryLocation = hit.album?.history?.location || ''; 
-              const musicHistoryLocation = hit.history?.location || ''; 
-              return {
-                backgroundImage: albumHistoryLocation,
-                album: hit.album,
-                name: hit.name,
-                src: musicHistoryLocation,
-                id: hit.id,
-                dropDownItems: [
-                  {
-                    title: (
-                      <AddToPlaylistButton album={false} musicId={[hit.id]} />
-                    ),
-                  },
-                ],
-              };
-            })}
+          items={musics.slice(0, 9).map((hit, index) => { 
+            return {
+              backgroundImage: hit.album?.history?.location,
+              album: hit.album,
+              name: hit.name,
+              src: hit.history?.location,
+              id: hit.id,
+              onClick: (): void => {
+                setMusic((prevState) => ({
+                  ...prevState,
+                  currentIndex: index,  
+                  currentMusicId: hit.id,
+                  musics: [
+                    ...musics.map((music) => ({
+                      id: music.id,
+                      name: music.name,
+                      artistName: music.album?.artists.reduce((acc, curr) => {
+                        return (acc += `${curr.firstName} ${curr.lastName},`);
+                      }, '') ?? 'Unknown Artist',
+                      imgLink: music.album?.history?.location ?? '',
+                      src: music.history?.location ?? '',
+                    })),
+                  ],
+                }));
+              },
+              dropDownItems: [
+                {
+                  title: <AddToPlaylistButton musicId={[hit.id]} />,
+                },
+              ],
+            };
+          })}
           />
         )}
       </div>
