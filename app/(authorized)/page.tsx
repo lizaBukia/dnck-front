@@ -81,39 +81,38 @@ export default function MainPage(): JSX.Element {
 
           {musics && (
             <HitsCards
-              items={musics.slice(0, 9).map((hit) => {
-                return {
-                  backgroundImage: hit.album?.history?.location,
-                  album: hit.album,
-                  name: hit.name,
-                  src: hit.history?.location,
-                  id: hit.id,
-                  onClick: (): void => {
-                    setMusic((prevState) => ({
-                      ...prevState,
-                      currentIndex: 0,
-                      currentMusicId: hit.id,
-                      musics: [
-                        ...musics.map((music) => ({
-                          id: music.id,
-                          name: music.name,
-                          artistName:
-                            music.album?.artists.reduce((acc, curr) => {
-                              return (acc += `${curr.firstName} ${curr.lastName},`);
-                            }, '') ?? 'Unknown Artist',
-                          imgLink: music.album?.history?.location ?? '',
-                          src: music.history?.location ?? '',
-                        })),
-                      ],
-                    }));
+            items={musics.slice(0, 9).map((hit, index) => { 
+              return {
+                backgroundImage: hit.album?.history?.location,
+                album: hit.album,
+                name: hit.name,
+                src: hit.history?.location,
+                id: hit.id,
+                onClick: (): void => {
+                  setMusic((prevState) => ({
+                    ...prevState,
+                    currentIndex: index,  
+                    currentMusicId: hit.id,
+                    musics: [
+                      ...musics.map((music) => ({
+                        id: music.id,
+                        name: music.name,
+                        artistName: music.album?.artists.reduce((acc, curr) => {
+                          return (acc += `${curr.firstName} ${curr.lastName},`);
+                        }, '') ?? 'Unknown Artist',
+                        imgLink: music.album?.history?.location ?? '',
+                        src: music.history?.location ?? '',
+                      })),
+                    ],
+                  }));
+                },
+                dropDownItems: [
+                  {
+                    title: <AddToPlaylistButton musicId={[hit.id]} />,
                   },
-                  dropDownItems: [
-                    {
-                      title: <AddToPlaylistButton musicId={[hit.id]} />,
-                    },
-                  ],
-                };
-              })}
+                ],
+              };
+            })}
             />
           )}
           <div className={styles.heading}>
@@ -133,7 +132,7 @@ export default function MainPage(): JSX.Element {
                   <Link href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        imgUrl={artist.history.location}
+                        imgUrl={artist.history?.location}
                         artists={[]}
                         title={`${artist.firstName} ${artist.lastName}`}
                       />
