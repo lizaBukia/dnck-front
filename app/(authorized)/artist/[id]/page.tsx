@@ -1,28 +1,36 @@
 'use client';
 import Link from 'next/link';
 import useSWR from 'swr';
-import AlbumCards from '../../../Components/AlbumCards/AlbumCards';
-import Heading from '../../../Components/Heading/Heading';
-import { HeadingTypeEnum } from '../../../Components/Heading/enums/heading-type.enum';
-import SingleArtistCard from '../../../Components/SingleArtistCard/SingleArtistCard';
-import { SingleArtistPagePropsInterface } from '../interfaces/single-artist-page-props.interface';
-import styles from '../page.module.scss';
-import { SingleArtistPageType } from '../type/single-artist-page.type';
 import { fetcher } from '@/app/Api/fetcher';
+import styles from './page.module.scss'
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
 import { ArtistInterface } from '@/app/Interfaces/artist.interface';
 import { MusicInterface } from '@/app/Interfaces/music.interface';
+import SingleArtistCard from '@/app/Components/SingleArtistCard/SingleArtistCard';
+import Heading from '@/app/Components/Heading/Heading';
+import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
+import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
+import { currentMusicState } from '@/app/States/States';
+import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
+import { SetterOrUpdater, useSetRecoilState } from 'recoil';
+import AddToPlaylistButton from '../../playlist/components/AddToPlaylistButton/AddToPlaylistButton';
+import { SingleArtistPagePropsInterface } from '../interfaces/single-artist-page-props.interface';
+import { SingleArtistPageType } from '../type/single-artist-page.type';
 
 const SingleArtistPage: SingleArtistPageType = (
   props: SingleArtistPagePropsInterface,
 ) => {
+  
   const { data: artists } = useSWR<ArtistInterface>(
     `/artists/${props.params.id}`,
     fetcher,
   );
   const { data: musics } = useSWR<MusicInterface[]>('/musics/', fetcher);
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
+  const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
+    useSetRecoilState(currentMusicState);
+
   return (
     <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
       <div className={styles.container}>
@@ -46,14 +54,39 @@ const SingleArtistPage: SingleArtistPageType = (
             </div>
             {musics && (
               <HitsCards
-                items={musics?.slice(0, 9).map?.((hit) => ({
-                  backgroundImage: hit.album.history.location,
-                  album: hit.album,
-                  name: hit.name,
-                  src: hit.history.location,
-                  id: hit.id,
-                  dropDownItems: [],
-                }))}
+                items={musics.slice(0, 9).map((hit) => {
+                  return {
+                    backgroundImage: hit.album?.history?.location,
+                    album: hit.album,
+                    name: hit.name,
+                    src: hit.history?.location,
+                    id: hit.id,
+                    onClick: (): void => {
+                      setMusic((prevState) => ({
+                        ...prevState,
+                        currentIndex: 0,
+                        currentMusicId: hit.id,
+                        musics: [
+                          ...musics.map((music) => ({
+                            id: music.id,
+                            name: music.name,
+                            artistName:
+                              music.album?.artists.reduce((acc, curr) => {
+                                return (acc += `${curr.firstName} ${curr.lastName},`);
+                              }, '') ?? 'Unknown Artist',
+                            imgLink: music.album?.history?.location ?? '',
+                            src: music.history?.location ?? '',
+                          })),
+                        ],
+                      }));
+                    },
+                    dropDownItems: [
+                      {
+                        title: <AddToPlaylistButton musicId={[hit.id]} />,
+                      },
+                    ],
+                  };
+                })}
               />
             )}
           </div>

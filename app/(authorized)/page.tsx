@@ -17,10 +17,14 @@ import { currentMusicState } from '../States/States';
 import { CurrentMusicStateInterface } from '../States/current-music-state-props.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
+import { ArtistInterface } from '../Interfaces/artist.interface';
+import AlbumCard from '../Components/AlbumCard/AlbumCard';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
+  const { data: artists } = useSWR<ArtistInterface[]>(`/artists`, fetcher);
+
   const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
     useSetRecoilState(currentMusicState);
 
@@ -34,7 +38,7 @@ export default function MainPage(): JSX.Element {
                 htmlType={TextHtmlTypeEnum.Span}
                 type={TextTypeEnum.PrimaryTextLarge}
               >
-                Let’s start new adventure
+                Let’s start a new adventure
                 <span className={styles.colored}> with you</span>
               </Text>
             </div>
@@ -48,7 +52,7 @@ export default function MainPage(): JSX.Element {
           </div>
           {albums && (
             <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
+              items={albums.slice(0, 4).map((album) => {
                 return {
                   title: album.name,
                   imgUrl: album.history?.location,
@@ -67,12 +71,14 @@ export default function MainPage(): JSX.Element {
               })}
             />
           )}
+
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
             <div className={styles.more}>
               <Link href={'/musics'}>See all</Link>
             </div>
           </div>
+
           {musics && (
             <HitsCards
               items={musics.slice(0, 9).map((hit) => {
@@ -91,14 +97,12 @@ export default function MainPage(): JSX.Element {
                         ...musics.map((music) => ({
                           id: music.id,
                           name: music.name,
-                          artistName: music.album.artists.reduce(
-                            (acc, curr) => {
+                          artistName:
+                            music.album?.artists.reduce((acc, curr) => {
                               return (acc += `${curr.firstName} ${curr.lastName},`);
-                            },
-                            '',
-                          ),
-                          imgLink: music.album.history.location,
-                          src: music.history.location,
+                            }, '') ?? 'Unknown Artist',
+                          imgLink: music.album?.history?.location ?? '',
+                          src: music.history?.location ?? '',
                         })),
                       ],
                     }));
@@ -112,10 +116,9 @@ export default function MainPage(): JSX.Element {
               })}
             />
           )}
-
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
-              This Week Popular Artists
+              This Week's Popular Artists
             </Heading>
             <div className={styles.test}>
               <Link className={styles.more} href={'/artists'}>
@@ -123,53 +126,46 @@ export default function MainPage(): JSX.Element {
               </Link>
             </div>
           </div>
-          {albums && (
-            <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
+          <div className={styles.albums}>
+            {artists &&
+              artists?.slice(0, 4).map((artist, idx) => {
+                return (
+                  <Link href={`/artist/${artist.id}`}>
+                    <div>
+                      <AlbumCard
+                        imgUrl={artist.history.location}
+                        artists={[]}
+                        title={`${artist.firstName} ${artist.lastName}`}
+                      />
+                    </div>
+                  </Link>
+                );
               })}
-            />
-          )}
+          </div>
+
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Artists</Heading>
             <div className={styles.more}>
               <Link href={'/artists'}>See all</Link>
             </div>
           </div>
-
-          {albums && (
-            <AlbumCards
-              items={albums.slice(0, 4).map?.((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
+          <div className={styles.albums}>
+            {artists &&
+              artists?.slice(0, 4).map((artist, idx) => {
+                return (
+                  <Link href={`/artist/${artist.id}`}>
+                    <div>
+                      <AlbumCard
+                        imgUrl={artist.history.location}
+                        artists={[]}
+                        title={`${artist.firstName} ${artist.lastName}`}
+                      />
+                    </div>
+                  </Link>
+                );
               })}
-            />
-          )}
+          </div>
+
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Charts</Heading>
             <div className={styles.more}>
@@ -178,7 +174,7 @@ export default function MainPage(): JSX.Element {
           </div>
           {albums && (
             <AlbumCards
-              items={albums.slice(0, 6).map?.((album) => {
+              items={albums.slice(0, 4).map((album) => {
                 return {
                   title: album.name,
                   imgUrl: album.history?.location,
