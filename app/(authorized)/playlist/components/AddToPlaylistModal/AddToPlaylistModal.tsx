@@ -47,8 +47,6 @@ const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
       alert('Please select at least one playlist');
       return;
     }
-    console.log(selectedPlaylists);
-
     for (let i: number = 0; i < selectedPlaylists.length; i++) {
       ApiClient.patch(`/playlists/${Number(selectedPlaylists[i])}`, {
         musicIds: props.musicId,

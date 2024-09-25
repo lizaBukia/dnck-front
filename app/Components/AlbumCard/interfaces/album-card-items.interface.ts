@@ -2,7 +2,7 @@ import { DropDownItemsInterface } from '../../Dropdown/interfaces/dropdown-items
 import { ArtistInterface } from '@/app/Interfaces/artist.interface';
 
 export interface AlbumCardItemsInterface {
-  dropDownItems: DropDownItemsInterface[];
+  dropDownItems?: DropDownItemsInterface[];
   imgUrl: string;
   artists: ArtistInterface[];
   title: string;

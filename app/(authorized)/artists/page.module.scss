@@ -1,15 +1,24 @@
-@import '../Colors/common-colors.scss';
-@import '../Colors/light-colors.scss';
-@import '../Colors/dark-colors.scss';
+@import '/app/Colors/common-colors.scss';
+@import '/app/Colors/dark-colors.scss';
+@import '/app/Colors/light-colors.scss';
+
+.mainPage {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .container {
   display: flex;
-  flex: 1;
   flex-flow: row wrap;
   width: 100%;
-  padding: 24px;
-  justify-content: center;
+  max-width: 986px;
+  gap: 16px;
+  justify-content: space-between;
   background-color: $primary-white;
+  // padding: 24px;
 }
 
 :global(body.dark) .lightContainer {
@@ -17,24 +26,18 @@
   background-color: $primary-black;
 }
 
-.mainPage {
+.content {
+  border-radius: 12px;
+  box-shadow: 0px 30px 30px 0px rgba(0, 0, 0, 0.03);
   display: flex;
-  width: 100%;
-  gap: 24px;
-  justify-content: space-between;
-}
-.wrapper {
-  width: 100%;
-  max-width: 1034px;
 }
 
-.content {
+.contentWrapper {
   display: flex;
   flex-flow: column wrap;
-  padding: 24px;
   gap: 16px;
   width: 100%;
-  border-radius: 12px;
+  max-width: 1034px;
   background-color: $primary-white;
 }
 
@@ -50,20 +53,19 @@
   width: 100%;
   color: $gray-400;
 }
-.albums {
+.wrapper {
+  width: 100%;
+  max-width: 1034px;
   display: flex;
+  flex-flow: column wrap;
   gap: 16px;
-}
-
-.playerWrapper {
-  height: 100%;
 }
 
 .player {
   position: sticky;
   top: 15px;
   right: 0;
-  // height: fit-content;
+  height: fit-content;
   padding: 16px 8px;
   border-radius: 12px;
   background-color: $background-color-light-mode;
@@ -83,6 +85,14 @@
   display: none;
 }
 
+.artistsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  cursor: pointer;
+  gap: 16px;
+}
+
 .modes {
   display: none;
 }
@@ -91,14 +101,14 @@
   display: none;
 }
 
-@media screen and (max-width: 1405px) {
+@media screen and (max-width: 1400px) {
   .mobileHeading {
     display: none;
   }
 
   .player {
     position: sticky;
-    bottom: 10px;
+    bottom: 0;
     right: 0;
     width: 100%;
     padding: 0;
@@ -106,7 +116,7 @@
 
   .mainPage {
     flex-flow: column wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
   }
@@ -164,30 +174,9 @@
     border-radius: 12px;
   }
 
-  .downPlayer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    background-color: $primary-black;
-    position: sticky;
-    bottom: 0;
-  }
-
-  .player {
-    position: sticky;
-    bottom: 10px;
-    right: 0;
-    width: 100%;
-    padding: 0;
-  }
-
   .mainPage {
     display: flex;
     max-width: 704px;
-  }
-  .albums {
-    overflow-x: scroll;
-    overflow-y: visible;
   }
 
   .modes {
@@ -214,9 +203,10 @@
     width: 240px;
     color: $primary-black;
   }
-  .albums {
-    flex-flow: column wrap;
-    overflow-x: scroll;
+
+  .player {
+    width: 100%;
+    position: sticky;
   }
 
   .content {
@@ -242,17 +232,8 @@
     width: 100%;
   }
 
-  .container {
-    padding-left: 0;
-    padding-right: 0;
-    padding: 0;
-  }
-
-  .mainPage {
-    max-width: 100vw;
-  }
-
-  .mainPage > div {
-    width: 100%;
+  .player {
+    top: 10px;
+    bottom: 10px;
   }
 }

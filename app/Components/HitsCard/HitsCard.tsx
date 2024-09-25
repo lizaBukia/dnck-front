@@ -1,3 +1,4 @@
+'use client'
 import { useRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
@@ -18,7 +19,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
-  for (const artist of props.album.artists) {
+  for (const artist of props.album?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
 

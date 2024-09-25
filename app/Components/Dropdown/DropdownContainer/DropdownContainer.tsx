@@ -25,7 +25,7 @@ const DropdownContainer: DropdownContainerType = (
 
   return (
     <div className={classNames.join(' ').trim()}>
-      {props.items.map((item) => (
+      {props.items?.map((item) => (
         <DropdownButton
           icon={item.icon}
           onClick={item.onClick}

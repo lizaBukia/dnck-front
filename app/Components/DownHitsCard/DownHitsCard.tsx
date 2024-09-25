@@ -18,22 +18,20 @@ const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
-  for (const artist of props.album.artists) {
+  for (const artist of props.album?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
 
   const onClick = (): void => {
     playMusic({
       name: props.name,
-      imgLink: props.album.history?.location,
+      imgLink: props.album?.history?.location,
       src: props.src,
       artistName: artistName.join(', '),
       id: props.id,
     });
     togglePlay();
   };
-
-  console.log(music.currentMusicId === props.id);
 
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>

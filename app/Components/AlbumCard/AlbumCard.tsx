@@ -11,7 +11,7 @@ import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   const artistName: string[] = [];
-  for (const artist of props.artists) {
+  for (const artist of props?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
 console.log(props, 'skfbsv')
