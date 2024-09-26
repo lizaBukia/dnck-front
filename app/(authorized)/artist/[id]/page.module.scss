@@ -9,6 +9,7 @@
   padding: 24px;
   justify-content: center;
   background-color: #eeeef1;
+  margin-top:-24px;
 }
 :global(body.dark) .mainLightContainer {
   color: $gray-400;
@@ -20,23 +21,22 @@
   gap: 24px;
   justify-content: center;
 }
-
 .content {
   display: flex;
   flex-flow: column wrap;
   padding: 24px;
   gap: 16px;
   width: 100%;
-  max-width: 986px;
+  max-width: 1034px;
   border-radius: 12px;
   background-color: #f2f2f2;
+
 }
 
 :global(body.dark) .lightContent {
   color: $gray-400;
   background-color: $background-color-dark-mode;
 }
-
 .heading {
   display: flex;
   align-items: center;
@@ -44,7 +44,6 @@
   width: 100%;
   color: $gray-400;
 }
-
 .player {
   position: sticky;
   top: 0;
