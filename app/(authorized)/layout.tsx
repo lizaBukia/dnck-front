@@ -21,6 +21,9 @@ export default function RootLayout({
           <div className={`${styles.player} ${styles.darkPlayer}`}>
             <Player />
           </div>
+          <div className={styles.footer}>
+            <Footer></Footer>
+          </div>
         </div>
       </div>
     </>
