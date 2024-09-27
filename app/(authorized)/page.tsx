@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
+import AlbumCard from '../Components/AlbumCard/AlbumCard';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
@@ -12,13 +13,12 @@ import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
 import { AlbumInterfaces } from '../Interfaces/album.interfaces';
+import { ArtistInterface } from '../Interfaces/artist.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
 import { currentMusicState } from '../States/States';
 import { CurrentMusicStateInterface } from '../States/current-music-state-props.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
-import { ArtistInterface } from '../Interfaces/artist.interface';
-import AlbumCard from '../Components/AlbumCard/AlbumCard';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
@@ -83,43 +83,44 @@ export default function MainPage(): JSX.Element {
 
           {musics && (
             <HitsCards
-            items={musics.slice(0, 9).map((hit, index) => { 
-              return {
-                backgroundImage: hit.album?.history?.location,
-                album: hit.album,
-                name: hit.name,
-                src: hit.history?.location,
-                id: hit.id,
-                onClick: (): void => {
-                  setMusic((prevState) => ({
-                    ...prevState,
-                    currentIndex: index,  
-                    currentMusicId: hit.id,
-                    musics: [
-                      ...musics.map((music) => ({
-                        id: music.id,
-                        name: music.name,
-                        artistName: music.album?.artists.reduce((acc, curr) => {
-                          return (acc += `${curr.firstName} ${curr.lastName},`);
-                        }, '') ?? 'Unknown Artist',
-                        imgLink: music.album?.history?.location ?? '',
-                        src: music.history?.location ?? '',
-                      })),
-                    ],
-                  }));
-                },
-                dropDownItems: [
-                  {
-                    title: <AddToPlaylistButton musicId={[hit.id]} />,
+              items={musics.slice(0, 9).map((hit, index) => {
+                return {
+                  backgroundImage: hit.album?.history?.location,
+                  album: hit.album,
+                  name: hit.name,
+                  src: hit.history?.location,
+                  id: hit.id,
+                  onClick: (): void => {
+                    setMusic((prevState) => ({
+                      ...prevState,
+                      currentIndex: index,
+                      currentMusicId: hit.id,
+                      musics: [
+                        ...musics.map((music) => ({
+                          id: music.id,
+                          name: music.name,
+                          artistName:
+                            music.album?.artists.reduce((acc, curr) => {
+                              return (acc += `${curr.firstName} ${curr.lastName},`);
+                            }, '') ?? 'Unknown Artist',
+                          imgLink: music.album?.history?.location ?? '',
+                          src: music.history?.location ?? '',
+                        })),
+                      ],
+                    }));
                   },
-                ],
-              };
-            })}
+                  dropDownItems: [
+                    {
+                      title: <AddToPlaylistButton musicId={[hit.id]} />,
+                    },
+                  ],
+                };
+              })}
             />
           )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
-              This Week's Popular Artists
+              This Week Popular Artists
             </Heading>
             <div className={styles.test}>
               <Link className={styles.more} href={'/artists'}>
@@ -129,9 +130,9 @@ export default function MainPage(): JSX.Element {
           </div>
           <div className={styles.albums}>
             {artists &&
-              artists?.slice(0, 4).map((artist, idx) => {
+              artists?.slice(0, 4).map((artist) => {
                 return (
-                  <Link href={`/artist/${artist.id}`}>
+                  <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
                         imgUrl={artist.history?.location}
@@ -152,9 +153,9 @@ export default function MainPage(): JSX.Element {
           </div>
           <div className={styles.albums}>
             {artists &&
-              artists?.slice(0, 4).map((artist, idx) => {
+              artists?.slice(0, 4).map((artist) => {
                 return (
-                  <Link href={`/artist/${artist.id}`}>
+                  <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
                         imgUrl={artist.history.location}

@@ -18,21 +18,20 @@ export default function AlbumPage(): JSX.Element {
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Albums</Heading>
           </div>
-              {albums && (
-                <AlbumCards
-                  items={albums.map?.((album) => {
-                    return {
-                      title: album.name,
-                      imgUrl: album.history?.location,
-                      artists: album.artists,
-                      dropDownItems: [],
-                    };
-                  })}
-                />
-              )}
-            </div>
-          </div>
+          {albums && (
+            <AlbumCards
+              items={albums.map?.((album) => {
+                return {
+                  title: album.name,
+                  imgUrl: album.history?.location,
+                  artists: album.artists,
+                  dropDownItems: [],
+                };
+              })}
+            />
+          )}
         </div>
-
+      </div>
+    </div>
   );
 }
