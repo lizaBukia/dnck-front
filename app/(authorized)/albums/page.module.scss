@@ -49,14 +49,20 @@
   justify-content: space-between;
   width: 100%;
   color: $gray-400;
+  padding-left: 32px;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 .contentWrapper {
-  margin-top:8px;
   width: 100%;
   max-width: 1034px;
   display: flex;
   flex-flow: row wrap;
   gap: 16px;
+  padding: 32px;
+  border-radius: 12px;
 }
 
 .player {
