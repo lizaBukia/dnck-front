@@ -22,12 +22,12 @@ export const headerNavItems: NavItemPropsInterface[] = [
 export const FooterNavItems: NavItemPropsInterface[] = [
   {
     icon: IconNameEnum.Home,
-    href: '/',
+    href: `/`,
     title: 'Home',
   },
   {
     icon: IconNameEnum.Search,
-    href: '/Search',
+    href: '/search',
     title: 'Search',
   },
   {
