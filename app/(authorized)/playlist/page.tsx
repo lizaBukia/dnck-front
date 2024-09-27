@@ -66,7 +66,7 @@ export default function AlbumPage(): JSX.Element {
                     console.log(playlist.musics, 'musics');
                     return (
                       <AlbumCard
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                           e.stopPropagation();
                           router.push(`/playlist/${playlist.id}`);
                         }}
@@ -87,7 +87,9 @@ export default function AlbumPage(): JSX.Element {
                               />
                             ),
                             title: 'Delete',
-                            onClick: async (e): Promise<void> => {
+                            onClick: async (
+                              e: React.MouseEvent<HTMLDivElement>,
+                            ): Promise<void> => {
                               e.stopPropagation();
                               try {
                                 await ApiClient.delete(
