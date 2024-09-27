@@ -22,6 +22,7 @@ export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
   const { data: artists } = useSWR<ArtistInterface[]>(`/artists`, fetcher);
+
   const { playMusic } = usePlayer();
 
   return (
@@ -46,7 +47,7 @@ export default function MainPage(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          <div className={styles.topAlbums}>
+          <div className={styles.albums}>
             {albums && (
               <AlbumCards
                 items={albums.slice(0, 4).map((album) => {
@@ -118,6 +119,7 @@ export default function MainPage(): JSX.Element {
                         imgUrl={artist.history?.location}
                         artists={[]}
                         title={`${artist.firstName} ${artist.lastName}`}
+                        dropDownItems={[]}
                       />
                     </div>
                   </Link>
@@ -138,8 +140,7 @@ export default function MainPage(): JSX.Element {
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        key={artist.id}
-                        imgUrl={artist.history?.location}
+                        imgUrl={artist.history.location}
                         artists={[]}
                         title={`${artist.firstName} ${artist.lastName}`}
                       />

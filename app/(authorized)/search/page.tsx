@@ -1,11 +1,17 @@
 'use client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { SearchInterface } from './interfaces/search.interface';
 import styles from './page.module.scss';
 import { fetcher } from '@/app/Api/fetcher';
 import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
+import Button from '@/app/Components/Button/Button';
+import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
+import SearchInput from '@/app/Components/Header/SearchInput/SearchInput';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
@@ -22,11 +28,36 @@ export default function SearchPage(): JSX.Element {
     `/search?search=${searchValue}`,
     fetcher,
   );
+  const [search, setSearch] = useState('');
+
+  const router: AppRouterInstance = useRouter();
+  const onSearch = (): void => {
+    router.push(`/search?search=${search}`);
+  };
+
+  const paramSearch: string | null = useSearchParams().get('search');
+
+  useEffect(() => {
+    if (paramSearch) {
+      setSearch(paramSearch);
+    }
+  }, [paramSearch]);
   const artists: ArtistInterface[] | undefined = searchResult?.artists;
   const albums: AlbumInterfaces[] | undefined = searchResult?.albums;
   const musics: MusicInterface[] | undefined = searchResult?.musics;
   return (
     <div className={styles.contentWrapper}>
+      <div className={styles.searchButton}>
+        <SearchInput
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search..."
+        />
+        <Button type={ButtonTypeEnum.Primary} onClick={onSearch}>
+          Search
+        </Button>
+      </div>
       <div className={styles.artistsWrapper}>
         {artists?.length ? (
           <div className={styles.heading}>
@@ -63,7 +94,6 @@ export default function SearchPage(): JSX.Element {
           {albums && (
             <AlbumCards
               items={albums.slice(0, 4).map((album) => {
-                console.log(album, 'here yawhifuaio');
                 return {
                   title: album.name,
                   imgUrl: album.history?.location,

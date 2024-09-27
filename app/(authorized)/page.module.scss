@@ -89,6 +89,9 @@
     flex-direction: column;
     gap: 0;
   }
+  .footer {
+    display: flex;
+  }
 
   .player {
     width: 100%;
@@ -209,7 +212,6 @@
     position: sticky;
     bottom: 0;
   }
-
   .player {
     position: fixed;
     margin-bottom:56px;
@@ -311,5 +313,10 @@
 
   .mainPage > div {
     width: 100%;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .footer {
+    display: none;
   }
 }

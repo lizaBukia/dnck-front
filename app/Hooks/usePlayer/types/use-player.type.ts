@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 import { MusicInterface } from '@/app/Interfaces/music.interface';
 
-type PlayMusicFunction = (
+export type PlayMusicFunction = (
   hit: MusicInterface,
   musics: MusicInterface[],
   index: number,

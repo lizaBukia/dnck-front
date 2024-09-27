@@ -16,6 +16,7 @@ const DownHitsCards = (props: {
           name={item.name}
           id={item.id}
           dropDownItems={item.dropDownItems}
+          onClick={item.onClick}
         />
       ))}
     </div>

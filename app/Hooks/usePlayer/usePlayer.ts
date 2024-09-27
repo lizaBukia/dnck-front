@@ -1,13 +1,13 @@
 'use client';
 import { RefObject, useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { usePlayerType } from './types/use-player.type';
+import { PlayMusicFunction, usePlayerType } from './types/use-player.type';
+import { MusicInterface } from '@/app/Interfaces/music.interface';
 import { currentMusicState } from '@/app/States/States';
 import {
   CurrentMusicStateInterface,
   PlayerMusicInterface,
 } from '@/app/States/current-music-state-props.interface';
-import { ApiClient } from '@/app/Api/api';
 
 const globalPlayerRef: RefObject<HTMLAudioElement> = { current: null };
 
@@ -112,7 +112,7 @@ export const usePlayer = (): usePlayerType => {
     setCurrentMusic((prevState) => ({ ...prevState, musics: shuffled }));
   };
 
-  const playMusic: any = useCallback(
+  const playMusic: PlayMusicFunction = useCallback(
     (hit, musics, index) => {
       if (currentMusic.currentMusicId === hit.id) {
         return;
@@ -122,7 +122,7 @@ export const usePlayer = (): usePlayerType => {
         ...prevState,
         currentIndex: index,
         currentMusicId: hit.id,
-        musics: musics.map((music) => ({
+        musics: musics.map((music: MusicInterface) => ({
           id: music.id,
           name: music.name,
           artistName:
