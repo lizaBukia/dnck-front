@@ -26,7 +26,7 @@ const MusicPlayer: FC = () => {
     shuffle,
   } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
-  const [data, setData] = useState();
+  const [data, setData] = useState<PlaylistInterface[]>();
 
   const currentMusic: PlayerMusicInterface = music.musics[
     music.currentIndex

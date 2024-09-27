@@ -1,4 +1,3 @@
-import { AlbumInterfaces } from './album.interfaces';
 import { MusicInterface } from './music.interface';
 
 export interface PlaylistInterface {

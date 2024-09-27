@@ -18,7 +18,6 @@ const PlayButton: PlayButtonType = (props: PlayButtonPropsInterface) => {
     (currentMusic.isPlaying ? IconNameEnum.Pause : IconNameEnum.Play);
 
   const onClick: () => void = useCallback(() => {
-    console.log(props.music, currentMusic.currentMusicId, 'lmfao')
     if (!currentMusic.isPlaying) {
       ApiClient.post('/statistics', {
         musicId: `${Number(props.music)}`,

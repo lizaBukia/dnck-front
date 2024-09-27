@@ -2,7 +2,7 @@ import { DropDownItemsInterface } from '../../interfaces/dropdown-items-props.in
 
 export interface DropdownContainerPropsInterface {
   darkMode?: boolean;
-  items: DropDownItemsInterface[];
+  items: DropDownItemsInterface[] | undefined;
 }
 
 export type { DropDownItemsInterface };
