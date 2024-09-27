@@ -17,6 +17,7 @@ import { ArtistInterface } from '../Interfaces/artist.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
+import Footer from '../Components/Footer/Footer';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
@@ -176,6 +177,9 @@ export default function MainPage(): JSX.Element {
                 })}
               />
             )}
+          </div>
+          <div>
+            <Footer />
           </div>
         </div>
       </div>

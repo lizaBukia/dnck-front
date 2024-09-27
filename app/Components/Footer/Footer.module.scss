@@ -1,13 +1,20 @@
-// .footer {
-//   display: none;
-// }
-// @media screen and (max-width: 768px) {
-//   .footer {
-//     display: flex;
-//   }
-// }
-// @media screen and (min-width: 768px) and (max-width: 1023px) {
-//   .footer {
-//     display: flex;
-//   }
-// }
+
+@import '../../Colors/common-colors.scss';
+@import '../../Colors/dark-colors.scss';
+@import '../../Colors/light-colors.scss';
+
+.footer {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: $background-color-light-mode;
+  border-radius: 12px 12px 0px 0px;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+  padding: 24px 24px 0 24px;
+}
+:global(body.dark) .footerDark{
+    background-color: $background-color-dark-mode;
+  }
+
+
