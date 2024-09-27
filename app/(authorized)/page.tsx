@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCard from '../Components/AlbumCard/AlbumCard';
@@ -11,10 +12,11 @@ import HitsCards from '../Components/HitsCards/HitsCards';
 import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
-import { usePlayer } from '../Hooks/usePlayer/usePlayer';
 import { AlbumInterfaces } from '../Interfaces/album.interfaces';
 import { ArtistInterface } from '../Interfaces/artist.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
+import { currentMusicState } from '../States/States';
+import { CurrentMusicStateInterface } from '../States/current-music-state-props.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
 
@@ -22,7 +24,9 @@ export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
   const { data: artists } = useSWR<ArtistInterface[]>(`/artists`, fetcher);
-  const { playMusic } = usePlayer();
+
+  const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
+    useSetRecoilState(currentMusicState);
 
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
@@ -46,7 +50,7 @@ export default function MainPage(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          <div className={styles.topAlbums}>
+          <div className={styles.albums}>
             {albums && (
               <AlbumCards
                 items={albums.slice(0, 4).map((album) => {
@@ -87,7 +91,23 @@ export default function MainPage(): JSX.Element {
                   src: hit.history?.location,
                   id: hit.id,
                   onClick: (): void => {
-                    playMusic(hit, musics, index);
+                    setMusic((prevState) => ({
+                      ...prevState,
+                      currentIndex: index,
+                      currentMusicId: hit.id,
+                      musics: [
+                        ...musics.map((music) => ({
+                          id: music.id,
+                          name: music.name,
+                          artistName:
+                            music.album?.artists.reduce((acc, curr) => {
+                              return (acc += `${curr.firstName} ${curr.lastName},`);
+                            }, '') ?? 'Unknown Artist',
+                          imgLink: music.album?.history?.location ?? '',
+                          src: music.history?.location ?? '',
+                        })),
+                      ],
+                    }));
                   },
                   dropDownItems: [
                     {
@@ -138,8 +158,7 @@ export default function MainPage(): JSX.Element {
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        key={artist.id}
-                        imgUrl={artist.history?.location}
+                        imgUrl={artist.history.location}
                         artists={[]}
                         title={`${artist.firstName} ${artist.lastName}`}
                       />

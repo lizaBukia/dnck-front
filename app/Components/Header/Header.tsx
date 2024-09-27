@@ -47,7 +47,7 @@ const Header: FC = () => {
                 placeholder="Search..."
               />
               <Button type={ButtonTypeEnum.Primary} onClick={onSearch}>
-                ძიება
+                Search
               </Button>
             </div>
             <div className={styles.container}>
