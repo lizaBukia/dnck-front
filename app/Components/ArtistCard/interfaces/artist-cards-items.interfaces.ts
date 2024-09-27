@@ -3,4 +3,5 @@ export interface ArtistCardsItemsInterface {
   artistName: string;
   name: string;
   href: string;
+  imgUrl: string;
 }

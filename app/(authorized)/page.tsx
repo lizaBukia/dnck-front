@@ -100,7 +100,7 @@ export default function MainPage(): JSX.Element {
           )}
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>
-              This Week's Popular Artists
+              This Weeks Popular Artists
             </Heading>
             <div className={styles.test}>
               <Link className={styles.more} href={'/artists'}>
@@ -110,7 +110,7 @@ export default function MainPage(): JSX.Element {
           </div>
           <div className={styles.albums}>
             {artists &&
-              artists?.slice(0, 4).map((artist, idx) => {
+              artists?.slice(0, 4).map((artist) => {
                 return (
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
@@ -133,7 +133,7 @@ export default function MainPage(): JSX.Element {
           </div>
           <div className={styles.albums}>
             {artists &&
-              artists?.slice(0, 4).map((artist, idx) => {
+              artists?.slice(0, 4).map((artist) => {
                 return (
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
@@ -155,26 +155,28 @@ export default function MainPage(): JSX.Element {
               <Link href={'/artists'}>See all</Link>
             </div>
           </div>
-          {albums && (
-            <AlbumCards
-              items={albums.slice(0, 4).map((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
-            />
-          )}
+          <div className={styles.albums}>
+            {albums && (
+              <AlbumCards
+                items={albums.slice(0, 4).map((album) => {
+                  return {
+                    title: album.name,
+                    imgUrl: album.history?.location,
+                    artists: album.artists,
+                    dropDownItems: [
+                      {
+                        title: (
+                          <AddToPlaylistButton
+                            musicId={album.musics.map((music) => music.id)}
+                          />
+                        ),
+                      },
+                    ],
+                  };
+                })}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
