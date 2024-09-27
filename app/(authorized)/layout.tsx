@@ -1,3 +1,4 @@
+import Footer from '../Components/Footer/Footer';
 import Header from '../Components/Header/Header';
 import Player from '../Components/Player/Player';
 import styles from './page.module.scss';
@@ -16,6 +17,9 @@ export default function RootLayout({
             <Player />
           </div>
         </div>
+      </div>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </>
   );

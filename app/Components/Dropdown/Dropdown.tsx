@@ -9,7 +9,7 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   const [show, setShow] = useState<boolean>(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
-  const onClick = (e): void => {
+  const onClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation();
     setShow(!show);
   };

@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import AddToPlaylistModal from '../AddToPlaylistModal/AddToPlaylistModal';
 import styles from './AddToPlaylistButton.module.scss';
 import { AddToPlaylistButtonProsInterface } from './interfaces/add-to-playlist-button-props.interface';
+import { AddToPlaylistButtonType } from './types/add-to-playlist-button.type';
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
-import { AddToPlaylistButtonType } from './types/add-to-playlist-button.type';
-import { createPortal } from 'react-dom';
 
 const AddToPlaylistButton: AddToPlaylistButtonType = (
   props: AddToPlaylistButtonProsInterface,

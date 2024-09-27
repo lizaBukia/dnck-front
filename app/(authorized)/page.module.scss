@@ -7,7 +7,10 @@
   flex: 1;
   padding: 24px;
   justify-content: space-between;
-  background-color: #EEEEF1;
+  background-color: #eeeef1;
+}
+.footer {
+  display: none;
 }
 .topAlbums {
   display: flex;
@@ -25,7 +28,6 @@
   width: 100%;
   gap: 24px;
   justify-content: space-between;
-
 }
 .wrapper {
   width: 100%;
@@ -45,7 +47,7 @@
 
 :global(body.dark) .lightContent {
   color: $gray-400;
-  background-color:#131720;
+  background-color: #131720;
 }
 
 .heading {
@@ -78,7 +80,6 @@
   z-index: 10;
 }
 
-
 @media screen and (max-width: 768px) {
   .mainPage {
     flex-direction: column;
@@ -100,7 +101,7 @@
   background-color: $background-color-dark-mode;
 }
 
-.album{
+.album {
   display: flex;
   width: 100%;
 }
@@ -129,7 +130,9 @@
     width: 100%;
     padding: 0;
   }
-
+  .footer {
+    display: flex;
+  }
   .mainPage {
     flex-flow: column wrap;
     justify-content: space-between;
@@ -168,7 +171,9 @@
     display: flex;
     justify-content: space-between;
   }
-
+  .footer {
+    display: flex;
+  }
   :global(body.dark) .mobileText {
     color: $primary-white;
   }
@@ -236,7 +241,6 @@
   .colored {
     color: $primary-color;
   }
-
 
   .mobileText {
     width: 240px;
