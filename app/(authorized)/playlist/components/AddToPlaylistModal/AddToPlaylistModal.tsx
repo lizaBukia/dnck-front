@@ -52,7 +52,10 @@ const AddToPlaylistModal: FC<AddToPlaylistModalPropsInterface> = (
         musicIds: props.musicId,
       });
     }
+
+    props.setIsOpen(false);
   };
+
   return (
     <Modal
       isOpen={props.isOpen}

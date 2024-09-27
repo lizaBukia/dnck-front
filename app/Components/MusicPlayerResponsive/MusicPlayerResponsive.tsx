@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
-import PlayButtonMobile from '../PlayButtonMobile/PlayButtonMobile';
+import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayerResponsive.module.scss';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState, isDarkState } from '@/app/States/States';
@@ -17,18 +17,20 @@ const MusicPlayerResponsive = (): React.JSX.Element => {
   const className: string = isDark ? styles.dark : styles.light;
 
   const toggleExpand = (): void => setIsExpanded(!isExpanded);
-  console.log(currentMusic, 'awdawd');
+
   return (
     <div className={styles.wrapper}>
       <div
         className={`${styles.fixedBottomBar} ${isExpanded ? styles.hide : ''}`}
-        onClick={toggleExpand}
       >
-        <div className={styles.textWrapper}>
+        <div className={styles.textWrapper} onClick={toggleExpand}>
           <div>
             <Image
               className={styles.playerImage}
-              src={currentMusic?.musics[0]?.imgLink}
+              src={
+                currentMusic?.musics[currentMusic.currentIndex]?.imgLink ??
+                '/default.png'
+              }
               width={56}
               height={63}
               alt="image"
@@ -36,23 +38,25 @@ const MusicPlayerResponsive = (): React.JSX.Element => {
           </div>
           <div className={`${className} ${styles.playerName}`}>
             <h1 className={isDark ? styles.songNameDark : styles.songName}>
-              {currentMusic?.musics[0]?.name}
+              {currentMusic?.musics[currentMusic.currentIndex]?.name}
             </h1>
             <span
               className={isDark ? styles.artistName : styles.artistNameLight}
             >
-              {currentMusic.musics[0]?.artistName}
+              {currentMusic.musics[currentMusic.currentIndex]?.artistName}
             </span>
             <audio ref={audioRef}></audio>
           </div>
         </div>
         <div className={styles.playPauseButton}>
-          <PlayButtonMobile
-            icon={IconNameEnum.Pause}
+          <PlayButton
+            icon={
+              currentMusic.isPlaying ? IconNameEnum.Pause : IconNameEnum.Play
+            }
             onClick={togglePlay}
             width={32}
             height={32}
-            isDark={false}
+            music={currentMusic.currentMusicId}
           />
         </div>
       </div>

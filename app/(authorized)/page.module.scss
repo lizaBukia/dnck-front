@@ -5,11 +5,14 @@
 .container {
   display: flex;
   flex: 1;
-  flex-flow: row wrap;
-  width: 100%;
   padding: 24px;
   justify-content: space-between;
   background-color: #EEEEF1;
+}
+.topAlbums {
+  display: flex;
+  width: 100%;
+  max-width: 986px;
 }
 
 :global(body.dark) .lightContainer {
@@ -209,6 +212,7 @@
     max-width: 704px;
   }
   .albums {
+    display: flex;
     overflow-x: scroll;
     overflow-y: visible;
   }
@@ -233,12 +237,13 @@
     color: $primary-color;
   }
 
+
   .mobileText {
     width: 240px;
     color: $primary-black;
   }
   .albums {
-    flex-flow: column wrap;
+    display: flex;
     overflow-x: scroll;
   }
 

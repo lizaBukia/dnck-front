@@ -30,4 +30,5 @@ export enum IconNameEnum {
   Delete = 'delete',
   Collapse = 'collapse',
   Expand = 'expand',
+  EditArtist = "EditArtist",
 }

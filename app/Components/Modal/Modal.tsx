@@ -24,12 +24,14 @@ const Modal: ModalType = (props: ModalPropsInterface) => {
     };
   }, [props, props.isOpen, props.setIsOpen]);
 
+  console.log('Props isopen', props.isOpen);
   if (!props.isOpen) return null;
 
   const onClick = (): void => {
     props.setIsOpen(false);
   };
 
+  console.log('Render');
   return (
     <div className={styles.overlay}>
       <div className={`${className} ${styles.modal}`}>

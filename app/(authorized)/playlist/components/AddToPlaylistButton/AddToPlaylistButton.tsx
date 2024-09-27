@@ -6,6 +6,7 @@ import { AddToPlaylistButtonProsInterface } from './interfaces/add-to-playlist-b
 import Icon from '@/app/Components/Icon/Icon';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 import { AddToPlaylistButtonType } from './types/add-to-playlist-button.type';
+import { createPortal } from 'react-dom';
 
 const AddToPlaylistButton: AddToPlaylistButtonType = (
   props: AddToPlaylistButtonProsInterface,
@@ -24,13 +25,13 @@ const AddToPlaylistButton: AddToPlaylistButtonType = (
         <Icon name={IconNameEnum.Plus} width={14} height={14} />
         <span>Add To Playlist</span>
       </button>
-
-      {isOpen && (
+      {createPortal(
         <AddToPlaylistModal
           musicId={props.musicId}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-        />
+        />,
+        document.body,
       )}
     </>
   );

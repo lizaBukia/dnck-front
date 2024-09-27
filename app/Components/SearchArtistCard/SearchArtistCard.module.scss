@@ -11,9 +11,11 @@
   align-items: center;
   border-radius: 12px;
   padding: 24px 24px 24px 24px;
-  background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%),
-    url('/images/image81.png') lightgray 0% / cover no-repeat;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
 }
 .cardImage {
   display: flex;

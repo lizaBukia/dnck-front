@@ -10,20 +10,21 @@ import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import HitsCards from '@/app/Components/HitsCards/HitsCards';
 import SearchArtistCard from '@/app/Components/SearchArtistCard/SearchArtistCard';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { AlbumInterfaces } from '@/app/Interfaces/album.interfaces';
+import { ArtistInterface } from '@/app/Interfaces/artist.interface';
+import { MusicInterface } from '@/app/Interfaces/music.interface';
 
 export default function SearchPage(): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const searchValue = useSearchParams().get('search');
+  const searchValue: string | null = useSearchParams().get('search');
+  const { playMusic } = usePlayer();
   const { data: searchResult } = useSWR<SearchInterface>(
     `/search?search=${searchValue}`,
     fetcher,
   );
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const artists = searchResult?.artists;
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const albums = searchResult?.albums;
-  // eslint-disable-next-line @typescript-eslint/typedef
-  const musics = searchResult?.musics;
+  const artists: ArtistInterface[] | undefined = searchResult?.artists;
+  const albums: AlbumInterfaces[] | undefined = searchResult?.albums;
+  const musics: MusicInterface[] | undefined = searchResult?.musics;
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.artistsWrapper}>
@@ -42,6 +43,7 @@ export default function SearchPage(): JSX.Element {
                   name={`${artist.firstName} ${artist.lastName}`}
                   biography={artist.biography}
                   createdAt={artist.createdAt}
+                  src={artist.history?.location}
                 />
               ))}
           </div>
@@ -85,11 +87,14 @@ export default function SearchPage(): JSX.Element {
         <div className={styles.musics}>
           {musics && (
             <HitsCards
-              items={musics.slice(0, 9).map((hit) => {
+              items={musics.slice(0, 9).map((hit, idx) => {
                 return {
                   backgroundImage: hit.album.history?.location,
                   album: hit.album,
                   name: hit.name,
+                  onClick: (): void => {
+                    playMusic(hit, musics, idx);
+                  },
                   src: hit.history?.location,
                   id: hit.id,
                   dropDownItems: [],
