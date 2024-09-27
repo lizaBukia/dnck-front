@@ -6,11 +6,8 @@ import { fetcher } from '@/app/Api/fetcher';
 import DownHitsCards from '@/app/Components/DownHitsCards/DownHitsCards';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
-import { MusicInterface } from '@/app/Interfaces/music.interface';
-import { currentMusicState } from '@/app/States/States';
-import { CurrentMusicStateInterface } from '@/app/States/current-music-state-props.interface';
-import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { MusicInterface } from '@/app/Interfaces/music.interface';
 
 const TopHits = (): JSX.Element => {
   const date: Date = new Date();
@@ -24,8 +21,6 @@ const TopHits = (): JSX.Element => {
     fetcher,
   );
   const { playMusic } = usePlayer();
-  const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
-    useSetRecoilState(currentMusicState);
 
   return (
     <div className={styles.container}>

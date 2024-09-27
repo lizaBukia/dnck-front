@@ -27,7 +27,6 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
     props.onClick?.();
     togglePlay();
   };
-  console.log(props.id, 'hc')
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
       <div className={styles.content}>
