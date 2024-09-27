@@ -13,13 +13,11 @@ export default function RootLayout({
       <div className={`${styles.container} ${styles.lightContainer}`}>
         <div className={styles.mainPage}>
           <div className={styles.wrapper}>{children}</div>
-          <div className={styles.footerWrapper}>
-            <div className={`${styles.player} ${styles.darkPlayer}`}>
-              <Player />
-            </div>
-            <div className={styles.footer}>
-              <Footer></Footer>
-            </div>
+          <div className={`${styles.player} ${styles.darkPlayer}`}>
+            <Player />
+          </div>
+          <div className={styles.footer}>
+            <Footer></Footer>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCard from '../Components/AlbumCard/AlbumCard';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
+import Footer from '../Components/Footer/Footer';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -17,7 +18,6 @@ import { ArtistInterface } from '../Interfaces/artist.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
-import Footer from '../Components/Footer/Footer';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
@@ -46,6 +46,9 @@ export default function MainPage(): JSX.Element {
             <div className={styles.more}>
               <Link href={'/albums'}>See all</Link>
             </div>
+          </div>
+          <div>
+            <Footer />
           </div>
           <div className={styles.topAlbums}>
             {albums && (
@@ -177,9 +180,6 @@ export default function MainPage(): JSX.Element {
                 })}
               />
             )}
-          </div>
-          <div>
-            <Footer />
           </div>
         </div>
       </div>

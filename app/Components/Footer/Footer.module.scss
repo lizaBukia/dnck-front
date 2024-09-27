@@ -11,10 +11,12 @@
   gap: 16px;
   justify-content: center;
   width: 100%;
-  padding: 24px 24px 0 24px;
+  padding: 12px;
 }
 :global(body.dark) .footerDark{
     background-color: $background-color-dark-mode;
   }
+
+
 
 
