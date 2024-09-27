@@ -10,4 +10,5 @@ export interface DownHitsCardItemsInterface {
   src: string;
   name: string;
   id: number;
+  onClick: () => void;
 }

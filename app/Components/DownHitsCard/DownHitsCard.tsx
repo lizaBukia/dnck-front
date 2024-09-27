@@ -23,13 +23,7 @@ const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    playMusic({
-      name: props.name,
-      imgLink: props.album?.history?.location,
-      src: props.src,
-      artistName: artistName.join(', '),
-      id: props.id,
-    });
+    props.onClick?.(),
     togglePlay();
   };
 
