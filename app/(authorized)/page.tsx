@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
-import { SetterOrUpdater, useSetRecoilState } from 'recoil';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
+import AlbumCard from '../Components/AlbumCard/AlbumCard';
 import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
@@ -11,22 +11,18 @@ import HitsCards from '../Components/HitsCards/HitsCards';
 import Text from '../Components/Text/Text';
 import { TextHtmlTypeEnum } from '../Components/Text/enums/text-html-type.enum';
 import { TextTypeEnum } from '../Components/Text/enums/text-type.enum';
+import { usePlayer } from '../Hooks/usePlayer/usePlayer';
 import { AlbumInterfaces } from '../Interfaces/album.interfaces';
+import { ArtistInterface } from '../Interfaces/artist.interface';
 import { MusicInterface } from '../Interfaces/music.interface';
-import { currentMusicState } from '../States/States';
-import { CurrentMusicStateInterface } from '../States/current-music-state-props.interface';
 import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
-import { ArtistInterface } from '../Interfaces/artist.interface';
-import AlbumCard from '../Components/AlbumCard/AlbumCard';
 
 export default function MainPage(): JSX.Element {
   const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
   const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
   const { data: artists } = useSWR<ArtistInterface[]>(`/artists`, fetcher);
-
-  const setMusic: SetterOrUpdater<CurrentMusicStateInterface> =
-    useSetRecoilState(currentMusicState);
+  const { playMusic } = usePlayer();
 
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
@@ -50,27 +46,29 @@ export default function MainPage(): JSX.Element {
               <Link href={'/albums'}>See all</Link>
             </div>
           </div>
-          {albums && (
-            <AlbumCards
-              items={albums.slice(0, 4).map((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [
-                    {
-                      title: (
-                        <AddToPlaylistButton
-                          musicId={album.musics.map((music) => music.id)}
-                          album={true}
-                        />
-                      ),
-                    },
-                  ],
-                };
-              })}
-            />
-          )}
+          <div className={styles.topAlbums}>
+            {albums && (
+              <AlbumCards
+                items={albums.slice(0, 4).map((album) => {
+                  return {
+                    title: album.name,
+                    imgUrl: album.history?.location,
+                    artists: album.artists,
+                    dropDownItems: [
+                      {
+                        title: (
+                          <AddToPlaylistButton
+                            musicId={album.musics.map((music) => music.id)}
+                            album={true}
+                          />
+                        ),
+                      },
+                    ],
+                  };
+                })}
+              />
+            )}
+          </div>
 
           <div className={styles.heading}>
             <Heading type={HeadingTypeEnum.H5}>Top Hits</Heading>
@@ -81,38 +79,23 @@ export default function MainPage(): JSX.Element {
 
           {musics && (
             <HitsCards
-            items={musics.slice(0, 9).map((hit, index) => { 
-              return {
-                backgroundImage: hit.album?.history?.location,
-                album: hit.album,
-                name: hit.name,
-                src: hit.history?.location,
-                id: hit.id,
-                onClick: (): void => {
-                  setMusic((prevState) => ({
-                    ...prevState,
-                    currentIndex: index,  
-                    currentMusicId: hit.id,
-                    musics: [
-                      ...musics.map((music) => ({
-                        id: music.id,
-                        name: music.name,
-                        artistName: music.album?.artists.reduce((acc, curr) => {
-                          return (acc += `${curr.firstName} ${curr.lastName},`);
-                        }, '') ?? 'Unknown Artist',
-                        imgLink: music.album?.history?.location ?? '',
-                        src: music.history?.location ?? '',
-                      })),
-                    ],
-                  }));
-                },
-                dropDownItems: [
-                  {
-                    title: <AddToPlaylistButton musicId={[hit.id]} />,
+              items={musics.slice(0, 9).map((hit, index) => {
+                return {
+                  backgroundImage: hit.album?.history?.location,
+                  album: hit.album,
+                  name: hit.name,
+                  src: hit.history?.location,
+                  id: hit.id,
+                  onClick: (): void => {
+                    playMusic(hit, musics, index);
                   },
-                ],
-              };
-            })}
+                  dropDownItems: [
+                    {
+                      title: <AddToPlaylistButton musicId={[hit.id]} />,
+                    },
+                  ],
+                };
+              })}
             />
           )}
           <div className={styles.heading}>
@@ -129,7 +112,7 @@ export default function MainPage(): JSX.Element {
             {artists &&
               artists?.slice(0, 4).map((artist, idx) => {
                 return (
-                  <Link href={`/artist/${artist.id}`}>
+                  <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
                         imgUrl={artist.history?.location}
@@ -152,10 +135,11 @@ export default function MainPage(): JSX.Element {
             {artists &&
               artists?.slice(0, 4).map((artist, idx) => {
                 return (
-                  <Link href={`/artist/${artist.id}`}>
+                  <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        imgUrl={artist.history.location}
+                        key={artist.id}
+                        imgUrl={artist.history?.location}
                         artists={[]}
                         title={`${artist.firstName} ${artist.lastName}`}
                       />

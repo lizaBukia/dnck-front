@@ -7,6 +7,7 @@ import {
   CurrentMusicStateInterface,
   PlayerMusicInterface,
 } from '@/app/States/current-music-state-props.interface';
+import { ApiClient } from '@/app/Api/api';
 
 const globalPlayerRef: RefObject<HTMLAudioElement> = { current: null };
 
@@ -30,19 +31,38 @@ export const usePlayer = (): usePlayerType => {
     },
     [playerRef, setCurrentMusic],
   );
+
+  const togglePlay: () => void = useCallback(() => {
+    const audioElement: HTMLAudioElement | null = playerRef.current;
+    console.log(currentMusic, 'awd');
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement
+          .play()
+          .then(() => {
+            setCurrentMusic((prevState) => ({ ...prevState, isPlaying: true }));
+          })
+          .catch(() => {});
+      } else {
+        audioElement.pause();
+        setCurrentMusic((prevState) => ({ ...prevState, isPlaying: false }));
+      }
+    }
+  }, [playerRef, setCurrentMusic]);
+
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
-  
+
     if (audioElement && currentMusic.musics[currentMusic.currentIndex]?.src) {
       if (
         audioElement.src !== currentMusic.musics[currentMusic.currentIndex].src
       ) {
         audioElement.src = currentMusic.musics[currentMusic.currentIndex].src;
         audioElement.load();
-        togglePlay();  
+        togglePlay();
       }
     }
-  }, [currentMusic.currentIndex, currentMusic.musics, playerRef, ]);
+  }, [currentMusic.currentIndex, currentMusic.musics, playerRef, togglePlay]);
 
   useEffect(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
@@ -92,57 +112,30 @@ export const usePlayer = (): usePlayerType => {
     setCurrentMusic((prevState) => ({ ...prevState, musics: shuffled }));
   };
 
-  const togglePlay: () => void = useCallback(() => {
-    const audioElement: HTMLAudioElement | null = playerRef.current;
-    if (audioElement) {
-      if (audioElement.paused) {
-        audioElement
-          .play()
-          .then(() => {
-            setCurrentMusic((prevState) => ({ ...prevState, isPlaying: true }));
-          })
-          .catch(() => {});
-      } else {
-        audioElement.pause();
-        setCurrentMusic((prevState) => ({ ...prevState, isPlaying: false }));
+  const playMusic: any = useCallback(
+    (hit, musics, index) => {
+      if (currentMusic.currentMusicId === hit.id) {
+        return;
       }
-    }
-  }, [playerRef, setCurrentMusic]);
 
-  const playMusic = (data: PlayerMusicInterface): void => {
-    const currentIndex: number = currentMusic.musics.findIndex(
-      (music) => music.id === data.id,
-    );
-
-    if (currentIndex !== -1) {
-      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+      setCurrentMusic((prevState) => ({
         ...prevState,
-        currentIndex,
-        currentMusicId: prevState.musics[currentIndex].id,
+        currentIndex: index,
+        currentMusicId: hit.id,
+        musics: musics.map((music) => ({
+          id: music.id,
+          name: music.name,
+          artistName:
+            music.album?.artists?.reduce?.((acc, curr) => {
+              return (acc += `${curr.firstName} ${curr.lastName},`);
+            }, '') ?? 'Unknown Artist',
+          imgLink: music.album?.history?.location ?? '',
+          src: music.history?.location ?? '',
+        })),
       }));
-    } else {
-      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
-        ...prevState,
-        currentIndex: prevState.musics.length,
-        currentMusicId: data.id,
-        musics: [...prevState.musics, data],
-      }));
-    }
-  };
-
-  useEffect(() => {
-    const audioElement: HTMLAudioElement | null = playerRef.current;
-
-    if (audioElement && currentMusic.musics[currentMusic.currentIndex]?.src) {
-      if (
-        audioElement.src !== currentMusic.musics[currentMusic.currentIndex].src
-      ) {
-        audioElement.src = currentMusic.musics[currentMusic.currentIndex].src;
-        audioElement.load();
-        togglePlay();
-      }
-    }
-  }, [currentMusic.currentIndex, currentMusic.musics, playerRef, togglePlay]);
+    },
+    [currentMusic.currentMusicId, setCurrentMusic],
+  );
 
   return {
     playerRef,

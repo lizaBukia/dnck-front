@@ -54,6 +54,7 @@ const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
               onClick={onClick}
               width={32}
               height={32}
+              music={props.id}
             />
           </div>
         </div>

@@ -6,15 +6,14 @@ import { SearchArtistCardType } from './types/search-artist-card.type';
 const SearchArtistCard: SearchArtistCardType = (
   props: SearchArtistCardPropsInterface,
 ) => {
-  console.log(props, 'props here');
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.cardImage}>
         <div>
           <Image
             className={styles.image}
-            src="/images/image89.png"
-            alt="image"
+            src={props.src}
+            alt={'image'}
             width={227}
             height={227}
           />

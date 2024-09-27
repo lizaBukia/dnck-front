@@ -14,9 +14,11 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   for (const artist of props?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
-console.log(props, 'skfbsv')
   return (
-    <div className={`${styles.albumCard} ${styles.dark}`}>
+    <div
+      className={`${styles.albumCard} ${styles.dark}`}
+      onClick={(e) => props.onClick?.(e)}
+    >
       <div className={styles.albumCardImage}>
         <Image src={props.imgUrl} alt={'wegwegw'} width={200} height={203} />
       </div>
