@@ -12,6 +12,9 @@ const nextConfig = {
       'dl01.dtmp3.pw',
     ],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 export default nextConfig;
