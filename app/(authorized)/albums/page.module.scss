@@ -22,6 +22,7 @@
   border-radius: 12px;
 }
 
+
 :global(body.dark) .lightContainer {
   color: $gray-400;
   background-color: $primary-black;
@@ -48,17 +49,13 @@
   justify-content: space-between;
   width: 100%;
   color: $gray-400;
-  padding-left: 32px;
-}
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
 }
 .contentWrapper {
+  margin-top:8px;
   width: 100%;
   max-width: 1034px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   gap: 16px;
   padding: 32px;
   border-radius: 12px;
@@ -178,18 +175,12 @@
     display: flex;
     width: 100%;
   }
-  .container {
-    z-index: 99;
-  }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .mobileHeading {
     display: flex;
     width: 100%;
     justify-content: space-between;
-  }
-  .container {
-    z-index: 99;
   }
 
   :global(body.dark) .mobileText {
