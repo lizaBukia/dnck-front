@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import useSWR from 'swr';
 import { SingleArtistPagePropsInterface } from '../interfaces/single-artist-page-props.interface';
 import { SingleArtistPageType } from '../type/single-artist-page.type';
@@ -65,9 +64,6 @@ const SingleArtistPage: SingleArtistPageType = (
                 <Heading type={HeadingTypeEnum.H5}>
                   {`${artists?.firstName} ${artists?.lastName}'s Most Popular Musics`}
                 </Heading>
-                <div className={styles.seeAll}>
-                  <Link href={'/topHits'}>See all</Link>
-                </div>
               </div>
               <div>
                 {((): JSX.Element => {
@@ -130,9 +126,6 @@ const SingleArtistPage: SingleArtistPageType = (
                 <Heading
                   type={HeadingTypeEnum.H5}
                 >{`${artists?.firstName} ${artists?.lastName}'s Most Popular Albums`}</Heading>
-                <div className={styles.seeAll}>
-                  <Link href={'/topHits'}>See all</Link>
-                </div>
               </div>
               <AlbumCards
                 items={artists.albums.map((album) => ({
