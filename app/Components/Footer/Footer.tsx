@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 
 const Footer = (): JSX.Element => {
   return (
-    <div className={styles.footer}>
+    <div className={`${styles.footer} ${styles.footerDark}`}>
       <NavMenu items={FooterNavItems} />
     </div>
   );
