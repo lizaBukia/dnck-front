@@ -119,7 +119,7 @@ export default function SearchPage(): JSX.Element {
             <HitsCards
               items={musics.slice(0, 9).map((hit, idx) => {
                 return {
-                  backgroundImage: hit.album.history?.location,
+                  backgroundImage: hit.album?.history?.location,
                   album: hit.album,
                   name: hit.name,
                   onClick: (): void => {
