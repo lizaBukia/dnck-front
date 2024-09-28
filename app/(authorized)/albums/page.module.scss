@@ -22,7 +22,6 @@
   border-radius: 12px;
 }
 
-
 :global(body.dark) .lightContainer {
   color: $gray-400;
   background-color: $primary-black;
@@ -52,7 +51,7 @@
   margin-bottom: 8px;
 }
 .contentWrapper {
-  margin-top:8px;
+  margin-top: 8px;
   width: 100%;
   max-width: 1034px;
   display: flex;
@@ -121,6 +120,10 @@
   .content {
     width: 100%;
   }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .container {
     width: 100%;
@@ -154,6 +157,10 @@
     color: $primary-white;
   }
 
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .colored {
     color: $primary-color;
   }
@@ -190,6 +197,10 @@
 
   :global(body.dark) .mobileText {
     color: $primary-white;
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .colored {
