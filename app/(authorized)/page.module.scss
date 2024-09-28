@@ -182,6 +182,7 @@
   .mobileHeading {
     display: flex;
     justify-content: space-between;
+    z-index: 99;
   }
   :global(body.dark) .mobileText {
     color: $primary-white;
@@ -247,18 +248,19 @@
     bottom: 0;
     z-index: 2;
   }
-  // .player {
-  //   position: fixed;
-  //   bottom: 100px;
-  //   right: 0;
-  //   width: 100%;
-  //   padding: 0;
-  //   z-index: 1;
-  // }
+  .player {
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+  }
   .mobileHeading {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    z-index: 99;
   }
 
   :global(body.dark) .mobileText {
