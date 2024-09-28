@@ -196,6 +196,9 @@
     display: flex;
     width: 100%;
   }
+  .contentWrapper {
+    z-index: 99;
+  }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .mobileHeading {
@@ -248,5 +251,8 @@
   .player {
     top: 10px;
     bottom: 10px;
+  }
+  .contentWrapper {
+    z-index: 99;
   }
 }
