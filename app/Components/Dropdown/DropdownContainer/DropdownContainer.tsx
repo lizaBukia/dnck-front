@@ -28,7 +28,7 @@ const DropdownContainer: DropdownContainerType = (
       {props.items?.map((item) => (
         <DropdownButton
           icon={item.icon}
-          onClick={item.onClick}
+          onClick={(e) => item.onClick?.(e)}
           title={item.title}
           width={24}
           height={24}

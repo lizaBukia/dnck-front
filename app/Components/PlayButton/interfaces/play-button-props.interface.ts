@@ -5,4 +5,5 @@ export interface PlayButtonPropsInterface {
   onClick: () => void;
   width: number;
   height: number;
+  music?: number | null;
 }

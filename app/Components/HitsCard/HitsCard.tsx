@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useRecoilState } from 'recoil';
 import Dropdown from '../Dropdown/Dropdown';
 import { DropDownPositionEnum } from '../Dropdown/enums/dropdown-position.enum';
@@ -48,6 +48,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
               onClick={onClick}
               width={32}
               height={32}
+              music={props.id}
             />
           </div>
         </div>

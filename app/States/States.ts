@@ -1,7 +1,5 @@
 import { RecoilState, atom } from 'recoil';
 import { CurrentMusicStateInterface } from './current-music-state-props.interface';
-import { ArtistInterface } from '@/app/Interfaces/artist.interface';
-
 
 export const isDarkState: RecoilState<boolean> = atom({
   key: 'isDark',
@@ -29,4 +27,3 @@ export const searchHeaderState: RecoilState<string> = atom({
   key: 'searchState',
   default: '',
 });
-

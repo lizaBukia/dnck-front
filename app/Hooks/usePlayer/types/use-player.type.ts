@@ -1,5 +1,11 @@
 import { RefObject } from 'react';
-import { PlayerMusicInterface } from '@/app/States/current-music-state-props.interface';
+import { MusicInterface } from '@/app/Interfaces/music.interface';
+
+export type PlayMusicFunction = (
+  hit: MusicInterface,
+  musics: MusicInterface[],
+  index: number,
+) => void;
 
 export type usePlayerType = {
   togglePlay: () => void;
@@ -9,6 +15,6 @@ export type usePlayerType = {
   handleProgressChange: React.ChangeEventHandler<HTMLInputElement>;
   playNext: () => void;
   playPrevious: () => void;
-  playMusic: (data: PlayerMusicInterface) => void;
+  playMusic: PlayMusicFunction;
   shuffle: () => void;
 };

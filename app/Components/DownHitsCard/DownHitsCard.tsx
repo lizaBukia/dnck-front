@@ -14,7 +14,7 @@ import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
 
 const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
-  const { togglePlay, playMusic } = usePlayer();
+  const { togglePlay } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
@@ -23,14 +23,7 @@ const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
   }
 
   const onClick = (): void => {
-    playMusic({
-      name: props.name,
-      imgLink: props.album?.history?.location,
-      src: props.src,
-      artistName: artistName.join(', '),
-      id: props.id,
-    });
-    togglePlay();
+    props.onClick?.(), togglePlay();
   };
 
   return (
@@ -54,6 +47,7 @@ const DownHitsCard: DownHitsCardType = (props: DownHitsCardItemsInterface) => {
               onClick={onClick}
               width={32}
               height={32}
+              music={props.id}
             />
           </div>
         </div>

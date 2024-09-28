@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import useSWR from 'swr';
 import DownPlaylist from '../DownPlaylists/DownPlaylist';
@@ -26,6 +26,7 @@ const MusicPlayer: FC = () => {
     shuffle,
   } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
+  const [data, setData] = useState<PlaylistInterface[]>();
 
   const currentMusic: PlayerMusicInterface = music.musics[
     music.currentIndex
@@ -45,7 +46,16 @@ const MusicPlayer: FC = () => {
     }
   };
 
-  const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
+  const { data: per } = useSWR<PlaylistInterface[]>(
+    '/playlists/personal',
+    fetcher,
+  );
+
+  useEffect(() => {
+    if (per) {
+      setData(per);
+    }
+  }, [per]);
 
   return (
     <div>
@@ -87,7 +97,12 @@ const MusicPlayer: FC = () => {
                   onClick={playPrevious}
                   height={26}
                 />
-                <PlayButton onClick={togglePlay} width={48} height={48} />
+                <PlayButton
+                  onClick={togglePlay}
+                  width={48}
+                  height={48}
+                  music={currentMusic.id}
+                />
                 <Icon
                   name={IconNameEnum.ForwardDesktop}
                   width={26}
@@ -130,11 +145,16 @@ const MusicPlayer: FC = () => {
             data.length > 0 &&
             data.map((playlist) => {
               return (
-                <DownPlaylist
-                  imgUrl={playlist.history?.location ?? '/default.png'}
-                  name={playlist.title}
-                  key={playlist.id}
-                />
+                <Link href={`/playlist/${playlist.id}`} key={playlist.id}>
+                  <DownPlaylist
+                    imgUrl={
+                      playlist?.musics?.[0]?.album?.history?.location ??
+                      '/default.png'
+                    }
+                    name={playlist.title}
+                    key={playlist.id}
+                  />
+                </Link>
               );
             })}
         </div>

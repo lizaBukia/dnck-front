@@ -16,6 +16,7 @@ export enum IconNameEnum {
   Lock = 'lock',
   Plus = 'plus',
   Search = 'search',
+  SearchActive = 'search-active',
   Album = 'album',
   Logout = 'Logout',
   Sun = 'Sun',
@@ -30,4 +31,5 @@ export enum IconNameEnum {
   Delete = 'delete',
   Collapse = 'collapse',
   Expand = 'expand',
+  EditArtist = 'EditArtist',
 }

@@ -1,11 +1,13 @@
 'use client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR, { mutate } from 'swr';
 import styles from './page.module.scss';
 import { ApiClient } from '@/app/Api/api';
 import { fetcher } from '@/app/Api/fetcher';
-import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
+import AlbumCard from '@/app/Components/AlbumCard/AlbumCard';
 import Button from '@/app/Components/Button/Button';
 import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
 import Heading from '@/app/Components/Heading/Heading';
@@ -19,18 +21,20 @@ import Modal from '@/app/Components/Modal/Modal';
 import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 
 export default function AlbumPage(): JSX.Element {
-  const { data } = useSWR<PlaylistInterface[]>('/playlists/personal', fetcher);
+  const { data: playlists } = useSWR<PlaylistInterface[]>(
+    '/playlists/personal',
+    fetcher,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm<{ name: string }>();
+  const router: AppRouterInstance = useRouter();
 
   const handleCreatePlaylist = async (values: {
     name: string;
   }): Promise<void> => {
     try {
       await ApiClient.post('/playlists', { title: values.name });
-
       await mutate('/playlists/personal');
-
       setIsModalOpen(false);
       reset();
     } catch (error) {
@@ -46,7 +50,7 @@ export default function AlbumPage(): JSX.Element {
     <div className={`${styles.container} ${styles.lightContainer}`}>
       <div className={styles.mainPage}>
         <div className={`${styles.contentWrapper} ${styles.lightContent}`}>
-          <div>
+          <div className={styles.wrapper}>
             <div className={styles.heading}>
               <Heading type={HeadingTypeEnum.H5}>My Playlist</Heading>
               <Button type={ButtonTypeEnum.Secondary} onClick={onClick}>
@@ -54,48 +58,57 @@ export default function AlbumPage(): JSX.Element {
                 Create Playlist
               </Button>
             </div>
-            <div>
-              {data && data.length > 0 && (
-                <AlbumCards
-                  items={data?.map((playlist) => ({
-                    artists: [
-                      {
-                        id: 0,
-                        firstName: '',
-                        lastName: '',
-                        biography: '',
-                        createdAt: new Date(),
-                        albums: [],
-                        history: {
-                          location: '',
-                          event: '',
-                        },
-                      },
-                    ],
-                    title: playlist.title,
-                    imgUrl: playlist.history?.location ?? '/default.png',
-                    dropDownItems: [
-                      {
-                        icon: (
-                          <Icon
-                            name={IconNameEnum.Delete}
-                            width={14}
-                            height={14}
-                          />
-                        ),
-                        title: 'Delete',
-                        onClick: (): void => {
-                          ApiClient.delete(`/playlists/${playlist.id}`).then(
-                            () => {
-                              mutate('/playlists/personal');
+            <div className={styles.playlists}>
+              <div className={styles.page}>
+                {playlists &&
+                  playlists.length > 0 &&
+                  playlists.map((playlist) => {
+                    console.log(playlist.musics, 'musics');
+                    return (
+                      <AlbumCard
+                        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                          e.stopPropagation();
+                          router.push(`/playlist/${playlist.id}`);
+                        }}
+                        key={playlist.id}
+                        imgUrl={
+                          playlist?.musics?.[0]?.album?.history?.location ??
+                          '/default.png'
+                        }
+                        artists={[]}
+                        title={playlist.title}
+                        dropDownItems={[
+                          {
+                            icon: (
+                              <Icon
+                                name={IconNameEnum.Delete}
+                                width={14}
+                                height={14}
+                              />
+                            ),
+                            title: 'Delete',
+                            onClick: async (
+                              e: React.MouseEvent<HTMLDivElement>,
+                            ): Promise<void> => {
+                              e.stopPropagation();
+                              try {
+                                await ApiClient.delete(
+                                  `/playlists/${playlist.id}`,
+                                );
+                                mutate('/playlists/personal');
+                              } catch (error) {
+                                console.error(
+                                  'Error deleting playlist:',
+                                  error,
+                                );
+                              }
                             },
-                          );
-                        },
-                      },
-                    ],
-                  }))}
-                />
-              )}
+                          },
+                        ]}
+                      />
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </div>

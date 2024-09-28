@@ -9,7 +9,8 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   const [show, setShow] = useState<boolean>(false);
   const dropdownRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
-  const onClick = (): void => {
+  const onClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+    e.stopPropagation();
     setShow(!show);
   };
 
@@ -30,11 +31,8 @@ const Dropdown: DropdownType = (props: DropdownPropsInterface) => {
   }, []);
 
   return (
-    <div className={`${styles.wrapper}`} ref={dropdownRef}>
-      <div
-        className={`${styles.dropdown} ${styles.dropDownDark}`}
-        onClick={onClick}
-      >
+    <div className={`${styles.wrapper}`} ref={dropdownRef} onClick={onClick}>
+      <div className={`${styles.dropdown} ${styles.dropDownDark}`}>
         {props.icon}
       </div>
       <div

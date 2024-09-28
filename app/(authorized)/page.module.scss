@@ -5,11 +5,18 @@
 .container {
   display: flex;
   flex: 1;
-  flex-flow: row wrap;
-  width: 100%;
   padding: 24px;
   justify-content: space-between;
-  background-color: #EEEEF1;
+  background-color: #eeeef1;
+}
+.footer {
+  display: none;
+  
+}
+.topAlbums {
+  display: flex;
+  width: 100%;
+  max-width: 986px;
 }
 
 :global(body.dark) .lightContainer {
@@ -22,7 +29,6 @@
   width: 100%;
   gap: 24px;
   justify-content: space-between;
-
 }
 .wrapper {
   width: 100%;
@@ -42,7 +48,7 @@
 
 :global(body.dark) .lightContent {
   color: $gray-400;
-  background-color:#131720;
+  background-color: #131720;
 }
 
 .heading {
@@ -75,17 +81,22 @@
   z-index: 10;
 }
 
-
 @media screen and (max-width: 768px) {
+  .footer{
+    display: flex;
+  }
   .mainPage {
     flex-direction: column;
     gap: 0;
+  }
+  .footer {
+    display: flex;
   }
 
   .player {
     width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: 50px;
     right: 0;
     height: auto;
     padding: 16px;
@@ -97,7 +108,7 @@
   background-color: $background-color-dark-mode;
 }
 
-.album{
+.album {
   display: flex;
   width: 100%;
 }
@@ -121,12 +132,11 @@
 
   .player {
     position: sticky;
-    bottom: 10px;
+    bottom: 50px;
     right: 0;
     width: 100%;
     padding: 0;
   }
-
   .mainPage {
     flex-flow: column wrap;
     justify-content: space-between;
@@ -160,12 +170,19 @@
     background-color: $background-color-dark-mode;
   }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .footer{
+    display:flex;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+  }
   .mobileHeading {
     display: flex;
     justify-content: space-between;
   }
-
   :global(body.dark) .mobileText {
     color: $primary-white;
   }
@@ -195,13 +212,13 @@
     position: sticky;
     bottom: 0;
   }
-
   .player {
-    position: sticky;
-    bottom: 10px;
+    position: fixed;
+    margin-bottom:56px;
     right: 0;
     width: 100%;
     padding: 0;
+    z-index: 1;
   }
 
   .mainPage {
@@ -209,6 +226,7 @@
     max-width: 704px;
   }
   .albums {
+    display: flex;
     overflow-x: scroll;
     overflow-y: visible;
   }
@@ -219,6 +237,24 @@
   }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
+  .darkPlayer{
+    height: 64px;
+  }
+  .footer{
+    display:flex;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 2;
+  }
+  .player {
+    position: fixed;
+    bottom: 100px;
+    right: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+  }
   .mobileHeading {
     display: flex;
     width: 100%;
@@ -238,7 +274,7 @@
     color: $primary-black;
   }
   .albums {
-    flex-flow: column wrap;
+    display: flex;
     overflow-x: scroll;
   }
 
@@ -277,5 +313,10 @@
 
   .mainPage > div {
     width: 100%;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .footer {
+    display: none;
   }
 }

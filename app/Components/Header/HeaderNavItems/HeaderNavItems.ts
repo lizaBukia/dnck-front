@@ -18,3 +18,26 @@ export const headerNavItems: NavItemPropsInterface[] = [
     title: 'Albums',
   },
 ];
+
+export const FooterNavItems: NavItemPropsInterface[] = [
+  {
+    icon: IconNameEnum.Home,
+    href: `/`,
+    title: 'Home',
+  },
+  {
+    icon: IconNameEnum.Search,
+    href: '/search',
+    title: 'Search',
+  },
+  {
+    icon: IconNameEnum.PlayList,
+    href: '/playlist',
+    title: 'Playlist',
+  },
+  {
+    icon: IconNameEnum.Album,
+    href: '/albums',
+    title: 'Albums',
+  },
+];

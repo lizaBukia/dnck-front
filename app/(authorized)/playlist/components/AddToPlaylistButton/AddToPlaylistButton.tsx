@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import AddToPlaylistModal from '../AddToPlaylistModal/AddToPlaylistModal';
 import styles from './AddToPlaylistButton.module.scss';
 import { AddToPlaylistButtonProsInterface } from './interfaces/add-to-playlist-button-props.interface';
@@ -24,13 +25,13 @@ const AddToPlaylistButton: AddToPlaylistButtonType = (
         <Icon name={IconNameEnum.Plus} width={14} height={14} />
         <span>Add To Playlist</span>
       </button>
-
-      {isOpen && (
+      {createPortal(
         <AddToPlaylistModal
           musicId={props.musicId}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-        />
+        />,
+        document.body,
       )}
     </>
   );
