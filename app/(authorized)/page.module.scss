@@ -92,7 +92,9 @@
   .footer {
     display: flex;
   }
-
+.content {
+  z-index: 99;
+}
   .player {
     width: 100%;
     position: fixed;
@@ -203,6 +205,7 @@
     padding: 24px;
     gap: 24px;
     border-radius: 12px;
+    z-index: 99;
   }
 
   .downPlayer {
@@ -287,6 +290,7 @@
     padding: 24px;
     gap: 24px;
     border-radius: 12px;
+    z-index: 99;
   }
 
   .mainPage {
