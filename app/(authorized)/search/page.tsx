@@ -1,14 +1,13 @@
 'use client';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Link from 'next/link';
-
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { SearchInterface } from './interfaces/search.interface';
 import styles from './page.module.scss';
 import { fetcher } from '@/app/Api/fetcher';
-import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
+import AlbumCard from '@/app/Components/AlbumCard/AlbumCard';
 import Button from '@/app/Components/Button/Button';
 import { ButtonTypeEnum } from '@/app/Components/Button/enums/button-type.enum';
 import SearchInput from '@/app/Components/Header/SearchInput/SearchInput';
@@ -91,18 +90,20 @@ export default function SearchPage(): JSX.Element {
         ) : null}
 
         <div className={styles.albums}>
-          {albums && (
-            <AlbumCards
-              items={albums.map((album) => {
-                return {
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [],
-                };
-              })}
-            />
-          )}
+          {albums &&
+            albums.slice(0, 4).map((album, index) => {
+              return (
+                <Link href={`albums/${album.id}`} key={album.id}>
+                  <AlbumCard
+                    key={index}
+                    darkMode={false}
+                    imgUrl={album.history?.location}
+                    artists={album.artists}
+                    title={album.title}
+                  />
+                </Link>
+              );
+            })}
         </div>
       </div>
       <div className={styles.musicsWrapper}>

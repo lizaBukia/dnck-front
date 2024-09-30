@@ -15,7 +15,6 @@ import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 import { currentMusicState } from '@/app/States/States';
 import { PlayerMusicInterface } from '@/app/States/current-music-state-props.interface';
 
-// eslint-disable-next-line react/display-name
 const MusicPlayer: FC = () => {
   const {
     playerRef: audioRef,
@@ -24,7 +23,9 @@ const MusicPlayer: FC = () => {
     playNext,
     playPrevious,
     shuffle,
+    toggleMute,
   } = usePlayer();
+
   const [music] = useRecoilState(currentMusicState);
   const [data, setData] = useState<PlaylistInterface[]>();
 
@@ -36,6 +37,7 @@ const MusicPlayer: FC = () => {
     src: '',
     artistName: 'No Artist',
     id: 0,
+    isMuted: false,
   };
 
   const handleVolumeChange = (
@@ -106,17 +108,20 @@ const MusicPlayer: FC = () => {
                 <Icon
                   name={IconNameEnum.ForwardDesktop}
                   width={26}
-                  onClick={playNext}
                   height={26}
+                  onClick={playNext}
                 />
               </div>
               <div className={styles.volumeControl}>
                 <div className={styles.volume}>
                   <Icon
-                    name={IconNameEnum.Volume}
+                    name={
+                      music.isMuted ? IconNameEnum.Mute : IconNameEnum.Volume
+                    }
                     isActive={true}
                     width={24}
                     height={24}
+                    onClick={toggleMute}
                   />
                 </div>
                 <div className={styles.volumeInput}>

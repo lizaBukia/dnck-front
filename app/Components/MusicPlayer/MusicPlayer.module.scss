@@ -81,7 +81,7 @@
 .volumeInput {
   position: absolute;
   left: -75%;
-  top: 5px;
+  top: -20px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -93,13 +93,14 @@
 }
 
 .volumeControl:hover .volume {
-  opacity: 0;
+  opacity: 1;
 }
 
 .volumeControl:hover .volumeInput {
   opacity: 1;
 }
-.header {
+
+  .header {
   display: flex;
   justify-content: space-between;
   width: 100%;
