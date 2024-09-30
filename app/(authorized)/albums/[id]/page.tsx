@@ -22,7 +22,7 @@ const Album = (props: { params: { id: number } }): JSX.Element => {
         <div className={`${styles.content} ${styles.lightContent}`}>
           <div className={styles.singleArtistCard}>
             <div className={styles.heading}>
-              <Heading type={HeadingTypeEnum.H5}>{`Your Playlist`}</Heading>
+              <Heading type={HeadingTypeEnum.H5}>{`Playlist`}</Heading>
             </div>
             {data?.musics && (
               <HitsCards
