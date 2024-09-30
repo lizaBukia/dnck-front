@@ -19,9 +19,24 @@ import styles from './page.module.scss';
 import AddToPlaylistButton from './playlist/components/AddToPlaylistButton/AddToPlaylistButton';
 
 export default function MainPage(): JSX.Element {
-  const { data: albums } = useSWR<AlbumInterfaces[]>('/albums', fetcher);
-  const { data: musics } = useSWR<MusicInterface[]>('/musics', fetcher);
-  const { data: artists } = useSWR<ArtistInterface[]>(`/artists`, fetcher);
+  const date: Date = new Date();
+  const lastMonth: Date = new Date(date.setMonth(date.getMonth() - 1));
+  const year: number = lastMonth.getFullYear();
+  const month: string = (lastMonth.getMonth() + 1).toString().padStart(2, '0');
+  const day: number = lastMonth.getDate();
+  const formattedDate: string = `${year}-${month}-${day}`;
+  const { data: albums } = useSWR<AlbumInterfaces[]>(
+    `/albums?topDate=${formattedDate}`,
+    fetcher,
+  );
+  const { data: musics } = useSWR<MusicInterface[]>(
+    `/musics?topDate=${formattedDate}`,
+    fetcher,
+  );
+  const { data: artists } = useSWR<ArtistInterface[]>(
+    `/artists?topDate=${formattedDate}`,
+    fetcher,
+  );
 
   const { playMusic } = usePlayer();
 
