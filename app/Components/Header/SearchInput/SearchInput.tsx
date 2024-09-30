@@ -30,6 +30,7 @@ const SearchInput = (props: SearchInputPropsInterface): JSX.Element => {
           onBlur={() => {}}
           onChange={props.onChange}
           value={props.value}
+          onKeyDown={props.onKeyDown}
         />
       </div>
     </div>
