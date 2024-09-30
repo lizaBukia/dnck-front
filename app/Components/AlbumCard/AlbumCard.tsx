@@ -14,6 +14,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   for (const artist of props?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
+  console.log(artistName, 'lizaaa')
   return (
     <div
       className={`${styles.albumCard} ${styles.dark}`}
@@ -29,7 +30,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             htmlType={TextHtmlTypeEnum.Span}
             type={TextTypeEnum.PrimaryTextLarge}
           >
-            {artistName.join(',')}
+            {props?.artistName ? props?.artistName : artistName.join(',')}
           </Text>
           <div className={styles.dropdown}>
             <Dropdown

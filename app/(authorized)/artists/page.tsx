@@ -29,8 +29,9 @@ const Artists = (): JSX.Element => {
                           key={artist.id}
                           dropDownItems={[]}
                           imgUrl={artist.history?.location}
-                          artists={[]}
-                          title={`${artist.firstName} ${artist.lastName}`}
+                          artists={artists}
+                          title={''}
+                          artistName={`${artist.firstName} ${artist.lastName}`}
                         />
                       </div>
                     </Link>

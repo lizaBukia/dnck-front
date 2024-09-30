@@ -115,10 +115,12 @@ export default function MainPage(): JSX.Element {
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        imgUrl={artist.history?.location}
-                        artists={[]}
-                        title={`${artist.firstName} ${artist.lastName}`}
+                        key={artist.id}
                         dropDownItems={[]}
+                        imgUrl={artist.history?.location}
+                        artists={artists}
+                        title={''}
+                        artistName={`${artist.firstName} ${artist.lastName}`}
                       />
                     </div>
                   </Link>
@@ -139,9 +141,12 @@ export default function MainPage(): JSX.Element {
                   <Link key={artist.id} href={`/artist/${artist.id}`}>
                     <div>
                       <AlbumCard
-                        imgUrl={artist.history.location}
-                        artists={[]}
-                        title={`${artist.firstName} ${artist.lastName}`}
+                        key={artist.id}
+                        dropDownItems={[]}
+                        imgUrl={artist.history?.location}
+                        artists={artists}
+                        title={''}
+                        artistName={`${artist.firstName} ${artist.lastName}`}
                       />
                     </div>
                   </Link>
