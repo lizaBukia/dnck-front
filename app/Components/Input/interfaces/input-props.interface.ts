@@ -15,5 +15,5 @@ export interface InputPropsInterface {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   ref: RefCallBack;
   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
