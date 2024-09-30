@@ -16,7 +16,7 @@
 }
 :global(body.dark) .dark {
   color: $primary-white;
-  background-color: $background-color-dark-mode;
+  background-color: $primary-black;
 }
 .albumCard:hover .dropdown {
   display: flex;
@@ -38,7 +38,6 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 4px;
-  
 }
 
 .albumName {

@@ -60,7 +60,6 @@ export default function MainPage(): JSX.Element {
                         title: (
                           <AddToPlaylistButton
                             musicId={album.musics.map((music) => music.id)}
-                            album={true}
                           />
                         ),
                       },
