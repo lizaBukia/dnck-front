@@ -93,7 +93,7 @@ export default function SearchPage(): JSX.Element {
         <div className={styles.albums}>
           {albums && (
             <AlbumCards
-              items={albums.slice(0, 4).map((album) => {
+              items={albums.map((album) => {
                 return {
                   title: album.name,
                   imgUrl: album.history?.location,
@@ -117,7 +117,7 @@ export default function SearchPage(): JSX.Element {
         <div className={styles.musics}>
           {musics && (
             <HitsCards
-              items={musics.slice(0, 9).map((hit, idx) => {
+              items={musics.map((hit, idx) => {
                 return {
                   backgroundImage: hit.album?.history?.location,
                   album: hit.album,

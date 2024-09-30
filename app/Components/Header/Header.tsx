@@ -44,9 +44,22 @@ const Header: FC = () => {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    onSearch();
+                  }
+                }}
                 placeholder="Search..."
               />
-              <Button type={ButtonTypeEnum.Primary} onClick={onSearch}>
+              <Button
+                type={ButtonTypeEnum.Primary}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    onSearch();
+                  }
+                }}
+                onClick={onSearch}
+              >
                 Search
               </Button>
             </div>

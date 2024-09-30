@@ -11,4 +11,5 @@ export interface ButtonPropsInterface {
   className?: string;
   htmlType?: string;
   href?: string;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
