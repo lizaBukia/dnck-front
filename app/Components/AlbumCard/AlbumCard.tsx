@@ -14,7 +14,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   for (const artist of props?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
-  console.log(artistName, 'lizaaa')
+  console.log(artistName, 'lizaaa');
   return (
     <div
       className={`${styles.albumCard} ${styles.dark}`}
