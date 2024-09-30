@@ -5,6 +5,7 @@ export interface CurrentMusicStateInterface {
   currentTime: number;
   isPlaying: boolean;
   imgLink?: string;
+  isMuted?: boolean;
 }
 
 export interface PlayerMusicInterface {
@@ -13,4 +14,5 @@ export interface PlayerMusicInterface {
   imgLink: string;
   src: string;
   artistName: string;
+  isMuted?: boolean;
 }

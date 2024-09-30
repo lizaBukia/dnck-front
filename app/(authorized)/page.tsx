@@ -1,9 +1,10 @@
 'use client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { fetcher } from '../Api/fetcher';
 import AlbumCard from '../Components/AlbumCard/AlbumCard';
-import AlbumCards from '../Components/AlbumCards/AlbumCards';
 import ModeSwitcher from '../Components/Header/ModeSwitcher/ModeSwitcher';
 import Heading from '../Components/Heading/Heading';
 import { HeadingTypeEnum } from '../Components/Heading/enums/heading-type.enum';
@@ -39,6 +40,7 @@ export default function MainPage(): JSX.Element {
   );
 
   const { playMusic } = usePlayer();
+  const router: AppRouterInstance = useRouter();
 
   return (
     <div className={`${styles.container} ${styles.lightContainer}`}>
@@ -63,14 +65,20 @@ export default function MainPage(): JSX.Element {
             </div>
           </div>
           <div className={styles.albums}>
-            {albums && (
-              <AlbumCards
-                items={albums.slice(0, 4).map((album) => {
-                  return {
-                    title: album.name,
-                    imgUrl: album.history?.location,
-                    artists: album.artists,
-                    dropDownItems: [
+            {albums &&
+              albums.slice(0, 4).map((album, index) => {
+                return (
+                  <AlbumCard
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                      e.stopPropagation();
+                      router.push(`/albums/${album.id}`);
+                    }}
+                    key={index}
+                    darkMode={false}
+                    imgUrl={album.history?.location}
+                    artists={album.artists}
+                    title={album.title}
+                    dropDownItems={[
                       {
                         title: (
                           <AddToPlaylistButton
@@ -79,11 +87,10 @@ export default function MainPage(): JSX.Element {
                           />
                         ),
                       },
-                    ],
-                  };
-                })}
-              />
-            )}
+                    ]}
+                  />
+                );
+              })}
           </div>
 
           <div className={styles.heading}>
@@ -132,11 +139,11 @@ export default function MainPage(): JSX.Element {
                     <div>
                       <AlbumCard
                         key={artist.id}
-                        dropDownItems={[]}
                         imgUrl={artist.history?.location}
                         artists={artists}
                         title={''}
                         artistName={`${artist.firstName} ${artist.lastName}`}
+                        dropDownItems={[]}
                       />
                     </div>
                   </Link>
@@ -177,26 +184,20 @@ export default function MainPage(): JSX.Element {
             </div>
           </div>
           <div className={styles.albums}>
-            {albums && (
-              <AlbumCards
-                items={albums.slice(0, 4).map((album) => {
-                  return {
-                    title: album.name,
-                    imgUrl: album.history?.location,
-                    artists: album.artists,
-                    dropDownItems: [
-                      {
-                        title: (
-                          <AddToPlaylistButton
-                            musicId={album.musics.map((music) => music.id)}
-                          />
-                        ),
-                      },
-                    ],
-                  };
-                })}
-              />
-            )}
+            {albums &&
+              albums.slice(0, 4).map((album, index) => {
+                return (
+                  <Link href={`albums/${album.id}`} key={album.id}>
+                    <AlbumCard
+                      key={index}
+                      darkMode={false}
+                      imgUrl={album.history?.location}
+                      artists={album.artists}
+                      title={album.title}
+                    />
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

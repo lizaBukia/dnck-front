@@ -42,7 +42,6 @@ const SingleArtistPage: SingleArtistPageType = (
     }
     return artist.albums[0];
   };
-  console.log(artists, 'art');
   return (
     <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
       <div className={styles.container}>

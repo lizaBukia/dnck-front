@@ -20,21 +20,34 @@ export const usePlayer = (): usePlayerType => {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => void = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>): void => {
-      if (playerRef?.current) {
+      if (playerRef.current) {
         const newTime: number = Number(event.target.value);
         playerRef.current.currentTime = newTime;
         setCurrentMusic((prevState) => ({
           ...prevState,
           currentTime: newTime,
         }));
+        localStorage.setItem('currentTime', String(newTime));
       }
     },
     [playerRef, setCurrentMusic],
   );
 
+  useEffect(() => {
+    const currentTime: string | null = localStorage.getItem('currentTime');
+    if (currentTime) {
+      setCurrentMusic((prevState) => ({
+        ...prevState,
+        currentTime: Number(currentTime),
+      }));
+      if (playerRef.current) {
+        playerRef.current.currentTime = Number(currentTime);
+      }
+    }
+  }, [setCurrentMusic, playerRef]);
+
   const togglePlay: () => void = useCallback(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
-    console.log(currentMusic, 'awd');
     if (audioElement) {
       if (audioElement.paused) {
         audioElement
@@ -68,6 +81,9 @@ export const usePlayer = (): usePlayerType => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
       const updateProgress = (): void => {
+        if (audioElement.currentTime > 1) {
+          localStorage.setItem('currentTime', String(audioElement.currentTime));
+        }
         setCurrentMusic((prevState) => ({
           ...prevState,
           currentTime: audioElement.currentTime,
@@ -79,7 +95,7 @@ export const usePlayer = (): usePlayerType => {
         audioElement.removeEventListener('timeupdate', updateProgress);
       };
     }
-  }, [playerRef, setCurrentMusic, currentMusic]);
+  }, [playerRef, setCurrentMusic]);
 
   const playNext = (): void => {
     if (
@@ -103,6 +119,7 @@ export const usePlayer = (): usePlayerType => {
       }));
     }
   };
+
   const shuffle = (): void => {
     const shuffled: PlayerMusicInterface[] = [...currentMusic.musics];
     for (let i: number = shuffled.length - 1; i > 0; i--) {
@@ -137,6 +154,17 @@ export const usePlayer = (): usePlayerType => {
     [currentMusic.currentMusicId, setCurrentMusic],
   );
 
+  const toggleMute = (): void => {
+    const audioElement: HTMLAudioElement | null = playerRef.current;
+    if (audioElement) {
+      audioElement.muted = !audioElement.muted;
+      setCurrentMusic((prevState) => ({
+        ...prevState,
+        isMuted: audioElement.muted,
+      }));
+    }
+  };
+
   return {
     playerRef,
     togglePlay,
@@ -147,5 +175,6 @@ export const usePlayer = (): usePlayerType => {
     playNext,
     playMusic,
     shuffle,
+    toggleMute,
   };
 };
