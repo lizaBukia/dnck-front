@@ -98,35 +98,71 @@ export const usePlayer = (): usePlayerType => {
   }, [playerRef, setCurrentMusic]);
 
   const playNext = (): void => {
-    if (
-      currentMusic.musics.length > 0 &&
-      currentMusic.currentIndex < currentMusic.musics.length - 1
-    ) {
-      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+    setCurrentMusic((prevState: CurrentMusicStateInterface) => {
+      let nextIndex: number;
+
+      if (prevState.isShuffled) {
+        nextIndex = Math.floor(Math.random() * prevState.musics.length);
+      } else {
+        nextIndex = (prevState.currentIndex + 1) % prevState.musics.length;
+      }
+      return {
         ...prevState,
-        currentIndex: prevState.currentIndex + 1,
-        currentMusicId: prevState.musics[prevState.currentIndex + 1].id,
-      }));
-    }
+        currentIndex: nextIndex,
+        currentMusicId: prevState.musics[nextIndex].id,
+      };
+    });
   };
 
   const playPrevious = (): void => {
-    if (currentMusic.currentIndex > 0) {
-      setCurrentMusic((prevState: CurrentMusicStateInterface) => ({
+    setCurrentMusic((prevState: CurrentMusicStateInterface) => {
+      let prevIndex: number;
+
+      if (prevState.isShuffled) {
+        prevIndex = Math.floor(Math.random() * prevState.musics.length);
+      } else {
+        prevIndex =
+          (prevState.currentIndex - 1 + prevState.musics.length) %
+          prevState.musics.length;
+      }
+      return {
         ...prevState,
-        currentIndex: prevState.currentIndex - 1,
-        currentMusicId: prevState.musics[prevState.currentIndex - 1].id,
-      }));
-    }
+        currentIndex: prevIndex,
+        currentMusicId: prevState.musics[prevIndex].id,
+      };
+    });
   };
 
   const shuffle = (): void => {
-    const shuffled: PlayerMusicInterface[] = [...currentMusic.musics];
-    for (let i: number = shuffled.length - 1; i > 0; i--) {
-      const j: number = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    setCurrentMusic((prevState) => ({ ...prevState, musics: shuffled }));
+    setCurrentMusic((prevState) => {
+      const isShuffled: boolean = !prevState.isShuffled;
+
+      if (isShuffled) {
+        const originalMusics: PlayerMusicInterface[] = [...prevState.musics];
+
+        const shuffledMusics: PlayerMusicInterface[] = [...prevState.musics];
+        for (let i: number = shuffledMusics.length - 1; i > 0; i--) {
+          const j: number = Math.floor(Math.random() * (i + 1));
+          [shuffledMusics[i], shuffledMusics[j]] = [
+            shuffledMusics[j],
+            shuffledMusics[i],
+          ];
+        }
+
+        return {
+          ...prevState,
+          musics: shuffledMusics,
+          originalMusics,
+          isShuffled,
+        };
+      } else {
+        return {
+          ...prevState,
+          musics: prevState.originalMusics,
+          isShuffled,
+        };
+      }
+    });
   };
 
   const playMusic: PlayMusicFunction = useCallback(

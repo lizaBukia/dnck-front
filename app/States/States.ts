@@ -20,7 +20,9 @@ export const currentMusicState: RecoilState<CurrentMusicStateInterface> =
       currentTime: 0,
       isPlaying: false,
       musics: [],
+      originalMusics: [],
       isMuted: false,
+      isShuffled: false,
     },
   });
 

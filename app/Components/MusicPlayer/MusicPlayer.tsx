@@ -85,7 +85,11 @@ const MusicPlayer: FC = () => {
             </div>
             <div className={styles.playerBoard}>
               <Icon
-                name={IconNameEnum.Shuffle}
+                name={
+                  music.isShuffled
+                    ? IconNameEnum.ShuffleActive
+                    : IconNameEnum.Shuffle
+                }
                 isActive={true}
                 width={24}
                 height={24}

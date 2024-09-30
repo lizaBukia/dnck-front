@@ -6,6 +6,7 @@ export enum IconNameEnum {
   PlayLight = 'play-light',
   PlayList = 'playlist',
   Shuffle = 'shuffle',
+  ShuffleActive = 'shuffle-active',
   Pause = 'pause',
   PauseLight = 'pause-light',
   Volume = 'volume',
