@@ -11,13 +11,14 @@ import { AlbumCardType } from './types/albumcard.type';
 import Text from '@/app/Components/Text/Text';
 const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
   const artistName: string[] = [];
-
-  for (const artist of props.artists) {
+  for (const artist of props?.artists ?? []) {
     artistName.push(`${artist.firstName} ${artist.lastName}`);
   }
-
   return (
-    <div className={`${styles.albumCard} ${styles.dark}`}>
+    <div
+      className={`${styles.albumCard} ${styles.dark}`}
+      onClick={(e) => props.onClick?.(e)}
+    >
       <div className={styles.albumCardImage}>
         <Image src={props.imgUrl} alt={'wegwegw'} width={200} height={203} />
       </div>
@@ -34,14 +35,7 @@ const AlbumCard: AlbumCardType = (props: AlbumCardPropsInterface) => {
             <Dropdown
               icon={<Icon name={IconNameEnum.Dot} width={24} height={24} />}
               position={DropDownPositionEnum.Up}
-              items={[
-                {
-                  icon: (
-                    <Icon name={IconNameEnum.Plus} width={28} height={28} />
-                  ),
-                  title: 'Add To Playlist',
-                },
-              ]}
+              items={props.dropDownItems}
             />
           </div>
         </div>

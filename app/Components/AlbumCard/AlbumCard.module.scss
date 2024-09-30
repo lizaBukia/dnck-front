@@ -12,6 +12,7 @@
   height: 290px;
   background-color: $background-color-light-mode;
   color: $primary-black;
+  margin-bottom: 8px;
 }
 :global(body.dark) .dark {
   color: $primary-white;
@@ -37,6 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 4px;
+  
 }
 
 .albumName {

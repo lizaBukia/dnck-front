@@ -1,0 +1,16 @@
+@import '/app/Colors/common-colors.scss';
+@import '/app/Colors/dark-colors.scss';
+@import '/app/Colors/light-colors.scss';
+
+.button {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+}
+:global(body.dark) .lightContainer {
+    color: $gray-400;
+    background-color: $primary-black;
+  }

@@ -16,6 +16,7 @@ export enum IconNameEnum {
   Lock = 'lock',
   Plus = 'plus',
   Search = 'search',
+  SearchActive = 'search-active',
   Album = 'album',
   Logout = 'Logout',
   Sun = 'Sun',
@@ -26,4 +27,9 @@ export enum IconNameEnum {
   ForwardDesktop = 'forward-desktop',
   ForwardLight = 'forward-light',
   ForwardDark = 'forward-dark',
+  PlusActive = 'plus-active',
+  Delete = 'delete',
+  Collapse = 'collapse',
+  Expand = 'expand',
+  EditArtist = 'EditArtist',
 }

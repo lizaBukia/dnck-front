@@ -10,4 +10,5 @@ export interface HitsCardItemsInterface {
   src: string;
   name: string;
   id: number;
+  onClick?: () => void;
 }

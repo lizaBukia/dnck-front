@@ -8,10 +8,23 @@
   display: flex;
   gap: 16px;
 }
+.page {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .container {
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
-  width: 100%;
   padding: 24px;
   background-color: $primary-white;
 }
@@ -25,6 +38,14 @@
   display: flex;
   width: 100%;
   gap: 24px;
+  justify-content: space-between;
+}
+.modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
 }
 
 .contentWrapper {
@@ -32,9 +53,8 @@
   flex-flow: column wrap;
   padding: 24px;
   gap: 16px;
-  width: 100%;
-  max-width: 986px;
   background-color: $primary-white;
+  width: 100%;
 }
 
 :global(body.dark) .lightContent {
@@ -68,8 +88,8 @@
   width: 100%;
 }
 .hitsWrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .downPlayer {
@@ -84,6 +104,11 @@
   display: none;
 }
 
+.playlistModal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 @media screen and (max-width: 1400px) {
   .mobileHeading {
     display: none;

@@ -25,14 +25,15 @@ const DropdownContainer: DropdownContainerType = (
 
   return (
     <div className={classNames.join(' ').trim()}>
-      {props.items.map((item) => (
+      {props.items?.map((item) => (
         <DropdownButton
           icon={item.icon}
-          onClick={item.onClick}
-          key={item.title}
+          onClick={(e) => item.onClick?.(e)}
+          title={item.title}
           width={24}
           height={24}
           href={''}
+          key={item.id}
         >
           {item.title}
         </DropdownButton>

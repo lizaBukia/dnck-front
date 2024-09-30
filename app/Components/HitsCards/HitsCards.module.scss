@@ -7,7 +7,7 @@
 }
 .content {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: space-between;
   width: 100%;
@@ -28,3 +28,5 @@
     overflow-x: scroll;
   }
 }
+
+

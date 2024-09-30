@@ -99,3 +99,14 @@
 .volumeControl:hover .volumeInput {
   opacity: 1;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 20px;
+
+}
+.musics {
+  display: flex;
+  flex-direction: column;
+}

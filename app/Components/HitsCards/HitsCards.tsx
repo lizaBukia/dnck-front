@@ -13,6 +13,7 @@ const HitsCards = (props: { items: HitsCardItemsInterface[] }): JSX.Element => {
             album={item.album}
             src={item.src}
             name={item.name}
+            onClick={item.onClick}
             id={item.id}
             dropDownItems={item.dropDownItems}
           />

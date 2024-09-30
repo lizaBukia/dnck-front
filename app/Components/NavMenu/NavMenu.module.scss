@@ -18,6 +18,13 @@
 
 @media screen and (max-width: 1023px) {
   .container {
-    display: none;
+    position: fixed;
+    bottom: -12px;
+    z-index: 10000;
+    width: 100%;
+    padding: 16px;
+    background-color: $background-color-light-mode;
+    border-radius: 12px;
+    left: 0;
   }
 }

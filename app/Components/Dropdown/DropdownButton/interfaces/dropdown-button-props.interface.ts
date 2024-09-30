@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { IconNameEnum } from '@/app/Components/Icon/enums/icon-name.enum';
 
 export interface DropdownButtonPropsInterface {
@@ -8,5 +8,6 @@ export interface DropdownButtonPropsInterface {
   height: number;
   darkMode?: boolean;
   href: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  title: string | ReactNode;
 }

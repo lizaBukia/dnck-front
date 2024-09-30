@@ -1,16 +1,42 @@
-import { FC } from 'react';
+import Link from 'next/link';
+import { FC, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import useSWR from 'swr';
+import DownPlaylist from '../DownPlaylists/DownPlaylist';
+import Heading from '../Heading/Heading';
+import { HeadingTypeEnum } from '../Heading/enums/heading-type.enum';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
 import PlayButton from '../PlayButton/PlayButton';
 import styles from './MusicPlayer.module.scss';
+import { fetcher } from '@/app/Api/fetcher';
 import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
+import { PlaylistInterface } from '@/app/Interfaces/playlist.interface';
 import { currentMusicState } from '@/app/States/States';
+import { PlayerMusicInterface } from '@/app/States/current-music-state-props.interface';
 
 // eslint-disable-next-line react/display-name
 const MusicPlayer: FC = () => {
-  const { playerRef: audioRef, handleProgressChange, togglePlay } = usePlayer();
-  const [currentMusic] = useRecoilState(currentMusicState);
+  const {
+    playerRef: audioRef,
+    handleProgressChange,
+    togglePlay,
+    playNext,
+    playPrevious,
+    shuffle,
+  } = usePlayer();
+  const [music] = useRecoilState(currentMusicState);
+  const [data, setData] = useState<PlaylistInterface[]>();
+
+  const currentMusic: PlayerMusicInterface = music.musics[
+    music.currentIndex
+  ] ?? {
+    name: 'No Audio',
+    imgLink: '/default.png',
+    src: '',
+    artistName: 'No Artist',
+    id: 0,
+  };
 
   const handleVolumeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -19,32 +45,24 @@ const MusicPlayer: FC = () => {
       audioRef.current.volume = Number(event.target.value);
     }
   };
-  // const playNext = () => {
-  //   setCurrentTrackIndex((prevIndex) =>
-  //     prevIndex + 1 >= tracks.length ? 0 : prevIndex + 1
-  //   );
-  // };
 
-  // const playPrevious = () => {
-  //   setCurrentTrackIndex((prevIndex) =>
-  //     prevIndex - 1 < 0 ? tracks.length - 1 : prevIndex - 1
-  //   );
-  // };
-  // const shuffleArray = useCallback((array: number[]) => {
-  //   const shuffled = [...array];
-  //   for (let i = shuffled.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  //   }
-  //   return shuffled;
-  // }, []);
+  const { data: per } = useSWR<PlaylistInterface[]>(
+    '/playlists/personal',
+    fetcher,
+  );
+
+  useEffect(() => {
+    if (per) {
+      setData(per);
+    }
+  }, [per]);
 
   return (
     <div>
       <div className={styles.playlist}>
         <div
           className={styles.music}
-          style={{ backgroundImage: `url(${currentMusic.imgLink})` }}
+          style={{ backgroundImage: `url(${currentMusic?.imgLink})` }}
         >
           <div className={styles.musicPlayer}>
             <div className={styles.heading}>
@@ -58,7 +76,7 @@ const MusicPlayer: FC = () => {
                 min="0"
                 max={audioRef.current?.duration || 0}
                 step="0.1"
-                value={currentMusic.currentTime}
+                value={music.currentTime}
                 onChange={handleProgressChange}
               />
               <audio ref={audioRef}></audio>
@@ -69,23 +87,26 @@ const MusicPlayer: FC = () => {
                 isActive={true}
                 width={24}
                 height={24}
+                onClick={shuffle}
               />
 
               <div className={styles.player}>
                 <Icon
                   name={IconNameEnum.BackwardDesktop}
                   width={26}
+                  onClick={playPrevious}
                   height={26}
                 />
                 <PlayButton
                   onClick={togglePlay}
                   width={48}
                   height={48}
-                  icon={''}
+                  music={currentMusic.id}
                 />
                 <Icon
                   name={IconNameEnum.ForwardDesktop}
                   width={26}
+                  onClick={playNext}
                   height={26}
                 />
               </div>
@@ -113,8 +134,33 @@ const MusicPlayer: FC = () => {
             </div>
           </div>
         </div>
+        <div className={styles.header}>
+          <Heading type={HeadingTypeEnum.H5}>playlist</Heading>
+          <div className={styles.more}>
+            <Link href={'/playlist'}>See all</Link>
+          </div>
+        </div>
+        <div>
+          {data &&
+            data.length > 0 &&
+            data.map((playlist) => {
+              return (
+                <Link href={`/playlist/${playlist.id}`} key={playlist.id}>
+                  <DownPlaylist
+                    imgUrl={
+                      playlist?.musics?.[0]?.album?.history?.location ??
+                      '/default.png'
+                    }
+                    name={playlist.title}
+                    key={playlist.id}
+                  />
+                </Link>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
 };
+
 export default MusicPlayer;
