@@ -35,3 +35,14 @@
   font-size: 10px;
   font-weight: 400;
 }
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .primaryTextLarge {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .secondaryTextMedium {
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+}
