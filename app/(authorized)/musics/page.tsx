@@ -32,7 +32,7 @@ const TopHits = (): JSX.Element => {
       <div>
         {musics && (
           <DownHitsCards
-            items={musics.slice(0, 9).map((hit, index) => {
+            items={musics.map((hit, index) => {
               return {
                 backgroundImage: hit.album?.history?.location,
                 album: hit.album,
