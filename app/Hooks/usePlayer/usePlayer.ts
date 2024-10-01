@@ -33,19 +33,6 @@ export const usePlayer = (): usePlayerType => {
     [playerRef, setCurrentMusic],
   );
 
-  useEffect(() => {
-    const currentTime: string | null = localStorage.getItem('currentTime');
-    if (currentTime) {
-      setCurrentMusic((prevState) => ({
-        ...prevState,
-        currentTime: Number(currentTime),
-      }));
-      if (playerRef.current) {
-        playerRef.current.currentTime = Number(currentTime);
-      }
-    }
-  }, [setCurrentMusic, playerRef]);
-
   const togglePlay: () => void = useCallback(() => {
     const audioElement: HTMLAudioElement | null = playerRef.current;
     if (audioElement) {
@@ -68,7 +55,9 @@ export const usePlayer = (): usePlayerType => {
 
     if (audioElement && currentMusic.musics[currentMusic.currentIndex]?.src) {
       if (
-        audioElement.src !== currentMusic.musics[currentMusic.currentIndex].src
+        audioElement.src !==
+          currentMusic.musics[currentMusic.currentIndex].src &&
+        audioElement.paused
       ) {
         audioElement.src = currentMusic.musics[currentMusic.currentIndex].src;
         audioElement.load();
