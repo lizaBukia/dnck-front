@@ -36,12 +36,6 @@ const SingleArtistCard: SingleArtistCardType = (
               <span key={index}>{album.name}</span>
             ))}
           </span>
-          <PlayButton
-            icon={IconNameEnum.Play}
-            onClick={() => {}}
-            width={48}
-            height={48}
-          />
         </div>
       </div>
     </div>

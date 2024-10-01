@@ -34,7 +34,17 @@ const Album = (props: { params: { id: number } }): JSX.Element => {
                     src: hit.history?.location,
                     id: hit.id,
                     onClick: (): void => {
-                      playMusic(hit, data.musics, index);
+                      playMusic(
+                        {
+                          ...hit,
+                          album: {
+                            ...hit.album,
+                            history: { location: data.history.location },
+                          },
+                        },
+                        data.musics,
+                        index,
+                      );
                     },
                     dropDownItems: [
                       {

@@ -11,9 +11,11 @@ import { TextTypeEnum } from '../Text/enums/text-type.enum';
 import styles from './HitsCard.module.scss';
 import { HitsCardItemsInterface } from './interfaces/hits-card-items.interface';
 import { HitsCardType } from './type/hits-card.type';
+import { usePlayer } from '@/app/Hooks/usePlayer/usePlayer';
 import { currentMusicState } from '@/app/States/States';
 
 const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
+  const { togglePlay } = usePlayer();
   const [music] = useRecoilState(currentMusicState);
   const artistName: string[] = [];
 
@@ -23,7 +25,7 @@ const HitsCard: HitsCardType = (props: HitsCardItemsInterface) => {
 
   const onClick = (): void => {
     props.onClick?.();
-    // togglePlay();
+    togglePlay();
   };
   return (
     <div className={`${styles.darkContainer} ${styles.container}`}>
