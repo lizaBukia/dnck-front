@@ -95,6 +95,14 @@ export const usePlayer = (): usePlayerType => {
       } else {
         nextIndex = (prevState.currentIndex + 1) % prevState.musics.length;
       }
+
+      const audioElement: HTMLAudioElement | null = playerRef.current;
+      if (audioElement) {
+        audioElement.src = currentMusic.musics[nextIndex].src;
+        audioElement.load();
+        audioElement.play();
+      }
+
       return {
         ...prevState,
         currentIndex: nextIndex,
@@ -114,6 +122,12 @@ export const usePlayer = (): usePlayerType => {
           (prevState.currentIndex - 1 + prevState.musics.length) %
           prevState.musics.length;
       }
+      const audioElement: HTMLAudioElement | null = playerRef.current;
+      if (audioElement) {
+        audioElement.src = currentMusic.musics[prevIndex].src;
+        audioElement.load();
+        audioElement.play();
+      }
       return {
         ...prevState,
         currentIndex: prevIndex,
@@ -125,6 +139,8 @@ export const usePlayer = (): usePlayerType => {
   const shuffle = (): void => {
     setCurrentMusic((prevState) => {
       const isShuffled: boolean = !prevState.isShuffled;
+      const currentSong: PlayerMusicInterface =
+        prevState.musics[prevState.currentIndex];
 
       if (isShuffled) {
         const originalMusics: PlayerMusicInterface[] = [...prevState.musics];
@@ -138,16 +154,26 @@ export const usePlayer = (): usePlayerType => {
           ];
         }
 
+        const newIndex: number = shuffledMusics.findIndex(
+          (music) => music.id === currentSong.id,
+        );
+
         return {
           ...prevState,
           musics: shuffledMusics,
           originalMusics,
+          currentIndex: newIndex,
           isShuffled,
         };
       } else {
+        const newIndex: number = prevState.originalMusics.findIndex(
+          (music) => music.id === currentSong.id,
+        );
+
         return {
           ...prevState,
           musics: prevState.originalMusics,
+          currentIndex: newIndex,
           isShuffled,
         };
       }
@@ -160,23 +186,32 @@ export const usePlayer = (): usePlayerType => {
         return;
       }
 
-      setCurrentMusic((prevState) => ({
-        ...prevState,
-        currentIndex: index,
-        currentMusicId: hit.id,
-        musics: musics.map((music: MusicInterface) => ({
-          id: music.id,
-          name: music.name,
-          artistName:
-            music.album?.artists?.reduce?.((acc, curr) => {
-              return (acc += `${curr.firstName} ${curr.lastName},`);
-            }, '') ?? 'Unknown Artist',
-          imgLink: music.album?.history?.location ?? '',
-          src: music.history?.location ?? '',
-        })),
-      }));
+      setCurrentMusic((prevState) => {
+        const audioElement: HTMLAudioElement | null = playerRef.current;
+        if (audioElement) {
+          audioElement.src = musics[index]?.history.location;
+          audioElement.load();
+          audioElement.play();
+        }
+        return {
+          ...prevState,
+          currentIndex: index,
+          currentMusicId: hit.id,
+          isPlaying: true,
+          musics: musics.map((music: MusicInterface) => ({
+            id: music.id,
+            name: music.name,
+            artistName:
+              music.album?.artists?.reduce?.((acc, curr) => {
+                return (acc += `${curr.firstName} ${curr.lastName},`);
+              }, '') ?? 'Unknown Artist',
+            imgLink: music.album?.history?.location ?? '',
+            src: music.history?.location ?? '',
+          })),
+        };
+      });
     },
-    [currentMusic.currentMusicId, setCurrentMusic],
+    [currentMusic.currentMusicId, playerRef, setCurrentMusic],
   );
 
   const toggleMute = (): void => {

@@ -67,14 +67,18 @@ export default function SearchPage(): JSX.Element {
           <div className={styles.artistColumn}>
             {artists &&
               artists.map((artist) => (
-                <SearchArtistCard
-                  key={artist.id}
-                  id={artist.id}
-                  name={`${artist.firstName} ${artist.lastName}`}
-                  biography={artist.biography}
-                  createdAt={artist.createdAt}
-                  src={artist.history?.location}
-                />
+                <Link key={artist.id} href={`/artist/${artist.id}`}>
+                  <div key={artist.id}>
+                    <SearchArtistCard
+                      key={artist.id}
+                      id={artist.id}
+                      name={`${artist.firstName} ${artist.lastName}`}
+                      biography={artist.biography}
+                      createdAt={artist.createdAt}
+                      src={artist.history?.location}
+                    />
+                  </div>
+                </Link>
               ))}
           </div>
         </div>
@@ -91,7 +95,7 @@ export default function SearchPage(): JSX.Element {
 
         <div className={styles.albums}>
           {albums &&
-            albums.slice(0, 4).map((album, index) => {
+            albums.map((album, index) => {
               return (
                 <Link href={`albums/${album.id}`} key={album.id}>
                   <AlbumCard

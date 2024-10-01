@@ -1,10 +1,13 @@
 'use client';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
+import AddToPlaylistButton from '../../playlist/components/AddToPlaylistButton/AddToPlaylistButton';
 import { SingleArtistPagePropsInterface } from '../interfaces/single-artist-page-props.interface';
 import { SingleArtistPageType } from '../type/single-artist-page.type';
 import styles from './page.module.scss';
 import { fetcher } from '@/app/Api/fetcher';
-import AlbumCards from '@/app/Components/AlbumCards/AlbumCards';
+import AlbumCard from '@/app/Components/AlbumCard/AlbumCard';
 import Heading from '@/app/Components/Heading/Heading';
 import { HeadingTypeEnum } from '@/app/Components/Heading/enums/heading-type.enum';
 import HitsCard from '@/app/Components/HitsCard/HitsCard';
@@ -23,6 +26,7 @@ const SingleArtistPage: SingleArtistPageType = (
   );
 
   const { playMusic } = usePlayer();
+  const router: AppRouterInstance = useRouter();
 
   const hitsMap = (artists: ArtistInterface): MusicInterface[] => {
     const musics: MusicInterface[] = [];
@@ -42,6 +46,7 @@ const SingleArtistPage: SingleArtistPageType = (
     }
     return artist.albums[0];
   };
+
   return (
     <div className={`${styles.mainContainer} ${styles.mainLightContainer}`}>
       <div className={styles.container}>
@@ -61,7 +66,7 @@ const SingleArtistPage: SingleArtistPageType = (
             <>
               <div className={styles.heading}>
                 <Heading type={HeadingTypeEnum.H5}>
-                  {`${artists?.firstName} ${artists?.lastName}'s Most Popular Musics`}
+                  {`${artists?.firstName} ${artists?.lastName}'s Musics`}
                 </Heading>
               </div>
               <div>
@@ -124,16 +129,33 @@ const SingleArtistPage: SingleArtistPageType = (
               <div className={styles.heading}>
                 <Heading
                   type={HeadingTypeEnum.H5}
-                >{`${artists?.firstName} ${artists?.lastName}'s Most Popular Albums`}</Heading>
+                >{`${artists?.firstName} ${artists?.lastName}'s Albums`}</Heading>
               </div>
-              <AlbumCards
-                items={artists.albums.map((album) => ({
-                  title: album.name,
-                  imgUrl: album.history?.location,
-                  artists: album.artists,
-                  dropDownItems: [],
-                }))}
-              />
+              <div>
+                {artists.albums.map((album, index) => (
+                  <AlbumCard
+                    key={index}
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                      e.stopPropagation();
+                      router.push(`/albums/${album.id}`);
+                    }}
+                    darkMode={false}
+                    imgUrl={album.history?.location}
+                    artists={[artists]}
+                    title={album.title}
+                    dropDownItems={[
+                      {
+                        title: (
+                          <AddToPlaylistButton
+                            musicId={album.musics.map((music) => music.id)}
+                            album={true}
+                          />
+                        ),
+                      },
+                    ]}
+                  />
+                ))}
+              </div>
             </>
           )}
         </div>
