@@ -1,10 +1,8 @@
 'use client';
 
 import { AxiosResponse } from 'axios';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import Button from '../Button/Button';
@@ -36,8 +34,6 @@ const LoginForm: FC = () => {
     response?: CustomErrorResponse;
   }
 
-  const router: AppRouterInstance = useRouter();
-
   const onSubmit = async (values: FieldValues): Promise<void> => {
     try {
       const response: AxiosResponse = await ApiClient.post(
@@ -49,7 +45,7 @@ const LoginForm: FC = () => {
       if (accessToken) {
         setCookie('accessToken', accessToken, 24);
         console.log('User logged in successfully');
-        router.push('/');
+        window.location.href = '/';
       } else {
         alert('password is not correct');
       }
