@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Icon from '../Icon/Icon';
 import { IconNameEnum } from '../Icon/enums/icon-name.enum';
-import PlayButton from '../PlayButton/PlayButton';
 import styles from './SingleArtistCard.module.scss';
 import { SingleArtistCardPropsInterface } from './interfaces/single-artist-card-props.interface';
 import { SingleArtistCardType } from './types/single-artist-card.type';
